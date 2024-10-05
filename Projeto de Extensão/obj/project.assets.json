@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto de Extensão\\Projeto de Extensão.csproj",
+      "projectUniqueName": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj",
       "projectName": "Projeto de Extensão",
-      "projectPath": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto de Extensão\\Projeto de Extensão.csproj",
+      "projectPath": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj",
       "packagesPath": "C:\\Users\\luanp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto de Extensão\\obj\\",
+      "outputPath": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\luanp\\AppData\\Roaming\\NuGet\\NuGet.Config",

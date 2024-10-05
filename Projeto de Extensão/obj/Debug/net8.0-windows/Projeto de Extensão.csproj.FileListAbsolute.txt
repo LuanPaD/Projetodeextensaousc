@@ -1,0 +1,17 @@
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\Projeto de Extensão.exe
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\Projeto de Extensão.deps.json
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\Projeto de Extensão.runtimeconfig.json
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\Projeto de Extensão.dll
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\Projeto de Extensão.pdb
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensão.FrmMain.resources
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.csproj.GenerateResource.cache
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.AssemblyInfoInputs.cache
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.AssemblyInfo.cs
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.csproj.CoreCompileInputs.cache
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.sourcelink.json
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.dll
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\refint\Projeto de Extensão.dll
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.pdb
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.genruntimeconfig.cache
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\ref\Projeto de Extensão.dll
