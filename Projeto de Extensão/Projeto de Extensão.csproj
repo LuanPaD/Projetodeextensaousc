@@ -10,11 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< Updated upstream
     <Folder Include="Formulários\Cadastros\" />
     <Folder Include="Formulários\Administrativo\" />
   </ItemGroup>
 
   <ItemGroup>
+=======
+>>>>>>> Stashed changes
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

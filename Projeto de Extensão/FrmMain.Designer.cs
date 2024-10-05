@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< Updated upstream
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             btnAdmnistrador = new Button();
             tlpAlinhamento = new TableLayoutPanel();
@@ -114,6 +115,17 @@
             WindowState = FormWindowState.Maximized;
             tlpAlinhamento.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
+=======
+            SuspendLayout();
+            // 
+            // FrmMain
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1481, 729);
+            Name = "FrmMain";
+            Text = "Form1";
+>>>>>>> Stashed changes
             ResumeLayout(false);
         }
 

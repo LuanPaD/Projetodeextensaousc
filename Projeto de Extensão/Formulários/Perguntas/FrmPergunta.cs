@@ -22,5 +22,25 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrimeiraOpcao_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPaginaAnterior_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

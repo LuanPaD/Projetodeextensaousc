@@ -59,5 +59,38 @@ namespace Projeto_de_Extensão.Properties {
                 resourceCulture = value;
             }
         }
+<<<<<<< Updated upstream
+=======
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Group_855 {
+            get {
+                object obj = ResourceManager.GetObject("Group 855", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Group_856 {
+            get {
+                object obj = ResourceManager.GetObject("Group 856", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Perguntas {
+            get {
+                object obj = ResourceManager.GetObject("Perguntas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+>>>>>>> Stashed changes
     }
 }

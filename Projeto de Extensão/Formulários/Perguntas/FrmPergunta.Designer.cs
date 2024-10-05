@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< Updated upstream
             button1 = new Button();
             SuspendLayout();
             // 
@@ -50,10 +51,76 @@
             Text = "FrmPergunta";
             Load += FrmPergunta_Load;
             ResumeLayout(false);
+=======
+            ptbFundoPerguntas = new PictureBox();
+            btnProximaPagina = new Button();
+            btnPaginaAnterior = new Button();
+            ((System.ComponentModel.ISupportInitialize)ptbFundoPerguntas).BeginInit();
+            SuspendLayout();
+            // 
+            // ptbFundoPerguntas
+            // 
+            ptbFundoPerguntas.BackColor = SystemColors.ControlDark;
+            ptbFundoPerguntas.Image = Properties.Resources.Perguntas;
+            ptbFundoPerguntas.Location = new Point(0, -3);
+            ptbFundoPerguntas.Name = "ptbFundoPerguntas";
+            ptbFundoPerguntas.Size = new Size(1366, 760);
+            ptbFundoPerguntas.TabIndex = 0;
+            ptbFundoPerguntas.TabStop = false;
+            // 
+            // btnProximaPagina
+            // 
+            btnProximaPagina.BackgroundImage = Properties.Resources.Group_856;
+            btnProximaPagina.BackgroundImageLayout = ImageLayout.Stretch;
+            btnProximaPagina.Location = new Point(1400, 600);
+            btnProximaPagina.Name = "btnProximaPagina";
+            btnProximaPagina.Size = new Size(46, 46);
+            btnProximaPagina.TabIndex = 6;
+            btnProximaPagina.TextAlign = ContentAlignment.TopLeft;
+            btnProximaPagina.UseVisualStyleBackColor = true;
+            btnProximaPagina.Click += button1_Click;
+            // 
+            // btnPaginaAnterior
+            // 
+            btnPaginaAnterior.Anchor = AnchorStyles.None;
+            btnPaginaAnterior.AutoSize = true;
+            btnPaginaAnterior.BackColor = SystemColors.Control;
+            btnPaginaAnterior.BackgroundImage = Properties.Resources.Group_855;
+            btnPaginaAnterior.BackgroundImageLayout = ImageLayout.Stretch;
+            btnPaginaAnterior.CausesValidation = false;
+            btnPaginaAnterior.FlatStyle = FlatStyle.Flat;
+            btnPaginaAnterior.ForeColor = SystemColors.Control;
+            btnPaginaAnterior.Location = new Point(1222, 671);
+            btnPaginaAnterior.Name = "btnPaginaAnterior";
+            btnPaginaAnterior.Size = new Size(49, 46);
+            btnPaginaAnterior.TabIndex = 7;
+            btnPaginaAnterior.UseVisualStyleBackColor = false;
+            btnPaginaAnterior.Click += btnPaginaAnterior_Click;
+            // 
+            // FrmPergunta
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1361, 729);
+            Controls.Add(btnPaginaAnterior);
+            Controls.Add(btnProximaPagina);
+            Controls.Add(ptbFundoPerguntas);
+            Name = "FrmPergunta";
+            Text = "FrmPergunta";
+            ((System.ComponentModel.ISupportInitialize)ptbFundoPerguntas).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+>>>>>>> Stashed changes
         }
 
         #endregion
 
+<<<<<<< Updated upstream
         private Button button1;
+=======
+        private PictureBox ptbFundoPerguntas;
+        private Button btnProximaPagina;
+        private Button btnPaginaAnterior;
+>>>>>>> Stashed changes
     }
 }
