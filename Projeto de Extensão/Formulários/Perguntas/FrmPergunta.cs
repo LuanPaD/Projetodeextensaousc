@@ -15,6 +15,12 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
         public FrmPergunta()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void FrmPergunta_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
