@@ -1,3 +1,4 @@
+using Projeto_de_Extensao.Formulários.Admnistrativo;
 using Projeto_de_Extensão.Formulários.Perguntas;
 
 namespace Projeto_de_Extensão
@@ -11,10 +12,17 @@ namespace Projeto_de_Extensão
 
         private void btnAvaliar_Click(object sender, EventArgs e)
         {
-            FrmPergunta form = new FrmPergunta();
-            form.ShowDialog();
+            FrmPergunta frmPergunta = new FrmPergunta();
+            frmPergunta.ShowDialog();
 
-            this.Dispose();
+            //this.Dispose();
+        }
+
+        private void btnAdmnistrador_Click(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin= new FrmLogin();
+            frmLogin.Show();
+            //this.Dispose();
         }
     }
 }

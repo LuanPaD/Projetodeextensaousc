@@ -41,6 +41,7 @@
             btnAdmnistrador.Size = new Size(508, 109);
             btnAdmnistrador.TabIndex = 2;
             btnAdmnistrador.UseVisualStyleBackColor = true;
+            btnAdmnistrador.Click += btnAdmnistrador_Click;
             // 
             // tlpAlinhamento
             // 

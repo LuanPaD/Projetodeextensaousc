@@ -18,26 +18,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPergunta));
-            button1 = new Button();
+            btnAvancar = new Button();
             btnProximaPagina = new Button();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            btnPaginaAnterior = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // btnAvancar
             // 
-            button1.Location = new Point(895, 595);
-            button1.Name = "button1";
-            button1.Size = new Size(250, 41);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnAvancar.Location = new Point(895, 595);
+            btnAvancar.Name = "btnAvancar";
+            btnAvancar.Size = new Size(250, 41);
+            btnAvancar.TabIndex = 0;
+            btnAvancar.Text = "Avançar";
+            btnAvancar.UseVisualStyleBackColor = true;
             // 
             // btnProximaPagina
             // 
+            btnProximaPagina.BackgroundImage = (Image)resources.GetObject("btnProximaPagina.BackgroundImage");
             btnProximaPagina.BackgroundImageLayout = ImageLayout.Stretch;
-            btnProximaPagina.Location = new Point(1400, 600);
+            btnProximaPagina.Location = new Point(1263, 71);
             btnProximaPagina.Name = "btnProximaPagina";
             btnProximaPagina.Size = new Size(46, 46);
             btnProximaPagina.TabIndex = 6;
@@ -65,16 +67,28 @@
             label1.TabIndex = 8;
             label1.Text = "N / N";
             // 
+            // btnPaginaAnterior
+            // 
+            btnPaginaAnterior.BackgroundImage = (Image)resources.GetObject("btnPaginaAnterior.BackgroundImage");
+            btnPaginaAnterior.BackgroundImageLayout = ImageLayout.Stretch;
+            btnPaginaAnterior.Location = new Point(682, 71);
+            btnPaginaAnterior.Name = "btnPaginaAnterior";
+            btnPaginaAnterior.Size = new Size(46, 46);
+            btnPaginaAnterior.TabIndex = 9;
+            btnPaginaAnterior.TextAlign = ContentAlignment.TopLeft;
+            btnPaginaAnterior.UseVisualStyleBackColor = true;
+            // 
             // FrmPergunta
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(1348, 721);
-            Controls.Add(label1);
-            Controls.Add(button1);
-            Controls.Add(pictureBox1);
+            Controls.Add(btnPaginaAnterior);
             Controls.Add(btnProximaPagina);
+            Controls.Add(label1);
+            Controls.Add(btnAvancar);
+            Controls.Add(pictureBox1);
             MaximizeBox = false;
             Name = "FrmPergunta";
             Text = "FrmPergunta";
@@ -86,9 +100,10 @@
 
         #endregion
 
-        private Button button1;
+        private Button btnAvancar;
         private Button btnProximaPagina;
         private PictureBox pictureBox1;
         private Label label1;
+        private Button btnPaginaAnterior;
     }
 }

@@ -10,8 +10,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Formularios\Cadastros\" />
-		<Folder Include="Formularios\Administrativo\" />
+	  <Compile Remove="Formularios\**" />
+	  <EmbeddedResource Remove="Formularios\**" />
+	  <None Remove="Formularios\**" />
 	</ItemGroup>
 
 	<ItemGroup>
