@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Projeto de Extens\u00E3o"
+    "\\Projeto de Extens\u00E3o",
+    "\\Projeto de Extens\u00E3o\\bin\\Debug",
+    "\\Projeto de Extens\u00E3o\\bin\\Debug\\net8.0-windows",
+    "\\Projeto de Extens\u00E3o\\obj"
   ],
   "SelectedNode": "\\Projeto de Extens\u00E3o\\Projeto de Extens\u00E3o.csproj",
   "PreviewInSolutionExplorer": false

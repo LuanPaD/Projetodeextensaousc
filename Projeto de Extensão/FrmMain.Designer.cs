@@ -2,15 +2,8 @@
 {
     partial class FrmMain
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,13 +15,8 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< Updated upstream
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             btnAdmnistrador = new Button();
             tlpAlinhamento = new TableLayoutPanel();
@@ -115,17 +103,6 @@
             WindowState = FormWindowState.Maximized;
             tlpAlinhamento.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
-=======
-            SuspendLayout();
-            // 
-            // FrmMain
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1481, 729);
-            Name = "FrmMain";
-            Text = "Form1";
->>>>>>> Stashed changes
             ResumeLayout(false);
         }
 
