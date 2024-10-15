@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             txtUsuario = new TextBox();
             txtSenha = new TextBox();
@@ -37,57 +36,63 @@
             lblUsuario = new Label();
             lblSenha = new Label();
             lblErro = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1348, 721);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(978, 66);
+            label1.Anchor = AnchorStyles.None;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Symbol", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(1065, 26);
             label1.Name = "label1";
-            label1.Size = new Size(51, 20);
+            label1.Size = new Size(246, 100);
             label1.TabIndex = 1;
             label1.Text = "LOGIN";
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(821, 279);
+            txtUsuario.Anchor = AnchorStyles.None;
+            txtUsuario.Location = new Point(1018, 266);
+            txtUsuario.Multiline = true;
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(387, 27);
+            txtUsuario.Size = new Size(329, 44);
             txtUsuario.TabIndex = 2;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(821, 360);
+            txtSenha.Anchor = AnchorStyles.None;
+            txtSenha.Location = new Point(1018, 352);
+            txtSenha.Multiline = true;
             txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(387, 27);
+            txtSenha.Size = new Size(329, 44);
             txtSenha.TabIndex = 3;
             // 
             // btnEntrar
             // 
-            btnEntrar.Location = new Point(927, 525);
+            btnEntrar.Anchor = AnchorStyles.None;
+            btnEntrar.BackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.BorderColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.BorderSize = 0;
+            btnEntrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEntrar.ForeColor = SystemColors.ButtonFace;
+            btnEntrar.Location = new Point(1100, 546);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.Size = new Size(172, 55);
             btnEntrar.TabIndex = 4;
             btnEntrar.Text = "Entrar";
-            btnEntrar.UseVisualStyleBackColor = true;
+            btnEntrar.UseVisualStyleBackColor = false;
             btnEntrar.Click += btnEntrar_Click;
             // 
             // lblUsuario
             // 
+            lblUsuario.Anchor = AnchorStyles.None;
             lblUsuario.AutoSize = true;
-            lblUsuario.Location = new Point(821, 256);
+            lblUsuario.BackColor = Color.Transparent;
+            lblUsuario.Location = new Point(1018, 243);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(59, 20);
             lblUsuario.TabIndex = 5;
@@ -95,8 +100,10 @@
             // 
             // lblSenha
             // 
+            lblSenha.Anchor = AnchorStyles.None;
             lblSenha.AutoSize = true;
-            lblSenha.Location = new Point(821, 337);
+            lblSenha.BackColor = Color.Transparent;
+            lblSenha.Location = new Point(1018, 329);
             lblSenha.Name = "lblSenha";
             lblSenha.Size = new Size(49, 20);
             lblSenha.TabIndex = 6;
@@ -104,37 +111,49 @@
             // 
             // lblErro
             // 
+            lblErro.Anchor = AnchorStyles.None;
             lblErro.BackColor = Color.White;
             lblErro.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblErro.ForeColor = Color.Red;
-            lblErro.Location = new Point(821, 421);
+            lblErro.Location = new Point(1008, 430);
             lblErro.Name = "lblErro";
             lblErro.Size = new Size(387, 90);
             lblErro.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(txtSenha);
+            panel1.Controls.Add(txtUsuario);
+            panel1.Controls.Add(lblUsuario);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(btnEntrar);
+            panel1.Controls.Add(lblErro);
+            panel1.Controls.Add(lblSenha);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1470, 666);
+            panel1.TabIndex = 10;
             // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1348, 721);
-            Controls.Add(lblErro);
-            Controls.Add(lblSenha);
-            Controls.Add(lblUsuario);
-            Controls.Add(btnEntrar);
-            Controls.Add(txtSenha);
-            Controls.Add(txtUsuario);
-            Controls.Add(label1);
-            Controls.Add(pictureBox1);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1470, 666);
+            Controls.Add(panel1);
+            DoubleBuffered = true;
             Name = "FrmLogin";
             Text = "FrmLogin";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            WindowState = FormWindowState.Maximized;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private Label label1;
         private TextBox txtUsuario;
         private TextBox txtSenha;
@@ -142,5 +161,6 @@
         private Label lblUsuario;
         private Label lblSenha;
         private Label lblErro;
+        private Panel panel1;
     }
 }

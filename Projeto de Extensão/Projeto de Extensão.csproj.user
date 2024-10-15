@@ -7,6 +7,9 @@
     <Compile Update="Formulários\Admnistrativo\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formulários\Cadastros\FrmCadastroPerguntas.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formulários\Perguntas\FrmPergunta.cs">
       <SubType>Form</SubType>
     </Compile>

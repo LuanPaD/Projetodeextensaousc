@@ -19,3 +19,4 @@ C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Proje
 C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\ref\Projeto de Extensão.dll
 C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Admnistrativo.FrmCadastros.resources
 C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Admnistrativo.FrmLogin.resources
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Cadastros.FrmCadastroPerguntas.resources
