@@ -19,25 +19,32 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            string usuario = string.Empty, senha = string.Empty;
-            usuario = txtUsuario.Text;
-            senha   = txtSenha.Text;
+            string usuario = txtUsuario.Text.Trim(); // Remove espaços em branco no início e no fim
+            string senha = txtSenha.Text.Trim();
 
-            if (!camposPreenchidos(usuario, senha)) return;
+            // Verifica se os campos foram preenchidos
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(senha))
+            {
+                lblErro.Text = "Por favor, preencha todos os campos.";
+                return;
+            }
 
-            if ( usuario == "adm" && senha == "adm")
+            // Verifica se o usuário e a senha estão corretos
+            if (usuario != "adm" || senha != "adm")
+            {
+                lblErro.Text = "Senha ou usuário inválido.";
+            }
+            else
             {
                 lblErro.Text = string.Empty;
                 FrmCadastros frmCadastros = new FrmCadastros();
                 frmCadastros.Show();
 
-                this.Close();
+                // Usa Hide() em vez de Close() para evitar o encerramento da aplicação
+                this.Hide();
             }
-            else {
-                lblErro.Text = "Senha Inválida.";
-            }
-
         }
+
 
 
         private bool camposPreenchidos(string usuario, string senha)
@@ -45,13 +52,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             if (string.IsNullOrEmpty(usuario) && string.IsNullOrEmpty(senha))
             {
                 lblErro.Text = "Preencha usuário e senha antes de avançar.";
-                return false; 
+                return false;
             }
 
             if (string.IsNullOrEmpty(usuario))
             {
                 lblErro.Text = "Preencha o usuário antes de avançar.";
-                return false; 
+                return false;
             }
 
             if (string.IsNullOrEmpty(senha))
@@ -60,9 +67,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
 
-            lblErro.Text = string.Empty; 
-            return true; 
+            lblErro.Text = string.Empty;
+            return true;
         }
 
+        private void lblDireitos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
