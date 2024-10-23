@@ -32,6 +32,19 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         }
 
-        
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSetor_Click(object sender, EventArgs e)
+        {
+            tbcPaginas.SelectedTab = tbSetor;
+        }
+
+        private void btnPerguntas_Click(object sender, EventArgs e)
+        {
+            tbcPaginas.SelectedTab = tbPerguntas;
+        }
     }
 }
