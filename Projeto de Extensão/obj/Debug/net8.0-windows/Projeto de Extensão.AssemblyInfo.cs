@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Projeto de Extensão")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87ff7d5d840ec7af0b7c082887ad4bc163274de5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df1493d25c6bf44d5e8ce4aae22b82887a56245b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Projeto de Extensão")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Projeto de Extensão")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
