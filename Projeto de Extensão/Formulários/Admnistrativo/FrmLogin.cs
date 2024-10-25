@@ -71,9 +71,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             return true;
         }
 
-        private void lblDireitos_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

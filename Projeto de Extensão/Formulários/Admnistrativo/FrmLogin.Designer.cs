@@ -30,19 +30,19 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
-            label1 = new Label();
-            txtUsuario = new TextBox();
-            txtSenha = new TextBox();
-            btnEntrar = new Button();
-            lblUsuario = new Label();
-            lblSenha = new Label();
-            lblErro = new Label();
             panel1 = new Panel();
             tableLogin = new TableLayoutPanel();
             tableImagens = new TableLayoutPanel();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
+            lblErro = new Label();
+            lblSenha = new Label();
+            txtSenha = new TextBox();
+            btnEntrar = new Button();
+            txtUsuario = new TextBox();
+            label1 = new Label();
+            lblUsuario = new Label();
             lblDireitos = new Label();
             panel1.SuspendLayout();
             tableLogin.SuspendLayout();
@@ -51,95 +51,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.None;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI Symbol", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(217, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(182, 75);
-            label1.TabIndex = 1;
-            label1.Text = "LOGIN";
-            label1.Click += label1_Click;
-            // 
-            // txtUsuario
-            // 
-            txtUsuario.Anchor = AnchorStyles.None;
-            txtUsuario.Location = new Point(164, 195);
-            txtUsuario.Margin = new Padding(3, 2, 3, 2);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(288, 23);
-            txtUsuario.TabIndex = 2;
-            txtUsuario.TextChanged += txtUsuario_TextChanged;
-            // 
-            // txtSenha
-            // 
-            txtSenha.Anchor = AnchorStyles.None;
-            txtSenha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSenha.Location = new Point(164, 259);
-            txtSenha.Margin = new Padding(3, 2, 3, 2);
-            txtSenha.Name = "txtSenha";
-            txtSenha.PasswordChar = '●';
-            txtSenha.Size = new Size(288, 23);
-            txtSenha.TabIndex = 3;
-            txtSenha.TextChanged += txtSenha_TextChanged;
-            // 
-            // btnEntrar
-            // 
-            btnEntrar.Anchor = AnchorStyles.None;
-            btnEntrar.BackColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.FlatAppearance.BorderColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.FlatAppearance.BorderSize = 0;
-            btnEntrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEntrar.ForeColor = SystemColors.ButtonFace;
-            btnEntrar.Location = new Point(233, 405);
-            btnEntrar.Margin = new Padding(3, 2, 3, 2);
-            btnEntrar.Name = "btnEntrar";
-            btnEntrar.Size = new Size(150, 41);
-            btnEntrar.TabIndex = 4;
-            btnEntrar.Text = "Entrar";
-            btnEntrar.UseVisualStyleBackColor = false;
-            btnEntrar.Click += btnEntrar_Click;
-            // 
-            // lblUsuario
-            // 
-            lblUsuario.Anchor = AnchorStyles.None;
-            lblUsuario.AutoSize = true;
-            lblUsuario.BackColor = Color.Transparent;
-            lblUsuario.Location = new Point(285, 177);
-            lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(47, 15);
-            lblUsuario.TabIndex = 5;
-            lblUsuario.Text = "Usuário";
-            lblUsuario.Click += lblUsuario_Click;
-            // 
-            // lblSenha
-            // 
-            lblSenha.Anchor = AnchorStyles.None;
-            lblSenha.AutoSize = true;
-            lblSenha.BackColor = Color.Transparent;
-            lblSenha.Location = new Point(289, 242);
-            lblSenha.Name = "lblSenha";
-            lblSenha.Size = new Size(39, 15);
-            lblSenha.TabIndex = 6;
-            lblSenha.Text = "Senha";
-            lblSenha.Click += lblSenha_Click;
-            // 
-            // lblErro
-            // 
-            lblErro.Anchor = AnchorStyles.None;
-            lblErro.BackColor = Color.Transparent;
-            lblErro.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblErro.ForeColor = Color.Red;
-            lblErro.Location = new Point(164, 317);
-            lblErro.Name = "lblErro";
-            lblErro.Size = new Size(288, 68);
-            lblErro.TabIndex = 7;
-            lblErro.Click += lblErro_Click;
             // 
             // panel1
             // 
@@ -208,33 +119,121 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // 
             // panel2
             // 
-            panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.Transparent;
             panel2.Controls.Add(lblErro);
-            panel2.Controls.Add(lblDireitos);
             panel2.Controls.Add(lblSenha);
             panel2.Controls.Add(txtSenha);
             panel2.Controls.Add(btnEntrar);
             panel2.Controls.Add(txtUsuario);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(lblUsuario);
+            panel2.Controls.Add(lblDireitos);
+            panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(625, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(615, 491);
+            panel2.Size = new Size(616, 492);
             panel2.TabIndex = 9;
+            // 
+            // lblErro
+            // 
+            lblErro.Anchor = AnchorStyles.None;
+            lblErro.BackColor = Color.Transparent;
+            lblErro.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblErro.ForeColor = Color.Red;
+            lblErro.Location = new Point(174, 318);
+            lblErro.Name = "lblErro";
+            lblErro.Size = new Size(288, 68);
+            lblErro.TabIndex = 7;
+            lblErro.Click += lblErro_Click;
+            // 
+            // lblSenha
+            // 
+            lblSenha.Anchor = AnchorStyles.None;
+            lblSenha.AutoSize = true;
+            lblSenha.BackColor = Color.Transparent;
+            lblSenha.Location = new Point(299, 243);
+            lblSenha.Name = "lblSenha";
+            lblSenha.Size = new Size(39, 15);
+            lblSenha.TabIndex = 6;
+            lblSenha.Text = "Senha";
+            lblSenha.Click += lblSenha_Click;
+            // 
+            // txtSenha
+            // 
+            txtSenha.Anchor = AnchorStyles.None;
+            txtSenha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSenha.Location = new Point(174, 260);
+            txtSenha.Margin = new Padding(3, 2, 3, 2);
+            txtSenha.Name = "txtSenha";
+            txtSenha.PasswordChar = '●';
+            txtSenha.Size = new Size(288, 23);
+            txtSenha.TabIndex = 3;
+            txtSenha.TextChanged += txtSenha_TextChanged;
+            // 
+            // btnEntrar
+            // 
+            btnEntrar.Anchor = AnchorStyles.None;
+            btnEntrar.BackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.BorderColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.BorderSize = 0;
+            btnEntrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEntrar.ForeColor = SystemColors.ButtonFace;
+            btnEntrar.Location = new Point(243, 406);
+            btnEntrar.Margin = new Padding(3, 2, 3, 2);
+            btnEntrar.Name = "btnEntrar";
+            btnEntrar.Size = new Size(150, 41);
+            btnEntrar.TabIndex = 4;
+            btnEntrar.Text = "Entrar";
+            btnEntrar.UseVisualStyleBackColor = false;
+            btnEntrar.Click += btnEntrar_Click;
+            // 
+            // txtUsuario
+            // 
+            txtUsuario.Anchor = AnchorStyles.None;
+            txtUsuario.Location = new Point(174, 196);
+            txtUsuario.Margin = new Padding(3, 2, 3, 2);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(288, 23);
+            txtUsuario.TabIndex = 2;
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(227, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(182, 75);
+            label1.TabIndex = 1;
+            label1.Text = "LOGIN";
+            label1.Click += label1_Click;
+            // 
+            // lblUsuario
+            // 
+            lblUsuario.Anchor = AnchorStyles.None;
+            lblUsuario.AutoSize = true;
+            lblUsuario.BackColor = Color.Transparent;
+            lblUsuario.Location = new Point(295, 178);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(47, 15);
+            lblUsuario.TabIndex = 5;
+            lblUsuario.Text = "Usuário";
+            lblUsuario.Click += lblUsuario_Click;
             // 
             // lblDireitos
             // 
-            lblDireitos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblDireitos.Anchor = AnchorStyles.None;
             lblDireitos.AutoSize = true;
             lblDireitos.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDireitos.ForeColor = SystemColors.AppWorkspace;
-            lblDireitos.Location = new Point(208, 462);
+            lblDireitos.Location = new Point(218, 460);
             lblDireitos.Name = "lblDireitos";
             lblDireitos.Size = new Size(200, 17);
             lblDireitos.TabIndex = 8;
             lblDireitos.Text = "Reserved directs to Unisagrado";
-            lblDireitos.Click += lblDireitos_Click;
             // 
             // FrmLogin
             // 
@@ -294,21 +293,20 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             
         }
 
-
-        #endregion
-        private Label label1;
-        private TextBox txtUsuario;
-        private TextBox txtSenha;
-        private Button btnEntrar;
-        private Label lblUsuario;
-        private Label lblSenha;
-        private Label lblErro;
+#endregion
         private Panel panel1;
         private TableLayoutPanel tableLogin;
-        private Panel panel2;
-        private Label lblDireitos;
         private TableLayoutPanel tableImagens;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Panel panel2;
+        private Label lblErro;
+        private Label lblSenha;
+        private TextBox txtSenha;
+        private Button btnEntrar;
+        private TextBox txtUsuario;
+        private Label label1;
+        private Label lblUsuario;
+        private Label lblDireitos;
     }
 }

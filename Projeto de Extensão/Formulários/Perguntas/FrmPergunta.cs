@@ -41,5 +41,10 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
         {
 
         }
+
+        private void lblPergunta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
