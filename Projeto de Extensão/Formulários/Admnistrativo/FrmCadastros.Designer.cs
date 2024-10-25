@@ -46,6 +46,8 @@
             label1 = new Label();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
+            imgperfil = new PictureBox();
+            label3 = new Label();
             pnlMenu.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -53,6 +55,7 @@
             tbcPaginas.SuspendLayout();
             tbSetor.SuspendLayout();
             tbPerguntas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgperfil).BeginInit();
             SuspendLayout();
             // 
             // pnlMenu
@@ -73,10 +76,10 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Controls.Add(btnSair, 0, 4);
-            tableLayoutPanel1.Controls.Add(button3, 0, 3);
             tableLayoutPanel1.Controls.Add(button2, 0, 2);
             tableLayoutPanel1.Controls.Add(btnSetor, 0, 0);
             tableLayoutPanel1.Controls.Add(btnPerguntas, 0, 1);
+            tableLayoutPanel1.Controls.Add(button3, 0, 3);
             tableLayoutPanel1.Location = new Point(0, 112);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
@@ -85,6 +88,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(260, 338);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -220,6 +224,8 @@
             // 
             // tbSetor
             // 
+            tbSetor.Controls.Add(label3);
+            tbSetor.Controls.Add(imgperfil);
             tbSetor.Controls.Add(label2);
             tbSetor.ForeColor = Color.Transparent;
             tbSetor.Location = new Point(4, 24);
@@ -233,10 +239,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(316, 346);
             label2.Name = "label2";
-            label2.Size = new Size(134, 46);
+            label2.Size = new Size(147, 42);
             label2.TabIndex = 1;
             label2.Text = "SETOR";
             // 
@@ -254,10 +260,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Showcard Gothic", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(276, 359);
             label1.Name = "label1";
-            label1.Size = new Size(230, 46);
+            label1.Size = new Size(251, 42);
             label1.TabIndex = 0;
             label1.Text = "PERGUNTAS";
             // 
@@ -281,6 +287,27 @@
             tabPage4.Text = "Ajuda";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // imgperfil
+            // 
+            imgperfil.BackgroundImage = Properties.Resources.Foto_de_perfil_para_redes_sociais_gradiente_simples__1__removebg_preview;
+            imgperfil.BackgroundImageLayout = ImageLayout.Stretch;
+            imgperfil.Location = new Point(245, 22);
+            imgperfil.Name = "imgperfil";
+            imgperfil.Size = new Size(171, 162);
+            imgperfil.TabIndex = 2;
+            imgperfil.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(272, 168);
+            label3.Name = "label3";
+            label3.Size = new Size(116, 16);
+            label3.TabIndex = 3;
+            label3.Text = "Sonia Fernandes";
+            // 
             // FrmCadastros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -301,6 +328,7 @@
             tbSetor.PerformLayout();
             tbPerguntas.ResumeLayout(false);
             tbPerguntas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)imgperfil).EndInit();
             ResumeLayout(false);
         }
 
@@ -322,5 +350,7 @@
         private TabPage tabPage4;
         private Label label1;
         private Label label2;
+        private PictureBox imgperfil;
+        private Label label3;
     }
 }

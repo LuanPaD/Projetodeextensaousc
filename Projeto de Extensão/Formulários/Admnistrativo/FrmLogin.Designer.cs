@@ -71,9 +71,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // txtSenha
             // 
             txtSenha.Anchor = AnchorStyles.None;
+            txtSenha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSenha.Location = new Point(164, 259);
             txtSenha.Margin = new Padding(3, 2, 3, 2);
             txtSenha.Name = "txtSenha";
+            txtSenha.PasswordChar = '●';
             txtSenha.Size = new Size(288, 23);
             txtSenha.TabIndex = 3;
             txtSenha.TextChanged += txtSenha_TextChanged;
