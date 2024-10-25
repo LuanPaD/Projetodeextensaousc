@@ -38,11 +38,17 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             lblSenha = new Label();
             lblErro = new Label();
             panel1 = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLogin = new TableLayoutPanel();
+            tableImagens = new TableLayoutPanel();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
             panel2 = new Panel();
             lblDireitos = new Label();
             panel1.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            tableLogin.SuspendLayout();
+            tableImagens.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -139,7 +145,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(tableLayoutPanel1);
+            panel1.Controls.Add(tableLogin);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
@@ -147,20 +153,58 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             panel1.Size = new Size(1244, 498);
             panel1.TabIndex = 10;
             // 
-            // tableLayoutPanel1
+            // tableLogin
             // 
-            tableLayoutPanel1.BackColor = Color.Transparent;
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(panel2, 1, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1244, 498);
-            tableLayoutPanel1.TabIndex = 10;
+            tableLogin.BackColor = Color.Transparent;
+            tableLogin.ColumnCount = 2;
+            tableLogin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLogin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLogin.Controls.Add(tableImagens, 0, 0);
+            tableLogin.Controls.Add(panel2, 1, 0);
+            tableLogin.Dock = DockStyle.Fill;
+            tableLogin.Location = new Point(0, 0);
+            tableLogin.Name = "tableLogin";
+            tableLogin.RowCount = 1;
+            tableLogin.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLogin.Size = new Size(1244, 498);
+            tableLogin.TabIndex = 10;
+            // 
+            // tableImagens
+            // 
+            tableImagens.ColumnCount = 1;
+            tableImagens.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableImagens.Controls.Add(pictureBox1, 0, 0);
+            tableImagens.Controls.Add(pictureBox2, 0, 1);
+            tableImagens.Dock = DockStyle.Fill;
+            tableImagens.Location = new Point(3, 3);
+            tableImagens.Name = "tableImagens";
+            tableImagens.RowCount = 2;
+            tableImagens.RowStyles.Add(new RowStyle(SizeType.Percent, 81.91057F));
+            tableImagens.RowStyles.Add(new RowStyle(SizeType.Percent, 18.0894318F));
+            tableImagens.Size = new Size(616, 492);
+            tableImagens.TabIndex = 11;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(610, 397);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Dock = DockStyle.Fill;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(3, 406);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(610, 83);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
             // 
             // panel2
             // 
@@ -206,7 +250,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             WindowState = FormWindowState.Maximized;
             Load += FrmLogin_Load;
             panel1.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
+            tableLogin.ResumeLayout(false);
+            tableImagens.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -257,8 +304,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private Label lblSenha;
         private Label lblErro;
         private Panel panel1;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLogin;
         private Panel panel2;
         private Label lblDireitos;
+        private TableLayoutPanel tableImagens;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }
