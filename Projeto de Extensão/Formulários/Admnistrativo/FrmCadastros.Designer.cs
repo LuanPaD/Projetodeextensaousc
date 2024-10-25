@@ -38,6 +38,8 @@
             panelTopo = new Panel();
             pictureBoxLogo = new PictureBox();
             panel1 = new Panel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            btnSair = new Button();
             tbcPaginas = new TabControl();
             tbSetor = new TabPage();
             label3 = new Label();
@@ -47,11 +49,12 @@
             label1 = new Label();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
-            btnSair = new Button();
             pnlMenu.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panelTopo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
+            panel1.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             tbcPaginas.SuspendLayout();
             tbSetor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgperfil).BeginInit();
@@ -74,22 +77,19 @@
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Controls.Add(btnSair, 0, 4);
             tableLayoutPanel1.Controls.Add(button2, 0, 2);
             tableLayoutPanel1.Controls.Add(btnSetor, 0, 0);
             tableLayoutPanel1.Controls.Add(btnPerguntas, 0, 1);
             tableLayoutPanel1.Controls.Add(button3, 0, 3);
             tableLayoutPanel1.Location = new Point(6, 119);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 5;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(260, 295);
+            tableLayoutPanel1.Size = new Size(260, 257);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // button2
@@ -102,9 +102,9 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(3, 121);
+            button2.Location = new Point(3, 131);
             button2.Name = "button2";
-            button2.Size = new Size(254, 53);
+            button2.Size = new Size(254, 58);
             button2.TabIndex = 13;
             button2.UseVisualStyleBackColor = false;
             // 
@@ -120,7 +120,7 @@
             btnSetor.ForeColor = Color.White;
             btnSetor.Location = new Point(3, 3);
             btnSetor.Name = "btnSetor";
-            btnSetor.Size = new Size(254, 53);
+            btnSetor.Size = new Size(254, 58);
             btnSetor.TabIndex = 8;
             btnSetor.UseVisualStyleBackColor = false;
             btnSetor.Click += btnSetor_Click;
@@ -135,9 +135,9 @@
             btnPerguntas.FlatStyle = FlatStyle.Flat;
             btnPerguntas.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPerguntas.ForeColor = Color.White;
-            btnPerguntas.Location = new Point(3, 62);
+            btnPerguntas.Location = new Point(3, 67);
             btnPerguntas.Name = "btnPerguntas";
-            btnPerguntas.Size = new Size(254, 53);
+            btnPerguntas.Size = new Size(254, 58);
             btnPerguntas.TabIndex = 12;
             btnPerguntas.UseVisualStyleBackColor = false;
             btnPerguntas.Click += btnPerguntas_Click;
@@ -152,9 +152,9 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(3, 180);
+            button3.Location = new Point(3, 195);
             button3.Name = "button3";
-            button3.Size = new Size(254, 53);
+            button3.Size = new Size(254, 59);
             button3.TabIndex = 14;
             button3.UseVisualStyleBackColor = false;
             // 
@@ -185,11 +185,43 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(tableLayoutPanel2);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 420);
+            panel1.Location = new Point(0, 379);
             panel1.Name = "panel1";
-            panel1.Size = new Size(260, 125);
+            panel1.Size = new Size(260, 166);
             panel1.TabIndex = 9;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Controls.Add(btnSair, 0, 1);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            tableLayoutPanel2.Size = new Size(260, 166);
+            tableLayoutPanel2.TabIndex = 0;
+            // 
+            // btnSair
+            // 
+            btnSair.BackColor = Color.Brown;
+            btnSair.BackgroundImage = (Image)resources.GetObject("btnSair.BackgroundImage");
+            btnSair.BackgroundImageLayout = ImageLayout.Stretch;
+            btnSair.Dock = DockStyle.Fill;
+            btnSair.FlatAppearance.BorderSize = 0;
+            btnSair.FlatStyle = FlatStyle.Flat;
+            btnSair.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSair.ForeColor = Color.White;
+            btnSair.Location = new Point(3, 99);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(254, 64);
+            btnSair.TabIndex = 19;
+            btnSair.UseVisualStyleBackColor = false;
+            btnSair.Click += btnSair_Click;
             // 
             // tbcPaginas
             // 
@@ -292,23 +324,6 @@
             tabPage4.Text = "Ajuda";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // btnSair
-            // 
-            btnSair.BackColor = Color.Brown;
-            btnSair.BackgroundImage = (Image)resources.GetObject("btnSair.BackgroundImage");
-            btnSair.BackgroundImageLayout = ImageLayout.Stretch;
-            btnSair.Dock = DockStyle.Fill;
-            btnSair.FlatAppearance.BorderSize = 0;
-            btnSair.FlatStyle = FlatStyle.Flat;
-            btnSair.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(3, 239);
-            btnSair.Name = "btnSair";
-            btnSair.Size = new Size(254, 53);
-            btnSair.TabIndex = 16;
-            btnSair.UseVisualStyleBackColor = false;
-            btnSair.Click += btnSair_Click;
-            // 
             // FrmCadastros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -324,6 +339,8 @@
             tableLayoutPanel1.ResumeLayout(false);
             panelTopo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
+            panel1.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
             tbcPaginas.ResumeLayout(false);
             tbSetor.ResumeLayout(false);
             tbSetor.PerformLayout();
@@ -352,6 +369,7 @@
         private Label label2;
         private PictureBox imgperfil;
         private Label label3;
+        private TableLayoutPanel tableLayoutPanel2;
         private Button btnSair;
     }
 }
