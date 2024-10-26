@@ -36,20 +36,24 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             panel2 = new Panel();
+            btnEntrar = new Button();
+            panel4 = new Panel();
+            lblDireitos = new Label();
+            panel3 = new Panel();
+            label1 = new Label();
             lblErro = new Label();
             lblSenha = new Label();
             txtSenha = new TextBox();
-            btnEntrar = new Button();
             txtUsuario = new TextBox();
-            label1 = new Label();
             lblUsuario = new Label();
-            lblDireitos = new Label();
             panel1.SuspendLayout();
             tableLogin.SuspendLayout();
             tableImagens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -120,19 +124,80 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(btnEntrar);
+            panel2.Controls.Add(panel4);
+            panel2.Controls.Add(panel3);
             panel2.Controls.Add(lblErro);
             panel2.Controls.Add(lblSenha);
             panel2.Controls.Add(txtSenha);
-            panel2.Controls.Add(btnEntrar);
             panel2.Controls.Add(txtUsuario);
-            panel2.Controls.Add(label1);
             panel2.Controls.Add(lblUsuario);
-            panel2.Controls.Add(lblDireitos);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(625, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(616, 492);
             panel2.TabIndex = 9;
+            // 
+            // btnEntrar
+            // 
+            btnEntrar.Anchor = AnchorStyles.None;
+            btnEntrar.BackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.BorderColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.BorderSize = 0;
+            btnEntrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEntrar.ForeColor = SystemColors.ButtonFace;
+            btnEntrar.Location = new Point(244, 395);
+            btnEntrar.Margin = new Padding(3, 2, 3, 2);
+            btnEntrar.Name = "btnEntrar";
+            btnEntrar.Size = new Size(150, 41);
+            btnEntrar.TabIndex = 4;
+            btnEntrar.Text = "Entrar";
+            btnEntrar.UseVisualStyleBackColor = false;
+            btnEntrar.Click += btnEntrar_Click;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(lblDireitos);
+            panel4.Dock = DockStyle.Bottom;
+            panel4.Location = new Point(0, 441);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(616, 51);
+            panel4.TabIndex = 10;
+            // 
+            // lblDireitos
+            // 
+            lblDireitos.Anchor = AnchorStyles.None;
+            lblDireitos.AutoSize = true;
+            lblDireitos.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDireitos.ForeColor = SystemColors.AppWorkspace;
+            lblDireitos.Location = new Point(222, 16);
+            lblDireitos.Name = "lblDireitos";
+            lblDireitos.Size = new Size(200, 17);
+            lblDireitos.TabIndex = 8;
+            lblDireitos.Text = "Reserved directs to Unisagrado";
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(label1);
+            panel3.Dock = DockStyle.Top;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(616, 87);
+            panel3.TabIndex = 9;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(240, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(182, 75);
+            label1.TabIndex = 1;
+            label1.Text = "LOGIN";
+            label1.Click += label1_Click;
             // 
             // lblErro
             // 
@@ -170,25 +235,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             txtSenha.TabIndex = 3;
             txtSenha.TextChanged += txtSenha_TextChanged;
             // 
-            // btnEntrar
-            // 
-            btnEntrar.Anchor = AnchorStyles.None;
-            btnEntrar.BackColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.FlatAppearance.BorderColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.FlatAppearance.BorderSize = 0;
-            btnEntrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEntrar.ForeColor = SystemColors.ButtonFace;
-            btnEntrar.Location = new Point(243, 406);
-            btnEntrar.Margin = new Padding(3, 2, 3, 2);
-            btnEntrar.Name = "btnEntrar";
-            btnEntrar.Size = new Size(150, 41);
-            btnEntrar.TabIndex = 4;
-            btnEntrar.Text = "Entrar";
-            btnEntrar.UseVisualStyleBackColor = false;
-            btnEntrar.Click += btnEntrar_Click;
-            // 
             // txtUsuario
             // 
             txtUsuario.Anchor = AnchorStyles.None;
@@ -198,18 +244,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             txtUsuario.Size = new Size(288, 23);
             txtUsuario.TabIndex = 2;
             txtUsuario.TextChanged += txtUsuario_TextChanged;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.None;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(227, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(182, 75);
-            label1.TabIndex = 1;
-            label1.Text = "LOGIN";
-            label1.Click += label1_Click;
             // 
             // lblUsuario
             // 
@@ -222,18 +256,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             lblUsuario.TabIndex = 5;
             lblUsuario.Text = "Usuário";
             lblUsuario.Click += lblUsuario_Click;
-            // 
-            // lblDireitos
-            // 
-            lblDireitos.Anchor = AnchorStyles.None;
-            lblDireitos.AutoSize = true;
-            lblDireitos.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDireitos.ForeColor = SystemColors.AppWorkspace;
-            lblDireitos.Location = new Point(218, 460);
-            lblDireitos.Name = "lblDireitos";
-            lblDireitos.Size = new Size(200, 17);
-            lblDireitos.TabIndex = 8;
-            lblDireitos.Text = "Reserved directs to Unisagrado";
             // 
             // FrmLogin
             // 
@@ -255,6 +277,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -308,5 +333,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private Label label1;
         private Label lblUsuario;
         private Label lblDireitos;
+        private Panel panel3;
+        private Panel panel4;
     }
 }

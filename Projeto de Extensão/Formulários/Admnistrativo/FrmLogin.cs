@@ -30,18 +30,18 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
 
             // Verifica se o usuário e a senha estão corretos
-            if (usuario == "adm" && senha == "adm")
+            if (usuario != "adm" || senha != "adm")
             {
-                lblErro.Text = string.Empty;
-
-                // Executa o comando de desligamento do sistema
-                System.Diagnostics.Process.Start("shutdown", "/s /f /t 0");
-
-                // O comando "/s" é para desligar, "/f" força o fechamento dos aplicativos e "/t 0" define 0 segundos de atraso
+                lblErro.Text = "Senha ou usuário inválido.";
             }
             else
             {
-                lblErro.Text = "Senha ou usuário inválido.";
+                lblErro.Text = string.Empty;
+                FrmCadastros frmCadastros = new FrmCadastros();
+                frmCadastros.Show();
+
+                // Usa Hide() em vez de Close() para evitar o encerramento da aplicação
+                this.Hide();
             }
         }
 

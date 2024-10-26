@@ -24,14 +24,21 @@
             pictureBox2 = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
-            checkBox4 = new CheckBox();
-            checkBox3 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
+            pnlDirects = new Panel();
             lblDireitos = new Label();
-            label2 = new Label();
-            button2 = new Button();
+            panel2 = new Panel();
+            lblMsgErro = new Label();
+            btnOpcao4 = new Button();
+            btnOpcao3 = new Button();
+            btnOpcao2 = new Button();
+            btnOpcao1 = new Button();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            panel3 = new Panel();
+            panel5 = new Panel();
             button1 = new Button();
+            panel4 = new Panel();
+            button2 = new Button();
+            label2 = new Label();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableImagens.SuspendLayout();
@@ -39,6 +46,12 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
+            pnlDirects.SuspendLayout();
+            panel2.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            panel3.SuspendLayout();
+            panel5.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -111,68 +124,23 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.Controls.Add(checkBox4);
-            panel1.Controls.Add(checkBox3);
-            panel1.Controls.Add(checkBox2);
-            panel1.Controls.Add(checkBox1);
-            panel1.Controls.Add(lblDireitos);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(pnlDirects);
+            panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
+            panel1.Font = new Font("Microsoft Sans Serif", 15.75F);
             panel1.Location = new Point(670, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(662, 610);
             panel1.TabIndex = 13;
             // 
-            // checkBox4
+            // pnlDirects
             // 
-            checkBox4.Anchor = AnchorStyles.None;
-            checkBox4.AutoSize = true;
-            checkBox4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox4.Location = new Point(285, 361);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(102, 29);
-            checkBox4.TabIndex = 13;
-            checkBox4.Text = "Opção 4";
-            checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            checkBox3.Anchor = AnchorStyles.None;
-            checkBox3.AutoSize = true;
-            checkBox3.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox3.Location = new Point(285, 326);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(102, 29);
-            checkBox3.TabIndex = 12;
-            checkBox3.Text = "Opção 3";
-            checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            checkBox2.Anchor = AnchorStyles.None;
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox2.Location = new Point(287, 256);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(99, 29);
-            checkBox2.TabIndex = 11;
-            checkBox2.Text = "Opção 1";
-            checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            checkBox1.Anchor = AnchorStyles.None;
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(285, 291);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(102, 29);
-            checkBox1.TabIndex = 10;
-            checkBox1.Text = "Opção 2";
-            checkBox1.UseVisualStyleBackColor = true;
+            pnlDirects.Controls.Add(lblDireitos);
+            pnlDirects.Dock = DockStyle.Bottom;
+            pnlDirects.Location = new Point(0, 548);
+            pnlDirects.Name = "pnlDirects";
+            pnlDirects.Size = new Size(662, 62);
+            pnlDirects.TabIndex = 15;
             // 
             // lblDireitos
             // 
@@ -180,35 +148,117 @@
             lblDireitos.AutoSize = true;
             lblDireitos.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDireitos.ForeColor = SystemColors.AppWorkspace;
-            lblDireitos.Location = new Point(236, 570);
+            lblDireitos.Location = new Point(236, 20);
             lblDireitos.Name = "lblDireitos";
             lblDireitos.Size = new Size(200, 17);
             lblDireitos.TabIndex = 9;
             lblDireitos.Text = "Reserved directs to Unisagrado";
             // 
-            // label2
+            // panel2
             // 
-            label2.Anchor = AnchorStyles.None;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(313, 164);
-            label2.Name = "label2";
-            label2.Size = new Size(47, 25);
-            label2.TabIndex = 3;
-            label2.Text = "N\\N";
+            panel2.Controls.Add(lblMsgErro);
+            panel2.Controls.Add(btnOpcao4);
+            panel2.Controls.Add(btnOpcao3);
+            panel2.Controls.Add(btnOpcao2);
+            panel2.Controls.Add(btnOpcao1);
+            panel2.Controls.Add(tableLayoutPanel2);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(662, 610);
+            panel2.TabIndex = 16;
             // 
-            // button2
+            // lblMsgErro
             // 
-            button2.Anchor = AnchorStyles.None;
-            button2.BackColor = Color.FromArgb(181, 0, 0);
-            button2.BackgroundImage = Projeto_de_Extensao.Properties.Resources.Group_856;
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.ForeColor = Color.FromArgb(181, 0, 0);
-            button2.Location = new Point(553, 153);
-            button2.Name = "button2";
-            button2.Size = new Size(45, 37);
-            button2.TabIndex = 2;
-            button2.UseVisualStyleBackColor = false;
+            lblMsgErro.Anchor = AnchorStyles.None;
+            lblMsgErro.AutoSize = true;
+            lblMsgErro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMsgErro.Location = new Point(61, 213);
+            lblMsgErro.Name = "lblMsgErro";
+            lblMsgErro.Size = new Size(540, 24);
+            lblMsgErro.TabIndex = 19;
+            lblMsgErro.Text = "TEXTO PARA TENTAR ENVIAR SEM TEM MARCADO NADA";
+            // 
+            // btnOpcao4
+            // 
+            btnOpcao4.Anchor = AnchorStyles.None;
+            btnOpcao4.Location = new Point(218, 443);
+            btnOpcao4.Name = "btnOpcao4";
+            btnOpcao4.Size = new Size(237, 53);
+            btnOpcao4.TabIndex = 18;
+            btnOpcao4.Text = "Opção 4";
+            btnOpcao4.UseVisualStyleBackColor = true;
+            btnOpcao4.Click += btnOpcao4_Click;
+            // 
+            // btnOpcao3
+            // 
+            btnOpcao3.Anchor = AnchorStyles.None;
+            btnOpcao3.Location = new Point(218, 386);
+            btnOpcao3.Name = "btnOpcao3";
+            btnOpcao3.Size = new Size(237, 53);
+            btnOpcao3.TabIndex = 17;
+            btnOpcao3.Text = "Opção 3";
+            btnOpcao3.UseVisualStyleBackColor = true;
+            btnOpcao3.Click += btnOpcao3_Click;
+            // 
+            // btnOpcao2
+            // 
+            btnOpcao2.Anchor = AnchorStyles.None;
+            btnOpcao2.Location = new Point(218, 329);
+            btnOpcao2.Name = "btnOpcao2";
+            btnOpcao2.Size = new Size(237, 53);
+            btnOpcao2.TabIndex = 16;
+            btnOpcao2.Text = "Opção 2";
+            btnOpcao2.UseVisualStyleBackColor = true;
+            btnOpcao2.Click += btnOpcao2_Click;
+            // 
+            // btnOpcao1
+            // 
+            btnOpcao1.Anchor = AnchorStyles.None;
+            btnOpcao1.FlatAppearance.BorderColor = Color.Black;
+            btnOpcao1.Location = new Point(218, 272);
+            btnOpcao1.Name = "btnOpcao1";
+            btnOpcao1.Size = new Size(237, 53);
+            btnOpcao1.TabIndex = 15;
+            btnOpcao1.Text = "Opção 1";
+            btnOpcao1.UseVisualStyleBackColor = true;
+            btnOpcao1.Click += btnOpcao1_Click;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Controls.Add(panel3, 0, 2);
+            tableLayoutPanel2.Controls.Add(label1, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Top;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 3;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 67F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 73F));
+            tableLayoutPanel2.Size = new Size(662, 174);
+            tableLayoutPanel2.TabIndex = 14;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(panel5);
+            panel3.Controls.Add(panel4);
+            panel3.Controls.Add(label2);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 103);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(656, 68);
+            panel3.TabIndex = 15;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(button1);
+            panel5.Dock = DockStyle.Left;
+            panel5.Location = new Point(0, 0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(83, 68);
+            panel5.TabIndex = 15;
             // 
             // button1
             // 
@@ -217,11 +267,45 @@
             button1.BackgroundImage = Projeto_de_Extensao.Properties.Resources.Group_855;
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.ForeColor = Color.FromArgb(181, 0, 0);
-            button1.Location = new Point(61, 153);
+            button1.Location = new Point(4, 3);
             button1.Name = "button1";
-            button1.Size = new Size(45, 37);
+            button1.Size = new Size(76, 62);
             button1.TabIndex = 1;
             button1.UseVisualStyleBackColor = false;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(button2);
+            panel4.Dock = DockStyle.Right;
+            panel4.Location = new Point(552, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(104, 68);
+            panel4.TabIndex = 15;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Left;
+            button2.BackColor = Color.FromArgb(181, 0, 0);
+            button2.BackgroundImage = Projeto_de_Extensao.Properties.Resources.Group_856;
+            button2.BackgroundImageLayout = ImageLayout.Stretch;
+            button2.Font = new Font("Microsoft Sans Serif", 26.25F);
+            button2.ForeColor = Color.FromArgb(181, 0, 0);
+            button2.Location = new Point(3, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(72, 62);
+            button2.TabIndex = 2;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.None;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(303, 19);
+            label2.Name = "label2";
+            label2.Size = new Size(59, 32);
+            label2.TabIndex = 3;
+            label2.Text = "N\\N";
             // 
             // label1
             // 
@@ -229,7 +313,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(183, 23);
+            label1.Location = new Point(177, 1);
             label1.Name = "label1";
             label1.Size = new Size(307, 65);
             label1.TabIndex = 0;
@@ -254,7 +338,16 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlDirects.ResumeLayout(false);
+            pnlDirects.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -270,9 +363,16 @@
         private Button button2;
         private Button button1;
         private Label lblDireitos;
-        private CheckBox checkBox1;
-        private CheckBox checkBox4;
-        private CheckBox checkBox3;
-        private CheckBox checkBox2;
+        private Panel pnlDirects;
+        private Panel panel2;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Panel panel3;
+        private Panel panel4;
+        private Panel panel5;
+        private Button btnOpcao3;
+        private Button btnOpcao2;
+        private Button btnOpcao1;
+        private Button btnOpcao4;
+        private Label lblMsgErro;
     }
 }

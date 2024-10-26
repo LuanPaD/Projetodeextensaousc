@@ -46,5 +46,52 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
         {
 
         }
+
+
+        private void ResetButtons()
+        {
+            // Restaura os botões à cor padrão
+            btnOpcao1.BackColor = SystemColors.Control;
+            btnOpcao1.ForeColor = SystemColors.ControlText;
+
+            btnOpcao2.BackColor = SystemColors.Control;
+            btnOpcao2.ForeColor = SystemColors.ControlText;
+
+            btnOpcao3.BackColor = SystemColors.Control;
+            btnOpcao3.ForeColor = SystemColors.ControlText;
+
+            btnOpcao4.BackColor = SystemColors.Control;
+            btnOpcao4.ForeColor = SystemColors.ControlText;
+        }
+
+        private void btnOpcao1_Click(object sender, EventArgs e)
+        {
+            ResetButtons();
+            btnOpcao1.BackColor = Color.Red;
+            btnOpcao1.ForeColor = Color.White;
+        }
+
+        private void btnOpcao2_Click(object sender, EventArgs e)
+        {
+            ResetButtons();
+            btnOpcao2.BackColor = Color.Red;
+            btnOpcao2.ForeColor = Color.White;
+        }
+
+        private void btnOpcao3_Click(object sender, EventArgs e)
+        {
+            ResetButtons();
+            btnOpcao3.BackColor = Color.Red;
+            btnOpcao3.ForeColor = Color.White;
+        }
+
+        private void btnOpcao4_Click(object sender, EventArgs e)
+        {
+            ResetButtons();
+            btnOpcao4.BackColor = Color.Red;
+            btnOpcao4.ForeColor = Color.White;
+        }
+
+        
     }
 }
