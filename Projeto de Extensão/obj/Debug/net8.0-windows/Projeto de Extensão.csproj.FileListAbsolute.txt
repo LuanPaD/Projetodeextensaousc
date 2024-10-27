@@ -86,3 +86,7 @@ C:\Users\limao\Documents\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net
 C:\Users\limao\Documents\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.pdb
 C:\Users\limao\Documents\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.genruntimeconfig.cache
 C:\Users\limao\Documents\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\ref\Projeto de Extensão.dll
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\MySqlConnector.dll
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.csproj.AssemblyReference.cache
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto .231A86F6.Up2Date
