@@ -1,4 +1,5 @@
-﻿using MySqlConnector;
+﻿using Microsoft.VisualBasic;
+using MySqlConnector;
 using Projeto_de_Extensao.Classes;
 using System;
 using System.Collections.Generic;
@@ -53,10 +54,141 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            cadastraAtendenteNoBanco();
+            
+        }
+
+
         #endregion
 
         #region Funções
 
+        //armazena o valor do botão selecionado
+
+        private Button botaoSelecionado;
+
+
+        private void ResetButtons()
+        {
+            // Restaura os botões à cor padrão
+            btnSecretaria.BackColor = SystemColors.Control;
+            btnSecretaria.ForeColor = SystemColors.ControlText;
+
+            btnFinanceiro.BackColor = SystemColors.Control;
+            btnFinanceiro.ForeColor = SystemColors.ControlText;
+        }
+
+        private void btnFinanceiro_Click(object sender, EventArgs e)
+        {
+            ResetButtons();
+            btnFinanceiro.BackColor = Color.Red;
+            btnFinanceiro.ForeColor = Color.White;
+
+            botaoSelecionado = btnFinanceiro;
+        }
+
+        private void btnSecretaria_Click(object sender, EventArgs e)
+        {
+            ResetButtons();
+            btnSecretaria.BackColor = Color.Red;
+            btnSecretaria.ForeColor = Color.White;
+
+            botaoSelecionado = btnSecretaria;
+        }
+        private int ObterSetorId()
+        {
+            if (botaoSelecionado == null)
+            {
+                lblErro2.Text = "Nenhum botão foi selecionado.";
+                return 0;
+            }
+
+            if (botaoSelecionado.Text == "Secretaria")
+            {
+                return 1;
+            }
+            else if (botaoSelecionado.Text == "Financeiro")
+            {
+                return 2;
+            }
+            return 0;
+        }
+
+        private async void cadastraAtendenteNoBanco()
+        {
+            string nome = txtNome2.Text;
+            string email2 = txtEmail2.Text;
+            string setor = ObterSetorId().ToString(); // Obtém o texto do botão selecionado
+
+            // Limpa mensagens de erro anteriores
+            lblErro2.Text = string.Empty;
+
+            // Verifica se os campos estão preenchidos
+            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(email2) || setor.Equals("0"))
+            {
+                if (string.IsNullOrEmpty(nome))
+                {
+                    lblErro2.Text += "O campo Nome deve ser preenchido.\n";
+                }
+
+                if (string.IsNullOrEmpty(email2))
+                {
+                    lblErro2.Text += "O campo Email deve ser preenchido.\n";
+                }
+
+                if (setor.Equals("0"))
+                {
+                    lblErro2.Text += "Escolha um setor.\n";
+                }
+
+                return;
+            }
+
+            if (!ValidaEmail(email2))
+            {
+                lblErro2.Text = "Email inválido. Por favor, verifique e tente novamente.";
+                return;
+            }
+
+            StringBuilder sql = new StringBuilder();
+            sql.AppendLine("INSERT INTO atendente (nome, setor_id, email) VALUES (@nome, @setor, @email)");
+
+            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("@nome", nome);
+                cmd.Parameters.AddWithValue("@setor", setor);
+                cmd.Parameters.AddWithValue("@email", email2);
+
+                try
+                {
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Cadastro realizado com sucesso."); 
+                        Console.WriteLine("Cadastro realizado com sucesso.");
+                        lblErro2.Text = string.Empty; 
+                        txtNome2.Text = string.Empty;
+                        txtEmail2.Text = string.Empty;
+                        lblErro2.Text = string.Empty;
+                        ResetButtons();
+                    }
+                    else
+                    {
+                        lblErro2.Text = "Nenhum dado foi inserido.";
+                        Console.WriteLine("Nenhum dado foi inserido.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblErro2.Text = "Erro ao cadastrar atendente: " + ex.Message;
+                    Console.WriteLine("Erro ao cadastrar atendente: " + ex.Message);
+                }
+            }
+        }
 
         private async void cadastrarAdminNoBanco()
         {
@@ -65,10 +197,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             string senha = txtSenha.Text;
 
             StringBuilder sql = new StringBuilder();
-            sql.AppendLine("INSERT INTO");
-            sql.AppendLine("  admin ");
-            sql.AppendLine("  VALUES ");
-            sql.AppendLine("  (default,@nome, @email,@senha)");
+            sql.AppendLine("INSERT INTO admin (nome, email , senha) VALUES (@nome,@email,@senha)");
 
             using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
             {
@@ -120,7 +249,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
 
-            MessageBox.Show("Cadastro validado com sucesso!");
+            MessageBox.Show("Cadastro efetuado com sucesso!");
+            
 
             return true;
         }
@@ -188,6 +318,21 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         }
 
-       
+        private void btnPaginaAtendente_Click(object sender, EventArgs e)
+        {
+            tbcTipoCadastro.SelectedTab = tabCadastroAtendentes;
+        }
+
+        private void btnPaginaAdmin_Click(object sender, EventArgs e)
+        {
+            tbcTipoCadastro.SelectedTab = tabCadastroAdmin;
+        }
+
+
+
+        
+
+
+
     }
 }
