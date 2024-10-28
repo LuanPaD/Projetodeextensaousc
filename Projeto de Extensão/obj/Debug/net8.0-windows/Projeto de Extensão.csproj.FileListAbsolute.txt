@@ -94,3 +94,4 @@ C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Ex
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\MySqlConnector.dll
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto de Extensão.csproj.AssemblyReference.cache
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto .231A86F6.Up2Date
+C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Perguntas.FrmInicalPerguntas.resources

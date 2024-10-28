@@ -1,6 +1,7 @@
 using Projeto_de_Extensao.Classes;
 using Projeto_de_Extensao.Formulários.Admnistrativo;
 using Projeto_de_Extensão.Formulários.Perguntas;
+using Projeto_de_Extensao.Formulários.Perguntas;
 
 namespace Projeto_de_Extensão
 {
@@ -29,8 +30,9 @@ namespace Projeto_de_Extensão
         }
         private void btnAvaliar_Click(object sender, EventArgs e)
         {
-            FrmPergunta frmPergunta = new FrmPergunta();
-            frmPergunta.ShowDialog();
+
+            FrmInicalPerguntas frmPeguntaInicial = new FrmInicalPerguntas();
+            frmPeguntaInicial.ShowDialog();
 
             //this.Dispose();
         }
