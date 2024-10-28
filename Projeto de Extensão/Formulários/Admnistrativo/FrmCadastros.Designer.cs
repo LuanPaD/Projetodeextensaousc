@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastros));
             pnlMenu = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
-            btnUsuario = new Button();
+            btnCadrastoAdmin = new Button();
             btnSetor = new Button();
             btnPerguntas = new Button();
             btnAjuda = new Button();
@@ -44,6 +44,17 @@
             tbSetor = new TabPage();
             label2 = new Label();
             tbPerguntas = new TabPage();
+            btnDelPergunta1 = new Button();
+            btnEditPergunta1 = new Button();
+            btnAddPergunta1 = new Button();
+            lblPergunta4 = new Label();
+            lblPergunta3 = new Label();
+            lblPergunta2 = new Label();
+            lblPergunta1 = new Label();
+            lblIdPergunta4 = new Label();
+            lblIdPergunta3 = new Label();
+            lblIdPergunta2 = new Label();
+            lblIdPergunta1 = new Label();
             label1 = new Label();
             tbUsuario = new TabPage();
             btnCadastrar = new Button();
@@ -89,7 +100,7 @@
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(btnUsuario, 0, 2);
+            tableLayoutPanel1.Controls.Add(btnCadrastoAdmin, 0, 2);
             tableLayoutPanel1.Controls.Add(btnSetor, 0, 0);
             tableLayoutPanel1.Controls.Add(btnPerguntas, 0, 1);
             tableLayoutPanel1.Controls.Add(btnAjuda, 0, 3);
@@ -105,23 +116,23 @@
             tableLayoutPanel1.Size = new Size(297, 343);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // btnUsuario
+            // btnCadrastoAdmin
             // 
-            btnUsuario.BackColor = Color.Brown;
-            btnUsuario.BackgroundImage = (Image)resources.GetObject("btnUsuario.BackgroundImage");
-            btnUsuario.BackgroundImageLayout = ImageLayout.Stretch;
-            btnUsuario.Dock = DockStyle.Fill;
-            btnUsuario.FlatAppearance.BorderSize = 0;
-            btnUsuario.FlatStyle = FlatStyle.Flat;
-            btnUsuario.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUsuario.ForeColor = Color.White;
-            btnUsuario.Location = new Point(3, 174);
-            btnUsuario.Margin = new Padding(3, 4, 3, 4);
-            btnUsuario.Name = "btnUsuario";
-            btnUsuario.Size = new Size(291, 77);
-            btnUsuario.TabIndex = 13;
-            btnUsuario.UseVisualStyleBackColor = false;
-            btnUsuario.Click += btnUsuario_Click;
+            btnCadrastoAdmin.BackColor = Color.Brown;
+            btnCadrastoAdmin.BackgroundImage = (Image)resources.GetObject("btnCadrastoAdmin.BackgroundImage");
+            btnCadrastoAdmin.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCadrastoAdmin.Dock = DockStyle.Fill;
+            btnCadrastoAdmin.FlatAppearance.BorderSize = 0;
+            btnCadrastoAdmin.FlatStyle = FlatStyle.Flat;
+            btnCadrastoAdmin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCadrastoAdmin.ForeColor = Color.White;
+            btnCadrastoAdmin.Location = new Point(3, 174);
+            btnCadrastoAdmin.Margin = new Padding(3, 4, 3, 4);
+            btnCadrastoAdmin.Name = "btnCadrastoAdmin";
+            btnCadrastoAdmin.Size = new Size(291, 77);
+            btnCadrastoAdmin.TabIndex = 13;
+            btnCadrastoAdmin.UseVisualStyleBackColor = false;
+            btnCadrastoAdmin.Click += btnUsuario_Click;
             // 
             // btnSetor
             // 
@@ -256,7 +267,7 @@
             tbcPaginas.Name = "tbcPaginas";
             tbcPaginas.SelectedIndex = 0;
             tbcPaginas.ShowToolTips = true;
-            tbcPaginas.Size = new Size(774, 718);
+            tbcPaginas.Size = new Size(902, 718);
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 9;
             // 
@@ -268,7 +279,7 @@
             tbSetor.Margin = new Padding(3, 4, 3, 4);
             tbSetor.Name = "tbSetor";
             tbSetor.Padding = new Padding(3, 4, 3, 4);
-            tbSetor.Size = new Size(766, 685);
+            tbSetor.Size = new Size(894, 685);
             tbSetor.TabIndex = 0;
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
@@ -286,15 +297,125 @@
             // 
             // tbPerguntas
             // 
+            tbPerguntas.Controls.Add(btnDelPergunta1);
+            tbPerguntas.Controls.Add(btnEditPergunta1);
+            tbPerguntas.Controls.Add(btnAddPergunta1);
+            tbPerguntas.Controls.Add(lblPergunta4);
+            tbPerguntas.Controls.Add(lblPergunta3);
+            tbPerguntas.Controls.Add(lblPergunta2);
+            tbPerguntas.Controls.Add(lblPergunta1);
+            tbPerguntas.Controls.Add(lblIdPergunta4);
+            tbPerguntas.Controls.Add(lblIdPergunta3);
+            tbPerguntas.Controls.Add(lblIdPergunta2);
+            tbPerguntas.Controls.Add(lblIdPergunta1);
             tbPerguntas.Controls.Add(label1);
             tbPerguntas.Location = new Point(4, 29);
             tbPerguntas.Margin = new Padding(3, 4, 3, 4);
             tbPerguntas.Name = "tbPerguntas";
             tbPerguntas.Padding = new Padding(3, 4, 3, 4);
-            tbPerguntas.Size = new Size(766, 685);
+            tbPerguntas.Size = new Size(894, 685);
             tbPerguntas.TabIndex = 1;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
+            // 
+            // btnDelPergunta1
+            // 
+            btnDelPergunta1.Location = new Point(719, 115);
+            btnDelPergunta1.Name = "btnDelPergunta1";
+            btnDelPergunta1.Size = new Size(154, 35);
+            btnDelPergunta1.TabIndex = 11;
+            btnDelPergunta1.Text = "RemovePergunta";
+            btnDelPergunta1.UseVisualStyleBackColor = true;
+            // 
+            // btnEditPergunta1
+            // 
+            btnEditPergunta1.Location = new Point(559, 115);
+            btnEditPergunta1.Name = "btnEditPergunta1";
+            btnEditPergunta1.Size = new Size(154, 35);
+            btnEditPergunta1.TabIndex = 10;
+            btnEditPergunta1.Text = "EditaPergunta";
+            btnEditPergunta1.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPergunta1
+            // 
+            btnAddPergunta1.Location = new Point(399, 115);
+            btnAddPergunta1.Name = "btnAddPergunta1";
+            btnAddPergunta1.Size = new Size(154, 35);
+            btnAddPergunta1.TabIndex = 9;
+            btnAddPergunta1.Text = "AdicionaPergunta";
+            btnAddPergunta1.UseVisualStyleBackColor = true;
+            // 
+            // lblPergunta4
+            // 
+            lblPergunta4.AutoSize = true;
+            lblPergunta4.Location = new Point(148, 225);
+            lblPergunta4.Name = "lblPergunta4";
+            lblPergunta4.Size = new Size(79, 20);
+            lblPergunta4.TabIndex = 8;
+            lblPergunta4.Text = "Pergunta 4";
+            // 
+            // lblPergunta3
+            // 
+            lblPergunta3.AutoSize = true;
+            lblPergunta3.Location = new Point(148, 193);
+            lblPergunta3.Name = "lblPergunta3";
+            lblPergunta3.Size = new Size(79, 20);
+            lblPergunta3.TabIndex = 7;
+            lblPergunta3.Text = "Pergunta 3";
+            // 
+            // lblPergunta2
+            // 
+            lblPergunta2.AutoSize = true;
+            lblPergunta2.Location = new Point(148, 159);
+            lblPergunta2.Name = "lblPergunta2";
+            lblPergunta2.Size = new Size(79, 20);
+            lblPergunta2.TabIndex = 6;
+            lblPergunta2.Text = "Pergunta 2";
+            // 
+            // lblPergunta1
+            // 
+            lblPergunta1.AutoSize = true;
+            lblPergunta1.Location = new Point(148, 122);
+            lblPergunta1.Name = "lblPergunta1";
+            lblPergunta1.Size = new Size(83, 20);
+            lblPergunta1.TabIndex = 5;
+            lblPergunta1.Text = "Pergunta 1 ";
+            // 
+            // lblIdPergunta4
+            // 
+            lblIdPergunta4.AutoSize = true;
+            lblIdPergunta4.Location = new Point(41, 225);
+            lblIdPergunta4.Name = "lblIdPergunta4";
+            lblIdPergunta4.Size = new Size(85, 20);
+            lblIdPergunta4.TabIndex = 4;
+            lblIdPergunta4.Text = "nº Pergunta";
+            // 
+            // lblIdPergunta3
+            // 
+            lblIdPergunta3.AutoSize = true;
+            lblIdPergunta3.Location = new Point(41, 193);
+            lblIdPergunta3.Name = "lblIdPergunta3";
+            lblIdPergunta3.Size = new Size(85, 20);
+            lblIdPergunta3.TabIndex = 3;
+            lblIdPergunta3.Text = "nº Pergunta";
+            // 
+            // lblIdPergunta2
+            // 
+            lblIdPergunta2.AutoSize = true;
+            lblIdPergunta2.Location = new Point(41, 159);
+            lblIdPergunta2.Name = "lblIdPergunta2";
+            lblIdPergunta2.Size = new Size(85, 20);
+            lblIdPergunta2.TabIndex = 2;
+            lblIdPergunta2.Text = "nº Pergunta";
+            // 
+            // lblIdPergunta1
+            // 
+            lblIdPergunta1.AutoSize = true;
+            lblIdPergunta1.Location = new Point(41, 122);
+            lblIdPergunta1.Name = "lblIdPergunta1";
+            lblIdPergunta1.Size = new Size(85, 20);
+            lblIdPergunta1.TabIndex = 1;
+            lblIdPergunta1.Text = "nº Pergunta";
             // 
             // label1
             // 
@@ -322,7 +443,7 @@
             tbUsuario.Margin = new Padding(3, 4, 3, 4);
             tbUsuario.Name = "tbUsuario";
             tbUsuario.Padding = new Padding(3, 4, 3, 4);
-            tbUsuario.Size = new Size(766, 685);
+            tbUsuario.Size = new Size(894, 685);
             tbUsuario.TabIndex = 2;
             tbUsuario.Text = "Usuário";
             tbUsuario.UseVisualStyleBackColor = true;
@@ -418,7 +539,7 @@
             tbAjuda.Margin = new Padding(3, 4, 3, 4);
             tbAjuda.Name = "tbAjuda";
             tbAjuda.Padding = new Padding(3, 4, 3, 4);
-            tbAjuda.Size = new Size(766, 685);
+            tbAjuda.Size = new Size(894, 685);
             tbAjuda.TabIndex = 3;
             tbAjuda.Text = "Ajuda";
             tbAjuda.UseVisualStyleBackColor = true;
@@ -437,7 +558,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1070, 727);
+            ClientSize = new Size(1198, 727);
             Controls.Add(tbcPaginas);
             Controls.Add(pnlMenu);
             Name = "FrmCadastros";
@@ -469,7 +590,7 @@
         private Button btnSetor;
         private Panel panel1;
         private Button btnAjuda;
-        private Button btnUsuario;
+        private Button btnCadrastoAdmin;
         private Button btnPerguntas;
         private TabControl tbcPaginas;
         private TabPage tbSetor;
@@ -492,5 +613,16 @@
         private Label lblEmail;
         private Label lblTituloAjuda;
         private FolderBrowserDialog folderBrowserDialog1;
+        private Button btnEditPergunta1;
+        private Button btnAddPergunta1;
+        private Label lblPergunta4;
+        private Label lblPergunta3;
+        private Label lblPergunta2;
+        private Label lblPergunta1;
+        private Label lblIdPergunta4;
+        private Label lblIdPergunta3;
+        private Label lblIdPergunta2;
+        private Label lblIdPergunta1;
+        private Button btnDelPergunta1;
     }
 }
