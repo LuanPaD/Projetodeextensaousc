@@ -16,7 +16,7 @@ namespace Projeto_de_Extensão
 
         private async void abreConexao()
         {
-            await conexao.getConexao();
+            await conexao.GetConexao();
 
             if (!ClsConexao.ConexaoAtiva())
             {

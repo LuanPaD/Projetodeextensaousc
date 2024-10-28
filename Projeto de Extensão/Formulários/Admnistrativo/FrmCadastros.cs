@@ -49,7 +49,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         {
             if (await validaCadastro())
             {
-                cadastrarUsuarioNoBanco();
+                cadastrarAdminNoBanco();
             }
 
         }
@@ -58,23 +58,23 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         #region Funções
 
 
-        private async void cadastrarUsuarioNoBanco()
+        private async void cadastrarAdminNoBanco()
         {
             string nome = txtNome.Text;
-            string setor = lstSetor.Text;
             string email = txtEmail.Text;
+            string senha = txtSenha.Text;
 
             StringBuilder sql = new StringBuilder();
             sql.AppendLine("INSERT INTO");
-            sql.AppendLine("  atendente ");
+            sql.AppendLine("  admin ");
             sql.AppendLine("  VALUES ");
-            sql.AppendLine("  (default, @nome, @setor, @email)");
+            sql.AppendLine("  (default,@nome, @email,@senha)");
 
             using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
             {
                 cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@setor", setor);
                 cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@senha", senha);
 
                 try
                 {
@@ -99,20 +99,27 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             campos.Add("Email", txtEmail.Text);
             campos.Add("Senha", txtSenha.Text);
             campos.Add("Confirmação de Senha", txtConfirmaSenha.Text);
-            campos.Add("Tipo de Usuario", ltbTipoDeUsuario.Text);
-            campos.Add("Setor", lstSetor.Text);
 
+            // Verifica se todos os campos estão preenchidos
             if (!validarPreenchimentoCampos(campos))
                 return false;
 
+            // Valida se as senhas coincidem
+            if (txtSenha.Text != txtConfirmaSenha.Text)
+            {
+                MessageBox.Show("As senhas não coincidem.");
+                return false;
+            }
+
+            // Verifica se o email já está cadastrado
             bool jaCadastrado = await jaExisteCadastro(txtEmail.Text);
 
             if (jaCadastrado)
             {
-                MessageBox.Show("Já existe um usuário cadastro com esse email!");
+                MessageBox.Show("Já existe um usuário cadastrado com esse email!");
                 return false;
             }
-            
+
             MessageBox.Show("Cadastro validado com sucesso!");
 
             return true;
@@ -144,12 +151,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
+
         private async Task<bool> jaExisteCadastro(string email)
         {
             StringBuilder sql = new StringBuilder();
             sql.AppendLine("SELECT ");
             sql.AppendLine("  COUNT(*) ");
-            sql.AppendLine("  FROM atendente ");
+            sql.AppendLine("  FROM admin ");
             sql.AppendLine("  WHERE ");
             sql.AppendLine("    EMAIL = @email");
 

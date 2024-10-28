@@ -46,12 +46,6 @@
             tbPerguntas = new TabPage();
             label1 = new Label();
             tbUsuario = new TabPage();
-            btnEscolherImagem = new Button();
-            lblSetor = new Label();
-            lstSetor = new ListBox();
-            label4 = new Label();
-            ltbTipoDeUsuario = new ListBox();
-            pictureBox1 = new PictureBox();
             btnCadastrar = new Button();
             txtConfirmaSenha = new TextBox();
             lblConfirmaSenha = new Label();
@@ -75,7 +69,6 @@
             tbSetor.SuspendLayout();
             tbPerguntas.SuspendLayout();
             tbUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tbAjuda.SuspendLayout();
             SuspendLayout();
             // 
@@ -315,12 +308,6 @@
             // 
             // tbUsuario
             // 
-            tbUsuario.Controls.Add(btnEscolherImagem);
-            tbUsuario.Controls.Add(lblSetor);
-            tbUsuario.Controls.Add(lstSetor);
-            tbUsuario.Controls.Add(label4);
-            tbUsuario.Controls.Add(ltbTipoDeUsuario);
-            tbUsuario.Controls.Add(pictureBox1);
             tbUsuario.Controls.Add(btnCadastrar);
             tbUsuario.Controls.Add(txtConfirmaSenha);
             tbUsuario.Controls.Add(lblConfirmaSenha);
@@ -340,63 +327,9 @@
             tbUsuario.Text = "Usuário";
             tbUsuario.UseVisualStyleBackColor = true;
             // 
-            // btnEscolherImagem
-            // 
-            btnEscolherImagem.Location = new Point(596, 288);
-            btnEscolherImagem.Name = "btnEscolherImagem";
-            btnEscolherImagem.Size = new Size(155, 29);
-            btnEscolherImagem.TabIndex = 24;
-            btnEscolherImagem.Text = "upload";
-            btnEscolherImagem.UseVisualStyleBackColor = true;
-            btnEscolherImagem.Click += btnEscolherImagem_Click;
-            // 
-            // lblSetor
-            // 
-            lblSetor.AutoSize = true;
-            lblSetor.Location = new Point(46, 171);
-            lblSetor.Name = "lblSetor";
-            lblSetor.Size = new Size(44, 20);
-            lblSetor.TabIndex = 23;
-            lblSetor.Text = "Setor";
-            // 
-            // lstSetor
-            // 
-            lstSetor.FormattingEnabled = true;
-            lstSetor.Items.AddRange(new object[] { "Admnistrativo", "Financeiro" });
-            lstSetor.Location = new Point(46, 194);
-            lstSetor.Name = "lstSetor";
-            lstSetor.Size = new Size(175, 24);
-            lstSetor.TabIndex = 22;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(257, 126);
-            label4.Name = "label4";
-            label4.Size = new Size(46, 20);
-            label4.TabIndex = 21;
-            label4.Text = "Tipo :";
-            // 
-            // ltbTipoDeUsuario
-            // 
-            ltbTipoDeUsuario.FormattingEnabled = true;
-            ltbTipoDeUsuario.Items.AddRange(new object[] { "Administrador", "Atendente" });
-            ltbTipoDeUsuario.Location = new Point(319, 122);
-            ltbTipoDeUsuario.Name = "ltbTipoDeUsuario";
-            ltbTipoDeUsuario.Size = new Size(150, 24);
-            ltbTipoDeUsuario.TabIndex = 20;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(596, 171);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(152, 106);
-            pictureBox1.TabIndex = 19;
-            pictureBox1.TabStop = false;
-            // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(295, 518);
+            btnCadastrar.Location = new Point(338, 518);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(160, 76);
             btnCadastrar.TabIndex = 18;
@@ -406,7 +339,7 @@
             // 
             // txtConfirmaSenha
             // 
-            txtConfirmaSenha.Location = new Point(46, 427);
+            txtConfirmaSenha.Location = new Point(331, 359);
             txtConfirmaSenha.Name = "txtConfirmaSenha";
             txtConfirmaSenha.Size = new Size(175, 27);
             txtConfirmaSenha.TabIndex = 15;
@@ -414,7 +347,7 @@
             // lblConfirmaSenha
             // 
             lblConfirmaSenha.AutoSize = true;
-            lblConfirmaSenha.Location = new Point(46, 404);
+            lblConfirmaSenha.Location = new Point(359, 336);
             lblConfirmaSenha.Name = "lblConfirmaSenha";
             lblConfirmaSenha.Size = new Size(119, 20);
             lblConfirmaSenha.TabIndex = 14;
@@ -424,15 +357,15 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(270, 41);
+            lblTitulo.Location = new Point(262, 41);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(231, 31);
+            lblTitulo.Size = new Size(312, 31);
             lblTitulo.TabIndex = 13;
-            lblTitulo.Text = "Cadastro de Usuarios";
+            lblTitulo.Text = "Cadastro de Administradores";
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(46, 362);
+            txtSenha.Location = new Point(331, 294);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(175, 27);
             txtSenha.TabIndex = 12;
@@ -440,7 +373,7 @@
             // lblSenha
             // 
             lblSenha.AutoSize = true;
-            lblSenha.Location = new Point(46, 339);
+            lblSenha.Location = new Point(395, 271);
             lblSenha.Name = "lblSenha";
             lblSenha.Size = new Size(47, 20);
             lblSenha.TabIndex = 11;
@@ -448,7 +381,7 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(46, 256);
+            txtNome.Location = new Point(331, 188);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(175, 27);
             txtNome.TabIndex = 9;
@@ -456,7 +389,7 @@
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Location = new Point(46, 233);
+            lblNome.Location = new Point(393, 165);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(50, 20);
             lblNome.TabIndex = 7;
@@ -464,7 +397,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(46, 309);
+            txtEmail.Location = new Point(331, 241);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(175, 27);
             txtEmail.TabIndex = 10;
@@ -472,7 +405,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(46, 286);
+            lblEmail.Location = new Point(395, 218);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(46, 20);
             lblEmail.TabIndex = 8;
@@ -523,7 +456,6 @@
             tbPerguntas.PerformLayout();
             tbUsuario.ResumeLayout(false);
             tbUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tbAjuda.ResumeLayout(false);
             tbAjuda.PerformLayout();
             ResumeLayout(false);
@@ -558,13 +490,7 @@
         private Label lblNome;
         private TextBox txtEmail;
         private Label lblEmail;
-        private PictureBox pictureBox1;
         private Label lblTituloAjuda;
-        private ListBox ltbTipoDeUsuario;
-        private Label label4;
-        private Label lblSetor;
-        private ListBox lstSetor;
         private FolderBrowserDialog folderBrowserDialog1;
-        private Button btnEscolherImagem;
     }
 }

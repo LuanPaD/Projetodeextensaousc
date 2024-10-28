@@ -6,10 +6,11 @@ namespace Projeto_de_Extensao.Classes
 {
     internal class ClsConexao
     {
-        public static MySqlConnection Conexao { get; private set; } = null!;
-        private static string connectionString = "Server=127.0.0.1;Port=3306;Database=avaliacaoatendimento;User=luan;Password=3237;";
+        public static MySqlConnection? Conexao { get; private set; }
+        private static string connectionString = "Server=127.0.0.1;Port=3306;Database=avaliacaoatendimento;User=root;Password=1234;";
 
-        public async Task getConexao()
+        // Método para obter a conexão com o banco de dados
+        public async Task GetConexao()
         {
             if (ConexaoAtiva())
             {
@@ -30,7 +31,8 @@ namespace Projeto_de_Extensao.Classes
             }
         }
 
-        public async Task closeConnection()
+        // Método para fechar a conexão
+        public async Task CloseConnection()
         {
             if (!ConexaoAtiva())
             {
@@ -42,6 +44,7 @@ namespace Projeto_de_Extensao.Classes
             {
                 await Conexao.CloseAsync();
                 Console.WriteLine("Conexão fechada com sucesso!");
+                Conexao = null; // Libera a conexão
             }
             catch (Exception ex)
             {
@@ -49,12 +52,10 @@ namespace Projeto_de_Extensao.Classes
             }
         }
 
+        // Verifica se a conexão está ativa
         public static bool ConexaoAtiva()
         {
-            if (Conexao == null) { return false; }
-            if (Conexao.State == System.Data.ConnectionState.Closed) { return false; }
-            if (Conexao.State == System.Data.ConnectionState.Broken) { return false; }
-
+            if (Conexao == null) return false;
             return Conexao.State == System.Data.ConnectionState.Open;
         }
     }

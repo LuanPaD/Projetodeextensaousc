@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +45,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 this.Hide();
             }
         }
+
+
+
 
 
 
