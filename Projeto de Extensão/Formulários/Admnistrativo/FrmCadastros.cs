@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Projeto_de_Extensao.Formulários.Admnistrativo
 {
@@ -57,9 +58,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             cadastraAtendenteNoBanco();
-            
+
         }
 
 
@@ -168,9 +169,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     int rowsAffected = await cmd.ExecuteNonQueryAsync();
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Cadastro realizado com sucesso."); 
+                        MessageBox.Show("Cadastro realizado com sucesso.");
                         Console.WriteLine("Cadastro realizado com sucesso.");
-                        lblErro2.Text = string.Empty; 
+                        lblErro2.Text = string.Empty;
                         txtNome2.Text = string.Empty;
                         txtEmail2.Text = string.Empty;
                         lblErro2.Text = string.Empty;
@@ -250,7 +251,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
 
             MessageBox.Show("Cadastro efetuado com sucesso!");
-            
+
 
             return true;
         }
@@ -328,11 +329,47 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             tbcTipoCadastro.SelectedTab = tabCadastroAdmin;
         }
 
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendLine("SELECT nome, email FROM admin;");
 
+            try
+            {
+                using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+                {
+                    // Assegure-se de que a conexão está aberta
+                    if (ClsConexao.Conexao.State == ConnectionState.Closed)
+                    {
+                        await ClsConexao.Conexao.OpenAsync();
+                    }
 
-        
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
 
+                        dgvUsuariosCadastrados.DataSource = dt;
 
+                        // Ajuste para preencher todo o espaço do DataGridView
+                        dgvUsuariosCadastrados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
+            }
+            finally
+            {
+                // Opcionalmente, feche a conexão se você não precisar mais dela
+                if (ClsConexao.Conexao.State == ConnectionState.Open)
+                {
+                    ClsConexao.Conexao.Close();
+                }
+            }
+        }
 
+       
     }
 }

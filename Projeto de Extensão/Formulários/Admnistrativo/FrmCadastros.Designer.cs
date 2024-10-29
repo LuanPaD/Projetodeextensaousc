@@ -59,9 +59,9 @@
             tbUsuario = new TabPage();
             tbcTipoCadastro = new TabControl();
             tabCadastroAdmin = new TabPage();
+            btnCadastrar = new Button();
             btnPaginaAtendente = new Button();
             txtEmail = new TextBox();
-            btnCadastrar = new Button();
             lblEmail = new Label();
             txtConfirmaSenha = new TextBox();
             lblNome = new Label();
@@ -82,9 +82,14 @@
             lblNome2 = new Label();
             label3 = new Label();
             btnPaginaAdmin = new Button();
+            tabUsuarioCadastrado = new TabPage();
+            btnCarregar = new Button();
+            dgvUsuariosCadastrados = new DataGridView();
+            label4 = new Label();
             tbAjuda = new TabPage();
             lblTituloAjuda = new Label();
             folderBrowserDialog1 = new FolderBrowserDialog();
+            textBox1 = new TextBox();
             pnlMenu.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -98,6 +103,8 @@
             tbcTipoCadastro.SuspendLayout();
             tabCadastroAdmin.SuspendLayout();
             tabCadastroAtendentes.SuspendLayout();
+            tabUsuarioCadastrado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuariosCadastrados).BeginInit();
             tbAjuda.SuspendLayout();
             SuspendLayout();
             // 
@@ -110,7 +117,7 @@
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(260, 545);
+            pnlMenu.Size = new Size(260, 723);
             pnlMenu.TabIndex = 8;
             // 
             // tableLayoutPanel1
@@ -228,7 +235,7 @@
             // 
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 379);
+            panel1.Location = new Point(0, 557);
             panel1.Name = "panel1";
             panel1.Size = new Size(260, 166);
             panel1.TabIndex = 9;
@@ -271,22 +278,23 @@
             tbcPaginas.Controls.Add(tbPerguntas);
             tbcPaginas.Controls.Add(tbUsuario);
             tbcPaginas.Controls.Add(tbAjuda);
-            tbcPaginas.Location = new Point(260, 6);
+            tbcPaginas.Location = new Point(260, -28);
             tbcPaginas.Name = "tbcPaginas";
             tbcPaginas.SelectedIndex = 0;
             tbcPaginas.ShowToolTips = true;
-            tbcPaginas.Size = new Size(789, 538);
+            tbcPaginas.Size = new Size(1013, 750);
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 9;
             // 
             // tbSetor
             // 
+            tbSetor.Controls.Add(textBox1);
             tbSetor.Controls.Add(label2);
             tbSetor.ForeColor = Color.Transparent;
             tbSetor.Location = new Point(4, 24);
             tbSetor.Name = "tbSetor";
             tbSetor.Padding = new Padding(3);
-            tbSetor.Size = new Size(781, 510);
+            tbSetor.Size = new Size(1005, 722);
             tbSetor.TabIndex = 0;
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
@@ -296,7 +304,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(316, 346);
+            label2.Location = new Point(428, 40);
             label2.Name = "label2";
             label2.Size = new Size(147, 42);
             label2.TabIndex = 1;
@@ -319,7 +327,7 @@
             tbPerguntas.Location = new Point(4, 24);
             tbPerguntas.Name = "tbPerguntas";
             tbPerguntas.Padding = new Padding(3);
-            tbPerguntas.Size = new Size(781, 510);
+            tbPerguntas.Size = new Size(1005, 722);
             tbPerguntas.TabIndex = 1;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
@@ -442,28 +450,29 @@
             tbUsuario.Location = new Point(4, 24);
             tbUsuario.Name = "tbUsuario";
             tbUsuario.Padding = new Padding(3);
-            tbUsuario.Size = new Size(781, 510);
+            tbUsuario.Size = new Size(1005, 722);
             tbUsuario.TabIndex = 2;
             tbUsuario.Text = "Usuário";
             tbUsuario.UseVisualStyleBackColor = true;
             // 
             // tbcTipoCadastro
             // 
-            tbcTipoCadastro.Anchor = AnchorStyles.None;
+            tbcTipoCadastro.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tbcTipoCadastro.Controls.Add(tabCadastroAdmin);
             tbcTipoCadastro.Controls.Add(tabCadastroAtendentes);
+            tbcTipoCadastro.Controls.Add(tabUsuarioCadastrado);
             tbcTipoCadastro.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbcTipoCadastro.Location = new Point(3, 0);
+            tbcTipoCadastro.Location = new Point(3, 3);
             tbcTipoCadastro.Name = "tbcTipoCadastro";
             tbcTipoCadastro.SelectedIndex = 0;
-            tbcTipoCadastro.Size = new Size(775, 507);
+            tbcTipoCadastro.Size = new Size(999, 716);
             tbcTipoCadastro.TabIndex = 19;
             // 
             // tabCadastroAdmin
             // 
+            tabCadastroAdmin.Controls.Add(btnCadastrar);
             tabCadastroAdmin.Controls.Add(btnPaginaAtendente);
             tabCadastroAdmin.Controls.Add(txtEmail);
-            tabCadastroAdmin.Controls.Add(btnCadastrar);
             tabCadastroAdmin.Controls.Add(lblEmail);
             tabCadastroAdmin.Controls.Add(txtConfirmaSenha);
             tabCadastroAdmin.Controls.Add(lblNome);
@@ -475,118 +484,134 @@
             tabCadastroAdmin.Location = new Point(4, 24);
             tabCadastroAdmin.Name = "tabCadastroAdmin";
             tabCadastroAdmin.Padding = new Padding(3);
-            tabCadastroAdmin.Size = new Size(767, 479);
+            tabCadastroAdmin.Size = new Size(991, 688);
             tabCadastroAdmin.TabIndex = 0;
             tabCadastroAdmin.Text = "Cadastro Adminstradores";
             tabCadastroAdmin.UseVisualStyleBackColor = true;
             // 
+            // btnCadastrar
+            // 
+            btnCadastrar.Anchor = AnchorStyles.None;
+            btnCadastrar.BackColor = Color.Transparent;
+            btnCadastrar.BackgroundImage = (Image)resources.GetObject("btnCadastrar.BackgroundImage");
+            btnCadastrar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCadastrar.Cursor = Cursors.Hand;
+            btnCadastrar.FlatAppearance.BorderSize = 0;
+            btnCadastrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
+            btnCadastrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnCadastrar.FlatStyle = FlatStyle.Flat;
+            btnCadastrar.Location = new Point(72, 430);
+            btnCadastrar.Margin = new Padding(3, 2, 3, 2);
+            btnCadastrar.Name = "btnCadastrar";
+            btnCadastrar.Size = new Size(342, 77);
+            btnCadastrar.TabIndex = 20;
+            btnCadastrar.UseVisualStyleBackColor = false;
+            btnCadastrar.Click += btnCadastrar_Click;
+            // 
             // btnPaginaAtendente
             // 
-            btnPaginaAtendente.Location = new Point(643, 30);
+            btnPaginaAtendente.Anchor = AnchorStyles.None;
+            btnPaginaAtendente.BackgroundImage = (Image)resources.GetObject("btnPaginaAtendente.BackgroundImage");
+            btnPaginaAtendente.BackgroundImageLayout = ImageLayout.Stretch;
+            btnPaginaAtendente.Location = new Point(550, 430);
             btnPaginaAtendente.Name = "btnPaginaAtendente";
-            btnPaginaAtendente.Size = new Size(101, 49);
+            btnPaginaAtendente.Size = new Size(342, 77);
             btnPaginaAtendente.TabIndex = 19;
-            btnPaginaAtendente.Text = "Cadastrar Atendente";
             btnPaginaAtendente.UseVisualStyleBackColor = true;
             btnPaginaAtendente.Click += btnPaginaAtendente_Click;
             // 
             // txtEmail
             // 
-            txtEmail.Anchor = AnchorStyles.None;
-            txtEmail.Location = new Point(314, 198);
+            txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtEmail.Location = new Point(72, 223);
             txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(154, 23);
+            txtEmail.Size = new Size(427, 23);
             txtEmail.TabIndex = 10;
-            // 
-            // btnCadastrar
-            // 
-            btnCadastrar.Anchor = AnchorStyles.None;
-            btnCadastrar.Location = new Point(318, 397);
-            btnCadastrar.Margin = new Padding(3, 2, 3, 2);
-            btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(140, 57);
-            btnCadastrar.TabIndex = 18;
-            btnCadastrar.Text = "Cadastrar";
-            btnCadastrar.UseVisualStyleBackColor = true;
-            btnCadastrar.Click += btnCadastrar_Click;
             // 
             // lblEmail
             // 
-            lblEmail.Anchor = AnchorStyles.None;
+            lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(373, 177);
+            lblEmail.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            lblEmail.Location = new Point(72, 196);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(36, 15);
+            lblEmail.Size = new Size(59, 25);
             lblEmail.TabIndex = 8;
             lblEmail.Text = "Email";
+            lblEmail.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtConfirmaSenha
             // 
-            txtConfirmaSenha.Anchor = AnchorStyles.None;
-            txtConfirmaSenha.Location = new Point(314, 302);
+            txtConfirmaSenha.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtConfirmaSenha.Location = new Point(72, 351);
             txtConfirmaSenha.Margin = new Padding(3, 2, 3, 2);
             txtConfirmaSenha.Name = "txtConfirmaSenha";
-            txtConfirmaSenha.Size = new Size(154, 23);
+            txtConfirmaSenha.Size = new Size(427, 23);
             txtConfirmaSenha.TabIndex = 15;
             // 
             // lblNome
             // 
-            lblNome.Anchor = AnchorStyles.None;
+            lblNome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblNome.AutoSize = true;
-            lblNome.Location = new Point(371, 123);
+            lblNome.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            lblNome.Location = new Point(74, 132);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(40, 15);
+            lblNome.Size = new Size(65, 25);
             lblNome.TabIndex = 7;
             lblNome.Text = "Nome";
+            lblNome.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblConfirmaSenha
             // 
-            lblConfirmaSenha.Anchor = AnchorStyles.None;
+            lblConfirmaSenha.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblConfirmaSenha.AutoSize = true;
-            lblConfirmaSenha.Location = new Point(343, 285);
+            lblConfirmaSenha.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            lblConfirmaSenha.Location = new Point(72, 324);
             lblConfirmaSenha.Name = "lblConfirmaSenha";
-            lblConfirmaSenha.Size = new Size(96, 15);
+            lblConfirmaSenha.Size = new Size(156, 25);
             lblConfirmaSenha.TabIndex = 14;
             lblConfirmaSenha.Text = "Confirmar Senha";
+            lblConfirmaSenha.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtNome
             // 
-            txtNome.Anchor = AnchorStyles.None;
-            txtNome.Location = new Point(314, 148);
+            txtNome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtNome.Location = new Point(74, 159);
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(154, 23);
+            txtNome.Size = new Size(427, 23);
             txtNome.TabIndex = 9;
             // 
             // lblTitulo
             // 
-            lblTitulo.Anchor = AnchorStyles.None;
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(211, 47);
+            lblTitulo.Font = new Font("Segoe UI", 36F, FontStyle.Bold);
+            lblTitulo.Location = new Point(61, 49);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(330, 32);
+            lblTitulo.Size = new Size(685, 65);
             lblTitulo.TabIndex = 13;
             lblTitulo.Text = "Cadastro de Administradores";
             // 
             // lblSenha
             // 
-            lblSenha.Anchor = AnchorStyles.None;
+            lblSenha.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblSenha.AutoSize = true;
-            lblSenha.Location = new Point(372, 231);
+            lblSenha.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            lblSenha.Location = new Point(72, 260);
             lblSenha.Name = "lblSenha";
-            lblSenha.Size = new Size(38, 15);
+            lblSenha.Size = new Size(64, 25);
             lblSenha.TabIndex = 11;
-            lblSenha.Text = "senha";
+            lblSenha.Text = "Senha";
+            lblSenha.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtSenha
             // 
-            txtSenha.Anchor = AnchorStyles.None;
-            txtSenha.Location = new Point(314, 248);
+            txtSenha.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtSenha.Location = new Point(72, 287);
             txtSenha.Margin = new Padding(3, 2, 3, 2);
             txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(154, 23);
+            txtSenha.Size = new Size(427, 23);
             txtSenha.TabIndex = 12;
             // 
             // tabCadastroAtendentes
@@ -605,7 +630,7 @@
             tabCadastroAtendentes.Location = new Point(4, 24);
             tabCadastroAtendentes.Name = "tabCadastroAtendentes";
             tabCadastroAtendentes.Padding = new Padding(3);
-            tabCadastroAtendentes.Size = new Size(767, 479);
+            tabCadastroAtendentes.Size = new Size(991, 688);
             tabCadastroAtendentes.TabIndex = 1;
             tabCadastroAtendentes.Text = "Cadastro Atendentes";
             tabCadastroAtendentes.UseVisualStyleBackColor = true;
@@ -614,7 +639,7 @@
             // 
             lblErro2.AutoSize = true;
             lblErro2.ForeColor = Color.Red;
-            lblErro2.Location = new Point(290, 325);
+            lblErro2.Location = new Point(290, 354);
             lblErro2.Name = "lblErro2";
             lblErro2.Size = new Size(160, 15);
             lblErro2.TabIndex = 10;
@@ -622,9 +647,9 @@
             // 
             // btnSecretaria
             // 
-            btnSecretaria.Location = new Point(390, 268);
+            btnSecretaria.Location = new Point(61, 365);
             btnSecretaria.Name = "btnSecretaria";
-            btnSecretaria.Size = new Size(87, 35);
+            btnSecretaria.Size = new Size(142, 44);
             btnSecretaria.TabIndex = 9;
             btnSecretaria.Text = "Secretaria";
             btnSecretaria.UseVisualStyleBackColor = true;
@@ -632,9 +657,9 @@
             // 
             // btnFinanceiro
             // 
-            btnFinanceiro.Location = new Point(279, 268);
+            btnFinanceiro.Location = new Point(61, 315);
             btnFinanceiro.Name = "btnFinanceiro";
-            btnFinanceiro.Size = new Size(87, 35);
+            btnFinanceiro.Size = new Size(142, 44);
             btnFinanceiro.TabIndex = 8;
             btnFinanceiro.Text = "Financeiro";
             btnFinanceiro.UseVisualStyleBackColor = true;
@@ -642,18 +667,21 @@
             // 
             // lblSetor
             // 
+            lblSetor.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblSetor.AutoSize = true;
-            lblSetor.Location = new Point(358, 239);
+            lblSetor.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            lblSetor.Location = new Point(61, 278);
             lblSetor.Name = "lblSetor";
-            lblSetor.Size = new Size(34, 15);
+            lblSetor.Size = new Size(57, 25);
             lblSetor.TabIndex = 7;
             lblSetor.Text = "Setor";
             // 
             // button1
             // 
-            button1.Location = new Point(289, 376);
+            button1.Anchor = AnchorStyles.None;
+            button1.Location = new Point(454, 518);
             button1.Name = "button1";
-            button1.Size = new Size(161, 37);
+            button1.Size = new Size(140, 57);
             button1.TabIndex = 6;
             button1.Text = "Cadastrar";
             button1.UseVisualStyleBackColor = true;
@@ -661,49 +689,55 @@
             // 
             // txtEmail2
             // 
-            txtEmail2.Location = new Point(303, 196);
+            txtEmail2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtEmail2.Location = new Point(61, 236);
             txtEmail2.Name = "txtEmail2";
-            txtEmail2.Size = new Size(137, 23);
+            txtEmail2.Size = new Size(613, 23);
             txtEmail2.TabIndex = 5;
             // 
             // lnlEmail2
             // 
+            lnlEmail2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lnlEmail2.AutoSize = true;
-            lnlEmail2.Location = new Point(354, 175);
+            lnlEmail2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            lnlEmail2.Location = new Point(61, 208);
             lnlEmail2.Name = "lnlEmail2";
-            lnlEmail2.Size = new Size(36, 15);
+            lnlEmail2.Size = new Size(59, 25);
             lnlEmail2.TabIndex = 4;
             lnlEmail2.Text = "Email";
             // 
             // txtNome2
             // 
-            txtNome2.Location = new Point(303, 143);
+            txtNome2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtNome2.Location = new Point(61, 163);
             txtNome2.Name = "txtNome2";
-            txtNome2.Size = new Size(137, 23);
+            txtNome2.Size = new Size(613, 23);
             txtNome2.TabIndex = 3;
             // 
             // lblNome2
             // 
-            lblNome2.AutoSize = true;
-            lblNome2.Location = new Point(354, 122);
+            lblNome2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblNome2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            lblNome2.Location = new Point(61, 135);
             lblNome2.Name = "lblNome2";
-            lblNome2.Size = new Size(40, 15);
+            lblNome2.Size = new Size(435, 25);
             lblNome2.TabIndex = 2;
             lblNome2.Text = "Nome";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(238, 45);
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label3.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(61, 49);
             label3.Name = "label3";
-            label3.Size = new Size(277, 32);
+            label3.Size = new Size(800, 62);
             label3.TabIndex = 1;
             label3.Text = "Cadastro de Atendentes";
             // 
             // btnPaginaAdmin
             // 
-            btnPaginaAdmin.Location = new Point(643, 30);
+            btnPaginaAdmin.Anchor = AnchorStyles.None;
+            btnPaginaAdmin.Location = new Point(755, 119);
             btnPaginaAdmin.Name = "btnPaginaAdmin";
             btnPaginaAdmin.Size = new Size(101, 49);
             btnPaginaAdmin.TabIndex = 0;
@@ -711,13 +745,54 @@
             btnPaginaAdmin.UseVisualStyleBackColor = true;
             btnPaginaAdmin.Click += btnPaginaAdmin_Click;
             // 
+            // tabUsuarioCadastrado
+            // 
+            tabUsuarioCadastrado.Controls.Add(btnCarregar);
+            tabUsuarioCadastrado.Controls.Add(dgvUsuariosCadastrados);
+            tabUsuarioCadastrado.Controls.Add(label4);
+            tabUsuarioCadastrado.Location = new Point(4, 24);
+            tabUsuarioCadastrado.Name = "tabUsuarioCadastrado";
+            tabUsuarioCadastrado.Padding = new Padding(3);
+            tabUsuarioCadastrado.Size = new Size(991, 688);
+            tabUsuarioCadastrado.TabIndex = 2;
+            tabUsuarioCadastrado.Text = "Usuários Cadastrados";
+            tabUsuarioCadastrado.UseVisualStyleBackColor = true;
+            // 
+            // btnCarregar
+            // 
+            btnCarregar.Location = new Point(106, 36);
+            btnCarregar.Name = "btnCarregar";
+            btnCarregar.Size = new Size(75, 23);
+            btnCarregar.TabIndex = 4;
+            btnCarregar.Text = "Carregar";
+            btnCarregar.UseVisualStyleBackColor = true;
+            btnCarregar.Click += button2_Click;
+            // 
+            // dgvUsuariosCadastrados
+            // 
+            dgvUsuariosCadastrados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuariosCadastrados.Location = new Point(22, 98);
+            dgvUsuariosCadastrados.Name = "dgvUsuariosCadastrados";
+            dgvUsuariosCadastrados.Size = new Size(725, 343);
+            dgvUsuariosCadastrados.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(250, 26);
+            label4.Name = "label4";
+            label4.Size = new Size(248, 32);
+            label4.TabIndex = 2;
+            label4.Text = "Usuários Cadastrados";
+            // 
             // tbAjuda
             // 
             tbAjuda.Controls.Add(lblTituloAjuda);
             tbAjuda.Location = new Point(4, 24);
             tbAjuda.Name = "tbAjuda";
             tbAjuda.Padding = new Padding(3);
-            tbAjuda.Size = new Size(781, 510);
+            tbAjuda.Size = new Size(1005, 722);
             tbAjuda.TabIndex = 3;
             tbAjuda.Text = "Ajuda";
             tbAjuda.UseVisualStyleBackColor = true;
@@ -732,11 +807,18 @@
             lblTituloAjuda.TabIndex = 14;
             lblTituloAjuda.Text = "AJUDA";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(58, 212);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(261, 23);
+            textBox1.TabIndex = 2;
+            // 
             // FrmCadastros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1048, 545);
+            ClientSize = new Size(1272, 723);
             Controls.Add(tbcPaginas);
             Controls.Add(pnlMenu);
             Margin = new Padding(3, 2, 3, 2);
@@ -760,6 +842,9 @@
             tabCadastroAdmin.PerformLayout();
             tabCadastroAtendentes.ResumeLayout(false);
             tabCadastroAtendentes.PerformLayout();
+            tabUsuarioCadastrado.ResumeLayout(false);
+            tabUsuarioCadastrado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuariosCadastrados).EndInit();
             tbAjuda.ResumeLayout(false);
             tbAjuda.PerformLayout();
             ResumeLayout(false);
@@ -784,7 +869,6 @@
         private Label label2;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnSair;
-        private Button btnCadastrar;
         private TextBox txtConfirmaSenha;
         private Label lblConfirmaSenha;
         private Label lblTitulo;
@@ -822,5 +906,11 @@
         private Button btnSecretaria;
         private Button btnFinanceiro;
         private Label lblErro2;
+        private TabPage tabUsuarioCadastrado;
+        private Button btnCarregar;
+        private DataGridView dgvUsuariosCadastrados;
+        private Label label4;
+        private Button btnCadastrar;
+        private TextBox textBox1;
     }
 }
