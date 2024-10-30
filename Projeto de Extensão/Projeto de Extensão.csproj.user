@@ -4,6 +4,9 @@
     <Compile Update="Formulários\Admnistrativo\FrmCadastros.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formulários\Admnistrativo\FrmEditarCadastroscs.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formulários\Admnistrativo\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

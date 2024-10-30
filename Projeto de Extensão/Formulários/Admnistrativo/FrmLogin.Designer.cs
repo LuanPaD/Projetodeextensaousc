@@ -145,18 +145,19 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // btnEntrar
             // 
             btnEntrar.Anchor = AnchorStyles.None;
-            btnEntrar.BackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.BackColor = Color.Transparent;
+            btnEntrar.BackgroundImage = (Image)resources.GetObject("btnEntrar.BackgroundImage");
+            btnEntrar.BackgroundImageLayout = ImageLayout.Stretch;
             btnEntrar.FlatAppearance.BorderColor = Color.FromArgb(255, 65, 65);
             btnEntrar.FlatAppearance.BorderSize = 0;
-            btnEntrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(255, 65, 65);
-            btnEntrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(255, 65, 65);
+            btnEntrar.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnEntrar.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnEntrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEntrar.ForeColor = SystemColors.ButtonFace;
             btnEntrar.Location = new Point(279, 527);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.Size = new Size(171, 55);
             btnEntrar.TabIndex = 4;
-            btnEntrar.Text = "Entrar";
             btnEntrar.UseVisualStyleBackColor = false;
             btnEntrar.Click += btnEntrar_Click;
             // 

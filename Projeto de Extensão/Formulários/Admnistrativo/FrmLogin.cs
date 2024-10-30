@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using Projeto_de_Extensao.Classes;
 using Projeto_de_Extensao.Formulários.Cadastros;
 using System;
 using System.Threading.Tasks;
@@ -8,8 +9,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 {
     public partial class FrmLogin : Form
     {
-        private string connectionString = "Server=127.0.0.1;Port=3306;Database=avaliacaoatendimento;User=root;Password=1234;";
-
         public FrmLogin()
         {
             InitializeComponent();
@@ -46,19 +45,16 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async Task<bool> Login(string email, string senha)
         {
-            using (var conexao = new MySqlConnection(connectionString))
+            var conexao = ClsConexao.Conexao;
+
+            string query = "SELECT COUNT(*) FROM admin WHERE email = @Email AND senha = @Senha";
+            using (var comando = new MySqlCommand(query, conexao))
             {
-                await conexao.OpenAsync();
+                comando.Parameters.AddWithValue("@Email", email);
+                comando.Parameters.AddWithValue("@Senha", senha); 
 
-                string query = "SELECT COUNT(*) FROM admin WHERE email = @Email AND senha = @Senha";
-                using (var comando = new MySqlCommand(query, conexao))
-                {
-                    comando.Parameters.AddWithValue("@Email", email);
-                    comando.Parameters.AddWithValue("@Senha", senha); 
-
-                    var resultado = await comando.ExecuteScalarAsync();
-                    return Convert.ToInt32(resultado) > 0; 
-                }
+                var resultado = await comando.ExecuteScalarAsync();
+                return Convert.ToInt32(resultado) > 0; 
             }
         }
 
