@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "4YLsMBrDSzk=",
+  "dgSpecHash": "XhyNAJyatlg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj",
+  "projectFilePath": "C:\\Users\\educo\\OneDrive\\Área de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\luanp\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
-    "C:\\Users\\luanp\\.nuget\\packages\\mysqlconnector\\2.3.7\\mysqlconnector.2.3.7.nupkg.sha512"
+    "C:\\Users\\educo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\educo\\.nuget\\packages\\mysqlconnector\\2.3.7\\mysqlconnector.2.3.7.nupkg.sha512"
   ],
   "logs": []
 }

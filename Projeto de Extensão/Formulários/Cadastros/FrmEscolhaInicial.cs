@@ -25,5 +25,13 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
 
             this.Hide();
         }
+
+        private void btnEditarCadastro_Click(object sender, EventArgs e)
+        {
+            FrmEditarCadastroscs frmEditarCadastroscs = new FrmEditarCadastroscs();
+            frmEditarCadastroscs.Show();
+
+            this.Hide();
+        }
     }
 }

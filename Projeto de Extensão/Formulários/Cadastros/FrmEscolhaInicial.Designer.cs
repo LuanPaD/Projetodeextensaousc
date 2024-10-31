@@ -97,6 +97,7 @@
             btnEditarCadastro.Size = new Size(444, 82);
             btnEditarCadastro.TabIndex = 1;
             btnEditarCadastro.UseVisualStyleBackColor = false;
+            btnEditarCadastro.Click += btnEditarCadastro_Click;
             // 
             // pbLogo
             // 

@@ -16,5 +16,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         {
             InitializeComponent();
         }
+
+        private void btnDeletarAdmin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

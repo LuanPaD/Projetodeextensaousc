@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using MySqlConnector;
 using Projeto_de_Extensao.Classes;
+using Projeto_de_Extensao.Formulários.Cadastros;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -370,6 +371,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-       
+        private void btnVoltarParaMenu_Click(object sender, EventArgs e)
+        {
+            FrmEscolhaInicial frmEscolhaInicial = new FrmEscolhaInicial();
+            frmEscolhaInicial.Show();
+
+            this.Hide();
+        }
     }
 }
