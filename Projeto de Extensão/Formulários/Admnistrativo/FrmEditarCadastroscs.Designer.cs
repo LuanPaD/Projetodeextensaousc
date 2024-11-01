@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditarCadastroscs));
             pnlMenu = new Panel();
             tlpBotoesEscolha = new TableLayoutPanel();
-            btnAjuda = new Button();
             btnCadrastoAdmin = new Button();
             btnSetor = new Button();
             btnPerguntas = new Button();
@@ -43,6 +42,7 @@
             btnSair = new Button();
             tbcPaginas = new TabControl();
             tbSetor = new TabPage();
+            btnHomeSetor = new Button();
             btnEditarSetor = new Button();
             btnDeletarSetor = new Button();
             btnCarregarSetores = new Button();
@@ -52,6 +52,7 @@
             button4 = new Button();
             lblTituloSetor = new Label();
             tbPerguntas = new TabPage();
+            btnHomePerguntas = new Button();
             btnEditarPergunta = new Button();
             btnDeletarPergunta = new Button();
             btnCarregarPerguntas = new Button();
@@ -60,18 +61,20 @@
             btnCadastrarPergunta = new Button();
             label7 = new Label();
             btnAdicionarAlternativa = new Button();
-            tbUsuario = new TabPage();
+            tbAdmin = new TabPage();
+            btnHomeAdm = new Button();
             btnEditarAdmin = new Button();
             button9 = new Button();
             btnCarregaAdmin = new Button();
             lblTitle = new Label();
             dgvUsuariosCadastrados = new DataGridView();
-            tbAjuda = new TabPage();
+            tbAtendentes = new TabPage();
+            btnHomeAtendente = new Button();
+            btnEditarAtendentes = new Button();
+            btnDeletarAtendentes = new Button();
             btnCarregaAtendentes = new Button();
             dataGridView3 = new DataGridView();
             lblTituloAjuda = new Label();
-            btnEditarAtendentes = new Button();
-            btnDeletarAtendentes = new Button();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -83,9 +86,9 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             tbPerguntas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            tbUsuario.SuspendLayout();
+            tbAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuariosCadastrados).BeginInit();
-            tbAjuda.SuspendLayout();
+            tbAtendentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
@@ -105,7 +108,6 @@
             // 
             tlpBotoesEscolha.ColumnCount = 1;
             tlpBotoesEscolha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpBotoesEscolha.Controls.Add(btnAjuda, 0, 4);
             tlpBotoesEscolha.Controls.Add(btnCadrastoAdmin, 0, 2);
             tlpBotoesEscolha.Controls.Add(btnSetor, 0, 0);
             tlpBotoesEscolha.Controls.Add(btnPerguntas, 0, 1);
@@ -120,22 +122,6 @@
             tlpBotoesEscolha.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tlpBotoesEscolha.Size = new Size(260, 333);
             tlpBotoesEscolha.TabIndex = 10;
-            // 
-            // btnAjuda
-            // 
-            btnAjuda.BackColor = Color.Brown;
-            btnAjuda.BackgroundImage = (Image)resources.GetObject("btnAjuda.BackgroundImage");
-            btnAjuda.BackgroundImageLayout = ImageLayout.Stretch;
-            btnAjuda.Dock = DockStyle.Fill;
-            btnAjuda.FlatAppearance.BorderSize = 0;
-            btnAjuda.FlatStyle = FlatStyle.Flat;
-            btnAjuda.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAjuda.ForeColor = Color.White;
-            btnAjuda.Location = new Point(3, 267);
-            btnAjuda.Name = "btnAjuda";
-            btnAjuda.Size = new Size(254, 63);
-            btnAjuda.TabIndex = 15;
-            btnAjuda.UseVisualStyleBackColor = false;
             // 
             // btnCadrastoAdmin
             // 
@@ -152,6 +138,7 @@
             btnCadrastoAdmin.Size = new Size(254, 60);
             btnCadrastoAdmin.TabIndex = 13;
             btnCadrastoAdmin.UseVisualStyleBackColor = false;
+            btnCadrastoAdmin.Click += btnCadrastoAdmin_Click;
             // 
             // btnSetor
             // 
@@ -168,6 +155,7 @@
             btnSetor.Size = new Size(254, 60);
             btnSetor.TabIndex = 8;
             btnSetor.UseVisualStyleBackColor = false;
+            btnSetor.Click += btnSetor_Click;
             // 
             // btnPerguntas
             // 
@@ -184,6 +172,7 @@
             btnPerguntas.Size = new Size(254, 60);
             btnPerguntas.TabIndex = 12;
             btnPerguntas.UseVisualStyleBackColor = false;
+            btnPerguntas.Click += btnPerguntas_Click;
             // 
             // btnAtendentes
             // 
@@ -200,6 +189,7 @@
             btnAtendentes.Size = new Size(254, 60);
             btnAtendentes.TabIndex = 14;
             btnAtendentes.UseVisualStyleBackColor = false;
+            btnAtendentes.Click += btnAtendentes_Click;
             // 
             // panelTopo
             // 
@@ -268,8 +258,8 @@
             // 
             tbcPaginas.Controls.Add(tbSetor);
             tbcPaginas.Controls.Add(tbPerguntas);
-            tbcPaginas.Controls.Add(tbUsuario);
-            tbcPaginas.Controls.Add(tbAjuda);
+            tbcPaginas.Controls.Add(tbAdmin);
+            tbcPaginas.Controls.Add(tbAtendentes);
             tbcPaginas.Dock = DockStyle.Fill;
             tbcPaginas.Location = new Point(260, 0);
             tbcPaginas.Name = "tbcPaginas";
@@ -281,6 +271,7 @@
             // 
             // tbSetor
             // 
+            tbSetor.Controls.Add(btnHomeSetor);
             tbSetor.Controls.Add(btnEditarSetor);
             tbSetor.Controls.Add(btnDeletarSetor);
             tbSetor.Controls.Add(btnCarregarSetores);
@@ -298,6 +289,20 @@
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
             // 
+            // btnHomeSetor
+            // 
+            btnHomeSetor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHomeSetor.BackColor = Color.Gainsboro;
+            btnHomeSetor.BackgroundImage = (Image)resources.GetObject("btnHomeSetor.BackgroundImage");
+            btnHomeSetor.BackgroundImageLayout = ImageLayout.Stretch;
+            btnHomeSetor.FlatAppearance.BorderSize = 0;
+            btnHomeSetor.Location = new Point(914, 20);
+            btnHomeSetor.Name = "btnHomeSetor";
+            btnHomeSetor.Size = new Size(70, 68);
+            btnHomeSetor.TabIndex = 37;
+            btnHomeSetor.UseVisualStyleBackColor = false;
+            btnHomeSetor.Click += btnHomeSetor_Click;
+            // 
             // btnEditarSetor
             // 
             btnEditarSetor.Anchor = AnchorStyles.None;
@@ -306,7 +311,7 @@
             btnEditarSetor.BackgroundImageLayout = ImageLayout.Stretch;
             btnEditarSetor.Cursor = Cursors.Hand;
             btnEditarSetor.FlatAppearance.BorderSize = 0;
-            btnEditarSetor.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
+            btnEditarSetor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnEditarSetor.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarSetor.FlatStyle = FlatStyle.Flat;
             btnEditarSetor.Location = new Point(803, 222);
@@ -324,7 +329,7 @@
             btnDeletarSetor.BackgroundImageLayout = ImageLayout.Stretch;
             btnDeletarSetor.Cursor = Cursors.Hand;
             btnDeletarSetor.FlatAppearance.BorderSize = 0;
-            btnDeletarSetor.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
+            btnDeletarSetor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnDeletarSetor.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarSetor.FlatStyle = FlatStyle.Flat;
             btnDeletarSetor.Location = new Point(803, 279);
@@ -411,6 +416,7 @@
             // 
             // tbPerguntas
             // 
+            tbPerguntas.Controls.Add(btnHomePerguntas);
             tbPerguntas.Controls.Add(btnEditarPergunta);
             tbPerguntas.Controls.Add(btnDeletarPergunta);
             tbPerguntas.Controls.Add(btnCarregarPerguntas);
@@ -426,6 +432,20 @@
             tbPerguntas.TabIndex = 1;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
+            // 
+            // btnHomePerguntas
+            // 
+            btnHomePerguntas.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHomePerguntas.BackColor = Color.Gainsboro;
+            btnHomePerguntas.BackgroundImage = (Image)resources.GetObject("btnHomePerguntas.BackgroundImage");
+            btnHomePerguntas.BackgroundImageLayout = ImageLayout.Stretch;
+            btnHomePerguntas.FlatAppearance.BorderSize = 0;
+            btnHomePerguntas.Location = new Point(914, 20);
+            btnHomePerguntas.Name = "btnHomePerguntas";
+            btnHomePerguntas.Size = new Size(70, 68);
+            btnHomePerguntas.TabIndex = 39;
+            btnHomePerguntas.UseVisualStyleBackColor = false;
+            btnHomePerguntas.Click += btnHomeSetor_Click;
             // 
             // btnEditarPergunta
             // 
@@ -537,20 +557,35 @@
             btnAdicionarAlternativa.TabIndex = 9;
             btnAdicionarAlternativa.UseVisualStyleBackColor = true;
             // 
-            // tbUsuario
+            // tbAdmin
             // 
-            tbUsuario.Controls.Add(btnEditarAdmin);
-            tbUsuario.Controls.Add(button9);
-            tbUsuario.Controls.Add(btnCarregaAdmin);
-            tbUsuario.Controls.Add(lblTitle);
-            tbUsuario.Controls.Add(dgvUsuariosCadastrados);
-            tbUsuario.Location = new Point(4, 24);
-            tbUsuario.Name = "tbUsuario";
-            tbUsuario.Padding = new Padding(3);
-            tbUsuario.Size = new Size(1004, 695);
-            tbUsuario.TabIndex = 2;
-            tbUsuario.Text = "Administradores";
-            tbUsuario.UseVisualStyleBackColor = true;
+            tbAdmin.Controls.Add(btnHomeAdm);
+            tbAdmin.Controls.Add(btnEditarAdmin);
+            tbAdmin.Controls.Add(button9);
+            tbAdmin.Controls.Add(btnCarregaAdmin);
+            tbAdmin.Controls.Add(lblTitle);
+            tbAdmin.Controls.Add(dgvUsuariosCadastrados);
+            tbAdmin.Location = new Point(4, 24);
+            tbAdmin.Name = "tbAdmin";
+            tbAdmin.Padding = new Padding(3);
+            tbAdmin.Size = new Size(1004, 695);
+            tbAdmin.TabIndex = 2;
+            tbAdmin.Text = "Administradores";
+            tbAdmin.UseVisualStyleBackColor = true;
+            // 
+            // btnHomeAdm
+            // 
+            btnHomeAdm.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHomeAdm.BackColor = Color.Gainsboro;
+            btnHomeAdm.BackgroundImage = (Image)resources.GetObject("btnHomeAdm.BackgroundImage");
+            btnHomeAdm.BackgroundImageLayout = ImageLayout.Stretch;
+            btnHomeAdm.FlatAppearance.BorderSize = 0;
+            btnHomeAdm.Location = new Point(914, 20);
+            btnHomeAdm.Name = "btnHomeAdm";
+            btnHomeAdm.Size = new Size(70, 68);
+            btnHomeAdm.TabIndex = 39;
+            btnHomeAdm.UseVisualStyleBackColor = false;
+            btnHomeAdm.Click += btnHomeSetor_Click;
             // 
             // btnEditarAdmin
             // 
@@ -625,20 +660,71 @@
             dgvUsuariosCadastrados.Size = new Size(725, 343);
             dgvUsuariosCadastrados.TabIndex = 6;
             // 
-            // tbAjuda
+            // tbAtendentes
             // 
-            tbAjuda.Controls.Add(btnEditarAtendentes);
-            tbAjuda.Controls.Add(btnDeletarAtendentes);
-            tbAjuda.Controls.Add(btnCarregaAtendentes);
-            tbAjuda.Controls.Add(dataGridView3);
-            tbAjuda.Controls.Add(lblTituloAjuda);
-            tbAjuda.Location = new Point(4, 24);
-            tbAjuda.Name = "tbAjuda";
-            tbAjuda.Padding = new Padding(3);
-            tbAjuda.Size = new Size(1004, 695);
-            tbAjuda.TabIndex = 3;
-            tbAjuda.Text = "Atendentes";
-            tbAjuda.UseVisualStyleBackColor = true;
+            tbAtendentes.Controls.Add(btnHomeAtendente);
+            tbAtendentes.Controls.Add(btnEditarAtendentes);
+            tbAtendentes.Controls.Add(btnDeletarAtendentes);
+            tbAtendentes.Controls.Add(btnCarregaAtendentes);
+            tbAtendentes.Controls.Add(dataGridView3);
+            tbAtendentes.Controls.Add(lblTituloAjuda);
+            tbAtendentes.Location = new Point(4, 24);
+            tbAtendentes.Name = "tbAtendentes";
+            tbAtendentes.Padding = new Padding(3);
+            tbAtendentes.Size = new Size(1004, 695);
+            tbAtendentes.TabIndex = 3;
+            tbAtendentes.Text = "Atendentes";
+            tbAtendentes.UseVisualStyleBackColor = true;
+            // 
+            // btnHomeAtendente
+            // 
+            btnHomeAtendente.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHomeAtendente.BackColor = Color.Gainsboro;
+            btnHomeAtendente.BackgroundImage = (Image)resources.GetObject("btnHomeAtendente.BackgroundImage");
+            btnHomeAtendente.BackgroundImageLayout = ImageLayout.Stretch;
+            btnHomeAtendente.FlatAppearance.BorderSize = 0;
+            btnHomeAtendente.Location = new Point(914, 20);
+            btnHomeAtendente.Name = "btnHomeAtendente";
+            btnHomeAtendente.Size = new Size(70, 68);
+            btnHomeAtendente.TabIndex = 41;
+            btnHomeAtendente.UseVisualStyleBackColor = false;
+            btnHomeAtendente.Click += btnHomeSetor_Click;
+            // 
+            // btnEditarAtendentes
+            // 
+            btnEditarAtendentes.Anchor = AnchorStyles.None;
+            btnEditarAtendentes.BackColor = Color.Transparent;
+            btnEditarAtendentes.BackgroundImage = (Image)resources.GetObject("btnEditarAtendentes.BackgroundImage");
+            btnEditarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
+            btnEditarAtendentes.Cursor = Cursors.Hand;
+            btnEditarAtendentes.FlatAppearance.BorderSize = 0;
+            btnEditarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnEditarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnEditarAtendentes.FlatStyle = FlatStyle.Flat;
+            btnEditarAtendentes.Location = new Point(779, 248);
+            btnEditarAtendentes.Margin = new Padding(3, 2, 3, 2);
+            btnEditarAtendentes.Name = "btnEditarAtendentes";
+            btnEditarAtendentes.Size = new Size(168, 53);
+            btnEditarAtendentes.TabIndex = 40;
+            btnEditarAtendentes.UseVisualStyleBackColor = false;
+            // 
+            // btnDeletarAtendentes
+            // 
+            btnDeletarAtendentes.Anchor = AnchorStyles.None;
+            btnDeletarAtendentes.BackColor = Color.Transparent;
+            btnDeletarAtendentes.BackgroundImage = (Image)resources.GetObject("btnDeletarAtendentes.BackgroundImage");
+            btnDeletarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDeletarAtendentes.Cursor = Cursors.Hand;
+            btnDeletarAtendentes.FlatAppearance.BorderSize = 0;
+            btnDeletarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnDeletarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnDeletarAtendentes.FlatStyle = FlatStyle.Flat;
+            btnDeletarAtendentes.Location = new Point(779, 305);
+            btnDeletarAtendentes.Margin = new Padding(3, 2, 3, 2);
+            btnDeletarAtendentes.Name = "btnDeletarAtendentes";
+            btnDeletarAtendentes.Size = new Size(168, 53);
+            btnDeletarAtendentes.TabIndex = 39;
+            btnDeletarAtendentes.UseVisualStyleBackColor = false;
             // 
             // btnCarregaAtendentes
             // 
@@ -648,7 +734,7 @@
             btnCarregaAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
             btnCarregaAtendentes.Cursor = Cursors.Hand;
             btnCarregaAtendentes.FlatAppearance.BorderSize = 0;
-            btnCarregaAtendentes.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
+            btnCarregaAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnCarregaAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregaAtendentes.FlatStyle = FlatStyle.Flat;
             btnCarregaAtendentes.Location = new Point(289, 516);
@@ -677,42 +763,6 @@
             lblTituloAjuda.TabIndex = 15;
             lblTituloAjuda.Text = "Atendentes";
             // 
-            // btnEditarAtendentes
-            // 
-            btnEditarAtendentes.Anchor = AnchorStyles.None;
-            btnEditarAtendentes.BackColor = Color.Transparent;
-            btnEditarAtendentes.BackgroundImage = (Image)resources.GetObject("btnEditarAtendentes.BackgroundImage");
-            btnEditarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
-            btnEditarAtendentes.Cursor = Cursors.Hand;
-            btnEditarAtendentes.FlatAppearance.BorderSize = 0;
-            btnEditarAtendentes.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
-            btnEditarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
-            btnEditarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnEditarAtendentes.Location = new Point(779, 248);
-            btnEditarAtendentes.Margin = new Padding(3, 2, 3, 2);
-            btnEditarAtendentes.Name = "btnEditarAtendentes";
-            btnEditarAtendentes.Size = new Size(168, 53);
-            btnEditarAtendentes.TabIndex = 40;
-            btnEditarAtendentes.UseVisualStyleBackColor = false;
-            // 
-            // btnDeletarAtendentes
-            // 
-            btnDeletarAtendentes.Anchor = AnchorStyles.None;
-            btnDeletarAtendentes.BackColor = Color.Transparent;
-            btnDeletarAtendentes.BackgroundImage = (Image)resources.GetObject("btnDeletarAtendentes.BackgroundImage");
-            btnDeletarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
-            btnDeletarAtendentes.Cursor = Cursors.Hand;
-            btnDeletarAtendentes.FlatAppearance.BorderSize = 0;
-            btnDeletarAtendentes.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
-            btnDeletarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
-            btnDeletarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnDeletarAtendentes.Location = new Point(779, 305);
-            btnDeletarAtendentes.Margin = new Padding(3, 2, 3, 2);
-            btnDeletarAtendentes.Name = "btnDeletarAtendentes";
-            btnDeletarAtendentes.Size = new Size(168, 53);
-            btnDeletarAtendentes.TabIndex = 39;
-            btnDeletarAtendentes.UseVisualStyleBackColor = false;
-            // 
             // FrmEditarCadastroscs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -737,11 +787,11 @@
             tbPerguntas.ResumeLayout(false);
             tbPerguntas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            tbUsuario.ResumeLayout(false);
-            tbUsuario.PerformLayout();
+            tbAdmin.ResumeLayout(false);
+            tbAdmin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuariosCadastrados).EndInit();
-            tbAjuda.ResumeLayout(false);
-            tbAjuda.PerformLayout();
+            tbAtendentes.ResumeLayout(false);
+            tbAtendentes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
         }
@@ -755,7 +805,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnSair;
         private TableLayoutPanel tlpBotoesEscolha;
-        private Button btnAjuda;
         private Button btnCadrastoAdmin;
         private Button btnSetor;
         private Button btnPerguntas;
@@ -771,8 +820,8 @@
         private Button btnCadastrarPergunta;
         private Label label7;
         private Button btnAdicionarAlternativa;
-        private TabPage tbUsuario;
-        private TabPage tbAjuda;
+        private TabPage tbAdmin;
+        private TabPage tbAtendentes;
         private Label lblTituloAjuda;
         private DataGridView dgvUsuariosCadastrados;
         private DataGridView dataGridView1;
@@ -791,5 +840,9 @@
         private Button button9;
         private Button btnEditarAtendentes;
         private Button btnDeletarAtendentes;
+        private Button btnHomeSetor;
+        private Button btnHomePerguntas;
+        private Button btnHomeAdm;
+        private Button btnHomeAtendente;
     }
 }

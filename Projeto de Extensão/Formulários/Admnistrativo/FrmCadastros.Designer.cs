@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastros));
             pnlMenu = new Panel();
             tlpBotoesEscolha = new TableLayoutPanel();
-            btnAjuda = new Button();
             btnCadrastoAdmin = new Button();
             btnSetor = new Button();
             btnPerguntas = new Button();
@@ -128,7 +127,6 @@
             // 
             tlpBotoesEscolha.ColumnCount = 1;
             tlpBotoesEscolha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpBotoesEscolha.Controls.Add(btnAjuda, 0, 4);
             tlpBotoesEscolha.Controls.Add(btnCadrastoAdmin, 0, 2);
             tlpBotoesEscolha.Controls.Add(btnSetor, 0, 0);
             tlpBotoesEscolha.Controls.Add(btnPerguntas, 0, 1);
@@ -143,23 +141,6 @@
             tlpBotoesEscolha.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tlpBotoesEscolha.Size = new Size(260, 333);
             tlpBotoesEscolha.TabIndex = 0;
-            // 
-            // btnAjuda
-            // 
-            btnAjuda.BackColor = Color.Brown;
-            btnAjuda.BackgroundImage = (Image)resources.GetObject("btnAjuda.BackgroundImage");
-            btnAjuda.BackgroundImageLayout = ImageLayout.Stretch;
-            btnAjuda.Dock = DockStyle.Fill;
-            btnAjuda.FlatAppearance.BorderSize = 0;
-            btnAjuda.FlatStyle = FlatStyle.Flat;
-            btnAjuda.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAjuda.ForeColor = Color.White;
-            btnAjuda.Location = new Point(3, 267);
-            btnAjuda.Name = "btnAjuda";
-            btnAjuda.Size = new Size(254, 63);
-            btnAjuda.TabIndex = 15;
-            btnAjuda.UseVisualStyleBackColor = false;
-            btnAjuda.Click += btnAjuda_Click;
             // 
             // btnCadrastoAdmin
             // 
@@ -985,7 +966,6 @@
         private DataGridView dgvUsuariosCadastrados;
         private Label label4;
         private Button btnCadastrar;
-        private Button btnAjuda;
         private Label lblTituloSetor;
         private Label label7;
         private Label lblTituloAjuda;

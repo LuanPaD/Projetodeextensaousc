@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_de_Extensao.Formulários.Cadastros;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +18,38 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             InitializeComponent();
         }
 
-        private void btnDeletarAdmin_Click(object sender, EventArgs e)
+        private void btnSetor_Click(object sender, EventArgs e)
         {
-
+            tbcPaginas.SelectedTab = tbSetor;
         }
+
+        private void btnPerguntas_Click(object sender, EventArgs e)
+        {
+            tbcPaginas.SelectedTab = tbPerguntas;
+        }
+
+        private void btnCadrastoAdmin_Click(object sender, EventArgs e)
+        {
+            tbcPaginas.SelectedTab = tbAdmin;
+        }
+
+
+
+
+        private void btnHomeSetor_Click(object sender, EventArgs e)
+        {
+            FrmEscolhaInicial frmEscolhaInicial = new FrmEscolhaInicial();
+            frmEscolhaInicial.Show();
+
+            this.Hide();
+        }
+
+        private void btnAtendentes_Click(object sender, EventArgs e)
+        {
+            tbcPaginas.SelectedTab = tbAtendentes;
+        }
+
+
+
     }
 }
