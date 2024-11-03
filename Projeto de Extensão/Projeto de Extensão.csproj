@@ -31,7 +31,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="EPPlus" Version="7.4.2" />
+	  <PackageReference Include="itext7" Version="8.0.5" />
+	  <PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.5" />
 	  <PackageReference Include="MySqlConnector" Version="2.3.7" />
+	  <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
 	</ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema
+    Microsoft ResX Schema 
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -121,7 +121,7 @@
   <data name="btnNovoCadastro.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfoAAAB3CAYAAADrTIL7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAI71JREFUeF7tnXuwZUdd7zuTM2ceZyaZ92RwRiZmJJlAJoFABBSZ8nIh6MSbQKJY
+        DgAACw4BQL7hQQAAI71JREFUeF7tnXuwZUdd7zuTM2ceZyaZ92RwRiZmJJlAJoFABBSZ8nIh6MSbQKJY
         JWSEMiAiUIo8QzIm0fsHVBGKl+EVvIiQ8MhjAOviI0VplQpoQNRSqHJUVLBKKz5K//D+se/vu07/1vmt
         3r/utdbe+5yz9sz3V/WptVb3r3v1evW3u1fvtcNq2udCuOrzIbxWlvcKjwpnhBEhhBByDnNGtPER4R1R
         I6+KsjkfdjqE41Lou4XH4gERQgghpAw6wvd+YciiD4FHCyUpOCGEEEJ68NkQvirLk1Fe199+kwJPCCGE
@@ -280,7 +280,7 @@
   <data name="btnEditarCadastro.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfoAAAB3CAYAAADrTIL7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAL69JREFUeF7tnQmcHUW970OW2WcyWSfrMEkmMxCyzGRmspJkErIwSUTABAVElkiA
+        DQAACw0B7QfALAAAL69JREFUeF7tnQmcHUW970OW2WcyWSfrMEkmMxCyzGRmspJkErIwSUTABAVElkiA
         PJawKuAV9AKGANlQE0QBL+8hRh54n1xkUeASNq9ACIui3CcggngFAnifcvVp3f+vpv6dOp2qPn2WmdNH
         /vX5fE91V/1r6+3XVV3dp09POaXUAS90dLTsmT59/XMdHTe/0N6++4W2tleeb29XgiAIgvBRxWjhQ6SL
         m/e0t6+HVhrpLA5Hle98vqNjC/l7d0+Zop4cN049Mny4eqCiQt1XWqp+2K+f+he6DxAEQRCEjyLQwh9V
@@ -851,7 +851,7 @@
   <data name="btnRelatorio.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfoAAAB3CAYAAADrTIL7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAInNJREFUeF7tnQuYHlV5x0+S3c0mu0l2c9+wIZuwgRC5BMIlJAUWRa21WiwXKxeN
+        DgAACw4BQL7hQQAAInNJREFUeF7tnQuYHlV5x0+S3c0mu0l2c9+wIZuwgRC5BMIlJAUWRa21WiwXKxeN
         oqDUGixIW3nQWGxVagUV8II2XKRoACEg8gjWiLaFBmywCK3cggYNBVoste3z2Mv0/Z89Z/LO+c7MznfJ
         t9+3+b/P83tmznvec+bM7Oz3n3PmzIzZk3aXMau+acz5stwkbBd2CAkhhBCyF7NDtHGrcLnTyFVONtvD
         7jRmRBp9hfCS2yFCCCGEFIOO8KZ7Wln0IfC4QgkaTgghhJAq+IYxD8tyvZPX8be7KfCEEELInmCHaOyQ

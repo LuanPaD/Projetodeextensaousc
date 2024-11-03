@@ -339,7 +339,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             {
                 using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
                 {
-                    // Assegure-se de que a conexão está aberta
                     if (ClsConexao.Conexao.State == ConnectionState.Closed)
                     {
                         await ClsConexao.Conexao.OpenAsync();
@@ -352,7 +351,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                         dgvUsuariosCadastrados.DataSource = dt;
 
-                        // Ajuste para preencher todo o espaço do DataGridView
                         dgvUsuariosCadastrados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
@@ -363,7 +361,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
             finally
             {
-                // Opcionalmente, feche a conexão se você não precisar mais dela
                 if (ClsConexao.Conexao.State == ConnectionState.Open)
                 {
                     ClsConexao.Conexao.Close();

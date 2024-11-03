@@ -19,6 +19,9 @@
     <Compile Update="Formulários\Perguntas\FrmPergunta.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formulários\Relatórios\FrmGraficos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>

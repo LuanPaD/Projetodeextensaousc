@@ -1,4 +1,5 @@
 ﻿using Projeto_de_Extensao.Formulários.Admnistrativo;
+using Projeto_de_Extensao.Formulários.Relatórios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,14 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
         {
             FrmEditarCadastroscs frmEditarCadastroscs = new FrmEditarCadastroscs();
             frmEditarCadastroscs.Show();
+
+            this.Hide();
+        }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            FrmGraficos frmGraficos = new FrmGraficos();
+            frmGraficos.Show();
 
             this.Hide();
         }
