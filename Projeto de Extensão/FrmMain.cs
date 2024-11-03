@@ -1,5 +1,6 @@
 using Projeto_de_Extensao.Classes;
 using Projeto_de_Extensao.Formulários.Admnistrativo;
+using Projeto_de_Extensao.Formulários.Creditos;
 using Projeto_de_Extensão.Formulários.Perguntas;
 using Projeto_de_Extensao.Formulários.Perguntas;
 
@@ -39,9 +40,15 @@ namespace Projeto_de_Extensão
 
         private void btnAdmnistrador_Click(object sender, EventArgs e)
         {
-            FrmLogin frmLogin= new FrmLogin();
+            FrmLogin frmLogin = new FrmLogin();
             frmLogin.Show();
             //this.Dispose();
+        }
+
+        private void btnCreditos_Click(object sender, EventArgs e)
+        {
+            FrmCreditos frmCreditos = new FrmCreditos();
+            frmCreditos.Show();
         }
     }
 }

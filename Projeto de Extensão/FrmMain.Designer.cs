@@ -22,13 +22,14 @@
             tlpAlinhamento = new TableLayoutPanel();
             pbLogo = new PictureBox();
             btnAvaliar = new Button();
+            btnCreditos = new Button();
             tlpAlinhamento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
             // 
             // btnAdmnistrador
             // 
-            btnAdmnistrador.Anchor = AnchorStyles.None;
+            btnAdmnistrador.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAdmnistrador.BackgroundImage = (Image)resources.GetObject("btnAdmnistrador.BackgroundImage");
             btnAdmnistrador.BackgroundImageLayout = ImageLayout.Stretch;
             btnAdmnistrador.Cursor = Cursors.Hand;
@@ -36,16 +37,16 @@
             btnAdmnistrador.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnAdmnistrador.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnAdmnistrador.FlatStyle = FlatStyle.Flat;
-            btnAdmnistrador.Location = new Point(420, 558);
+            btnAdmnistrador.Location = new Point(1116, 485);
+            btnAdmnistrador.Margin = new Padding(3, 2, 3, 2);
             btnAdmnistrador.Name = "btnAdmnistrador";
-            btnAdmnistrador.Size = new Size(507, 109);
+            btnAdmnistrador.Size = new Size(61, 54);
             btnAdmnistrador.TabIndex = 2;
             btnAdmnistrador.UseVisualStyleBackColor = true;
             btnAdmnistrador.Click += btnAdmnistrador_Click;
             // 
             // tlpAlinhamento
             // 
-            tlpAlinhamento.Anchor = AnchorStyles.None;
             tlpAlinhamento.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tlpAlinhamento.BackgroundImageLayout = ImageLayout.Center;
             tlpAlinhamento.ColumnCount = 3;
@@ -53,24 +54,28 @@
             tlpAlinhamento.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.72346F));
             tlpAlinhamento.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.6371117F));
             tlpAlinhamento.Controls.Add(pbLogo, 1, 0);
-            tlpAlinhamento.Controls.Add(btnAdmnistrador, 1, 2);
             tlpAlinhamento.Controls.Add(btnAvaliar, 1, 1);
+            tlpAlinhamento.Controls.Add(btnAdmnistrador, 2, 2);
+            tlpAlinhamento.Controls.Add(btnCreditos, 0, 2);
+            tlpAlinhamento.Dock = DockStyle.Fill;
             tlpAlinhamento.Location = new Point(0, 0);
+            tlpAlinhamento.Margin = new Padding(3, 2, 3, 2);
             tlpAlinhamento.Name = "tlpAlinhamento";
             tlpAlinhamento.RowCount = 3;
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            tlpAlinhamento.Size = new Size(1349, 721);
+            tlpAlinhamento.Size = new Size(1180, 541);
             tlpAlinhamento.TabIndex = 3;
             // 
             // pbLogo
             // 
             pbLogo.Anchor = AnchorStyles.None;
             pbLogo.Image = (Image)resources.GetObject("pbLogo.Image");
-            pbLogo.Location = new Point(335, 3);
+            pbLogo.Location = new Point(293, 2);
+            pbLogo.Margin = new Padding(3, 2, 3, 2);
             pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(677, 282);
+            pbLogo.Size = new Size(592, 212);
             pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbLogo.TabIndex = 0;
             pbLogo.TabStop = false;
@@ -86,20 +91,40 @@
             btnAvaliar.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnAvaliar.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnAvaliar.FlatStyle = FlatStyle.Flat;
-            btnAvaliar.Location = new Point(420, 341);
+            btnAvaliar.Location = new Point(367, 256);
+            btnAvaliar.Margin = new Padding(3, 2, 3, 2);
             btnAvaliar.Name = "btnAvaliar";
-            btnAvaliar.Size = new Size(507, 109);
+            btnAvaliar.Size = new Size(444, 82);
             btnAvaliar.TabIndex = 1;
             btnAvaliar.UseVisualStyleBackColor = false;
             btnAvaliar.Click += btnAvaliar_Click;
             // 
+            // btnCreditos
+            // 
+            btnCreditos.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnCreditos.BackgroundImage = (Image)resources.GetObject("btnCreditos.BackgroundImage");
+            btnCreditos.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCreditos.Cursor = Cursors.Hand;
+            btnCreditos.FlatAppearance.BorderSize = 0;
+            btnCreditos.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
+            btnCreditos.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnCreditos.FlatStyle = FlatStyle.Flat;
+            btnCreditos.Location = new Point(3, 485);
+            btnCreditos.Margin = new Padding(3, 2, 3, 2);
+            btnCreditos.Name = "btnCreditos";
+            btnCreditos.Size = new Size(61, 54);
+            btnCreditos.TabIndex = 3;
+            btnCreditos.UseVisualStyleBackColor = true;
+            btnCreditos.Click += btnCreditos_Click;
+            // 
             // FrmMain
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(208, 212, 214);
-            ClientSize = new Size(1349, 721);
+            ClientSize = new Size(1180, 541);
             Controls.Add(tlpAlinhamento);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMain";
             Text = "Form1";
             WindowState = FormWindowState.Maximized;
@@ -113,5 +138,6 @@
         private TableLayoutPanel tlpAlinhamento;
         private PictureBox pbLogo;
         private Button btnAvaliar;
+        private Button btnCreditos;
     }
 }
