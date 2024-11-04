@@ -46,7 +46,7 @@
             btnEditarSetor = new Button();
             btnDeletarSetor = new Button();
             btnCarregarSetores = new Button();
-            dataGridView2 = new DataGridView();
+            GridSetores = new DataGridView();
             btnVoltarParaMenu = new Button();
             button3 = new Button();
             button4 = new Button();
@@ -83,7 +83,7 @@
             tableLayoutPanel2.SuspendLayout();
             tbcPaginas.SuspendLayout();
             tbSetor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GridSetores).BeginInit();
             tbPerguntas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tbAdmin.SuspendLayout();
@@ -275,7 +275,7 @@
             tbSetor.Controls.Add(btnEditarSetor);
             tbSetor.Controls.Add(btnDeletarSetor);
             tbSetor.Controls.Add(btnCarregarSetores);
-            tbSetor.Controls.Add(dataGridView2);
+            tbSetor.Controls.Add(GridSetores);
             tbSetor.Controls.Add(btnVoltarParaMenu);
             tbSetor.Controls.Add(button3);
             tbSetor.Controls.Add(button4);
@@ -350,21 +350,22 @@
             btnCarregarSetores.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregarSetores.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregarSetores.FlatStyle = FlatStyle.Flat;
-            btnCarregarSetores.Location = new Point(211, 508);
+            btnCarregarSetores.Location = new Point(290, 588);
             btnCarregarSetores.Margin = new Padding(3, 2, 3, 2);
             btnCarregarSetores.Name = "btnCarregarSetores";
             btnCarregarSetores.Size = new Size(262, 53);
             btnCarregarSetores.TabIndex = 34;
             btnCarregarSetores.UseVisualStyleBackColor = false;
+            btnCarregarSetores.Click += btnCarregarSetores_Click;
             // 
-            // dataGridView2
+            // GridSetores
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(37, 115);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(725, 343);
-            dataGridView2.TabIndex = 30;
+            GridSetores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridSetores.Location = new Point(37, 115);
+            GridSetores.Name = "GridSetores";
+            GridSetores.RowHeadersWidth = 51;
+            GridSetores.Size = new Size(725, 343);
+            GridSetores.TabIndex = 30;
             // 
             // btnVoltarParaMenu
             // 
@@ -783,7 +784,7 @@
             tbcPaginas.ResumeLayout(false);
             tbSetor.ResumeLayout(false);
             tbSetor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GridSetores).EndInit();
             tbPerguntas.ResumeLayout(false);
             tbPerguntas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -826,7 +827,7 @@
         private DataGridView dgvUsuariosCadastrados;
         private DataGridView dataGridView1;
         private Label lblTitle;
-        private DataGridView dataGridView2;
+        private DataGridView GridSetores;
         private DataGridView dataGridView3;
         private Button btnCarregaAtendentes;
         private Button btnCarregarSetores;

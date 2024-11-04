@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +30,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             this.Close();
         }
 
-        private void btnUsuario_Click(object sender, EventArgs e)
+        private void btnAdmin_Click(object sender, EventArgs e)
         {
-            tbcPaginas.SelectedTab = tbUsuario;
+            tbcPaginas.SelectedTab = tbAdmin;
         }
         private void btnSetor_Click(object sender, EventArgs e)
         {
@@ -43,9 +44,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             tbcPaginas.SelectedTab = tbPerguntas;
         }
 
-        private void btnAjuda_Click(object sender, EventArgs e)
+        private void btnAtendente_Click(object sender, EventArgs e)
         {
-            tbcPaginas.SelectedTab = tbAjuda;
+            tbcPaginas.SelectedTab = tbAtendente;
         }
 
         private async void btnCadastrar_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCadastraAtendente_Click(object sender, EventArgs e)
         {
 
             cadastraAtendenteNoBanco();
@@ -152,7 +153,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             if (!ValidaEmail(email2))
             {
-                lblErro2.Text = "Email inválido. Por favor, verifique e tente novamente.";
+                lblErro2.Text = "E-mail inválido.";
                 return;
             }
 
@@ -191,6 +192,33 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
             }
         }
+
+        private async void cadastraSetorNoBanco()
+        {
+            string nome = txtNomeSetor.Text.ToUpper();
+
+            StringBuilder sql = new StringBuilder();
+            sql.AppendLine("INSERT INTO setores (nome) VALUES (@nome)");
+
+            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("nome", nome);
+
+                try
+                {
+                    var result = await cmd.ExecuteScalarAsync();
+                    int count = Convert.ToInt32(result);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Erro ao verificar cadastro:" + ex.Message);
+                    return;
+                }
+            }
+        }
+        
+
 
         private async void cadastrarAdminNoBanco()
         {
@@ -231,6 +259,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             campos.Add("Senha", txtSenha.Text);
             campos.Add("Confirmação de Senha", txtConfirmaSenha.Text);
 
+            if (!ValidaEmail(txtEmail.Text))
+            {
+                lblErro.Text = ("E-mail inválido.");
+                return false;
+            }
+
             // Verifica se todos os campos estão preenchidos
             if (!validarPreenchimentoCampos(campos))
                 return false;
@@ -238,16 +272,16 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // Valida se as senhas coincidem
             if (txtSenha.Text != txtConfirmaSenha.Text)
             {
-                MessageBox.Show("As senhas não coincidem.");
+                lblErro.Text = ("As senhas não coincidem.");
                 return false;
             }
 
             // Verifica se o email já está cadastrado
-            bool jaCadastrado = await jaExisteCadastro(txtEmail.Text);
+            bool jaCadastrado = await jaExisteCadastroEmailAdmin(txtEmail.Text);
 
             if (jaCadastrado)
             {
-                MessageBox.Show("Já existe um usuário cadastrado com esse email!");
+                lblErro.Text = ("E-mail já cadastrado.");
                 return false;
             }
 
@@ -263,7 +297,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             {
                 if (string.IsNullOrWhiteSpace(campo.Value))
                 {
-                    MessageBox.Show($"O campo {campo.Key} é obrigatório.");
+                    lblErro.Text = ($"O campo {campo.Key} é obrigatório.");
                     return false;
                 }
             }
@@ -283,15 +317,35 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-
-        private async Task<bool> jaExisteCadastro(string email)
+        private async Task<bool> jaExisteCadastroNomeSetor(string nome)
         {
             StringBuilder sql = new StringBuilder();
-            sql.AppendLine("SELECT ");
-            sql.AppendLine("  COUNT(*) ");
-            sql.AppendLine("  FROM admin ");
-            sql.AppendLine("  WHERE ");
-            sql.AppendLine("    EMAIL = @email");
+            sql.AppendLine("SELECT COUNT(*) FROM setores WHERE NOME = @nome");
+
+            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("@nome", nome);
+
+                try
+                {
+                    var result = await cmd.ExecuteScalarAsync();
+                    int count = Convert.ToInt32(result);
+                    return count > 0;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
+                    return false;
+                }
+            }
+            return true;
+
+        }
+
+            private async Task<bool> jaExisteCadastroEmailAdmin(string email)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendLine("SELECT COUNT(*) FROM admin WHERE EMAIL = @email");
 
             using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
             {
@@ -309,64 +363,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     return false;
                 }
             }
-
-
             return true;
         }
         #endregion
-
-        private void btnEscolherImagem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPaginaAtendente_Click(object sender, EventArgs e)
-        {
-            tbcTipoCadastro.SelectedTab = tabCadastroAtendentes;
-        }
-
-        private void btnPaginaAdmin_Click(object sender, EventArgs e)
-        {
-            tbcTipoCadastro.SelectedTab = tabCadastroAdmin;
-        }
-
-        private async void button2_Click(object sender, EventArgs e)
-        {
-            StringBuilder sql = new StringBuilder();
-            sql.AppendLine("SELECT nome, email FROM admin;");
-
-            try
-            {
-                using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
-                {
-                    if (ClsConexao.Conexao.State == ConnectionState.Closed)
-                    {
-                        await ClsConexao.Conexao.OpenAsync();
-                    }
-
-                    using (var reader = await cmd.ExecuteReaderAsync())
-                    {
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
-
-                        dgvUsuariosCadastrados.DataSource = dt;
-
-                        dgvUsuariosCadastrados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
-            }
-            finally
-            {
-                if (ClsConexao.Conexao.State == ConnectionState.Open)
-                {
-                    ClsConexao.Conexao.Close();
-                }
-            }
-        }
 
         private void btnVoltarParaMenu_Click(object sender, EventArgs e)
         {
@@ -374,6 +373,30 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             frmEscolhaInicial.Show();
 
             this.Hide();
+        }
+
+        private async void btnCadastrarSetor_Click(object sender, EventArgs e)
+        {
+            string nome = txtNomeSetor.Text;
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+                bool existe = await jaExisteCadastroNomeSetor(nome); 
+                if (!existe) 
+                {
+                    cadastraSetorNoBanco(); 
+                    txtNomeSetor.Text = string.Empty;
+                    MessageBox.Show("Cadastro realizado.");
+                }
+                else
+                {
+                    lblErroSetor.Text = "Já existe um setor com esse nome.";
+                }
+            }
+            else
+            {
+                lblErroSetor.Text = "Digite o nome do Setor.";
+            }
         }
     }
 }
