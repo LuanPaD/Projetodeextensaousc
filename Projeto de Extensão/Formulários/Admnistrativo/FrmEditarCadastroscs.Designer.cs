@@ -67,13 +67,13 @@
             button9 = new Button();
             btnCarregaAdmin = new Button();
             lblTitle = new Label();
-            dgvUsuariosCadastrados = new DataGridView();
+            GridAdmin = new DataGridView();
             tbAtendentes = new TabPage();
             btnHomeAtendente = new Button();
             btnEditarAtendentes = new Button();
             btnDeletarAtendentes = new Button();
             btnCarregaAtendentes = new Button();
-            dataGridView3 = new DataGridView();
+            GridAtendentes = new DataGridView();
             lblTituloAjuda = new Label();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
@@ -87,9 +87,9 @@
             tbPerguntas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tbAdmin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuariosCadastrados).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GridAdmin).BeginInit();
             tbAtendentes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GridAtendentes).BeginInit();
             SuspendLayout();
             // 
             // pnlMenu
@@ -264,7 +264,6 @@
             tbcPaginas.Location = new Point(260, 0);
             tbcPaginas.Name = "tbcPaginas";
             tbcPaginas.SelectedIndex = 0;
-            tbcPaginas.ShowToolTips = true;
             tbcPaginas.Size = new Size(1012, 723);
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 10;
@@ -495,7 +494,7 @@
             btnCarregarPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregarPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnCarregarPerguntas.Location = new Point(217, 481);
+            btnCarregarPerguntas.Location = new Point(281, 533);
             btnCarregarPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnCarregarPerguntas.Name = "btnCarregarPerguntas";
             btnCarregarPerguntas.Size = new Size(262, 53);
@@ -565,7 +564,7 @@
             tbAdmin.Controls.Add(button9);
             tbAdmin.Controls.Add(btnCarregaAdmin);
             tbAdmin.Controls.Add(lblTitle);
-            tbAdmin.Controls.Add(dgvUsuariosCadastrados);
+            tbAdmin.Controls.Add(GridAdmin);
             tbAdmin.Location = new Point(4, 24);
             tbAdmin.Name = "tbAdmin";
             tbAdmin.Padding = new Padding(3);
@@ -581,7 +580,7 @@
             btnHomeAdm.BackgroundImage = (Image)resources.GetObject("btnHomeAdm.BackgroundImage");
             btnHomeAdm.BackgroundImageLayout = ImageLayout.Stretch;
             btnHomeAdm.FlatAppearance.BorderSize = 0;
-            btnHomeAdm.Location = new Point(914, 20);
+            btnHomeAdm.Location = new Point(926, 6);
             btnHomeAdm.Name = "btnHomeAdm";
             btnHomeAdm.Size = new Size(70, 68);
             btnHomeAdm.TabIndex = 39;
@@ -599,7 +598,7 @@
             btnEditarAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnEditarAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarAdmin.FlatStyle = FlatStyle.Flat;
-            btnEditarAdmin.Location = new Point(802, 232);
+            btnEditarAdmin.Location = new Point(797, 239);
             btnEditarAdmin.Margin = new Padding(3, 2, 3, 2);
             btnEditarAdmin.Name = "btnEditarAdmin";
             btnEditarAdmin.Size = new Size(168, 53);
@@ -617,7 +616,7 @@
             button9.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             button9.FlatStyle = FlatStyle.Flat;
-            button9.Location = new Point(802, 289);
+            button9.Location = new Point(797, 305);
             button9.Margin = new Padding(3, 2, 3, 2);
             button9.Name = "button9";
             button9.Size = new Size(168, 53);
@@ -635,12 +634,13 @@
             btnCarregaAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregaAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregaAdmin.FlatStyle = FlatStyle.Flat;
-            btnCarregaAdmin.Location = new Point(37, 484);
+            btnCarregaAdmin.Location = new Point(312, 547);
             btnCarregaAdmin.Margin = new Padding(3, 2, 3, 2);
             btnCarregaAdmin.Name = "btnCarregaAdmin";
             btnCarregaAdmin.Size = new Size(262, 53);
             btnCarregaAdmin.TabIndex = 32;
             btnCarregaAdmin.UseVisualStyleBackColor = false;
+            btnCarregaAdmin.Click += btnCarregaAdmin_Click;
             // 
             // lblTitle
             // 
@@ -652,14 +652,14 @@
             lblTitle.TabIndex = 15;
             lblTitle.Text = "Administradores";
             // 
-            // dgvUsuariosCadastrados
+            // GridAdmin
             // 
-            dgvUsuariosCadastrados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuariosCadastrados.Location = new Point(37, 100);
-            dgvUsuariosCadastrados.Name = "dgvUsuariosCadastrados";
-            dgvUsuariosCadastrados.RowHeadersWidth = 51;
-            dgvUsuariosCadastrados.Size = new Size(725, 343);
-            dgvUsuariosCadastrados.TabIndex = 6;
+            GridAdmin.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridAdmin.Location = new Point(37, 100);
+            GridAdmin.Name = "GridAdmin";
+            GridAdmin.RowHeadersWidth = 51;
+            GridAdmin.Size = new Size(725, 343);
+            GridAdmin.TabIndex = 6;
             // 
             // tbAtendentes
             // 
@@ -667,7 +667,7 @@
             tbAtendentes.Controls.Add(btnEditarAtendentes);
             tbAtendentes.Controls.Add(btnDeletarAtendentes);
             tbAtendentes.Controls.Add(btnCarregaAtendentes);
-            tbAtendentes.Controls.Add(dataGridView3);
+            tbAtendentes.Controls.Add(GridAtendentes);
             tbAtendentes.Controls.Add(lblTituloAjuda);
             tbAtendentes.Location = new Point(4, 24);
             tbAtendentes.Name = "tbAtendentes";
@@ -684,7 +684,7 @@
             btnHomeAtendente.BackgroundImage = (Image)resources.GetObject("btnHomeAtendente.BackgroundImage");
             btnHomeAtendente.BackgroundImageLayout = ImageLayout.Stretch;
             btnHomeAtendente.FlatAppearance.BorderSize = 0;
-            btnHomeAtendente.Location = new Point(914, 20);
+            btnHomeAtendente.Location = new Point(926, 6);
             btnHomeAtendente.Name = "btnHomeAtendente";
             btnHomeAtendente.Size = new Size(70, 68);
             btnHomeAtendente.TabIndex = 41;
@@ -702,7 +702,7 @@
             btnEditarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnEditarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnEditarAtendentes.Location = new Point(779, 248);
+            btnEditarAtendentes.Location = new Point(791, 232);
             btnEditarAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnEditarAtendentes.Name = "btnEditarAtendentes";
             btnEditarAtendentes.Size = new Size(168, 53);
@@ -720,7 +720,7 @@
             btnDeletarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnDeletarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnDeletarAtendentes.Location = new Point(779, 305);
+            btnDeletarAtendentes.Location = new Point(791, 298);
             btnDeletarAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnDeletarAtendentes.Name = "btnDeletarAtendentes";
             btnDeletarAtendentes.Size = new Size(168, 53);
@@ -738,21 +738,22 @@
             btnCarregaAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnCarregaAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregaAtendentes.FlatStyle = FlatStyle.Flat;
-            btnCarregaAtendentes.Location = new Point(289, 516);
+            btnCarregaAtendentes.Location = new Point(249, 521);
             btnCarregaAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnCarregaAtendentes.Name = "btnCarregaAtendentes";
             btnCarregaAtendentes.Size = new Size(262, 53);
             btnCarregaAtendentes.TabIndex = 31;
             btnCarregaAtendentes.UseVisualStyleBackColor = false;
+            btnCarregaAtendentes.Click += btnCarregarAtendentes_Click;
             // 
-            // dataGridView3
+            // GridAtendentes
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(37, 115);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.Size = new Size(660, 343);
-            dataGridView3.TabIndex = 30;
+            GridAtendentes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GridAtendentes.Location = new Point(37, 115);
+            GridAtendentes.Name = "GridAtendentes";
+            GridAtendentes.RowHeadersWidth = 51;
+            GridAtendentes.Size = new Size(660, 343);
+            GridAtendentes.TabIndex = 30;
             // 
             // lblTituloAjuda
             // 
@@ -790,10 +791,10 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tbAdmin.ResumeLayout(false);
             tbAdmin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuariosCadastrados).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GridAdmin).EndInit();
             tbAtendentes.ResumeLayout(false);
             tbAtendentes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GridAtendentes).EndInit();
             ResumeLayout(false);
         }
 
@@ -824,11 +825,11 @@
         private TabPage tbAdmin;
         private TabPage tbAtendentes;
         private Label lblTituloAjuda;
-        private DataGridView dgvUsuariosCadastrados;
+        private DataGridView GridAdmin;
         private DataGridView dataGridView1;
         private Label lblTitle;
         private DataGridView GridSetores;
-        private DataGridView dataGridView3;
+        private DataGridView GridAtendentes;
         private Button btnCarregaAtendentes;
         private Button btnCarregarSetores;
         private Button btnCarregarPerguntas;

@@ -52,13 +52,14 @@
             tlpAlinhamento.Controls.Add(pbLogo, 1, 0);
             tlpAlinhamento.Controls.Add(btnRelatorio, 1, 3);
             tlpAlinhamento.Location = new Point(0, 0);
+            tlpAlinhamento.Margin = new Padding(3, 2, 3, 2);
             tlpAlinhamento.Name = "tlpAlinhamento";
             tlpAlinhamento.RowCount = 4;
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Absolute, 144F));
-            tlpAlinhamento.Size = new Size(1349, 721);
+            tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Absolute, 108F));
+            tlpAlinhamento.Size = new Size(1180, 541);
             tlpAlinhamento.TabIndex = 4;
             // 
             // btnNovoCadastro
@@ -68,12 +69,13 @@
             btnNovoCadastro.BackgroundImageLayout = ImageLayout.Stretch;
             btnNovoCadastro.Cursor = Cursors.Hand;
             btnNovoCadastro.FlatAppearance.BorderSize = 0;
-            btnNovoCadastro.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
-            btnNovoCadastro.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnNovoCadastro.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
+            btnNovoCadastro.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 0, 0, 0);
             btnNovoCadastro.FlatStyle = FlatStyle.Flat;
-            btnNovoCadastro.Location = new Point(420, 435);
+            btnNovoCadastro.Location = new Point(367, 325);
+            btnNovoCadastro.Margin = new Padding(3, 2, 3, 2);
             btnNovoCadastro.Name = "btnNovoCadastro";
-            btnNovoCadastro.Size = new Size(507, 109);
+            btnNovoCadastro.Size = new Size(444, 82);
             btnNovoCadastro.TabIndex = 2;
             btnNovoCadastro.UseVisualStyleBackColor = true;
             btnNovoCadastro.Click += btnNovoCadastro_Click;
@@ -81,17 +83,18 @@
             // btnEditarCadastro
             // 
             btnEditarCadastro.Anchor = AnchorStyles.None;
-            btnEditarCadastro.BackColor = Color.FromArgb(208, 212, 214);
+            btnEditarCadastro.BackColor = Color.Transparent;
             btnEditarCadastro.BackgroundImage = (Image)resources.GetObject("btnEditarCadastro.BackgroundImage");
             btnEditarCadastro.BackgroundImageLayout = ImageLayout.Stretch;
             btnEditarCadastro.Cursor = Cursors.Hand;
             btnEditarCadastro.FlatAppearance.BorderSize = 0;
-            btnEditarCadastro.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
-            btnEditarCadastro.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnEditarCadastro.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
+            btnEditarCadastro.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnEditarCadastro.FlatStyle = FlatStyle.Flat;
-            btnEditarCadastro.Location = new Point(420, 262);
+            btnEditarCadastro.Location = new Point(367, 196);
+            btnEditarCadastro.Margin = new Padding(3, 2, 3, 2);
             btnEditarCadastro.Name = "btnEditarCadastro";
-            btnEditarCadastro.Size = new Size(507, 109);
+            btnEditarCadastro.Size = new Size(444, 82);
             btnEditarCadastro.TabIndex = 1;
             btnEditarCadastro.UseVisualStyleBackColor = false;
             btnEditarCadastro.Click += btnEditarCadastro_Click;
@@ -100,9 +103,10 @@
             // 
             pbLogo.Anchor = AnchorStyles.None;
             pbLogo.Image = (Image)resources.GetObject("pbLogo.Image");
-            pbLogo.Location = new Point(335, 3);
+            pbLogo.Location = new Point(293, 2);
+            pbLogo.Margin = new Padding(3, 2, 3, 2);
             pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(677, 224);
+            pbLogo.Size = new Size(592, 168);
             pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbLogo.TabIndex = 0;
             pbLogo.TabStop = false;
@@ -114,23 +118,23 @@
             btnRelatorio.BackgroundImageLayout = ImageLayout.Stretch;
             btnRelatorio.Cursor = Cursors.Hand;
             btnRelatorio.FlatAppearance.BorderSize = 0;
-            btnRelatorio.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
-            btnRelatorio.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnRelatorio.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 0, 0, 0);
+            btnRelatorio.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 0, 0, 0);
             btnRelatorio.FlatStyle = FlatStyle.Flat;
-            btnRelatorio.Location = new Point(420, 594);
+            btnRelatorio.Location = new Point(367, 445);
+            btnRelatorio.Margin = new Padding(3, 2, 3, 2);
             btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(507, 109);
+            btnRelatorio.Size = new Size(444, 82);
             btnRelatorio.TabIndex = 3;
             btnRelatorio.UseVisualStyleBackColor = true;
             btnRelatorio.Click += btnRelatorio_Click;
             // 
             // FrmEscolhaInicial
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1349, 721);
+            ClientSize = new Size(1180, 541);
             Controls.Add(tlpAlinhamento);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmEscolhaInicial";
             Text = "FrmEscolhaInicial";
             WindowState = FormWindowState.Maximized;

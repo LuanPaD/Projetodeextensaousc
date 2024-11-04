@@ -36,9 +36,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             tbcPaginas.SelectedTab = tbAdmin;
         }
 
-
-
-
         private void btnHomeSetor_Click(object sender, EventArgs e)
         {
             FrmEscolhaInicial frmEscolhaInicial = new FrmEscolhaInicial();
@@ -54,12 +51,29 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnCarregarSetores_Click(object sender, EventArgs e)
         {
-            StringBuilder sql = new StringBuilder();
-            sql.AppendLine("SELECT nome FROM setores;");
+            await CarregarDadosAsync("SELECT nome FROM setores;", GridSetores);
+        }
 
+        private async void btnCarregaAdmin_Click(object sender, EventArgs e)
+        {
+            await CarregarDadosAsync("SELECT nome,email FROM admin;", GridAdmin);
+        }
+
+        private async void btnCarregarAtendentes_Click(object sender, EventArgs e)
+        {
+            string sql = @"
+                SELECT a.nome, s.nome AS setor, a.email
+                FROM atendente a
+                JOIN setores s ON a.setor_id = s.setor_id;";
+
+            await CarregarDadosAsync(sql, GridAtendentes);
+        }
+
+        public async Task CarregarDadosAsync(string sql, DataGridView grid)
+        {
             try
             {
-                using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
                 {
                     if (ClsConexao.Conexao.State == ConnectionState.Closed)
                     {
@@ -71,14 +85,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         DataTable dt = new DataTable();
                         dt.Load(reader);
 
-                        GridSetores.DataSource = dt;
-
-                        
-                        GridSetores.DefaultCellStyle.ForeColor = Color.Black; 
-                        GridSetores.DefaultCellStyle.BackColor = Color.White; 
-                        GridSetores.BackgroundColor = Color.White; 
-                        GridSetores.GridColor = Color.Gray; 
-                        GridSetores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        // Configurar o DataGridView passado como parâmetro
+                        grid.DataSource = dt;
+                        grid.DefaultCellStyle.ForeColor = Color.Black;
+                        grid.DefaultCellStyle.BackColor = Color.White;
+                        grid.BackgroundColor = Color.White;
+                        grid.GridColor = Color.Gray;
+                        grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     }
                 }
             }
@@ -86,15 +99,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             {
                 Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
             }
-            finally
-            {
-                if (ClsConexao.Conexao.State == ConnectionState.Open)
-                {
-                    ClsConexao.Conexao.Close();
-                }
-            }
         }
-
-
     }
 }

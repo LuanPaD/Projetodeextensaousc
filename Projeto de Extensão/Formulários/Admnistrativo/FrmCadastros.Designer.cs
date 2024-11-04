@@ -77,6 +77,7 @@
             label7 = new Label();
             btnAdicionarAlternativa = new Button();
             tbSetor = new TabPage();
+            lblErroSetor = new Label();
             btnVoltarParaMenu = new Button();
             btnCadastrarSetor = new Button();
             button4 = new Button();
@@ -84,7 +85,6 @@
             label2 = new Label();
             lblTituloSetor = new Label();
             tbcPaginas = new TabControl();
-            lblErroSetor = new Label();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -277,7 +277,7 @@
             tbAtendente.Location = new Point(4, 24);
             tbAtendente.Name = "tbAtendente";
             tbAtendente.Padding = new Padding(3);
-            tbAtendente.Size = new Size(1005, 718);
+            tbAtendente.Size = new Size(1005, 694);
             tbAtendente.TabIndex = 3;
             tbAtendente.Text = "Atendente";
             tbAtendente.UseVisualStyleBackColor = true;
@@ -288,7 +288,7 @@
             lblErro2.AutoSize = true;
             lblErro2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
             lblErro2.ForeColor = Color.Red;
-            lblErro2.Location = new Point(334, 434);
+            lblErro2.Location = new Point(334, 422);
             lblErro2.Name = "lblErro2";
             lblErro2.Size = new Size(232, 25);
             lblErro2.TabIndex = 52;
@@ -351,7 +351,7 @@
             btnCadastraAtendente.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCadastraAtendente.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCadastraAtendente.FlatStyle = FlatStyle.Flat;
-            btnCadastraAtendente.Location = new Point(282, 473);
+            btnCadastraAtendente.Location = new Point(282, 461);
             btnCadastraAtendente.Margin = new Padding(3, 2, 3, 2);
             btnCadastraAtendente.Name = "btnCadastraAtendente";
             btnCadastraAtendente.Size = new Size(342, 77);
@@ -439,7 +439,7 @@
             lblErro.AutoSize = true;
             lblErro.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
             lblErro.ForeColor = Color.Red;
-            lblErro.Location = new Point(339, 434);
+            lblErro.Location = new Point(339, 422);
             lblErro.Name = "lblErro";
             lblErro.Size = new Size(232, 25);
             lblErro.TabIndex = 53;
@@ -470,7 +470,7 @@
             button9.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             button9.FlatStyle = FlatStyle.Flat;
-            button9.Location = new Point(282, 473);
+            button9.Location = new Point(282, 461);
             button9.Margin = new Padding(3, 2, 3, 2);
             button9.Name = "button9";
             button9.Size = new Size(342, 77);
@@ -586,7 +586,7 @@
             tbPerguntas.Location = new Point(4, 24);
             tbPerguntas.Name = "tbPerguntas";
             tbPerguntas.Padding = new Padding(3);
-            tbPerguntas.Size = new Size(1005, 694);
+            tbPerguntas.Size = new Size(1005, 718);
             tbPerguntas.TabIndex = 1;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
@@ -704,6 +704,18 @@
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
             // 
+            // lblErroSetor
+            // 
+            lblErroSetor.Anchor = AnchorStyles.None;
+            lblErroSetor.AutoSize = true;
+            lblErroSetor.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            lblErroSetor.ForeColor = Color.Red;
+            lblErroSetor.Location = new Point(304, 520);
+            lblErroSetor.Name = "lblErroSetor";
+            lblErroSetor.Size = new Size(232, 25);
+            lblErroSetor.TabIndex = 54;
+            lblErroSetor.Text = "                                            ";
+            // 
             // btnVoltarParaMenu
             // 
             btnVoltarParaMenu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -788,18 +800,6 @@
             tbcPaginas.Size = new Size(1013, 722);
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 8;
-            // 
-            // lblErroSetor
-            // 
-            lblErroSetor.Anchor = AnchorStyles.None;
-            lblErroSetor.AutoSize = true;
-            lblErroSetor.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            lblErroSetor.ForeColor = Color.Red;
-            lblErroSetor.Location = new Point(304, 520);
-            lblErroSetor.Name = "lblErroSetor";
-            lblErroSetor.Size = new Size(232, 25);
-            lblErroSetor.TabIndex = 54;
-            lblErroSetor.Text = "                                            ";
             // 
             // FrmCadastros
             // 

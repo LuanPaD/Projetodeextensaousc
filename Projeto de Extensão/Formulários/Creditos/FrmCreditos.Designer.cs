@@ -38,6 +38,7 @@
             label1 = new Label();
             lblNomes1 = new Label();
             lblTitle = new Label();
+            btnHomeCreditos = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnHomeCreditos);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -150,6 +152,20 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Créditos";
             // 
+            // btnHomeCreditos
+            // 
+            btnHomeCreditos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHomeCreditos.BackColor = Color.Gainsboro;
+            btnHomeCreditos.BackgroundImage = (Image)resources.GetObject("btnHomeCreditos.BackgroundImage");
+            btnHomeCreditos.BackgroundImageLayout = ImageLayout.Stretch;
+            btnHomeCreditos.FlatAppearance.BorderSize = 0;
+            btnHomeCreditos.Location = new Point(1228, 13);
+            btnHomeCreditos.Name = "btnHomeCreditos";
+            btnHomeCreditos.Size = new Size(70, 68);
+            btnHomeCreditos.TabIndex = 38;
+            btnHomeCreditos.UseVisualStyleBackColor = false;
+            btnHomeCreditos.Click += btnHomeCreditos_Click;
+            // 
             // FrmCreditos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -177,5 +193,6 @@
         private Label label1;
         private Label lblNomes1;
         private Label label4;
+        private Button btnHomeCreditos;
     }
 }

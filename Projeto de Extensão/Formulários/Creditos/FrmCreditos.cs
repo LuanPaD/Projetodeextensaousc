@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_de_Extensão;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,11 @@ namespace Projeto_de_Extensao.Formulários.Creditos
         private void lblTitle_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnHomeCreditos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
