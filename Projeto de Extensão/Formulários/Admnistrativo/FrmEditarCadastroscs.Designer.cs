@@ -42,6 +42,13 @@
             btnSair = new Button();
             tbcPaginas = new TabControl();
             tbSetor = new TabPage();
+            lblMsgDaOperacao = new Label();
+            gbBotoesSetor = new GroupBox();
+            btnSalvarSetor = new Button();
+            lblNomeSetor = new Label();
+            lblIdSetor = new Label();
+            txtNomeSetor = new TextBox();
+            txtIdSetor = new TextBox();
             btnHomeSetor = new Button();
             btnEditarSetor = new Button();
             btnDeletarSetor = new Button();
@@ -62,6 +69,17 @@
             label7 = new Label();
             btnAdicionarAlternativa = new Button();
             tbAdmin = new TabPage();
+            lblMsgErroAdmin = new Label();
+            gbBotoesAdmin = new GroupBox();
+            lblSenhaAdmin = new Label();
+            txtSenhaAdmin = new TextBox();
+            btnSalvarAdmin = new Button();
+            lblEmailAdmin = new Label();
+            lblNomeAdmin = new Label();
+            lblIdAdimin = new Label();
+            txtEmailAdmin = new TextBox();
+            txtNomeAdimin = new TextBox();
+            txtIdAdmin = new TextBox();
             btnHomeAdm = new Button();
             btnEditarAdmin = new Button();
             button9 = new Button();
@@ -69,6 +87,16 @@
             lblTitle = new Label();
             GridAdmin = new DataGridView();
             tbAtendentes = new TabPage();
+            gbBotoesAtendente = new GroupBox();
+            lblSetorAtendente = new Label();
+            txtSetorAtendente = new TextBox();
+            btnSalvarAtendentes = new Button();
+            lblEmailAtendente = new Label();
+            lblNomeAtendente = new Label();
+            lblId = new Label();
+            txtEmailAtendente = new TextBox();
+            txtNomeAtendente = new TextBox();
+            txtIdAtendente = new TextBox();
             btnHomeAtendente = new Button();
             btnEditarAtendentes = new Button();
             btnDeletarAtendentes = new Button();
@@ -83,12 +111,15 @@
             tableLayoutPanel2.SuspendLayout();
             tbcPaginas.SuspendLayout();
             tbSetor.SuspendLayout();
+            gbBotoesSetor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridSetores).BeginInit();
             tbPerguntas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tbAdmin.SuspendLayout();
+            gbBotoesAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridAdmin).BeginInit();
             tbAtendentes.SuspendLayout();
+            gbBotoesAtendente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridAtendentes).BeginInit();
             SuspendLayout();
             // 
@@ -270,6 +301,8 @@
             // 
             // tbSetor
             // 
+            tbSetor.Controls.Add(lblMsgDaOperacao);
+            tbSetor.Controls.Add(gbBotoesSetor);
             tbSetor.Controls.Add(btnHomeSetor);
             tbSetor.Controls.Add(btnEditarSetor);
             tbSetor.Controls.Add(btnDeletarSetor);
@@ -287,6 +320,81 @@
             tbSetor.TabIndex = 0;
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
+            // 
+            // lblMsgDaOperacao
+            // 
+            lblMsgDaOperacao.AutoSize = true;
+            lblMsgDaOperacao.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMsgDaOperacao.ForeColor = Color.Black;
+            lblMsgDaOperacao.Location = new Point(312, 475);
+            lblMsgDaOperacao.Name = "lblMsgDaOperacao";
+            lblMsgDaOperacao.Size = new Size(174, 21);
+            lblMsgDaOperacao.TabIndex = 44;
+            lblMsgDaOperacao.Text = "                                         ";
+            // 
+            // gbBotoesSetor
+            // 
+            gbBotoesSetor.Controls.Add(btnSalvarSetor);
+            gbBotoesSetor.Controls.Add(lblNomeSetor);
+            gbBotoesSetor.Controls.Add(lblIdSetor);
+            gbBotoesSetor.Controls.Add(txtNomeSetor);
+            gbBotoesSetor.Controls.Add(txtIdSetor);
+            gbBotoesSetor.Location = new Point(37, 512);
+            gbBotoesSetor.Name = "gbBotoesSetor";
+            gbBotoesSetor.Size = new Size(718, 101);
+            gbBotoesSetor.TabIndex = 43;
+            gbBotoesSetor.TabStop = false;
+            gbBotoesSetor.Visible = false;
+            // 
+            // btnSalvarSetor
+            // 
+            btnSalvarSetor.ForeColor = Color.Black;
+            btnSalvarSetor.Location = new Point(599, 30);
+            btnSalvarSetor.Name = "btnSalvarSetor";
+            btnSalvarSetor.Size = new Size(84, 37);
+            btnSalvarSetor.TabIndex = 42;
+            btnSalvarSetor.Text = "salvar";
+            btnSalvarSetor.UseVisualStyleBackColor = true;
+            btnSalvarSetor.Click += btnSalvarSetor_Click;
+            // 
+            // lblNomeSetor
+            // 
+            lblNomeSetor.AutoSize = true;
+            lblNomeSetor.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomeSetor.ForeColor = Color.Black;
+            lblNomeSetor.Location = new Point(200, 29);
+            lblNomeSetor.Name = "lblNomeSetor";
+            lblNomeSetor.Size = new Size(80, 30);
+            lblNomeSetor.TabIndex = 41;
+            lblNomeSetor.Text = "NOME:";
+            // 
+            // lblIdSetor
+            // 
+            lblIdSetor.AutoSize = true;
+            lblIdSetor.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblIdSetor.ForeColor = Color.Black;
+            lblIdSetor.Location = new Point(49, 29);
+            lblIdSetor.Name = "lblIdSetor";
+            lblIdSetor.Size = new Size(39, 30);
+            lblIdSetor.TabIndex = 40;
+            lblIdSetor.Text = "ID:";
+            // 
+            // txtNomeSetor
+            // 
+            txtNomeSetor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNomeSetor.Location = new Point(286, 29);
+            txtNomeSetor.Name = "txtNomeSetor";
+            txtNomeSetor.Size = new Size(225, 35);
+            txtNomeSetor.TabIndex = 39;
+            // 
+            // txtIdSetor
+            // 
+            txtIdSetor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtIdSetor.Location = new Point(94, 26);
+            txtIdSetor.Name = "txtIdSetor";
+            txtIdSetor.ReadOnly = true;
+            txtIdSetor.Size = new Size(72, 35);
+            txtIdSetor.TabIndex = 38;
             // 
             // btnHomeSetor
             // 
@@ -350,10 +458,10 @@
             btnCarregarSetores.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregarSetores.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregarSetores.FlatStyle = FlatStyle.Flat;
-            btnCarregarSetores.Location = new Point(290, 588);
+            btnCarregarSetores.Location = new Point(803, 353);
             btnCarregarSetores.Margin = new Padding(3, 2, 3, 2);
             btnCarregarSetores.Name = "btnCarregarSetores";
-            btnCarregarSetores.Size = new Size(262, 53);
+            btnCarregarSetores.Size = new Size(192, 64);
             btnCarregarSetores.TabIndex = 34;
             btnCarregarSetores.UseVisualStyleBackColor = false;
             btnCarregarSetores.Click += btnCarregarSetores_Click;
@@ -366,6 +474,7 @@
             GridSetores.RowHeadersWidth = 51;
             GridSetores.Size = new Size(725, 343);
             GridSetores.TabIndex = 30;
+            GridSetores.CellClick += GridSetores_CellClick;
             // 
             // btnVoltarParaMenu
             // 
@@ -560,6 +669,8 @@
             // 
             // tbAdmin
             // 
+            tbAdmin.Controls.Add(lblMsgErroAdmin);
+            tbAdmin.Controls.Add(gbBotoesAdmin);
             tbAdmin.Controls.Add(btnHomeAdm);
             tbAdmin.Controls.Add(btnEditarAdmin);
             tbAdmin.Controls.Add(button9);
@@ -573,6 +684,118 @@
             tbAdmin.TabIndex = 2;
             tbAdmin.Text = "Administradores";
             tbAdmin.UseVisualStyleBackColor = true;
+            // 
+            // lblMsgErroAdmin
+            // 
+            lblMsgErroAdmin.AutoSize = true;
+            lblMsgErroAdmin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMsgErroAdmin.ForeColor = Color.Black;
+            lblMsgErroAdmin.Location = new Point(306, 450);
+            lblMsgErroAdmin.Name = "lblMsgErroAdmin";
+            lblMsgErroAdmin.Size = new Size(174, 21);
+            lblMsgErroAdmin.TabIndex = 60;
+            lblMsgErroAdmin.Text = "                                         ";
+            // 
+            // gbBotoesAdmin
+            // 
+            gbBotoesAdmin.Controls.Add(lblSenhaAdmin);
+            gbBotoesAdmin.Controls.Add(txtSenhaAdmin);
+            gbBotoesAdmin.Controls.Add(btnSalvarAdmin);
+            gbBotoesAdmin.Controls.Add(lblEmailAdmin);
+            gbBotoesAdmin.Controls.Add(lblNomeAdmin);
+            gbBotoesAdmin.Controls.Add(lblIdAdimin);
+            gbBotoesAdmin.Controls.Add(txtEmailAdmin);
+            gbBotoesAdmin.Controls.Add(txtNomeAdimin);
+            gbBotoesAdmin.Controls.Add(txtIdAdmin);
+            gbBotoesAdmin.Location = new Point(37, 474);
+            gbBotoesAdmin.Name = "gbBotoesAdmin";
+            gbBotoesAdmin.Size = new Size(703, 202);
+            gbBotoesAdmin.TabIndex = 59;
+            gbBotoesAdmin.TabStop = false;
+            gbBotoesAdmin.Visible = false;
+            // 
+            // lblSenhaAdmin
+            // 
+            lblSenhaAdmin.AutoSize = true;
+            lblSenhaAdmin.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSenhaAdmin.Location = new Point(10, 137);
+            lblSenhaAdmin.Name = "lblSenhaAdmin";
+            lblSenhaAdmin.Size = new Size(85, 30);
+            lblSenhaAdmin.TabIndex = 58;
+            lblSenhaAdmin.Text = "SENHA:";
+            // 
+            // txtSenhaAdmin
+            // 
+            txtSenhaAdmin.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSenhaAdmin.Location = new Point(101, 137);
+            txtSenhaAdmin.Name = "txtSenhaAdmin";
+            txtSenhaAdmin.Size = new Size(358, 35);
+            txtSenhaAdmin.TabIndex = 57;
+            // 
+            // btnSalvarAdmin
+            // 
+            btnSalvarAdmin.Location = new Point(562, 85);
+            btnSalvarAdmin.Name = "btnSalvarAdmin";
+            btnSalvarAdmin.Size = new Size(90, 46);
+            btnSalvarAdmin.TabIndex = 56;
+            btnSalvarAdmin.Text = "Salvar";
+            btnSalvarAdmin.UseVisualStyleBackColor = true;
+            btnSalvarAdmin.Click += btnSalvarAdmin_Click;
+            // 
+            // lblEmailAdmin
+            // 
+            lblEmailAdmin.AutoSize = true;
+            lblEmailAdmin.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEmailAdmin.Location = new Point(10, 96);
+            lblEmailAdmin.Name = "lblEmailAdmin";
+            lblEmailAdmin.Size = new Size(78, 30);
+            lblEmailAdmin.TabIndex = 55;
+            lblEmailAdmin.Text = "EMAIL:";
+            // 
+            // lblNomeAdmin
+            // 
+            lblNomeAdmin.AutoSize = true;
+            lblNomeAdmin.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomeAdmin.Location = new Point(10, 57);
+            lblNomeAdmin.Name = "lblNomeAdmin";
+            lblNomeAdmin.Size = new Size(80, 30);
+            lblNomeAdmin.TabIndex = 54;
+            lblNomeAdmin.Text = "NOME:";
+            // 
+            // lblIdAdimin
+            // 
+            lblIdAdimin.AutoSize = true;
+            lblIdAdimin.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblIdAdimin.Location = new Point(49, 18);
+            lblIdAdimin.Name = "lblIdAdimin";
+            lblIdAdimin.Size = new Size(39, 30);
+            lblIdAdimin.TabIndex = 53;
+            lblIdAdimin.Text = "ID:";
+            // 
+            // txtEmailAdmin
+            // 
+            txtEmailAdmin.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmailAdmin.Location = new Point(101, 96);
+            txtEmailAdmin.Name = "txtEmailAdmin";
+            txtEmailAdmin.Size = new Size(358, 35);
+            txtEmailAdmin.TabIndex = 52;
+            // 
+            // txtNomeAdimin
+            // 
+            txtNomeAdimin.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNomeAdimin.Location = new Point(101, 54);
+            txtNomeAdimin.Name = "txtNomeAdimin";
+            txtNomeAdimin.Size = new Size(358, 35);
+            txtNomeAdimin.TabIndex = 51;
+            // 
+            // txtIdAdmin
+            // 
+            txtIdAdmin.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtIdAdmin.Location = new Point(101, 13);
+            txtIdAdmin.Name = "txtIdAdmin";
+            txtIdAdmin.ReadOnly = true;
+            txtIdAdmin.Size = new Size(96, 35);
+            txtIdAdmin.TabIndex = 50;
             // 
             // btnHomeAdm
             // 
@@ -605,6 +828,7 @@
             btnEditarAdmin.Size = new Size(168, 53);
             btnEditarAdmin.TabIndex = 38;
             btnEditarAdmin.UseVisualStyleBackColor = false;
+            btnEditarAdmin.Click += btnEditarAdmin_Click;
             // 
             // button9
             // 
@@ -635,10 +859,10 @@
             btnCarregaAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregaAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregaAdmin.FlatStyle = FlatStyle.Flat;
-            btnCarregaAdmin.Location = new Point(312, 547);
+            btnCarregaAdmin.Location = new Point(797, 179);
             btnCarregaAdmin.Margin = new Padding(3, 2, 3, 2);
             btnCarregaAdmin.Name = "btnCarregaAdmin";
-            btnCarregaAdmin.Size = new Size(262, 53);
+            btnCarregaAdmin.Size = new Size(183, 56);
             btnCarregaAdmin.TabIndex = 32;
             btnCarregaAdmin.UseVisualStyleBackColor = false;
             btnCarregaAdmin.Click += btnCarregaAdmin_Click;
@@ -661,9 +885,11 @@
             GridAdmin.RowHeadersWidth = 51;
             GridAdmin.Size = new Size(725, 343);
             GridAdmin.TabIndex = 6;
+            GridAdmin.CellClick += GridAdimin_CellClick;
             // 
             // tbAtendentes
             // 
+            tbAtendentes.Controls.Add(gbBotoesAtendente);
             tbAtendentes.Controls.Add(btnHomeAtendente);
             tbAtendentes.Controls.Add(btnEditarAtendentes);
             tbAtendentes.Controls.Add(btnDeletarAtendentes);
@@ -677,6 +903,106 @@
             tbAtendentes.TabIndex = 3;
             tbAtendentes.Text = "Atendentes";
             tbAtendentes.UseVisualStyleBackColor = true;
+            // 
+            // gbBotoesAtendente
+            // 
+            gbBotoesAtendente.Controls.Add(lblSetorAtendente);
+            gbBotoesAtendente.Controls.Add(txtSetorAtendente);
+            gbBotoesAtendente.Controls.Add(btnSalvarAtendentes);
+            gbBotoesAtendente.Controls.Add(lblEmailAtendente);
+            gbBotoesAtendente.Controls.Add(lblNomeAtendente);
+            gbBotoesAtendente.Controls.Add(lblId);
+            gbBotoesAtendente.Controls.Add(txtEmailAtendente);
+            gbBotoesAtendente.Controls.Add(txtNomeAtendente);
+            gbBotoesAtendente.Controls.Add(txtIdAtendente);
+            gbBotoesAtendente.Location = new Point(37, 461);
+            gbBotoesAtendente.Name = "gbBotoesAtendente";
+            gbBotoesAtendente.Size = new Size(660, 207);
+            gbBotoesAtendente.TabIndex = 52;
+            gbBotoesAtendente.TabStop = false;
+            gbBotoesAtendente.Visible = false;
+            // 
+            // lblSetorAtendente
+            // 
+            lblSetorAtendente.AutoSize = true;
+            lblSetorAtendente.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSetorAtendente.Location = new Point(12, 146);
+            lblSetorAtendente.Name = "lblSetorAtendente";
+            lblSetorAtendente.Size = new Size(80, 30);
+            lblSetorAtendente.TabIndex = 51;
+            lblSetorAtendente.Text = "SETOR:";
+            // 
+            // txtSetorAtendente
+            // 
+            txtSetorAtendente.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSetorAtendente.Location = new Point(103, 146);
+            txtSetorAtendente.Name = "txtSetorAtendente";
+            txtSetorAtendente.Size = new Size(358, 35);
+            txtSetorAtendente.TabIndex = 50;
+            // 
+            // btnSalvarAtendentes
+            // 
+            btnSalvarAtendentes.Location = new Point(530, 94);
+            btnSalvarAtendentes.Name = "btnSalvarAtendentes";
+            btnSalvarAtendentes.Size = new Size(90, 46);
+            btnSalvarAtendentes.TabIndex = 49;
+            btnSalvarAtendentes.Text = "Salvar";
+            btnSalvarAtendentes.UseVisualStyleBackColor = true;
+            // 
+            // lblEmailAtendente
+            // 
+            lblEmailAtendente.AutoSize = true;
+            lblEmailAtendente.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEmailAtendente.Location = new Point(12, 105);
+            lblEmailAtendente.Name = "lblEmailAtendente";
+            lblEmailAtendente.Size = new Size(78, 30);
+            lblEmailAtendente.TabIndex = 48;
+            lblEmailAtendente.Text = "EMAIL:";
+            // 
+            // lblNomeAtendente
+            // 
+            lblNomeAtendente.AutoSize = true;
+            lblNomeAtendente.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNomeAtendente.Location = new Point(12, 66);
+            lblNomeAtendente.Name = "lblNomeAtendente";
+            lblNomeAtendente.Size = new Size(80, 30);
+            lblNomeAtendente.TabIndex = 47;
+            lblNomeAtendente.Text = "NOME:";
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblId.Location = new Point(51, 27);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(39, 30);
+            lblId.TabIndex = 46;
+            lblId.Text = "ID:";
+            // 
+            // txtEmailAtendente
+            // 
+            txtEmailAtendente.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmailAtendente.Location = new Point(103, 105);
+            txtEmailAtendente.Name = "txtEmailAtendente";
+            txtEmailAtendente.Size = new Size(358, 35);
+            txtEmailAtendente.TabIndex = 44;
+            // 
+            // txtNomeAtendente
+            // 
+            txtNomeAtendente.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNomeAtendente.Location = new Point(103, 63);
+            txtNomeAtendente.Name = "txtNomeAtendente";
+            txtNomeAtendente.Size = new Size(358, 35);
+            txtNomeAtendente.TabIndex = 43;
+            // 
+            // txtIdAtendente
+            // 
+            txtIdAtendente.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtIdAtendente.Location = new Point(103, 22);
+            txtIdAtendente.Name = "txtIdAtendente";
+            txtIdAtendente.ReadOnly = true;
+            txtIdAtendente.Size = new Size(96, 35);
+            txtIdAtendente.TabIndex = 42;
             // 
             // btnHomeAtendente
             // 
@@ -709,6 +1035,7 @@
             btnEditarAtendentes.Size = new Size(168, 53);
             btnEditarAtendentes.TabIndex = 40;
             btnEditarAtendentes.UseVisualStyleBackColor = false;
+            btnEditarAtendentes.Click += btnEditarAtendentes_Click;
             // 
             // btnDeletarAtendentes
             // 
@@ -739,7 +1066,7 @@
             btnCarregaAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnCarregaAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregaAtendentes.FlatStyle = FlatStyle.Flat;
-            btnCarregaAtendentes.Location = new Point(249, 521);
+            btnCarregaAtendentes.Location = new Point(734, 390);
             btnCarregaAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnCarregaAtendentes.Name = "btnCarregaAtendentes";
             btnCarregaAtendentes.Size = new Size(262, 53);
@@ -750,17 +1077,18 @@
             // GridAtendentes
             // 
             GridAtendentes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridAtendentes.Location = new Point(37, 115);
+            GridAtendentes.Location = new Point(37, 100);
             GridAtendentes.Name = "GridAtendentes";
             GridAtendentes.RowHeadersWidth = 51;
             GridAtendentes.Size = new Size(660, 343);
             GridAtendentes.TabIndex = 30;
+            GridAtendentes.CellClick += GridAtendentes_CellClick;
             // 
             // lblTituloAjuda
             // 
             lblTituloAjuda.AutoSize = true;
             lblTituloAjuda.Font = new Font("Segoe UI", 36F, FontStyle.Bold);
-            lblTituloAjuda.Location = new Point(37, 23);
+            lblTituloAjuda.Location = new Point(37, 17);
             lblTituloAjuda.Name = "lblTituloAjuda";
             lblTituloAjuda.Size = new Size(286, 65);
             lblTituloAjuda.TabIndex = 15;
@@ -786,15 +1114,21 @@
             tbcPaginas.ResumeLayout(false);
             tbSetor.ResumeLayout(false);
             tbSetor.PerformLayout();
+            gbBotoesSetor.ResumeLayout(false);
+            gbBotoesSetor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridSetores).EndInit();
             tbPerguntas.ResumeLayout(false);
             tbPerguntas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tbAdmin.ResumeLayout(false);
             tbAdmin.PerformLayout();
+            gbBotoesAdmin.ResumeLayout(false);
+            gbBotoesAdmin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridAdmin).EndInit();
             tbAtendentes.ResumeLayout(false);
             tbAtendentes.PerformLayout();
+            gbBotoesAtendente.ResumeLayout(false);
+            gbBotoesAtendente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridAtendentes).EndInit();
             ResumeLayout(false);
         }
@@ -847,5 +1181,33 @@
         private Button btnHomePerguntas;
         private Button btnHomeAdm;
         private Button btnHomeAtendente;
+        private TextBox txtNomeSetor;
+        private TextBox txtIdSetor;
+        private Label lblNomeSetor;
+        private Label lblIdSetor;
+        private TextBox txtEmailAtendente;
+        private TextBox txtNomeAtendente;
+        private TextBox txtIdAtendente;
+        private Label lblEmailAtendente;
+        private Label lblNomeAtendente;
+        private Label lblId;
+        private Button btnSalvarAtendentes;
+        private Label lblSenhaAdmin;
+        private TextBox txtSenhaAdmin;
+        private Button btnSalvarAdmin;
+        private Label lblEmailAdmin;
+        private Label lblNomeAdmin;
+        private Label lblIdAdimin;
+        private TextBox txtEmailAdmin;
+        private TextBox txtNomeAdimin;
+        private TextBox txtIdAdmin;
+        private Button btnSalvarSetor;
+        private Label lblSetorAtendente;
+        private TextBox txtSetorAtendente;
+        private GroupBox gbBotoesSetor;
+        private GroupBox gbBotoesAdmin;
+        private GroupBox gbBotoesAtendente;
+        private Label lblMsgDaOperacao;
+        private Label lblMsgErroAdmin;
     }
 }
