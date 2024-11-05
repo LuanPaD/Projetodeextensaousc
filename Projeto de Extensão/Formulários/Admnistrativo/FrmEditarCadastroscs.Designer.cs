@@ -319,6 +319,7 @@
             btnEditarSetor.Size = new Size(168, 53);
             btnEditarSetor.TabIndex = 36;
             btnEditarSetor.UseVisualStyleBackColor = false;
+            btnEditarSetor.Click += btnEditarSetor_Click;
             // 
             // btnDeletarSetor
             // 

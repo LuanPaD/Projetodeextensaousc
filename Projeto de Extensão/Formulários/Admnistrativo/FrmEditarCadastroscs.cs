@@ -100,5 +100,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
             }
         }
+
+        private void btnEditarSetor_Click(object sender, EventArgs e)
+        {
+           // var linhaSelecionada = GridSetores.SelectedCells;
+           // PEGA SELECIONADA EDTIA ELA E FAZ UPDATE NO BANCO
+
+        }
     }
 }

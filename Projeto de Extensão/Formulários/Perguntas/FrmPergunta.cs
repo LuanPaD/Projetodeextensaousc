@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using Font = System.Drawing.Font;
 
 namespace Projeto_de_Extensão.Formulários.Perguntas
 {
@@ -15,83 +17,82 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
         public FrmPergunta()
         {
             InitializeComponent();
+            CriarAlternativas();
         }
 
-        private void FrmPergunta_Load(object sender, EventArgs e)
+        public void CriarAlternativas()
         {
+            var Alternativas = new List<string>
+            {
+                "não","sim"
+            };
 
+            criaButton(Alternativas);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+
+        public void criaButton(List<string> Alternativas)
         {
+            int cont = 0;
+            int espacamento = 30;
+            int posicaoY = 10;
 
+            int qtdAlternativas = Alternativas.Count();
+
+            int larguraGroupBox = grbAlternativas.Width;
+
+            if( qtdAlternativas < 4)
+            {
+                foreach (var alternativas in Alternativas)
+                {
+                    Button radioButton = new Button
+                    {
+                        Text = "aaaaaaaaaaa" + alternativas,
+                        AutoSize = true,
+                        Font = new Font("Arial", 12),
+                        Name = $"rbAlternativa{cont}"
+                    };
+                    /*RadioButton radioButton = new RadioButton
+                    {
+                        Text = "aaaaaaaaaaa" + alternativas,
+                        AutoSize = true,
+                        Font = new Font("Arial", 12),
+                        Name = $"rbAlternativa{cont}"
+                    };
+                    */
+                    int posicaoX = (larguraGroupBox - radioButton.Width) / 8;
+
+                    radioButton.Location = new Point(posicaoX, posicaoY);
+
+                    grbAlternativas.Controls.Add(radioButton);
+                    posicaoY += espacamento;
+                    cont++;
+                }
+            }
+            if ( qtdAlternativas > 4 )
+            {
+                foreach (var alternativas in Alternativas)
+                {
+                    RadioButton radioButton = new RadioButton
+                    {
+                        Text = "aaaaaaaaaaa" + alternativas,
+                        AutoSize = true,
+                        Font = new Font("Arial", 12),
+                        Name = $"rbAlternativa{cont}"
+                    };
+                    
+                    int posicaoX = (larguraGroupBox - radioButton.Width) / 8;
+
+                    radioButton.Location = new Point(posicaoX, posicaoY);
+
+                    grbAlternativas.Controls.Add(radioButton);
+                    posicaoY += espacamento;
+                    cont++;
+                }
+            }
+            
         }
-
-        private void btnPrimeiraOpcao_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPaginaAnterior_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblPergunta_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void ResetButtons()
-        {
-            // Restaura os botões à cor padrão
-            btnOpcao1.BackColor = SystemColors.Control;
-            btnOpcao1.ForeColor = SystemColors.ControlText;
-
-            btnOpcao2.BackColor = SystemColors.Control;
-            btnOpcao2.ForeColor = SystemColors.ControlText;
-
-            btnOpcao3.BackColor = SystemColors.Control;
-            btnOpcao3.ForeColor = SystemColors.ControlText;
-
-            btnOpcao4.BackColor = SystemColors.Control;
-            btnOpcao4.ForeColor = SystemColors.ControlText;
-        }
-
-        private void btnOpcao1_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            btnOpcao1.BackColor = Color.Red;
-            btnOpcao1.ForeColor = Color.White;
-        }
-
-        private void btnOpcao2_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            btnOpcao2.BackColor = Color.Red;
-            btnOpcao2.ForeColor = Color.White;
-        }
-
-        private void btnOpcao3_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            btnOpcao3.BackColor = Color.Red;
-            btnOpcao3.ForeColor = Color.White;
-        }
-
-        private void btnOpcao4_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            btnOpcao4.BackColor = Color.Red;
-            btnOpcao4.ForeColor = Color.White;
-        }
-
+        
         
     }
 }

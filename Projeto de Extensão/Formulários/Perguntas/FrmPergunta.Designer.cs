@@ -27,11 +27,7 @@
             pnlDirects = new Panel();
             lblDireitos = new Label();
             panel2 = new Panel();
-            lblMsgErro = new Label();
-            btnOpcao4 = new Button();
-            btnOpcao3 = new Button();
-            btnOpcao2 = new Button();
-            btnOpcao1 = new Button();
+            grbAlternativas = new GroupBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel3 = new Panel();
             panel5 = new Panel();
@@ -156,11 +152,7 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(lblMsgErro);
-            panel2.Controls.Add(btnOpcao4);
-            panel2.Controls.Add(btnOpcao3);
-            panel2.Controls.Add(btnOpcao2);
-            panel2.Controls.Add(btnOpcao1);
+            panel2.Controls.Add(grbAlternativas);
             panel2.Controls.Add(tableLayoutPanel2);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
@@ -168,61 +160,14 @@
             panel2.Size = new Size(662, 610);
             panel2.TabIndex = 16;
             // 
-            // lblMsgErro
+            // grbAlternativas
             // 
-            lblMsgErro.Anchor = AnchorStyles.None;
-            lblMsgErro.AutoSize = true;
-            lblMsgErro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMsgErro.Location = new Point(61, 213);
-            lblMsgErro.Name = "lblMsgErro";
-            lblMsgErro.Size = new Size(540, 24);
-            lblMsgErro.TabIndex = 19;
-            lblMsgErro.Text = "TEXTO PARA TENTAR ENVIAR SEM TEM MARCADO NADA";
-            // 
-            // btnOpcao4
-            // 
-            btnOpcao4.Anchor = AnchorStyles.None;
-            btnOpcao4.Location = new Point(218, 443);
-            btnOpcao4.Name = "btnOpcao4";
-            btnOpcao4.Size = new Size(237, 53);
-            btnOpcao4.TabIndex = 18;
-            btnOpcao4.Text = "Opção 4";
-            btnOpcao4.UseVisualStyleBackColor = true;
-            btnOpcao4.Click += btnOpcao4_Click;
-            // 
-            // btnOpcao3
-            // 
-            btnOpcao3.Anchor = AnchorStyles.None;
-            btnOpcao3.Location = new Point(218, 386);
-            btnOpcao3.Name = "btnOpcao3";
-            btnOpcao3.Size = new Size(237, 53);
-            btnOpcao3.TabIndex = 17;
-            btnOpcao3.Text = "Opção 3";
-            btnOpcao3.UseVisualStyleBackColor = true;
-            btnOpcao3.Click += btnOpcao3_Click;
-            // 
-            // btnOpcao2
-            // 
-            btnOpcao2.Anchor = AnchorStyles.None;
-            btnOpcao2.Location = new Point(218, 329);
-            btnOpcao2.Name = "btnOpcao2";
-            btnOpcao2.Size = new Size(237, 53);
-            btnOpcao2.TabIndex = 16;
-            btnOpcao2.Text = "Opção 2";
-            btnOpcao2.UseVisualStyleBackColor = true;
-            btnOpcao2.Click += btnOpcao2_Click;
-            // 
-            // btnOpcao1
-            // 
-            btnOpcao1.Anchor = AnchorStyles.None;
-            btnOpcao1.FlatAppearance.BorderColor = Color.Black;
-            btnOpcao1.Location = new Point(218, 272);
-            btnOpcao1.Name = "btnOpcao1";
-            btnOpcao1.Size = new Size(237, 53);
-            btnOpcao1.TabIndex = 15;
-            btnOpcao1.Text = "Opção 1";
-            btnOpcao1.UseVisualStyleBackColor = true;
-            btnOpcao1.Click += btnOpcao1_Click;
+            grbAlternativas.Dock = DockStyle.Fill;
+            grbAlternativas.Location = new Point(0, 174);
+            grbAlternativas.Name = "grbAlternativas";
+            grbAlternativas.Size = new Size(662, 436);
+            grbAlternativas.TabIndex = 20;
+            grbAlternativas.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
@@ -331,7 +276,6 @@
             Text = "FrmPergunta";
             TopMost = true;
             WindowState = FormWindowState.Maximized;
-            Load += FrmPergunta_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableImagens.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -341,7 +285,6 @@
             pnlDirects.ResumeLayout(false);
             pnlDirects.PerformLayout();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             panel3.ResumeLayout(false);
@@ -369,10 +312,6 @@
         private Panel panel3;
         private Panel panel4;
         private Panel panel5;
-        private Button btnOpcao3;
-        private Button btnOpcao2;
-        private Button btnOpcao1;
-        private Button btnOpcao4;
-        private Label lblMsgErro;
+        private GroupBox grbAlternativas;
     }
 }
