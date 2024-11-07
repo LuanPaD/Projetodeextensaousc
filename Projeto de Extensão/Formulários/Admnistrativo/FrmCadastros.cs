@@ -70,14 +70,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         #region Funções
 
-        //armazena o valor do botão selecionado
 
         private Button botaoSelecionado;
 
 
         private void ResetButtons()
         {
-            // Restaura os botões à cor padrão
             btnSecretaria.BackColor = SystemColors.Control;
             btnSecretaria.ForeColor = SystemColors.ControlText;
 
@@ -125,12 +123,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         {
             string nome = txtNome2.Text;
             string email2 = txtEmail2.Text;
-            string setor = ObterSetorId().ToString(); // Obtém o texto do botão selecionado
+            string setor = ObterSetorId().ToString(); 
 
-            // Limpa mensagens de erro anteriores
             lblErro2.Text = string.Empty;
 
-            // Verifica se os campos estão preenchidos
             if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(email2) || setor.Equals("0"))
             {
                 if (string.IsNullOrEmpty(nome))
@@ -249,8 +245,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-
-        //CRIAR LABEL
         private async Task<bool> validaCadastro()
         {
             Dictionary<string, string> campos = new Dictionary<string, string>();
@@ -265,18 +259,15 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
 
-            // Verifica se todos os campos estão preenchidos
             if (!validarPreenchimentoCampos(campos))
                 return false;
 
-            // Valida se as senhas coincidem
             if (txtSenha.Text != txtConfirmaSenha.Text)
             {
                 lblErro.Text = ("As senhas não coincidem.");
                 return false;
             }
 
-            // Verifica se o email já está cadastrado
             bool jaCadastrado = await jaExisteCadastroEmailAdmin(txtEmail.Text);
 
             if (jaCadastrado)
@@ -304,7 +295,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             return true;
         }
 
-        private bool ValidaEmail(string email)
+        public static bool ValidaEmail(string email)
         {
             try
             {
@@ -342,7 +333,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         }
 
-            private async Task<bool> jaExisteCadastroEmailAdmin(string email)
+        public static async Task<bool> jaExisteCadastroEmailAdmin(string email)
         {
             StringBuilder sql = new StringBuilder();
             sql.AppendLine("SELECT COUNT(*) FROM admin WHERE EMAIL = @email");
@@ -363,7 +354,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     return false;
                 }
             }
-            return true;
         }
         #endregion
 

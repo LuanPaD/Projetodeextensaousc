@@ -188,35 +188,61 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnSalvarSetor_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtIdSetor.Text, out int setorId))
-            {
-                await AtualizarSetorAsync(setorId, txtNomeSetor.Text);
-            }
-            else
-            {
-                MessageBox.Show("ID do setor inválido. Por favor, insira um número válido.");
-            }
+            int.TryParse(txtIdSetor.Text, out int setorId);
+           
+            bool operacaoRealizada = await AtualizarSetorAsync(setorId, txtNomeSetor.Text);
 
-            MostraBotoesSetor(false);
+            if (operacaoRealizada)
+            {
+                MostraBotoesSetor(false);
+            } 
+        }
+
+        private async Task<bool>  jaExisteCadastroSetor(string nome)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendLine("SELECT COUNT(*) FROM setores WHERE NOME = @nome");
+
+            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("@nome", nome);
+
+                try
+                {
+
+                    var result = await cmd.ExecuteScalarAsync();
+                    int count = Convert.ToInt32(result);
+                    return count > 0;
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Erro ao verificar cadastro :" + ex.Message);
+                    return false;
+                }
+            }
         }
 
 
-        public async Task AtualizarSetorAsync(int setorId, string nome)
+        private  async Task<bool> AtualizarSetorAsync(int setorId, string nome)
         {
+            if (await jaExisteCadastroSetor(nome))
+            {
+                lblMsgDaOperacao.Text = "Esse SETOR Já Cadastrado";
+                lblMsgDaOperacao.Visible = true;
+                await Task.Delay(2000);
+                lblMsgDaOperacao.Visible = false;
+                return false;
+            }
             string sql = @"
-                UPDATE setores 
-                SET nome = @nome 
-                WHERE setor_id = @setorId;";
+                    UPDATE setores 
+                    SET nome = @nome 
+                    WHERE setor_id = @setorId;";
 
             try
             {
                 using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
-                {
-                    if (ClsConexao.Conexao.State == ConnectionState.Closed)
-                    {
-                        await ClsConexao.Conexao.OpenAsync();
-                    }
-
+                { 
                     cmd.Parameters.AddWithValue("@nome", nome);
                     cmd.Parameters.AddWithValue("@setorId", setorId);
 
@@ -225,39 +251,56 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     if (linhasAfetadas > 0)
                     {
                         lblMsgDaOperacao.Text = "Setor atualizado com sucesso!";
+                        lblMsgDaOperacao.Visible = true;
                         await CarregarDadosAsync("SELECT setor_id, nome FROM setores;", GridSetores, "setor_id");
-                        await Task.Delay(3000);
+                        await Task.Delay(2000);
                         lblMsgDaOperacao.Visible = false;
+                        return true;
                     }
                     else
                     {
                         MessageBox.Show("Nenhuma alteração foi feita.");
+                        return false;
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao atualizar setor: " + ex.Message);
+                return false;
             }
         }
 
 
-        public async Task AtualizarAdminAsync(int adminId, string nome, string email, string senha)
+        private async Task<bool> AtualizarAdminAsync(int adminId, string nome, string email, string senha)
         {
+            if (!FrmCadastros.ValidaEmail(email))
+            {
+                lblMsgErroAdmin.Text = "Digite um e-mail válido.";
+                lblMsgErroAdmin.Visible = true;
+                await Task.Delay(2000);
+                lblMsgErroAdmin.Visible = false;
+                return false;
+            }
+
+            if (await FrmCadastros.jaExisteCadastroEmailAdmin(email))
+            {
+                lblMsgErroAdmin.Text = "Este e-mail já está cadastrado com outro administrador.";
+                lblMsgErroAdmin.Visible = true;
+                await Task.Delay(2000);
+                lblMsgErroAdmin.Visible = false;
+                return false;
+            }
+
             string sql = @"
                 UPDATE admin 
-                SET nome = @nome,email = @email,senha = @senha
+                SET nome = @nome, email = @email, senha = @senha
                 WHERE admin_id = @admin_id;";
 
             try
             {
                 using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
                 {
-                    if (ClsConexao.Conexao.State == ConnectionState.Closed)
-                    {
-                        await ClsConexao.Conexao.OpenAsync();
-                    }
-
                     cmd.Parameters.AddWithValue("@admin_id", adminId);
                     cmd.Parameters.AddWithValue("@nome", nome);
                     cmd.Parameters.AddWithValue("@email", email);
@@ -267,40 +310,45 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                     if (linhasAfetadas > 0)
                     {
-                        lblMsgErroAdmin.Text = "Adminsnistradores atualizados com sucesso!";
+                        lblMsgErroAdmin.Text = "Administrador atualizado com sucesso!";
+                        lblMsgErroAdmin.Visible = true;
                         await CarregarDadosAsync("SELECT * FROM admin;", GridAdmin, "admin_id", "senha");
                         await Task.Delay(2000);
                         lblMsgErroAdmin.Visible = false;
+                        return true;
                     }
                     else
                     {
-                        MessageBox.Show("Nenhuma alteração foi feita.");
+                        lblMsgErroAdmin.Text = "Nenhuma alteração foi feita.";
+                        lblMsgErroAdmin.Visible = true;
+                        await Task.Delay(2000);
+                        lblMsgErroAdmin.Visible = false;
+                        return false;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao atualizar setor: " + ex.Message);
+                lblMsgErroAdmin.Text = "Erro ao atualizar administrador: " + ex.Message;
+                lblMsgErroAdmin.Visible = true;
+                await Task.Delay(2000);
+                lblMsgErroAdmin.Visible = false;
+                return false;
             }
         }
 
         private async void btnSalvarAdmin_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtIdAdmin.Text, out int AdminId))
-            {
-                //FAZER VALIDAÇÃO DO CAMPO DE EMAIL E SE ESSE MESMO EMAIL JÁ ESTÁ CADASTRADO COM OUTRO USER
-                await AtualizarAdminAsync(AdminId, txtNomeAdimin.Text,txtEmailAdmin.Text,txtSenhaAdmin.Text);
-            }
-            else
-            {
-                lblMsgErroAdmin.Text = "ID do Adm inválido. Por favor, insira um número válido.";
-                
-            }
+            int.TryParse(txtIdAdmin.Text , out int AdminId);
 
-            MostrarBotoesAdmin(false);
+            bool operacaoRealizada = await AtualizarAdminAsync(AdminId, txtNomeAdimin.Text, txtEmailAdmin.Text, txtSenhaAdmin.Text);
+
+            if (operacaoRealizada)
+            {
+                MostrarBotoesAdmin(false);
+            }
         }
+
+        //Não deixar o usuario EDITAR UM CAMPO QUE AINDA NN EXISTE
     }
-
-    
-
 }

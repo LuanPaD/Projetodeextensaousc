@@ -175,3 +175,4 @@ C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Ex
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Relatórios.FrmGraficos.resources
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Creditos.FrmCreditos.resources
+C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Cadastros.FrmCadastroPerguntas.resources
