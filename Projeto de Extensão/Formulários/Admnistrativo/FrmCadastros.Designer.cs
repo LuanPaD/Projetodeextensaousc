@@ -42,9 +42,8 @@
             btnSair = new Button();
             folderBrowserDialog1 = new FolderBrowserDialog();
             tbAtendente = new TabPage();
+            cmbListaDeSetores = new ComboBox();
             lblErro2 = new Label();
-            btnSecretaria = new Button();
-            btnFinanceiro = new Button();
             lblSetor = new Label();
             btnHomeAtendentes = new Button();
             btnCadastraAtendente = new Button();
@@ -263,9 +262,8 @@
             // 
             // tbAtendente
             // 
+            tbAtendente.Controls.Add(cmbListaDeSetores);
             tbAtendente.Controls.Add(lblErro2);
-            tbAtendente.Controls.Add(btnSecretaria);
-            tbAtendente.Controls.Add(btnFinanceiro);
             tbAtendente.Controls.Add(lblSetor);
             tbAtendente.Controls.Add(btnHomeAtendentes);
             tbAtendente.Controls.Add(btnCadastraAtendente);
@@ -282,6 +280,14 @@
             tbAtendente.Text = "Atendente";
             tbAtendente.UseVisualStyleBackColor = true;
             // 
+            // cmbListaDeSetores
+            // 
+            cmbListaDeSetores.FormattingEnabled = true;
+            cmbListaDeSetores.Location = new Point(76, 290);
+            cmbListaDeSetores.Name = "cmbListaDeSetores";
+            cmbListaDeSetores.Size = new Size(253, 23);
+            cmbListaDeSetores.TabIndex = 53;
+            // 
             // lblErro2
             // 
             lblErro2.Anchor = AnchorStyles.None;
@@ -293,27 +299,6 @@
             lblErro2.Size = new Size(232, 25);
             lblErro2.TabIndex = 52;
             lblErro2.Text = "                                            ";
-            // 
-            // btnSecretaria
-            // 
-            btnSecretaria.Location = new Point(73, 346);
-            btnSecretaria.Name = "btnSecretaria";
-            btnSecretaria.Size = new Size(193, 44);
-            btnSecretaria.TabIndex = 51;
-            btnSecretaria.Text = "Secretaria";
-            btnSecretaria.UseVisualStyleBackColor = true;
-            btnSecretaria.Click += btnSecretaria_Click;
-            // 
-            // btnFinanceiro
-            // 
-            btnFinanceiro.Font = new Font("Segoe UI", 9F);
-            btnFinanceiro.Location = new Point(73, 296);
-            btnFinanceiro.Name = "btnFinanceiro";
-            btnFinanceiro.Size = new Size(193, 44);
-            btnFinanceiro.TabIndex = 50;
-            btnFinanceiro.Text = "Financeiro";
-            btnFinanceiro.UseVisualStyleBackColor = true;
-            btnFinanceiro.Click += btnFinanceiro_Click;
             // 
             // lblSetor
             // 
@@ -586,7 +571,7 @@
             tbPerguntas.Location = new Point(4, 24);
             tbPerguntas.Name = "tbPerguntas";
             tbPerguntas.Padding = new Padding(3);
-            tbPerguntas.Size = new Size(1005, 718);
+            tbPerguntas.Size = new Size(1005, 694);
             tbPerguntas.TabIndex = 1;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
@@ -844,8 +829,6 @@
         private Button btnSair;
         private FolderBrowserDialog folderBrowserDialog1;
         private TabPage tbAtendente;
-        private Button btnSecretaria;
-        private Button btnFinanceiro;
         private Label lblSetor;
         private Button btnHomeAtendentes;
         private Button btnCadastraAtendente;
@@ -887,5 +870,6 @@
         private Label lblErro2;
         private Label lblErro;
         private Label lblErroSetor;
+        private ComboBox cmbListaDeSetores;
     }
 }

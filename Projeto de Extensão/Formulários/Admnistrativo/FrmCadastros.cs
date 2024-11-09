@@ -3,6 +3,7 @@ using MySqlConnector;
 using Projeto_de_Extensao.Classes;
 using Projeto_de_Extensao.Formulários.Cadastros;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 {
     public partial class FrmCadastros : Form
     {
-        public FrmCadastros()
+        public  FrmCadastros()
         {
             InitializeComponent();
         }
@@ -30,100 +31,63 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             this.Close();
         }
 
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            tbcPaginas.SelectedTab = tbAdmin;
-        }
-        private void btnSetor_Click(object sender, EventArgs e)
-        {
-            tbcPaginas.SelectedTab = tbSetor;
-        }
 
-        private void btnPerguntas_Click(object sender, EventArgs e)
+        //Troca de páginas
+        private void btnAdmin_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbAdmin;
+        private void btnSetor_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbSetor;
+        private void btnPerguntas_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbPerguntas;
+ 
+        private async void btnAtendente_Click(object sender, EventArgs e) 
         {
-            tbcPaginas.SelectedTab = tbPerguntas;
-        }
-
-        private void btnAtendente_Click(object sender, EventArgs e)
-        {
+            await ListaTodosOsSetoresAsync(cmbListaDeSetores);
             tbcPaginas.SelectedTab = tbAtendente;
-        }
+        } 
 
+
+
+        //Efetua o Cadastro
         private async void btnCadastrar_Click(object sender, EventArgs e)
         {
             if (await validaCadastro())
-            {
                 cadastrarAdminNoBanco();
-            }
-
         }
-
         private void btnCadastraAtendente_Click(object sender, EventArgs e)
         {
-
             cadastraAtendenteNoBanco();
-
         }
+        private async void btnCadastrarSetor_Click(object sender, EventArgs e)
+        {
+            string nome = txtNomeSetor.Text;
 
-
+            if (!string.IsNullOrEmpty(nome))
+            {
+                bool existe = await JaExisteCadastroNomeSetor(nome);
+                if (!existe)
+                {
+                    cadastraSetorNoBanco();
+                    txtNomeSetor.Text = string.Empty;
+                    MessageBox.Show("Cadastro realizado.");
+                }
+                else
+                {
+                    lblErroSetor.Text = "Já existe um setor com esse nome.";
+                }
+            }
+            else
+            {
+                lblErroSetor.Text = "Digite o nome do Setor.";
+            }
+        }
         #endregion
 
         #region Funções
 
-
-        private Button botaoSelecionado;
-
-
-        private void ResetButtons()
-        {
-            btnSecretaria.BackColor = SystemColors.Control;
-            btnSecretaria.ForeColor = SystemColors.ControlText;
-
-            btnFinanceiro.BackColor = SystemColors.Control;
-            btnFinanceiro.ForeColor = SystemColors.ControlText;
-        }
-
-        private void btnFinanceiro_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            btnFinanceiro.BackColor = Color.Red;
-            btnFinanceiro.ForeColor = Color.White;
-
-            botaoSelecionado = btnFinanceiro;
-        }
-
-        private void btnSecretaria_Click(object sender, EventArgs e)
-        {
-            ResetButtons();
-            btnSecretaria.BackColor = Color.Red;
-            btnSecretaria.ForeColor = Color.White;
-
-            botaoSelecionado = btnSecretaria;
-        }
-        private int ObterSetorId()
-        {
-            if (botaoSelecionado == null)
-            {
-                lblErro2.Text = "Nenhum botão foi selecionado.";
-                return 0;
-            }
-
-            if (botaoSelecionado.Text == "Secretaria")
-            {
-                return 1;
-            }
-            else if (botaoSelecionado.Text == "Financeiro")
-            {
-                return 2;
-            }
-            return 0;
-        }
-
+        //Precisa SER ALTERADO - FAZER UMA LISTA COM TODOS OS SETORES DISPONIVEIS NO BANCO 
         private async void cadastraAtendenteNoBanco()
         {
             string nome = txtNome2.Text;
             string email2 = txtEmail2.Text;
-            string setor = ObterSetorId().ToString(); 
+            string setor = cmbListaDeSetores.SelectedValue?.ToString() ?? "0"; 
 
             lblErro2.Text = string.Empty;
 
@@ -172,8 +136,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         lblErro2.Text = string.Empty;
                         txtNome2.Text = string.Empty;
                         txtEmail2.Text = string.Empty;
-                        lblErro2.Text = string.Empty;
-                        ResetButtons();
+                        cmbListaDeSetores.SelectedIndex = 0;
                     }
                     else
                     {
@@ -188,6 +151,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
             }
         }
+
 
         private async void cadastraSetorNoBanco()
         {
@@ -213,8 +177,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
             }
         }
-        
-
 
         private async void cadastrarAdminNoBanco()
         {
@@ -258,30 +220,22 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 lblErro.Text = ("E-mail inválido.");
                 return false;
             }
-
             if (!validarPreenchimentoCampos(campos))
                 return false;
-
             if (txtSenha.Text != txtConfirmaSenha.Text)
             {
                 lblErro.Text = ("As senhas não coincidem.");
                 return false;
             }
-
-            bool jaCadastrado = await jaExisteCadastroEmailAdmin(txtEmail.Text);
-
+            bool jaCadastrado = await JaExisteCadastroEmailAdmin(txtEmail.Text);
             if (jaCadastrado)
             {
                 lblErro.Text = ("E-mail já cadastrado.");
                 return false;
             }
-
             MessageBox.Show("Cadastro efetuado com sucesso!");
-
-
             return true;
         }
-
         private bool validarPreenchimentoCampos(Dictionary<string, string> campos)
         {
             foreach (var campo in campos)
@@ -294,7 +248,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
             return true;
         }
-
         public static bool ValidaEmail(string email)
         {
             try
@@ -308,39 +261,15 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-        private async Task<bool> jaExisteCadastroNomeSetor(string nome)
+        // Função para verificar se já existe um registro
+        public static async Task<bool> ExisteCadastroAsync(string tableName, string columnName, string value)
         {
             StringBuilder sql = new StringBuilder();
-            sql.AppendLine("SELECT COUNT(*) FROM setores WHERE NOME = @nome");
+            sql.AppendLine($"SELECT COUNT(*) FROM {tableName} WHERE {columnName} = @value");
 
             using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
             {
-                cmd.Parameters.AddWithValue("@nome", nome);
-
-                try
-                {
-                    var result = await cmd.ExecuteScalarAsync();
-                    int count = Convert.ToInt32(result);
-                    return count > 0;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
-                    return false;
-                }
-            }
-            return true;
-
-        }
-
-        public static async Task<bool> jaExisteCadastroEmailAdmin(string email)
-        {
-            StringBuilder sql = new StringBuilder();
-            sql.AppendLine("SELECT COUNT(*) FROM admin WHERE EMAIL = @email");
-
-            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
-            {
-                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@value", value);
 
                 try
                 {
@@ -355,6 +284,15 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
             }
         }
+        public static async Task<bool> JaExisteCadastroNomeSetor(string nome)
+        {
+            return await ExisteCadastroAsync("setores", "NOME", nome);
+        }
+        public static async Task<bool> JaExisteCadastroEmailAdmin(string email)
+        {
+            return await ExisteCadastroAsync("admin", "EMAIL", email);
+        }
+
         #endregion
 
         private void btnVoltarParaMenu_Click(object sender, EventArgs e)
@@ -365,27 +303,40 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             this.Hide();
         }
 
-        private async void btnCadastrarSetor_Click(object sender, EventArgs e)
+        // LISTA TODOS OS SETORES NO COMBOX
+        public static async Task ListaTodosOsSetoresAsync(ComboBox comboBox)
         {
-            string nome = txtNomeSetor.Text;
+            string sql = "SELECT * FROM setores";
 
-            if (!string.IsNullOrEmpty(nome))
+            try
             {
-                bool existe = await jaExisteCadastroNomeSetor(nome); 
-                if (!existe) 
+                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
                 {
-                    cadastraSetorNoBanco(); 
-                    txtNomeSetor.Text = string.Empty;
-                    MessageBox.Show("Cadastro realizado.");
-                }
-                else
-                {
-                    lblErroSetor.Text = "Já existe um setor com esse nome.";
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        var setores = new List<DictionaryEntry>
+                        {
+                            new DictionaryEntry(0, "--SELECIONE--")
+                        };
+
+                        while (await reader.ReadAsync())
+                        {
+                            int setorId = reader.GetInt32("setor_id");
+                            string nomeSetor = reader.GetString("nome");
+
+                            setores.Add(new DictionaryEntry(setorId, nomeSetor));
+                        }
+
+                        comboBox.DataSource = setores;
+                        comboBox.DisplayMember = "Value";
+                        comboBox.ValueMember = "Key";
+                        
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                lblErroSetor.Text = "Digite o nome do Setor.";
+                MessageBox.Show("Erro ao listar setores: " + ex.Message);
             }
         }
     }
