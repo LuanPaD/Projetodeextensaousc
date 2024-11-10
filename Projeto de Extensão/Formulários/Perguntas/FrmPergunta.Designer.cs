@@ -34,7 +34,7 @@
             button1 = new Button();
             panel4 = new Panel();
             button2 = new Button();
-            label2 = new Label();
+            lblPergunta = new Label();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableImagens.SuspendLayout();
@@ -198,7 +198,7 @@
             // 
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
-            panel3.Controls.Add(label2);
+            panel3.Controls.Add(lblPergunta);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 138);
             panel3.Margin = new Padding(3, 4, 3, 4);
@@ -255,16 +255,16 @@
             button2.TabIndex = 2;
             button2.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // lblPergunta
             // 
-            label2.Anchor = AnchorStyles.None;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(346, 25);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 41);
-            label2.TabIndex = 3;
-            label2.Text = "N\\N";
+            lblPergunta.Anchor = AnchorStyles.None;
+            lblPergunta.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPergunta.Location = new Point(98, 0);
+            lblPergunta.Name = "lblPergunta";
+            lblPergunta.Size = new Size(537, 87);
+            lblPergunta.TabIndex = 3;
+            lblPergunta.Text = "N\\N";
+            lblPergunta.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -301,7 +301,6 @@
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
             panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
             ResumeLayout(false);
@@ -315,7 +314,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel1;
         private Label label1;
-        private Label label2;
+        private Label lblPergunta;
         private Button button2;
         private Button button1;
         private Label lblDireitos;

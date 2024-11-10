@@ -16,6 +16,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Formulários\Cadastros\FrmCadastroPerguntas.cs" />
+	  <Compile Remove="Formulários\Cadastros\FrmCadastroPerguntas.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Remove="Formulários\Cadastros\FrmCadastroPerguntas.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>

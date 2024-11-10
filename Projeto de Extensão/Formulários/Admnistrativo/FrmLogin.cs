@@ -39,7 +39,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
             else
             {
-                lblErro.Text = "Senha ou usuário incorreto.";
+                lblErro.Text = "Usuário ou Senha incorreto.";
             }
         }
 

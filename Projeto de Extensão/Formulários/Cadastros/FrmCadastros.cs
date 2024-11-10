@@ -20,9 +20,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 {
     public partial class FrmCadastros : Form
     {
-        public  FrmCadastros()
+        public FrmCadastros()
         {
             InitializeComponent();
+            escondeAlternativasAdicionais();
         }
 
         #region Eventos
@@ -36,12 +37,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private void btnAdmin_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbAdmin;
         private void btnSetor_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbSetor;
         private void btnPerguntas_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbPerguntas;
- 
-        private async void btnAtendente_Click(object sender, EventArgs e) 
+
+        private async void btnAtendente_Click(object sender, EventArgs e)
         {
             await ListaTodosOsSetoresAsync(cmbListaDeSetores);
             tbcPaginas.SelectedTab = tbAtendente;
-        } 
+        }
 
 
 
@@ -78,16 +79,69 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 lblErroSetor.Text = "Digite o nome do Setor.";
             }
         }
+
+        private void btnAdicionarAlternativa_Click(object sender, EventArgs e)
+        {
+            mostrarPerguntaAdicional();
+        }
         #endregion
 
         #region Funções
+
+        /**
+         * Esconde os txt 3 até o 10
+         */
+        private void escondeAlternativasAdicionais()
+        {
+            for (int i = 3; i <= 10; i++)
+            {
+                var textBoxAlternativa = this.Controls.Find($"txtAlternativa{i}", true).FirstOrDefault();
+
+                if (textBoxAlternativa != null)
+                {
+                    textBoxAlternativa.Visible = false;
+                }
+            }
+        }
+
+        /**
+         * Econtra o ultimo txt Visivel e mostra o proximo
+         */
+        private void mostrarPerguntaAdicional()
+        {
+            int numAlternativaVisivel = 0;
+
+            for (int i = 0; i <= 10; i++)
+            {
+                var textBoxAlternativa = this.Controls.Find($"txtAlternativa{i}", true).FirstOrDefault();
+
+                if (textBoxAlternativa != null)
+                {
+                    if (textBoxAlternativa.Visible)
+                    {
+                        numAlternativaVisivel = i;
+                    }
+                }
+            }
+
+            if (numAlternativaVisivel != 10)
+            {
+                var proximoTxt = this.Controls.Find($"txtAlternativa{numAlternativaVisivel + 1}", true).FirstOrDefault();
+                proximoTxt.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("O número máximo de alternativas é 10!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
         //Precisa SER ALTERADO - FAZER UMA LISTA COM TODOS OS SETORES DISPONIVEIS NO BANCO 
         private async void cadastraAtendenteNoBanco()
         {
             string nome = txtNome2.Text;
             string email2 = txtEmail2.Text;
-            string setor = cmbListaDeSetores.SelectedValue?.ToString() ?? "0"; 
+            string setor = cmbListaDeSetores.SelectedValue?.ToString() ?? "0";
 
             lblErro2.Text = string.Empty;
 
@@ -330,14 +384,134 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         comboBox.DataSource = setores;
                         comboBox.DisplayMember = "Value";
                         comboBox.ValueMember = "Key";
-                        
+
                     }
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
                 MessageBox.Show("Erro ao listar setores: " + ex.Message);
             }
+        }
+
+        private async void btnCadastrarPergunta_Click(object sender, EventArgs e)
+        {
+            string pergunta = txtPergunta.Text;
+            List<string> alternativas = getAlternativasRespondidas();
+
+            if (alternativas.Count < 1) return;
+
+            int idPergunta = await inserePergunta(pergunta);
+
+            if (idPergunta == 0) return;
+
+            insereOpcoes(1, alternativas);
+
+        }
+
+        private List<string> getAlternativasRespondidas()
+        {
+            int numUltimaAlternativaVisivel = 0;
+            bool todasAlternativasPreenchidas = true;
+            List<string> alternativas = new List<string>();
+
+            for (int i = 0; i <= 10; i++)
+            {
+                var textBoxAlternativa = this.Controls.Find($"txtAlternativa{i}", true).FirstOrDefault();
+
+                if (textBoxAlternativa != null)
+                {
+                    if (textBoxAlternativa.Visible)
+                    {
+                        numUltimaAlternativaVisivel = i;
+                        if (string.IsNullOrWhiteSpace(textBoxAlternativa.Text))
+                        {
+                            todasAlternativasPreenchidas = false;
+                        }
+                    }
+                }
+            }
+
+            if (todasAlternativasPreenchidas == false)
+            {
+                MessageBox.Show("Preencha todos os campos antes de realizar o cadastro.", "Cadastro Invalido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return alternativas;
+            }
+
+            for (int numAlterntativa = 0; numAlterntativa <= numUltimaAlternativaVisivel; numAlterntativa++)
+            {
+                var textBoxAlternativa = this.Controls.Find($"txtAlternativa{numAlterntativa}", true).FirstOrDefault();
+                if (textBoxAlternativa != null)
+                    alternativas.Add(textBoxAlternativa.Text);
+            }
+
+            return alternativas;
+        }
+
+        private async Task<int> inserePergunta(string pergunta)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendLine("INSERT INTO perguntas (texto) VALUES (@pergunta)");
+
+            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("@pergunta", pergunta);
+
+                try
+                {
+                    await cmd.ExecuteNonQueryAsync();
+
+                    // Recupera o ID do último registro inserido
+                    cmd.CommandText = "SELECT LAST_INSERT_ID()";
+                    int perguntaId = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                    //MessageBox.Show("Pergunta inserida com sucesso! ");
+                    return perguntaId;
+
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Erro ao inserir a pergunta: " + ex.Message);
+                    return 0;
+                }
+            }
+        }
+        /*********
+         * 
+         * 
+         * REVER O PQ DA COLUNA VALOR NA TABELA OPCOES
+         * 
+         * 
+         * 
+         **********/
+        private async void insereOpcoes(int id, List<string> alternativas)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendLine("INSERT INTO opcoes (pergunta_id, texto, valor) VALUES (@pergunta_id, @texto, @valor)");
+
+            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+            {
+                for (int i = 0; i < alternativas.Count; i++)
+                {
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@texto", alternativas[i]);
+                    cmd.Parameters.AddWithValue("@pergunta_id", id);
+                    cmd.Parameters.AddWithValue("@valor", 1);
+
+                    try
+                    {
+                        await cmd.ExecuteNonQueryAsync();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show("Erro ao inserir as opções: " + ex.Message);
+                        return;
+                    }
+                }
+            }
+
+            MessageBox.Show("Pergunta inserida com sucesso! ");
+
         }
     }
 }
