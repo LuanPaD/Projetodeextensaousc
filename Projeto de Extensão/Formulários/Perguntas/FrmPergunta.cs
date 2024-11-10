@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using Font = System.Drawing.Font;
 
 namespace Projeto_de_Extensão.Formulários.Perguntas
 {
@@ -22,77 +16,104 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
         public void CriarAlternativas()
         {
-            var Alternativas = new List<string>
-            {
-                "não","sim"
-            };
-
-            criaButton(Alternativas);
+            var alternativas = new List<string> { "Não", "Sim", "Não", "Sim" };
+            CriarBotoesAlternativas(alternativas);
         }
 
-
-        public void criaButton(List<string> Alternativas)
+        public void CriarBotoesAlternativas(List<string> alternativas)
         {
-            int cont = 0;
-            int espacamento = 30;
-            int posicaoY = 10;
-
-            int qtdAlternativas = Alternativas.Count();
-
+            int espacamentoVertical = calculaEspacamentoPorQtdAlternativas(alternativas.Count);
             int larguraGroupBox = grbAlternativas.Width;
+            grbAlternativas.Controls.Clear();
 
-            if( qtdAlternativas < 4)
+            // Calcula a posição inicial Y para centralizar os botões
+
+            int posicaoY = calculaPosicaoYPorQtdAlternativas();
+
+            foreach (var alternativa in alternativas)
             {
-                foreach (var alternativas in Alternativas)
-                {
-                    Button radioButton = new Button
-                    {
-                        Text = "aaaaaaaaaaa" + alternativas,
-                        AutoSize = true,
-                        Font = new Font("Arial", 12),
-                        Name = $"rbAlternativa{cont}"
-                    };
-                    /*RadioButton radioButton = new RadioButton
-                    {
-                        Text = "aaaaaaaaaaa" + alternativas,
-                        AutoSize = true,
-                        Font = new Font("Arial", 12),
-                        Name = $"rbAlternativa{cont}"
-                    };
-                    */
-                    int posicaoX = (larguraGroupBox - radioButton.Width) / 8;
+                CustomButton btnAlternativa = CriarBotaoAlternativa(alternativa);
+                btnAlternativa.Click += BtnAlternativa_Click;
 
-                    radioButton.Location = new Point(posicaoX, posicaoY);
+                // Centraliza o botão horizontalmente no GroupBox
+                int posicaoX = (larguraGroupBox - btnAlternativa.Width) / 2;
+                btnAlternativa.Location = new Point(posicaoX, posicaoY);
 
-                    grbAlternativas.Controls.Add(radioButton);
-                    posicaoY += espacamento;
-                    cont++;
-                }
+                grbAlternativas.Controls.Add(btnAlternativa);
+                posicaoY += btnAlternativa.Height + espacamentoVertical;
             }
-            if ( qtdAlternativas > 4 )
+        }
+
+        private CustomButton CriarBotaoAlternativa(string texto)
+        {
+            return new CustomButton
             {
-                foreach (var alternativas in Alternativas)
-                {
-                    RadioButton radioButton = new RadioButton
-                    {
-                        Text = "aaaaaaaaaaa" + alternativas,
-                        AutoSize = true,
-                        Font = new Font("Arial", 12),
-                        Name = $"rbAlternativa{cont}"
-                    };
-                    
-                    int posicaoX = (larguraGroupBox - radioButton.Width) / 8;
+                Text = texto,
+                Font = new Font("Segoe UI", 16, FontStyle.Bold),
+                Size = new Size(400, 90), // Aumentando o tamanho do botão
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.FromArgb(231, 76, 60),
+                ForeColor = Color.White,
+                Cursor = Cursors.Hand,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Name = $"btnAlternativa_{texto}",
+                Margin = new Padding(5)
+            };
+        }
 
-                    radioButton.Location = new Point(posicaoX, posicaoY);
+        private void BtnAlternativa_Click(object sender, EventArgs e)
+        {
+            CustomButton clickedButton = (CustomButton)sender;
 
-                    grbAlternativas.Controls.Add(radioButton);
-                    posicaoY += espacamento;
-                    cont++;
-                }
+            foreach (CustomButton btn in grbAlternativas.Controls)
+            {
+                btn.BackColor = Color.FromArgb(231, 76, 60);
             }
-            
+
+            clickedButton.BackColor = Color.FromArgb(192, 57, 43);
+        }
+
+        private int calculaEspacamentoPorQtdAlternativas(int quantidade)
+        {
+            if (quantidade <= 2) return 40;
+
+            if (quantidade <= 4) return 30;
+
+            return 10;
+        }
+        private int calculaPosicaoYPorQtdAlternativas(int quantidade)
+        {
+            //grbAlternativas.Height - (alternativas.Count * 60 + (alternativas.Count - 1) * espacamentoVertical)) / 2
+            return 10;
         }
         
         
+    }
+
+    public class CustomButton : Button
+    {
+        protected override void OnPaint(PaintEventArgs pevent)
+        {
+            base.OnPaint(pevent);
+
+            // Definindo bordas arredondadas
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, 30, 30, 180, 90); // Canto superior esquerdo
+            path.AddArc(this.Width - 30, 0, 30, 30, 270, 90); // Canto superior direito
+            path.AddArc(this.Width - 30, this.Height - 30, 30, 30, 0, 90); // Canto inferior direito
+            path.AddArc(0, this.Height - 30, 30, 30, 90, 90); // Canto inferior esquerdo
+            path.CloseFigure();
+
+            this.Region = new Region(path);
+
+            // Preenchendo o fundo e a borda do botão
+            using (SolidBrush brush = new SolidBrush(this.BackColor))
+            {
+                pevent.Graphics.FillPath(brush, path);
+            }
+
+            // Desenhando o texto
+            TextRenderer.DrawText(pevent.Graphics, this.Text, this.Font, new Point(Width / 2 - TextRenderer.MeasureText(this.Text, this.Font).Width / 2, Height / 2 - TextRenderer.MeasureText(this.Text, this.Font).Height / 2), this.ForeColor);
+        }
     }
 }

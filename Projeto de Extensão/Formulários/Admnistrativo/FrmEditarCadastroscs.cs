@@ -1,6 +1,4 @@
-﻿using iText.Kernel.Colors;
-using iText.StyledXmlParser.Jsoup.Nodes;
-using MySqlConnector;
+﻿using MySqlConnector;
 using Projeto_de_Extensao.Classes;
 using Projeto_de_Extensao.Formulários.Cadastros;
 using System;
@@ -16,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 
 namespace Projeto_de_Extensao.Formulários.Admnistrativo
@@ -65,7 +64,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             this.Hide();
         }
-
+        /*
         public async Task CarregarDadosAsync(string sql, DataGridView grid, params string[] colunasOcultar)
         {
             try
@@ -91,6 +90,55 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                                 grid.Columns[coluna].Visible = false;
                             }
                         }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
+            }
+        }*/
+        public async Task CarregarDadosAsync(string sql, DataGridView grid, params string[] colunasOcultar)
+        {
+            try
+            {
+                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+                {
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        grid.DataSource = dt;
+
+                        // Configuração de cores e estilização
+                        grid.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                        grid.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
+                        grid.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.Azure;
+                        grid.BackgroundColor = System.Drawing.Color.White;
+                        grid.GridColor = System.Drawing.Color.LightSteelBlue;
+
+                        // Estilo do cabeçalho
+                        grid.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.SteelBlue;
+                        grid.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+                        grid.ColumnHeadersDefaultCellStyle.Font = new Font(grid.Font, FontStyle.Bold);
+                        grid.EnableHeadersVisualStyles = false;
+
+                        grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        // Oculta as colunas especificadas
+                        foreach (var coluna in colunasOcultar)
+                        {
+                            if (grid.Columns.Contains(coluna))
+                            {
+                                grid.Columns[coluna].Visible = false;
+                            }
+                        }
+
+                        grid.RowHeadersVisible = false;
+
+                        // Remover a última linha vazia
+                        grid.AllowUserToAddRows = false;
                     }
                 }
             }
@@ -232,7 +280,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 MostraBotoesAtendentes(false);
         }
 
-        private async Task ExibirMensagemTemporariaSetor(string mensagem, int tempoEmMilissegundos = 2000)
+        private async Task ExibirMensagemTemporariaSetor(string mensagem, int tempoEmMilissegundos = 5000)
         {
             lblMsgDaOperacao.Text = mensagem;
             lblMsgDaOperacao.Visible = true;
@@ -240,7 +288,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             lblMsgDaOperacao.Visible = false;
         }
 
-        private async Task ExibirMensagemTemporariaAdmin(string mensagem, int tempoEmMilissegundos = 2000)
+        private async Task ExibirMensagemTemporariaAdmin(string mensagem, int tempoEmMilissegundos = 5000)
         {
             lblMsgErroAdmin.Text = mensagem;
             lblMsgErroAdmin.Visible = true;
@@ -248,7 +296,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             lblMsgErroAdmin.Visible = false;
         }
 
-        private async Task ExibirMensagemTemporariaAtendente(string mensagem, int tempoEmMilissegundos = 2000)
+        private async Task ExibirMensagemTemporariaAtendente(string mensagem, int tempoEmMilissegundos = 5000)
         {
             lblMsgErroAtendente.Text = mensagem;
             lblMsgErroAtendente.Visible = true;
@@ -312,11 +360,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
         }
-
-
-
-
-
 
         //Atualiza os dados dos setores e verifica se os campos estão preenchidos corretamente.
         private async Task<bool> AtualizarSetorAsync(int setorId, string nome)
@@ -438,13 +481,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
              * ATUALIZAR, PORQUE TEM UM EMAIL DESSE JÁ CADASTRADO
              * 
              * Não deixar o usuario EDITAR UM CAMPO QUE AINDA NN EXISTE
-             * 
-            if (await FrmCadastros.ExisteCadastroAsync("atendente", "email", email) )
+             */ 
+            if (await verificaEmailJaCadastrado(atendenteId, email))
             {
                 await ExibirMensagemTemporariaAtendente("Este e-mail já está cadastrado com outro atendente.");
                 return false;
             }
-            */
+            
 
             string sql = @"
                 UPDATE atendente 
@@ -482,6 +525,31 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
+        private async Task<bool> verificaEmailJaCadastrado(int atendenteId, string email)
+        {
+            StringBuilder sql = new StringBuilder();
+            sql.AppendLine($"SELECT COUNT(*) FROM ATENDENTE WHERE EMAIL = @email AND atendente_id <> @id ");
+
+            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@id", atendenteId);
+
+                try
+                {
+                    var result = await cmd.ExecuteScalarAsync();
+                    int count = Convert.ToInt32(result);
+                    return count > 0;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
         private async void btnCarregarSetores_Click(object sender, EventArgs e)
         {

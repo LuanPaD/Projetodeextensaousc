@@ -165,9 +165,8 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             var pdfExporter = new PDFgerador();
             string downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
             string filePath = Path.Combine(downloadsPath, "Dados.pdf");
-            string logoUrl = "https://unisagrado.edu.br/uploads/2008/logotipos/unisagrado/png/unisagrado-jpg-alta-01.jpg";
             DataTable data = GetData();
-            pdfExporter.Export(data, filePath, logoUrl);
+            pdfExporter.Export(data, filePath);
             MessageBox.Show("Arquivo PDF gerado com sucesso em:\n" + filePath);
         }
 

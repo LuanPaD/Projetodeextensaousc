@@ -93,6 +93,16 @@ namespace Projeto_de_Extensao.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LOGO_UNISAGRADO {
+            get {
+                object obj = ResourceManager.GetObject("LOGO_UNISAGRADO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Perguntas {
             get {
                 object obj = ResourceManager.GetObject("Perguntas", resourceCulture);

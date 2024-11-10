@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\educo\\OneDrive\\Área de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj": {}
+    "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj": {}
   },
   "projects": {
-    "C:\\Users\\educo\\OneDrive\\Área de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj": {
+    "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\educo\\OneDrive\\Área de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj",
+        "projectUniqueName": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj",
         "projectName": "Projeto de Extensão",
-        "projectPath": "C:\\Users\\educo\\OneDrive\\Área de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj",
-        "packagesPath": "C:\\Users\\educo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\educo\\OneDrive\\Área de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extensão\\obj\\",
+        "projectPath": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\Projeto de Extensão.csproj",
+        "packagesPath": "C:\\Users\\luanp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\luanp\\OneDrive\\CTi\\Área de Trabalho\\Projeto\\Projetodeextensaousc\\Projeto de Extensão\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\educo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\luanp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,17 +54,13 @@
               "target": "Package",
               "version": "[2.3.7, )"
             },
+            "PDFsharp": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            },
             "WinForms.DataVisualization": {
               "target": "Package",
               "version": "[1.9.2, )"
-            },
-            "itext7": {
-              "target": "Package",
-              "version": "[8.0.5, )"
-            },
-            "itext7.bouncy-castle-adapter": {
-              "target": "Package",
-              "version": "[8.0.5, )"
             }
           },
           "imports": [
