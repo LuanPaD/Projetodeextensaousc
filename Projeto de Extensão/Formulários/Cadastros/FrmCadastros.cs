@@ -36,7 +36,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         //Troca de páginas
         private void btnAdmin_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbAdmin;
         private void btnSetor_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbSetor;
-        private void btnPerguntas_Click(object sender, EventArgs e) => tbcPaginas.SelectedTab = tbPerguntas;
+        private async void btnPerguntas_Click(object sender, EventArgs e)
+        {
+            await ListaTodosOsSetoresAsync(cbxListaSetorPergunta);
+            tbcPaginas.SelectedTab = tbPerguntas;
+        }
+
 
         private async void btnAtendente_Click(object sender, EventArgs e)
         {
@@ -71,12 +76,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
                 else
                 {
-                    lblErroSetor.Text = "Já existe um setor com esse nome.";
+                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroSetor, "Já existe um setor com esse nome.");
                 }
             }
             else
             {
-                lblErroSetor.Text = "Digite o nome do Setor.";
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroSetor, "Digite o nome do Setor.");
             }
         }
 
@@ -135,31 +140,30 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-
-        //Precisa SER ALTERADO - FAZER UMA LISTA COM TODOS OS SETORES DISPONIVEIS NO BANCO 
+ 
         private async void cadastraAtendenteNoBanco()
         {
             string nome = txtNome2.Text;
             string email2 = txtEmail2.Text;
             string setor = cmbListaDeSetores.SelectedValue?.ToString() ?? "0";
 
-            lblErro2.Text = string.Empty;
+            lblMsgErroAtendente.Text = string.Empty;
 
             if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(email2) || setor.Equals("0"))
             {
                 if (string.IsNullOrEmpty(nome))
                 {
-                    lblErro2.Text += "O campo Nome deve ser preenchido.\n";
+                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "O campo Nome deve ser preenchido.\n");
                 }
 
                 if (string.IsNullOrEmpty(email2))
                 {
-                    lblErro2.Text += "O campo Email deve ser preenchido.\n";
+                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "O campo Email deve ser preenchido.\n");
                 }
 
                 if (setor.Equals("0"))
                 {
-                    lblErro2.Text += "Escolha um setor.\n";
+                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente,"Escolha um setor.\n");
                 }
 
                 return;
@@ -167,7 +171,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             if (!ValidaEmail(email2))
             {
-                lblErro2.Text = "E-mail inválido.";
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "E-mail inválido.");
                 return;
             }
 
@@ -187,20 +191,19 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     {
                         MessageBox.Show("Cadastro realizado com sucesso.");
                         Console.WriteLine("Cadastro realizado com sucesso.");
-                        lblErro2.Text = string.Empty;
+                        lblMsgErroAtendente.Text = string.Empty;
                         txtNome2.Text = string.Empty;
                         txtEmail2.Text = string.Empty;
                         cmbListaDeSetores.SelectedIndex = 0;
                     }
                     else
                     {
-                        lblErro2.Text = "Nenhum dado foi inserido.";
+                        await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Nenhum dado foi inserido.");
                         Console.WriteLine("Nenhum dado foi inserido.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    lblErro2.Text = "Erro ao cadastrar atendente: " + ex.Message;
                     Console.WriteLine("Erro ao cadastrar atendente: " + ex.Message);
                 }
             }
@@ -271,32 +274,32 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             if (!ValidaEmail(txtEmail.Text))
             {
-                lblErro.Text = ("E-mail inválido.");
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAdmin,"E-mail inválido.");
                 return false;
             }
-            if (!validarPreenchimentoCampos(campos))
+            if (! await validarPreenchimentoCampos(campos))
                 return false;
             if (txtSenha.Text != txtConfirmaSenha.Text)
             {
-                lblErro.Text = ("As senhas não coincidem.");
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAdmin, "As senhas não coincidem.");
                 return false;
             }
             bool jaCadastrado = await JaExisteCadastroEmailAdmin(txtEmail.Text);
             if (jaCadastrado)
             {
-                lblErro.Text = ("E-mail já cadastrado.");
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAdmin, "E-mail já cadastrado.");
                 return false;
             }
             MessageBox.Show("Cadastro efetuado com sucesso!");
             return true;
         }
-        private bool validarPreenchimentoCampos(Dictionary<string, string> campos)
+        private async Task<bool> validarPreenchimentoCampos(Dictionary<string, string> campos)
         {
             foreach (var campo in campos)
             {
                 if (string.IsNullOrWhiteSpace(campo.Value))
                 {
-                    lblErro.Text = ($"O campo {campo.Key} é obrigatório.");
+                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAdmin, $"O campo {campo.Key} é obrigatório.");
                     return false;
                 }
             }
@@ -370,7 +373,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     {
                         var setores = new List<DictionaryEntry>
                         {
-                            new DictionaryEntry(0, "--SELECIONE--")
+                            new DictionaryEntry(0,"--SELECIONE--")
                         };
 
                         while (await reader.ReadAsync())
@@ -396,78 +399,67 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnCadastrarPergunta_Click(object sender, EventArgs e)
         {
+            string setorId = cbxListaSetorPergunta.SelectedValue?.ToString() ?? "0";
             string pergunta = txtPergunta.Text;
-            List<string> alternativas = getAlternativasRespondidas();
+            List<string> alternativas = await GetAlternativasRespondidas();
 
-            if (alternativas.Count < 1) return;
+            if (alternativas.Count == 0) return;
 
-            int idPergunta = await inserePergunta(pergunta);
+            if (setorId == "0")
+            {
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroPerguntas, "Nenhum setor foi selecionado.");
+                return;
+            }
 
-            if (idPergunta == 0) return;
+            int idPergunta = await InserirPerguntaAsync(pergunta, setorId);
 
-            insereOpcoes(1, alternativas);
-
+            if (idPergunta > 0)
+            {
+                await InserirOpcoesAsync(idPergunta, alternativas);
+                MessageBox.Show("Pergunta inserida com sucesso!");
+            }
+            else
+            {
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroPerguntas, "Erro ao cadastrar a pergunta.");
+            }
         }
 
-        private List<string> getAlternativasRespondidas()
+        private async Task<List<string>> GetAlternativasRespondidas()
         {
-            int numUltimaAlternativaVisivel = 0;
-            bool todasAlternativasPreenchidas = true;
             List<string> alternativas = new List<string>();
 
             for (int i = 0; i <= 10; i++)
             {
                 var textBoxAlternativa = this.Controls.Find($"txtAlternativa{i}", true).FirstOrDefault();
 
-                if (textBoxAlternativa != null)
+                if (textBoxAlternativa != null && textBoxAlternativa.Visible)
                 {
-                    if (textBoxAlternativa.Visible)
+                    if (string.IsNullOrWhiteSpace(textBoxAlternativa.Text))
                     {
-                        numUltimaAlternativaVisivel = i;
-                        if (string.IsNullOrWhiteSpace(textBoxAlternativa.Text))
-                        {
-                            todasAlternativasPreenchidas = false;
-                        }
+                        await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroPerguntas, "Preencha todos os campos antes de realizar o cadastro.");
+                        return new List<string>();
                     }
-                }
-            }
-
-            if (todasAlternativasPreenchidas == false)
-            {
-                MessageBox.Show("Preencha todos os campos antes de realizar o cadastro.", "Cadastro Invalido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return alternativas;
-            }
-
-            for (int numAlterntativa = 0; numAlterntativa <= numUltimaAlternativaVisivel; numAlterntativa++)
-            {
-                var textBoxAlternativa = this.Controls.Find($"txtAlternativa{numAlterntativa}", true).FirstOrDefault();
-                if (textBoxAlternativa != null)
                     alternativas.Add(textBoxAlternativa.Text);
+                }
             }
 
             return alternativas;
         }
-
-        private async Task<int> inserePergunta(string pergunta)
+        private async Task<int> InserirPerguntaAsync(string pergunta, string setorId)
         {
             StringBuilder sql = new StringBuilder();
-            sql.AppendLine("INSERT INTO perguntas (texto) VALUES (@pergunta)");
+            sql.AppendLine("INSERT INTO perguntas (texto, setor_id) VALUES (@pergunta, @setor)");
 
             using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
             {
                 cmd.Parameters.AddWithValue("@pergunta", pergunta);
+                cmd.Parameters.AddWithValue("@setor", setorId);
 
                 try
                 {
                     await cmd.ExecuteNonQueryAsync();
-
-                    // Recupera o ID do último registro inserido
                     cmd.CommandText = "SELECT LAST_INSERT_ID()";
-                    int perguntaId = Convert.ToInt32(await cmd.ExecuteScalarAsync());
-
-                    //MessageBox.Show("Pergunta inserida com sucesso! ");
-                    return perguntaId;
-
+                    return Convert.ToInt32(await cmd.ExecuteScalarAsync());
                 }
                 catch (MySqlException ex)
                 {
@@ -476,27 +468,21 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
             }
         }
-        /*********
-         * 
-         * 
-         * REVER O PQ DA COLUNA VALOR NA TABELA OPCOES
-         * 
-         * 
-         * 
-         **********/
-        private async void insereOpcoes(int id, List<string> alternativas)
+
+        private async Task InserirOpcoesAsync(int perguntaId, List<string> alternativas)
         {
+            string setorId = cbxListaSetorPergunta.SelectedValue?.ToString() ?? "0";
             StringBuilder sql = new StringBuilder();
-            sql.AppendLine("INSERT INTO opcoes (pergunta_id, texto, valor) VALUES (@pergunta_id, @texto, @valor)");
+            sql.AppendLine("INSERT INTO opcoes (pergunta_id, texto, setor_id) VALUES (@pergunta_id, @texto, @setor_id)");
 
             using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
             {
-                for (int i = 0; i < alternativas.Count; i++)
+                foreach (string alternativa in alternativas)
                 {
                     cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@texto", alternativas[i]);
-                    cmd.Parameters.AddWithValue("@pergunta_id", id);
-                    cmd.Parameters.AddWithValue("@valor", 1);
+                    cmd.Parameters.AddWithValue("@pergunta_id", perguntaId);
+                    cmd.Parameters.AddWithValue("@texto", alternativa);
+                    cmd.Parameters.AddWithValue("@setor_id", setorId);
 
                     try
                     {
@@ -505,13 +491,22 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     catch (MySqlException ex)
                     {
                         MessageBox.Show("Erro ao inserir as opções: " + ex.Message);
-                        return;
+                        break;
                     }
                 }
             }
-
-            MessageBox.Show("Pergunta inserida com sucesso! ");
-
         }
+
+        /*********
+         * 
+         * 
+         * REVER O PQ DA COLUNA VALOR NA TABELA OPCOES
+         * 
+         * NN TEM NENHUMA EXPLICAÇÃO POSSÍVEL PRA ELA EXISTIR
+         * 
+         * ALTER TABLE opcoes
+           RENAME COLUMN valor to setor_id;
+           Como vai ser necessário criar perguntas para cada setor acho melhor alterar esse valor para setor_id
+         */
     }
 }

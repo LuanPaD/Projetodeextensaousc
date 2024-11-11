@@ -35,9 +35,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             tbcPaginas.SelectedTab = tbSetor;
         }
 
-        private void btnPerguntas_Click(object sender, EventArgs e)
+        private async void btnPerguntas_Click(object sender, EventArgs e)
         {
-
+            string sql = @"
+                SELECT a.pergunta_id,a.texto, s.nome AS setor
+                FROM perguntas a
+                JOIN setores s ON a.setor_id = s.setor_id;";
+            await CarregarDadosAsync(sql, GridViewPerguntas,"pergunta_id");
             tbcPaginas.SelectedTab = tbPerguntas;
         }
         private async void btnCadrastoAdmin_Click(object sender, EventArgs e)
@@ -64,40 +68,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             this.Hide();
         }
-        /*
-        public async Task CarregarDadosAsync(string sql, DataGridView grid, params string[] colunasOcultar)
-        {
-            try
-            {
-                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
-                {
-                    using (var reader = await cmd.ExecuteReaderAsync())
-                    {
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
 
-                        grid.DataSource = dt;
-                        grid.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                        grid.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                        grid.BackgroundColor = System.Drawing.Color.White;
-                        grid.GridColor = System.Drawing.Color.Gray;
-                        grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                        foreach (var coluna in colunasOcultar)
-                        {
-                            if (grid.Columns.Contains(coluna))
-                            {
-                                grid.Columns[coluna].Visible = false;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erro ao verificar cadastro: " + ex.Message);
-            }
-        }*/
         public async Task CarregarDadosAsync(string sql, DataGridView grid, params string[] colunasOcultar)
         {
             try
@@ -111,18 +82,17 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                         grid.DataSource = dt;
 
-                        // Configuração de cores e estilização
-                        grid.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-                        grid.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
-                        grid.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.Azure;
-                        grid.BackgroundColor = System.Drawing.Color.White;
-                        grid.GridColor = System.Drawing.Color.LightSteelBlue;
+                        grid.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+                        grid.DefaultCellStyle.BackColor = System.Drawing.Color.IndianRed;
+                        grid.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightCoral;
+                        grid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+                        grid.GridColor = System.Drawing.Color.LightSlateGray;
 
-                        // Estilo do cabeçalho
-                        grid.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.SteelBlue;
+                        grid.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Brown;
                         grid.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-                        grid.ColumnHeadersDefaultCellStyle.Font = new Font(grid.Font, FontStyle.Bold);
+                        grid.ColumnHeadersDefaultCellStyle.Font = new Font(grid.Font.FontFamily, 12, FontStyle.Bold);
                         grid.EnableHeadersVisualStyles = false;
+
 
                         grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -195,6 +165,29 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 txtIdSetor.Text = row.Cells["setor_id"].Value?.ToString();
             }
         }
+
+        private void GridViewPerguntas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var row = GridViewPerguntas.Rows[e.RowIndex];
+
+                // Preenche o campo de texto da pergunta e o campo de ID da pergunta
+                txtPergunta.Text = row.Cells["texto"].Value?.ToString();
+                txtPerguntaId.Text = row.Cells["pergunta_id"].Value?.ToString();
+
+                // Tenta converter o texto de ID da pergunta em um número inteiro
+                if (int.TryParse(txtPerguntaId.Text, out int perguntaId))
+                {
+                    CarregarOpcoes(perguntaId);
+                }
+                else
+                {
+                    MessageBox.Show("O ID da pergunta não é um número válido.");
+                }
+            }
+        }
+
 
         private void GridAdimin_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -280,30 +273,15 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 MostraBotoesAtendentes(false);
         }
 
-        private async Task ExibirMensagemTemporariaSetor(string mensagem, int tempoEmMilissegundos = 5000)
-        {
-            lblMsgDaOperacao.Text = mensagem;
-            lblMsgDaOperacao.Visible = true;
-            await Task.Delay(tempoEmMilissegundos);
-            lblMsgDaOperacao.Visible = false;
-        }
 
-        private async Task ExibirMensagemTemporariaAdmin(string mensagem, int tempoEmMilissegundos = 5000)
-        {
-            lblMsgErroAdmin.Text = mensagem;
-            lblMsgErroAdmin.Visible = true;
-            await Task.Delay(tempoEmMilissegundos);
-            lblMsgErroAdmin.Visible = false;
-        }
 
-        private async Task ExibirMensagemTemporariaAtendente(string mensagem, int tempoEmMilissegundos = 5000)
+        public static async Task ExibirMensagemTemporaria(Label label, string mensagem, int tempoEmMilissegundos = 5000)
         {
-            lblMsgErroAtendente.Text = mensagem;
-            lblMsgErroAtendente.Visible = true;
+            label.Text = mensagem;
+            label.Visible = true;
             await Task.Delay(tempoEmMilissegundos);
-            lblMsgErroAtendente.Visible = false;
+            label.Visible = false;
         }
-
 
         private async Task<bool> DeletaSetorAsync(int SetorId)
         {
@@ -366,7 +344,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         {
             if (await FrmCadastros.JaExisteCadastroNomeSetor(nome))
             {
-                await ExibirMensagemTemporariaSetor("Esse SETOR já está cadastrado");
+                await ExibirMensagemTemporaria(lblMsgErroSetor, "Esse SETOR já está cadastrado");
                 return false;
             }
 
@@ -386,7 +364,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                     if (linhasAfetadas > 0)
                     {
-                        await ExibirMensagemTemporariaSetor("Setor atualizado com sucesso!");
+                        await ExibirMensagemTemporaria(lblMsgErroSetor, "Setor atualizado com sucesso!");
                         await CarregarDadosAsync("SELECT setor_id, nome FROM setores;", GridSetores, "setor_id");
                         return true;
                     }
@@ -409,19 +387,19 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         {
             if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha))
             {
-                await ExibirMensagemTemporariaAdmin("Todos os campos devem ser preenchidos.");
+                await ExibirMensagemTemporaria(lblMsgErroAdmin, "Todos os campos devem ser preenchidos.");
                 return false;
             }
 
             if (!FrmCadastros.ValidaEmail(email))
             {
-                await ExibirMensagemTemporariaAdmin("Digite um e-mail válido.");
+                await ExibirMensagemTemporaria(lblMsgErroAdmin, "Digite um e-mail válido.");
                 return false;
             }
 
             if (await FrmCadastros.JaExisteCadastroEmailAdmin(email))
             {
-                await ExibirMensagemTemporariaAdmin("Este e-mail já está cadastrado com outro administrador.");
+                await ExibirMensagemTemporaria(lblMsgErroAdmin, "Este e-mail já está cadastrado com outro administrador.");
                 return false;
             }
 
@@ -443,7 +421,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                     if (linhasAfetadas > 0)
                     {
-                        await ExibirMensagemTemporariaAdmin("Administrador atualizado com sucesso!");
+                        await ExibirMensagemTemporaria(lblMsgErroAdmin, "Administrador atualizado com sucesso!");
                         await CarregarDadosAsync("SELECT * FROM admin;", GridAdmin, "admin_id", "senha");
                         return true;
                     }
@@ -466,13 +444,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         {
             if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(email) || setorId == 0)
             {
-                await ExibirMensagemTemporariaAtendente("Todos os campos devem ser preenchidos.");
+                await ExibirMensagemTemporaria(lblMsgErroAtendente, "Todos os campos devem ser preenchidos.");
                 return false;
             }
 
             if (!FrmCadastros.ValidaEmail(email))
             {
-                await ExibirMensagemTemporariaAtendente("Digite um e-mail válido.");
+                await ExibirMensagemTemporaria(lblMsgErroAtendente, "Digite um e-mail válido.");
                 return false;
             }
 
@@ -481,13 +459,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
              * ATUALIZAR, PORQUE TEM UM EMAIL DESSE JÁ CADASTRADO
              * 
              * Não deixar o usuario EDITAR UM CAMPO QUE AINDA NN EXISTE
-             */ 
+             */
             if (await verificaEmailJaCadastrado(atendenteId, email))
             {
-                await ExibirMensagemTemporariaAtendente("Este e-mail já está cadastrado com outro atendente.");
+                await ExibirMensagemTemporaria(lblMsgErroAtendente, "Este e-mail já está cadastrado com outro atendente.");
                 return false;
             }
-            
+
 
             string sql = @"
                 UPDATE atendente 
@@ -507,7 +485,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                     if (linhasAfetadas > 0)
                     {
-                        await ExibirMensagemTemporariaAtendente("Atendente atualizado com sucesso!");
+                        await ExibirMensagemTemporaria(lblMsgErroAtendente, "Atendente atualizado com sucesso!");
                         await CarregarDadosAsync("SELECT a.atendente_id, a.nome, s.nome AS setor, a.email FROM atendente a JOIN setores s ON a.setor_id = s.setor_id;", GridAtendentes, "atendente_id");
                         return true;
                     }
@@ -585,18 +563,76 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                 if (sucesso)
                 {
-                    await ExibirMensagemTemporariaSetor("Setor excluído com sucesso!");
+                    gbBotoesSetor.Visible = false;
+                    await ExibirMensagemTemporaria(lblMsgErroSetor, "Setor excluído com sucesso!");
+
                 }
                 else
                 {
-                    await ExibirMensagemTemporariaSetor("Erro ao excluir o setor.");
+                    await ExibirMensagemTemporaria(lblMsgErroSetor, "Erro ao excluir o setor.");
                 }
             }
             else
             {
-                await ExibirMensagemTemporariaSetor("ID do setor inválido.");
+                await ExibirMensagemTemporaria(lblMsgErroSetor, "ID do setor inválido.");
             }
         }
+
+        private async void btnCarregarDadosPerguntas_Click(object sender, EventArgs e)
+        {
+            string sql = @"
+                SELECT a.pergunta_id,a.texto, s.nome AS setor
+                FROM perguntas a
+                JOIN setores s ON a.setor_id = s.setor_id;";
+            await CarregarDadosAsync(sql, GridViewPerguntas, "pergunta_id");
+        }
+
+
+        public void CarregarOpcoes(int idPergunta)
+        {
+            var sql = new System.Text.StringBuilder();
+            sql.Append("SELECT texto FROM opcoes WHERE pergunta_id = @idPergunta");
+
+            using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("@idPergunta", idPergunta);
+
+                try
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        int index = 1;
+                        while (reader.Read() && index <= 10) // Apenas preenche até 10 TextBoxes
+                        {
+                            // Usa o método Find para localizar o TextBox dinamicamente
+                            var txtOpcao = this.Controls.Find($"txtOpcao{index}", true);
+                            if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox)
+                            {
+                                txtBox.Text = reader["texto"].ToString();
+                                txtBox.Visible = true; // Mostra o TextBox
+                            }
+                            index++;
+                        }
+
+                        // Oculta os TextBoxes não utilizados
+                        for (int i = index; i <= 10; i++)
+                        {
+                            var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
+                            if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox)
+                            {
+                                txtBox.Visible = false;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao carregar opções: " + ex.Message);
+                }
+            }
+        }
+
+
 
     }
 }
