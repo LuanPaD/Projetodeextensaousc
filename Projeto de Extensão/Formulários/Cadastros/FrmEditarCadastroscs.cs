@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using PdfSharp.Drawing.BarCodes;
 using Projeto_de_Extensao.Classes;
 using Projeto_de_Extensao.Formulários.Cadastros;
 using System;
@@ -7,11 +8,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -29,6 +32,27 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         }
 
+        private async void ConsultaSqlPerguntas()
+        {
+            string sql = @"
+                SELECT a.pergunta_id,a.texto, s.nome AS setor
+                FROM perguntas a
+                JOIN setores s ON a.setor_id = s.setor_id;";
+            await CarregarDadosAsync(sql, GridViewPerguntas, "pergunta_id");
+        }
+
+        private async void ConsultaSqlAtendentes()
+        {
+            string sqlA = @"
+                        SELECT a.atendente_id,a.nome, s.nome AS setor, a.email
+                        FROM atendente a
+                        JOIN setores s ON a.setor_id = s.setor_id;";
+
+            await CarregarDadosAsync(sqlA, GridAtendentes, "atendente_id");
+        }
+
+        private void btnSair_Click(object sender, EventArgs e) => this.Hide();
+
         private async void btnSetor_Click(object sender, EventArgs e)
         {
             await CarregarDadosAsync("SELECT * FROM setores;", GridSetores, "setor_id");
@@ -37,11 +61,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnPerguntas_Click(object sender, EventArgs e)
         {
-            string sql = @"
-                SELECT a.pergunta_id,a.texto, s.nome AS setor
-                FROM perguntas a
-                JOIN setores s ON a.setor_id = s.setor_id;";
-            await CarregarDadosAsync(sql, GridViewPerguntas,"pergunta_id");
+            ConsultaSqlPerguntas();
             tbcPaginas.SelectedTab = tbPerguntas;
         }
         private async void btnCadrastoAdmin_Click(object sender, EventArgs e)
@@ -51,13 +71,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         }
         private async void btnAtendentes_Click(object sender, EventArgs e)
         {
-            string sql = @"
-                SELECT a.atendente_id,a.nome, s.nome AS setor, a.email
-                FROM atendente a
-                JOIN setores s ON a.setor_id = s.setor_id;";
-
-            await CarregarDadosAsync(sql, GridAtendentes, "atendente_id");
             await FrmCadastros.ListaTodosOsSetoresAsync(cmbListaDeSetores);
+            ConsultaSqlAtendentes();
             tbcPaginas.SelectedTab = tbAtendentes;
         }
 
@@ -120,39 +135,26 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
 
         //OCULTA O GRUPO DOS BOTÕES DE UM DETERMINADO GRUPO
-        private void MostraBotoesAtendentes(bool valor)
+        private void MostraBotoes(GroupBox gb, bool valor)
         {
-            gbBotoesAtendente.Visible = valor;
+            gb.Visible = valor;
         }
-
-        private void MostrarBotoesAdmin(bool valor)
-        {
-            gbBotoesAdmin.Visible = valor;
-        }
-
-        private void MostraBotoesSetor(bool valor)
-        {
-            gbBotoesSetor.Visible = valor;
-        }
-
 
         //MOSTRA OS BOTÕES 
         private void btnEditarSetor_Click(object sender, EventArgs e)
         {
-            MostraBotoesSetor(true);
+            MostraBotoes(gbBotoesSetor, true);
         }
 
         private void btnEditarAtendentes_Click(object sender, EventArgs e)
         {
-            MostraBotoesAtendentes(true);
+            MostraBotoes(gbBotoesAtendente, true);
         }
 
         private void btnEditarAdmin_Click(object sender, EventArgs e)
         {
-            MostrarBotoesAdmin(true);
+            MostraBotoes(gbBotoesAdmin, true);
         }
-
-
 
         //Extrai os valores da Linha do Grid Selecionado
         private void GridSetores_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -172,11 +174,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             {
                 var row = GridViewPerguntas.Rows[e.RowIndex];
 
-                // Preenche o campo de texto da pergunta e o campo de ID da pergunta
                 txtPergunta.Text = row.Cells["texto"].Value?.ToString();
                 txtPerguntaId.Text = row.Cells["pergunta_id"].Value?.ToString();
 
-                // Tenta converter o texto de ID da pergunta em um número inteiro
                 if (int.TryParse(txtPerguntaId.Text, out int perguntaId))
                 {
                     CarregarOpcoes(perguntaId);
@@ -248,7 +248,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             if (operacaoRealizada)
             {
-                MostraBotoesSetor(false);
+                MostraBotoes(gbBotoesSetor, false);
             }
         }
 
@@ -259,7 +259,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             bool operacaoRealizada = await AtualizarAdminAsync(AdminId, txtNomeAdimin.Text, txtEmailAdmin.Text, txtSenhaAdmin.Text);
 
             if (operacaoRealizada)
-                MostrarBotoesAdmin(false);
+                MostraBotoes(gbBotoesAdmin, false);
         }
 
         private async void btnSalvarAtendentes_Click(object sender, EventArgs e)
@@ -270,9 +270,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             bool operacaoRealizada = await AtualizarAtendenteAsync(AtentendenteId, txtNomeAtendente.Text, txtEmailAtendente.Text, setorId);
 
             if (operacaoRealizada)
-                MostraBotoesAtendentes(false);
+                MostraBotoes(gbBotoesAtendente, false);
         }
-
 
 
         public static async Task ExibirMensagemTemporaria(Label label, string mensagem, int tempoEmMilissegundos = 5000)
@@ -454,18 +453,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
 
-            /*
-             * NN É APENAS VERIFICAR SE ESSE EMAIL ESTA CADASATRADO PRECISA VERIFICAR SE E O MESMO ATENDETEID QUE ESTÁ TENDANDO ALTERAR PQ SE NN VAI DEIXAR 
-             * ATUALIZAR, PORQUE TEM UM EMAIL DESSE JÁ CADASTRADO
-             * 
-             * Não deixar o usuario EDITAR UM CAMPO QUE AINDA NN EXISTE
-             */
             if (await verificaEmailJaCadastrado(atendenteId, email))
             {
                 await ExibirMensagemTemporaria(lblMsgErroAtendente, "Este e-mail já está cadastrado com outro atendente.");
                 return false;
             }
-
 
             string sql = @"
                 UPDATE atendente 
@@ -486,7 +478,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     if (linhasAfetadas > 0)
                     {
                         await ExibirMensagemTemporaria(lblMsgErroAtendente, "Atendente atualizado com sucesso!");
-                        await CarregarDadosAsync("SELECT a.atendente_id, a.nome, s.nome AS setor, a.email FROM atendente a JOIN setores s ON a.setor_id = s.setor_id;", GridAtendentes, "atendente_id");
+                        ConsultaSqlAtendentes();
                         return true;
                     }
                     else
@@ -542,18 +534,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private async void btnCarregaAtendentes_Click(object sender, EventArgs e)
         {
             await FrmCadastros.ListaTodosOsSetoresAsync(cmbListaDeSetores);
-            string sql = @"
-                SELECT a.atendente_id,a.nome, s.nome AS setor, a.email
-                FROM atendente a
-                JOIN setores s ON a.setor_id = s.setor_id;";
-
-            await CarregarDadosAsync(sql, GridAtendentes, "atendente_id");
+            ConsultaSqlAtendentes();
         }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
+
 
         private async void btnDeletarSetor_Click(object sender, EventArgs e)
         {
@@ -580,11 +564,50 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnCarregarDadosPerguntas_Click(object sender, EventArgs e)
         {
-            string sql = @"
-                SELECT a.pergunta_id,a.texto, s.nome AS setor
-                FROM perguntas a
-                JOIN setores s ON a.setor_id = s.setor_id;";
-            await CarregarDadosAsync(sql, GridViewPerguntas, "pergunta_id");
+            ConsultaSqlPerguntas();
+        }
+
+        public async void AdicionarOpcao()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
+                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && !txtBox.Visible)
+                {
+                    txtBox.Text = string.Empty;
+                    txtBox.Visible = true;
+                    break;
+                }
+                if (i == 10)
+                    await ExibirMensagemTemporaria(lblMsgErroPerguntas, "O limite máximo de opções é 10.");
+            }
+        }
+
+        public async void RemoverOpcao()
+        {
+            for (int i = 10; i >= 3; i--)
+            {
+                var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
+                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && txtBox.Visible)
+                {
+                    txtBox.Text = string.Empty;
+                    txtBox.Visible = false;
+                    break;
+                }
+                if (i == 3)
+                    await ExibirMensagemTemporaria(lblMsgErroPerguntas, "O limite minimo e de opções é 2.");
+
+            }
+        }
+
+        private void btnAdiconarAlternativa_Click(object sender, EventArgs e)
+        {
+            AdicionarOpcao();
+        }
+
+        private void btnRemoverAlternativa_Click(object sender, EventArgs e)
+        {
+            RemoverOpcao();
         }
 
 
@@ -602,24 +625,26 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     using (var reader = cmd.ExecuteReader())
                     {
                         int index = 1;
-                        while (reader.Read() && index <= 10) // Apenas preenche até 10 TextBoxes
+
+
+
+                        while (reader.Read() && index <= 10)
                         {
-                            // Usa o método Find para localizar o TextBox dinamicamente
                             var txtOpcao = this.Controls.Find($"txtOpcao{index}", true);
                             if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox)
                             {
                                 txtBox.Text = reader["texto"].ToString();
-                                txtBox.Visible = true; // Mostra o TextBox
+                                txtBox.Visible = true;
+                                
                             }
                             index++;
                         }
-
-                        // Oculta os TextBoxes não utilizados
                         for (int i = index; i <= 10; i++)
                         {
                             var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
                             if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox)
                             {
+                                
                                 txtBox.Visible = false;
                             }
                         }
@@ -632,8 +657,201 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
+        private async void btnDeletarAdmin_Click(object sender, EventArgs e)
+        {
+            bool v = int.TryParse(txtIdAdmin.Text, out int adminId);
+            if (v)
+                await DeletarAdminAsync(adminId);
+        }
+
+        private async Task DeletarAdminAsync(int adminId)
+        {
+            string sql = @"
+        DELETE FROM admin
+        WHERE admin_id = @adminId";
+
+            try
+            {
+                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+                {
+                    cmd.Parameters.AddWithValue("@adminId", adminId);
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Administrador deletado com sucesso.");
+                        await CarregarDadosAsync("SELECT * FROM admin", GridAdmin, "admin_id", "senha");
+                        txtIdAdmin.Text = string.Empty;
+                        txtEmailAdmin.Text = string.Empty;
+                        txtSenhaAdmin.Text = string.Empty;
+                        txtNomeAdimin.Text = string.Empty;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhum administrador encontrado com esse ID.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao deletar administrador: " + ex.Message);
+            }
+        }
+        private async Task DeletaAtendenteAsync(int AtendenteId)
+        {
+            string sql = @"DELETE FROM atendente
+                           WHERE atendente_id = @atendenteId";
+
+            try
+            {
+                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+                {
+
+                    cmd.Parameters.AddWithValue("atendenteId", AtendenteId);
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Atendente deletado com sucesso.");
 
 
+                        txtEmailAtendente.Text = string.Empty;
+                        txtNomeAtendente.Text = string.Empty;
+                        txtIdAtendente.Text = string.Empty;
+                        cmbListaDeSetores.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhum Atendente encontrado com esse ID.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao deletar Atendente: " + ex.Message);
+            }
+
+        }
+        private async void btnDeletarAtendentes_Click(object sender, EventArgs e)
+        {
+            bool v = int.TryParse(txtIdAtendente.Text, out int atendeteId);
+            if (v)
+                await DeletaAtendenteAsync(atendeteId);
+        }
+
+        private async void btnSalvarPerguntas_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtPerguntaId.Text, out int perguntaId))
+            {
+                MessageBox.Show("ID da pergunta inválido.");
+                return;
+            }
+
+            // Salvar a pergunta no banco de dados
+            await SalvarPerguntaBancoDeDadosAsync(perguntaId, txtPergunta.Text);
+
+            // Obter opções preenchidas e salvá-las
+            var listaOpcoes = ObterOpcoesPreenchidas();
+            await SubstituirOpcoesNoBancoDeDadosAsync(perguntaId, listaOpcoes);
+
+            MessageBox.Show("Pergunta e opções salvas com sucesso!");
+        }
+
+        private List<string> ObterOpcoesPreenchidas()
+        {
+            var listaOpcoes = new List<string>();
+            for (int i = 1; i <= 10; i++)
+            {
+                var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
+                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && !string.IsNullOrEmpty(txtBox.Text))
+                {
+                    listaOpcoes.Add(txtBox.Text);
+                }
+            }
+            return listaOpcoes;
+        }
+
+        private async Task SubstituirOpcoesNoBancoDeDadosAsync(int perguntaId, List<string> listaOpcoes)
+        {
+            string deleteSql = "DELETE FROM opcoes WHERE pergunta_id = @perguntaId";
+            string insertSql = "INSERT INTO opcoes (pergunta_id, texto,setor_id) VALUES (@perguntaId, @texto,@setor_id)";
+
+            using (var connection = new MySqlConnection(ClsConexao.connectionString))
+            {
+                await connection.OpenAsync();
+
+                // Apaga todas as opções atuais da pergunta para evitar duplicações
+                using (var deleteCommand = new MySqlCommand(deleteSql, connection))
+                {
+                    deleteCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                    await deleteCommand.ExecuteNonQueryAsync();
+                }
+
+                // Insere cada nova opção
+                foreach (var opcao in listaOpcoes)
+                {
+                    using (var insertCommand = new MySqlCommand(insertSql, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                        insertCommand.Parameters.AddWithValue("@texto", opcao);
+                        insertCommand.Parameters.AddWithValue("@setor_id", 1);
+                        await insertCommand.ExecuteNonQueryAsync();
+                    }
+                }
+            }
+        }
+
+
+
+
+
+        private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta,string text)
+        {
+            string sql = @"UPDATE perguntas
+                           SET texto = @texto
+                           WHERE pergunta_id = @idPergunta";
+
+            try
+            {
+                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+                {
+                    cmd.Parameters.AddWithValue("@idPergunta", idPergunta);
+                    cmd.Parameters.AddWithValue("@texto", text);
+                    await cmd.ExecuteNonQueryAsync();
+
+                    MessageBox.Show("Pergunta atualizada com sucesso!");
+
+                }
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Erro " + ex.Message);
+            }
+        }
+
+        private async void SalvarOpcoesBancoDeDados(int idOpcao,int idPergunta , string opcao)
+        {
+            string sql = @"UPDATE opcoes
+                           SET texto = @opcao
+                           WHERE opcao_id = @idOpcao AND pergunta_id = @idPergunta";
+
+            try
+            {
+                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+                {
+                    cmd.Parameters.AddWithValue("@opcao", opcao);
+                    cmd.Parameters.AddWithValue("@opcao_id", idOpcao);
+                    cmd.Parameters.AddWithValue("@pergunta_id", idPergunta);
+
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro" + ex.Message);
+            }
+        }
     }
 }
 

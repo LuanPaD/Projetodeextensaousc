@@ -95,6 +95,8 @@
             label2 = new Label();
             lblTituloSetor = new Label();
             tbcPaginas = new TabControl();
+            lblOrdem = new Label();
+            textBox1 = new TextBox();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -570,6 +572,8 @@
             // 
             // tbPerguntas
             // 
+            tbPerguntas.Controls.Add(textBox1);
+            tbPerguntas.Controls.Add(lblOrdem);
             tbPerguntas.Controls.Add(lblErroPerguntas);
             tbPerguntas.Controls.Add(label3);
             tbPerguntas.Controls.Add(cbxListaSetorPergunta);
@@ -915,6 +919,25 @@
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 8;
             // 
+            // lblOrdem
+            // 
+            lblOrdem.AutoSize = true;
+            lblOrdem.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrdem.Location = new Point(769, 266);
+            lblOrdem.Name = "lblOrdem";
+            lblOrdem.Size = new Size(40, 25);
+            lblOrdem.TabIndex = 55;
+            lblOrdem.Text = "nº: ";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(815, 266);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(68, 32);
+            textBox1.TabIndex = 56;
+            // 
             // FrmCadastros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1011,5 +1034,7 @@
         private ComboBox cbxListaSetorPergunta;
         private Label label3;
         private Label lblErroPerguntas;
+        private TextBox textBox1;
+        private Label lblOrdem;
     }
 }

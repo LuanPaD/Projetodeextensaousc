@@ -65,6 +65,7 @@
             txtSenhaAdmin = new TextBox();
             btnSalvarAdmin = new Button();
             lblEmailAdmin = new Label();
+            btnDeletarAdmin = new Button();
             lblNomeAdmin = new Label();
             lblIdAdimin = new Label();
             txtEmailAdmin = new TextBox();
@@ -72,7 +73,6 @@
             txtIdAdmin = new TextBox();
             btnHomeAdm = new Button();
             btnEditarAdmin = new Button();
-            button9 = new Button();
             btnCarregaAdmin = new Button();
             lblTitle = new Label();
             GridAdmin = new DataGridView();
@@ -83,6 +83,7 @@
             lblSetorAtendente = new Label();
             btnSalvarAtendentes = new Button();
             lblEmailAtendente = new Label();
+            btnDeletarAtendentes = new Button();
             lblNomeAtendente = new Label();
             lblId = new Label();
             txtEmailAtendente = new TextBox();
@@ -90,12 +91,14 @@
             txtIdAtendente = new TextBox();
             btnHomeAtendente = new Button();
             btnEditarAtendentes = new Button();
-            btnDeletarAtendentes = new Button();
             btnCarregaAtendentes = new Button();
             GridAtendentes = new DataGridView();
             lblTituloAjuda = new Label();
             tbPerguntas = new TabPage();
+            lblMsgErroPerguntas = new Label();
             gbPerguntas = new GroupBox();
+            btnRemoverAlternativa = new Button();
+            btnAdiconarAlternativa = new Button();
             txtPerguntaId = new TextBox();
             txtPergunta = new TextBox();
             txtOpcao10 = new TextBox();
@@ -114,6 +117,7 @@
             btnEditarPerguntas = new Button();
             btnCarregarDadosPerguntas = new Button();
             label1 = new Label();
+            btnSalvarPerguntas = new Button();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -543,7 +547,6 @@
             tbAdmin.Controls.Add(gbBotoesAdmin);
             tbAdmin.Controls.Add(btnHomeAdm);
             tbAdmin.Controls.Add(btnEditarAdmin);
-            tbAdmin.Controls.Add(button9);
             tbAdmin.Controls.Add(btnCarregaAdmin);
             tbAdmin.Controls.Add(lblTitle);
             tbAdmin.Controls.Add(GridAdmin);
@@ -572,6 +575,7 @@
             gbBotoesAdmin.Controls.Add(txtSenhaAdmin);
             gbBotoesAdmin.Controls.Add(btnSalvarAdmin);
             gbBotoesAdmin.Controls.Add(lblEmailAdmin);
+            gbBotoesAdmin.Controls.Add(btnDeletarAdmin);
             gbBotoesAdmin.Controls.Add(lblNomeAdmin);
             gbBotoesAdmin.Controls.Add(lblIdAdimin);
             gbBotoesAdmin.Controls.Add(txtEmailAdmin);
@@ -604,7 +608,7 @@
             // 
             // btnSalvarAdmin
             // 
-            btnSalvarAdmin.Location = new Point(562, 85);
+            btnSalvarAdmin.Location = new Point(552, 55);
             btnSalvarAdmin.Name = "btnSalvarAdmin";
             btnSalvarAdmin.Size = new Size(90, 46);
             btnSalvarAdmin.TabIndex = 56;
@@ -621,6 +625,25 @@
             lblEmailAdmin.Size = new Size(78, 30);
             lblEmailAdmin.TabIndex = 55;
             lblEmailAdmin.Text = "EMAIL:";
+            // 
+            // btnDeletarAdmin
+            // 
+            btnDeletarAdmin.Anchor = AnchorStyles.None;
+            btnDeletarAdmin.BackColor = Color.Transparent;
+            btnDeletarAdmin.BackgroundImage = (Image)resources.GetObject("btnDeletarAdmin.BackgroundImage");
+            btnDeletarAdmin.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDeletarAdmin.Cursor = Cursors.Hand;
+            btnDeletarAdmin.FlatAppearance.BorderSize = 0;
+            btnDeletarAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
+            btnDeletarAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnDeletarAdmin.FlatStyle = FlatStyle.Flat;
+            btnDeletarAdmin.Location = new Point(543, 106);
+            btnDeletarAdmin.Margin = new Padding(3, 2, 3, 2);
+            btnDeletarAdmin.Name = "btnDeletarAdmin";
+            btnDeletarAdmin.Size = new Size(117, 49);
+            btnDeletarAdmin.TabIndex = 37;
+            btnDeletarAdmin.UseVisualStyleBackColor = false;
+            btnDeletarAdmin.Click += btnDeletarAdmin_Click;
             // 
             // lblNomeAdmin
             // 
@@ -700,24 +723,6 @@
             btnEditarAdmin.UseVisualStyleBackColor = false;
             btnEditarAdmin.Click += btnEditarAdmin_Click;
             // 
-            // button9
-            // 
-            button9.Anchor = AnchorStyles.None;
-            button9.BackColor = Color.Transparent;
-            button9.BackgroundImage = (Image)resources.GetObject("button9.BackgroundImage");
-            button9.BackgroundImageLayout = ImageLayout.Stretch;
-            button9.Cursor = Cursors.Hand;
-            button9.FlatAppearance.BorderSize = 0;
-            button9.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
-            button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Location = new Point(803, 279);
-            button9.Margin = new Padding(3, 2, 3, 2);
-            button9.Name = "button9";
-            button9.Size = new Size(168, 53);
-            button9.TabIndex = 37;
-            button9.UseVisualStyleBackColor = false;
-            // 
             // btnCarregaAdmin
             // 
             btnCarregaAdmin.BackColor = Color.Transparent;
@@ -762,7 +767,6 @@
             tbAtendentes.Controls.Add(gbBotoesAtendente);
             tbAtendentes.Controls.Add(btnHomeAtendente);
             tbAtendentes.Controls.Add(btnEditarAtendentes);
-            tbAtendentes.Controls.Add(btnDeletarAtendentes);
             tbAtendentes.Controls.Add(btnCarregaAtendentes);
             tbAtendentes.Controls.Add(GridAtendentes);
             tbAtendentes.Controls.Add(lblTituloAjuda);
@@ -791,6 +795,7 @@
             gbBotoesAtendente.Controls.Add(lblSetorAtendente);
             gbBotoesAtendente.Controls.Add(btnSalvarAtendentes);
             gbBotoesAtendente.Controls.Add(lblEmailAtendente);
+            gbBotoesAtendente.Controls.Add(btnDeletarAtendentes);
             gbBotoesAtendente.Controls.Add(lblNomeAtendente);
             gbBotoesAtendente.Controls.Add(lblId);
             gbBotoesAtendente.Controls.Add(txtEmailAtendente);
@@ -824,9 +829,9 @@
             // 
             // btnSalvarAtendentes
             // 
-            btnSalvarAtendentes.Location = new Point(530, 94);
+            btnSalvarAtendentes.Location = new Point(530, 52);
             btnSalvarAtendentes.Name = "btnSalvarAtendentes";
-            btnSalvarAtendentes.Size = new Size(90, 46);
+            btnSalvarAtendentes.Size = new Size(107, 46);
             btnSalvarAtendentes.TabIndex = 49;
             btnSalvarAtendentes.Text = "Salvar";
             btnSalvarAtendentes.UseVisualStyleBackColor = true;
@@ -841,6 +846,25 @@
             lblEmailAtendente.Size = new Size(78, 30);
             lblEmailAtendente.TabIndex = 48;
             lblEmailAtendente.Text = "EMAIL:";
+            // 
+            // btnDeletarAtendentes
+            // 
+            btnDeletarAtendentes.Anchor = AnchorStyles.None;
+            btnDeletarAtendentes.BackColor = Color.Transparent;
+            btnDeletarAtendentes.BackgroundImage = (Image)resources.GetObject("btnDeletarAtendentes.BackgroundImage");
+            btnDeletarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDeletarAtendentes.Cursor = Cursors.Hand;
+            btnDeletarAtendentes.FlatAppearance.BorderSize = 0;
+            btnDeletarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnDeletarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnDeletarAtendentes.FlatStyle = FlatStyle.Flat;
+            btnDeletarAtendentes.Location = new Point(530, 105);
+            btnDeletarAtendentes.Margin = new Padding(3, 2, 3, 2);
+            btnDeletarAtendentes.Name = "btnDeletarAtendentes";
+            btnDeletarAtendentes.Size = new Size(107, 45);
+            btnDeletarAtendentes.TabIndex = 39;
+            btnDeletarAtendentes.UseVisualStyleBackColor = false;
+            btnDeletarAtendentes.Click += btnDeletarAtendentes_Click;
             // 
             // lblNomeAtendente
             // 
@@ -920,24 +944,6 @@
             btnEditarAtendentes.UseVisualStyleBackColor = false;
             btnEditarAtendentes.Click += btnEditarAtendentes_Click;
             // 
-            // btnDeletarAtendentes
-            // 
-            btnDeletarAtendentes.Anchor = AnchorStyles.None;
-            btnDeletarAtendentes.BackColor = Color.Transparent;
-            btnDeletarAtendentes.BackgroundImage = (Image)resources.GetObject("btnDeletarAtendentes.BackgroundImage");
-            btnDeletarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
-            btnDeletarAtendentes.Cursor = Cursors.Hand;
-            btnDeletarAtendentes.FlatAppearance.BorderSize = 0;
-            btnDeletarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            btnDeletarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
-            btnDeletarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnDeletarAtendentes.Location = new Point(803, 279);
-            btnDeletarAtendentes.Margin = new Padding(3, 2, 3, 2);
-            btnDeletarAtendentes.Name = "btnDeletarAtendentes";
-            btnDeletarAtendentes.Size = new Size(168, 53);
-            btnDeletarAtendentes.TabIndex = 39;
-            btnDeletarAtendentes.UseVisualStyleBackColor = false;
-            // 
             // btnCarregaAtendentes
             // 
             btnCarregaAtendentes.BackColor = Color.Transparent;
@@ -978,6 +984,7 @@
             // 
             // tbPerguntas
             // 
+            tbPerguntas.Controls.Add(lblMsgErroPerguntas);
             tbPerguntas.Controls.Add(gbPerguntas);
             tbPerguntas.Controls.Add(GridViewPerguntas);
             tbPerguntas.Controls.Add(btnVoltarHomePerguntas);
@@ -992,8 +999,22 @@
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
             // 
+            // lblMsgErroPerguntas
+            // 
+            lblMsgErroPerguntas.AutoSize = true;
+            lblMsgErroPerguntas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMsgErroPerguntas.ForeColor = Color.Black;
+            lblMsgErroPerguntas.Location = new Point(354, 386);
+            lblMsgErroPerguntas.Name = "lblMsgErroPerguntas";
+            lblMsgErroPerguntas.Size = new Size(174, 21);
+            lblMsgErroPerguntas.TabIndex = 61;
+            lblMsgErroPerguntas.Text = "                                         ";
+            // 
             // gbPerguntas
             // 
+            gbPerguntas.Controls.Add(btnSalvarPerguntas);
+            gbPerguntas.Controls.Add(btnRemoverAlternativa);
+            gbPerguntas.Controls.Add(btnAdiconarAlternativa);
             gbPerguntas.Controls.Add(txtPerguntaId);
             gbPerguntas.Controls.Add(txtPergunta);
             gbPerguntas.Controls.Add(txtOpcao10);
@@ -1012,6 +1033,26 @@
             gbPerguntas.Size = new Size(965, 271);
             gbPerguntas.TabIndex = 47;
             gbPerguntas.TabStop = false;
+            // 
+            // btnRemoverAlternativa
+            // 
+            btnRemoverAlternativa.Location = new Point(665, 163);
+            btnRemoverAlternativa.Name = "btnRemoverAlternativa";
+            btnRemoverAlternativa.Size = new Size(101, 30);
+            btnRemoverAlternativa.TabIndex = 57;
+            btnRemoverAlternativa.Text = "-Alternativa";
+            btnRemoverAlternativa.UseVisualStyleBackColor = true;
+            btnRemoverAlternativa.Click += btnRemoverAlternativa_Click;
+            // 
+            // btnAdiconarAlternativa
+            // 
+            btnAdiconarAlternativa.Location = new Point(665, 126);
+            btnAdiconarAlternativa.Name = "btnAdiconarAlternativa";
+            btnAdiconarAlternativa.Size = new Size(101, 30);
+            btnAdiconarAlternativa.TabIndex = 56;
+            btnAdiconarAlternativa.Text = "+Alternativa";
+            btnAdiconarAlternativa.UseVisualStyleBackColor = true;
+            btnAdiconarAlternativa.Click += btnAdiconarAlternativa_Click;
             // 
             // txtPerguntaId
             // 
@@ -1033,6 +1074,7 @@
             txtOpcao10.Name = "txtOpcao10";
             txtOpcao10.Size = new Size(193, 23);
             txtOpcao10.TabIndex = 53;
+            txtOpcao10.Visible = false;
             // 
             // txtOpcao9
             // 
@@ -1040,6 +1082,7 @@
             txtOpcao9.Name = "txtOpcao9";
             txtOpcao9.Size = new Size(193, 23);
             txtOpcao9.TabIndex = 52;
+            txtOpcao9.Visible = false;
             // 
             // txtOpcao8
             // 
@@ -1047,6 +1090,7 @@
             txtOpcao8.Name = "txtOpcao8";
             txtOpcao8.Size = new Size(193, 23);
             txtOpcao8.TabIndex = 51;
+            txtOpcao8.Visible = false;
             // 
             // txtOpcao7
             // 
@@ -1054,6 +1098,7 @@
             txtOpcao7.Name = "txtOpcao7";
             txtOpcao7.Size = new Size(193, 23);
             txtOpcao7.TabIndex = 50;
+            txtOpcao7.Visible = false;
             // 
             // txtOpcao6
             // 
@@ -1061,6 +1106,7 @@
             txtOpcao6.Name = "txtOpcao6";
             txtOpcao6.Size = new Size(193, 23);
             txtOpcao6.TabIndex = 49;
+            txtOpcao6.Visible = false;
             // 
             // txtOpcao5
             // 
@@ -1068,6 +1114,7 @@
             txtOpcao5.Name = "txtOpcao5";
             txtOpcao5.Size = new Size(193, 23);
             txtOpcao5.TabIndex = 48;
+            txtOpcao5.Visible = false;
             // 
             // txtOpcao4
             // 
@@ -1075,6 +1122,7 @@
             txtOpcao4.Name = "txtOpcao4";
             txtOpcao4.Size = new Size(193, 23);
             txtOpcao4.TabIndex = 47;
+            txtOpcao4.Visible = false;
             // 
             // txtOpcao3
             // 
@@ -1082,6 +1130,7 @@
             txtOpcao3.Name = "txtOpcao3";
             txtOpcao3.Size = new Size(193, 23);
             txtOpcao3.TabIndex = 46;
+            txtOpcao3.Visible = false;
             // 
             // txtOpcao2
             // 
@@ -1089,6 +1138,7 @@
             txtOpcao2.Name = "txtOpcao2";
             txtOpcao2.Size = new Size(193, 23);
             txtOpcao2.TabIndex = 45;
+            txtOpcao2.Visible = false;
             // 
             // txtOpcao1
             // 
@@ -1096,6 +1146,7 @@
             txtOpcao1.Name = "txtOpcao1";
             txtOpcao1.Size = new Size(193, 23);
             txtOpcao1.TabIndex = 44;
+            txtOpcao1.Visible = false;
             // 
             // btnDeletarPerguntas
             // 
@@ -1108,7 +1159,7 @@
             btnDeletarPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnDeletarPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnDeletarPerguntas.Location = new Point(808, 133);
+            btnDeletarPerguntas.Location = new Point(808, 160);
             btnDeletarPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnDeletarPerguntas.Name = "btnDeletarPerguntas";
             btnDeletarPerguntas.Size = new Size(110, 33);
@@ -1184,6 +1235,16 @@
             label1.Size = new Size(255, 65);
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
+            // 
+            // btnSalvarPerguntas
+            // 
+            btnSalvarPerguntas.Location = new Point(817, 125);
+            btnSalvarPerguntas.Name = "btnSalvarPerguntas";
+            btnSalvarPerguntas.Size = new Size(101, 30);
+            btnSalvarPerguntas.TabIndex = 58;
+            btnSalvarPerguntas.Text = "SALVAR";
+            btnSalvarPerguntas.UseVisualStyleBackColor = true;
+            btnSalvarPerguntas.Click += btnSalvarPerguntas_Click;
             // 
             // FrmEditarCadastroscs
             // 
@@ -1267,7 +1328,7 @@
         private Button btnEditarPergunta;
         private Button btnDeletarPergunta;
         private Button btnEditarAdmin;
-        private Button button9;
+        private Button btnDeletarAdmin;
         private Button btnEditarAtendentes;
         private Button btnDeletarAtendentes;
         private Button btnHomeSetor;
@@ -1323,5 +1384,9 @@
         private TextBox txtOpcao2;
         private TextBox txtOpcao1;
         private TextBox txtPerguntaId;
+        private Button btnRemoverAlternativa;
+        private Button btnAdiconarAlternativa;
+        private Label lblMsgErroPerguntas;
+        private Button btnSalvarPerguntas;
     }
 }
