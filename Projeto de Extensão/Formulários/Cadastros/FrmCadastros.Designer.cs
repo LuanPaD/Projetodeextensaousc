@@ -42,6 +42,9 @@
             btnSair = new Button();
             folderBrowserDialog1 = new FolderBrowserDialog();
             tbAtendente = new TabPage();
+            btnUploadImage = new Button();
+            lblFotoAtendente = new Label();
+            ptbImagemAtendente = new PictureBox();
             cmbListaDeSetores = new ComboBox();
             lblMsgErroAtendente = new Label();
             lblSetor = new Label();
@@ -66,6 +69,8 @@
             lblAdministradores = new Label();
             lblSenha = new Label();
             tbPerguntas = new TabPage();
+            textBox1 = new TextBox();
+            lblOrdem = new Label();
             lblErroPerguntas = new Label();
             label3 = new Label();
             cbxListaSetorPergunta = new ComboBox();
@@ -95,8 +100,6 @@
             label2 = new Label();
             lblTituloSetor = new Label();
             tbcPaginas = new TabControl();
-            lblOrdem = new Label();
-            textBox1 = new TextBox();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -104,6 +107,7 @@
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tbAtendente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbImagemAtendente).BeginInit();
             tbAdmin.SuspendLayout();
             tbPerguntas.SuspendLayout();
             tbSetor.SuspendLayout();
@@ -275,6 +279,9 @@
             // 
             // tbAtendente
             // 
+            tbAtendente.Controls.Add(btnUploadImage);
+            tbAtendente.Controls.Add(lblFotoAtendente);
+            tbAtendente.Controls.Add(ptbImagemAtendente);
             tbAtendente.Controls.Add(cmbListaDeSetores);
             tbAtendente.Controls.Add(lblMsgErroAtendente);
             tbAtendente.Controls.Add(lblSetor);
@@ -293,6 +300,37 @@
             tbAtendente.Text = "Atendente";
             tbAtendente.UseVisualStyleBackColor = true;
             // 
+            // btnUploadImage
+            // 
+            btnUploadImage.BackgroundImage = (Image)resources.GetObject("btnUploadImage.BackgroundImage");
+            btnUploadImage.BackgroundImageLayout = ImageLayout.Stretch;
+            btnUploadImage.Location = new Point(315, 436);
+            btnUploadImage.Name = "btnUploadImage";
+            btnUploadImage.Size = new Size(74, 69);
+            btnUploadImage.TabIndex = 56;
+            btnUploadImage.UseVisualStyleBackColor = true;
+            btnUploadImage.Click += btnUploadImage_Click;
+            // 
+            // lblFotoAtendente
+            // 
+            lblFotoAtendente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblFotoAtendente.AutoSize = true;
+            lblFotoAtendente.Font = new Font("Segoe UI", 13.8F);
+            lblFotoAtendente.Location = new Point(76, 327);
+            lblFotoAtendente.Name = "lblFotoAtendente";
+            lblFotoAtendente.Size = new Size(141, 25);
+            lblFotoAtendente.TabIndex = 55;
+            lblFotoAtendente.Text = "Foto Atendente";
+            // 
+            // ptbImagemAtendente
+            // 
+            ptbImagemAtendente.Location = new Point(76, 364);
+            ptbImagemAtendente.Name = "ptbImagemAtendente";
+            ptbImagemAtendente.Size = new Size(218, 237);
+            ptbImagemAtendente.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbImagemAtendente.TabIndex = 54;
+            ptbImagemAtendente.TabStop = false;
+            // 
             // cmbListaDeSetores
             // 
             cmbListaDeSetores.FormattingEnabled = true;
@@ -306,8 +344,8 @@
             lblMsgErroAtendente.Anchor = AnchorStyles.None;
             lblMsgErroAtendente.AutoSize = true;
             lblMsgErroAtendente.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            lblMsgErroAtendente.ForeColor = Color.Red;
-            lblMsgErroAtendente.Location = new Point(334, 422);
+            lblMsgErroAtendente.ForeColor = Color.Black;
+            lblMsgErroAtendente.Location = new Point(383, 630);
             lblMsgErroAtendente.Name = "lblMsgErroAtendente";
             lblMsgErroAtendente.Size = new Size(232, 25);
             lblMsgErroAtendente.TabIndex = 52;
@@ -349,7 +387,7 @@
             btnCadastraAtendente.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCadastraAtendente.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCadastraAtendente.FlatStyle = FlatStyle.Flat;
-            btnCadastraAtendente.Location = new Point(282, 461);
+            btnCadastraAtendente.Location = new Point(341, 671);
             btnCadastraAtendente.Margin = new Padding(3, 2, 3, 2);
             btnCadastraAtendente.Name = "btnCadastraAtendente";
             btnCadastraAtendente.Size = new Size(342, 77);
@@ -601,6 +639,25 @@
             tbPerguntas.TabIndex = 1;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(815, 266);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(68, 32);
+            textBox1.TabIndex = 56;
+            // 
+            // lblOrdem
+            // 
+            lblOrdem.AutoSize = true;
+            lblOrdem.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblOrdem.Location = new Point(769, 266);
+            lblOrdem.Name = "lblOrdem";
+            lblOrdem.Size = new Size(40, 25);
+            lblOrdem.TabIndex = 55;
+            lblOrdem.Text = "nº: ";
             // 
             // lblErroPerguntas
             // 
@@ -919,25 +976,6 @@
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 8;
             // 
-            // lblOrdem
-            // 
-            lblOrdem.AutoSize = true;
-            lblOrdem.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblOrdem.Location = new Point(769, 266);
-            lblOrdem.Name = "lblOrdem";
-            lblOrdem.Size = new Size(40, 25);
-            lblOrdem.TabIndex = 55;
-            lblOrdem.Text = "nº: ";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(815, 266);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(68, 32);
-            textBox1.TabIndex = 56;
-            // 
             // FrmCadastros
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -957,6 +995,7 @@
             tableLayoutPanel2.ResumeLayout(false);
             tbAtendente.ResumeLayout(false);
             tbAtendente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbImagemAtendente).EndInit();
             tbAdmin.ResumeLayout(false);
             tbAdmin.PerformLayout();
             tbPerguntas.ResumeLayout(false);
@@ -1036,5 +1075,8 @@
         private Label lblErroPerguntas;
         private TextBox textBox1;
         private Label lblOrdem;
+        private Button btnUploadImage;
+        private Label lblFotoAtendente;
+        private PictureBox ptbImagemAtendente;
     }
 }

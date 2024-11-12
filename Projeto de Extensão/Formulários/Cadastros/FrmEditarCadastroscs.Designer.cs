@@ -97,6 +97,7 @@
             tbPerguntas = new TabPage();
             lblMsgErroPerguntas = new Label();
             gbPerguntas = new GroupBox();
+            btnSalvarPerguntas = new Button();
             btnRemoverAlternativa = new Button();
             btnAdiconarAlternativa = new Button();
             txtPerguntaId = new TextBox();
@@ -117,7 +118,7 @@
             btnEditarPerguntas = new Button();
             btnCarregarDadosPerguntas = new Button();
             label1 = new Label();
-            btnSalvarPerguntas = new Button();
+            ptbImagemAtendente = new PictureBox();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -137,6 +138,7 @@
             tbPerguntas.SuspendLayout();
             gbPerguntas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridViewPerguntas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ptbImagemAtendente).BeginInit();
             SuspendLayout();
             // 
             // pnlMenu
@@ -791,6 +793,7 @@
             // 
             // gbBotoesAtendente
             // 
+            gbBotoesAtendente.Controls.Add(ptbImagemAtendente);
             gbBotoesAtendente.Controls.Add(cmbListaDeSetores);
             gbBotoesAtendente.Controls.Add(lblSetorAtendente);
             gbBotoesAtendente.Controls.Add(btnSalvarAtendentes);
@@ -803,7 +806,7 @@
             gbBotoesAtendente.Controls.Add(txtIdAtendente);
             gbBotoesAtendente.Location = new Point(37, 482);
             gbBotoesAtendente.Name = "gbBotoesAtendente";
-            gbBotoesAtendente.Size = new Size(660, 207);
+            gbBotoesAtendente.Size = new Size(934, 207);
             gbBotoesAtendente.TabIndex = 52;
             gbBotoesAtendente.TabStop = false;
             gbBotoesAtendente.Visible = false;
@@ -829,7 +832,7 @@
             // 
             // btnSalvarAtendentes
             // 
-            btnSalvarAtendentes.Location = new Point(530, 52);
+            btnSalvarAtendentes.Location = new Point(793, 52);
             btnSalvarAtendentes.Name = "btnSalvarAtendentes";
             btnSalvarAtendentes.Size = new Size(107, 46);
             btnSalvarAtendentes.TabIndex = 49;
@@ -858,7 +861,7 @@
             btnDeletarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnDeletarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnDeletarAtendentes.Location = new Point(530, 105);
+            btnDeletarAtendentes.Location = new Point(793, 114);
             btnDeletarAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnDeletarAtendentes.Name = "btnDeletarAtendentes";
             btnDeletarAtendentes.Size = new Size(107, 45);
@@ -1033,6 +1036,16 @@
             gbPerguntas.Size = new Size(965, 271);
             gbPerguntas.TabIndex = 47;
             gbPerguntas.TabStop = false;
+            // 
+            // btnSalvarPerguntas
+            // 
+            btnSalvarPerguntas.Location = new Point(817, 125);
+            btnSalvarPerguntas.Name = "btnSalvarPerguntas";
+            btnSalvarPerguntas.Size = new Size(101, 30);
+            btnSalvarPerguntas.TabIndex = 58;
+            btnSalvarPerguntas.Text = "SALVAR";
+            btnSalvarPerguntas.UseVisualStyleBackColor = true;
+            btnSalvarPerguntas.Click += btnSalvarPerguntas_Click;
             // 
             // btnRemoverAlternativa
             // 
@@ -1236,15 +1249,14 @@
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
             // 
-            // btnSalvarPerguntas
+            // ptbImagemAtendente
             // 
-            btnSalvarPerguntas.Location = new Point(817, 125);
-            btnSalvarPerguntas.Name = "btnSalvarPerguntas";
-            btnSalvarPerguntas.Size = new Size(101, 30);
-            btnSalvarPerguntas.TabIndex = 58;
-            btnSalvarPerguntas.Text = "SALVAR";
-            btnSalvarPerguntas.UseVisualStyleBackColor = true;
-            btnSalvarPerguntas.Click += btnSalvarPerguntas_Click;
+            ptbImagemAtendente.Location = new Point(529, 27);
+            ptbImagemAtendente.Name = "ptbImagemAtendente";
+            ptbImagemAtendente.Size = new Size(161, 180);
+            ptbImagemAtendente.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbImagemAtendente.TabIndex = 55;
+            ptbImagemAtendente.TabStop = false;
             // 
             // FrmEditarCadastroscs
             // 
@@ -1284,6 +1296,7 @@
             gbPerguntas.ResumeLayout(false);
             gbPerguntas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridViewPerguntas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ptbImagemAtendente).EndInit();
             ResumeLayout(false);
         }
 
@@ -1388,5 +1401,6 @@
         private Button btnAdiconarAlternativa;
         private Label lblMsgErroPerguntas;
         private Button btnSalvarPerguntas;
+        private PictureBox ptbImagemAtendente;
     }
 }

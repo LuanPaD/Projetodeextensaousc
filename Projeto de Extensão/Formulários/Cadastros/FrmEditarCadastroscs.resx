@@ -1026,7 +1026,7 @@
         Z0/VkQozpq+1Beox9Xw2D1sW37PrOtbPEyhzTtPfH5n2/wHz7y3s2GGmbAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnDeletarPerguntas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnDeletarAtendentes.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJwAAAA8CAYAAACTpNOjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAB7pJREFUeF7tnV1sHNUVx/OAKKVVlUoIBKmaTWcm1PY9EyNatUC894wpIFQeQJXK
@@ -1065,7 +1065,7 @@
         EARBEARBEAThnPN/osiECaXyRxMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnVoltarHomePerguntas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnHomeAtendente.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAB/JJREFUeF7tnVmL1EoUx/0I99l1XBB3x30B4eICoqCjPghuo4IKLniHeXFFUUF9
@@ -1105,7 +1105,7 @@
         BteijEZW+L+KuU0R+EjW5gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnEditarPerguntas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnEditarAtendentes.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJwAAAA8CAYAAACTpNOjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAACJNJREFUeF7tnW2sHUUZx6czW8GXxDaEVIkIARTwAxpSYxTiW1IkEQIKwgcUCR/U
@@ -1148,7 +1148,7 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="btnCarregarDadosPerguntas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCarregaAtendentes.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADKySURBVHhe7d13
@@ -2308,7 +2308,7 @@
         bVl5m54o8/4/7+ehsnetizwAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnDeletarAtendentes.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnDeletarPerguntas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJwAAAA8CAYAAACTpNOjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAB7pJREFUeF7tnV1sHNUVx/OAKKVVlUoIBKmaTWcm1PY9EyNatUC894wpIFQeQJXK
@@ -2347,7 +2347,7 @@
         EARBEARBEAThnPN/osiECaXyRxMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnHomeAtendente.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnVoltarHomePerguntas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAB/JJREFUeF7tnVmL1EoUx/0I99l1XBB3x30B4eICoqCjPghuo4IKLniHeXFFUUF9
@@ -2387,7 +2387,7 @@
         BteijEZW+L+KuU0R+EjW5gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnEditarAtendentes.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnEditarPerguntas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJwAAAA8CAYAAACTpNOjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAACJNJREFUeF7tnW2sHUUZx6czW8GXxDaEVIkIARTwAxpSYxTiW1IkEQIKwgcUCR/U
@@ -2430,7 +2430,7 @@
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="btnCarregaAtendentes.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCarregarDadosPerguntas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADKySURBVHhe7d13

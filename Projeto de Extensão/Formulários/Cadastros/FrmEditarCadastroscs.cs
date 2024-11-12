@@ -149,12 +149,77 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private void btnEditarAtendentes_Click(object sender, EventArgs e)
         {
             MostraBotoes(gbBotoesAtendente, true);
+
+            //bool valido = int.TryParse(txtIdAtendente.Text, out int setorId);
+
+            //if (valido)
+            //{
+            //    byte[] imagemBytes = CarregarFoto(setorId); 
+
+            //    if (imagemBytes != null)
+            //    {
+            //        using (var ms = new MemoryStream(imagemBytes)) 
+            //        {
+            //            ptbImagemAtendente.Image = Image.FromStream(ms); 
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Imagem não encontrada para o atendente.");
+            //    }
+            //}
         }
 
         private void btnEditarAdmin_Click(object sender, EventArgs e)
         {
             MostraBotoes(gbBotoesAdmin, true);
         }
+
+        private void CarregarFoto(int atendenteID)
+        {
+            string sql = @"SELECT Imagem FROM fotos WHERE atendente_id = @atendente_id";
+
+            try
+            {
+                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+                {
+                    cmd.Parameters.AddWithValue("@atendente_id", atendenteID);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Verifica se a imagem foi retornada
+                            if (reader["Imagem"] != DBNull.Value)
+                            {
+                                byte[] imageBytes = (byte[])reader["Imagem"];
+                                using (var ms = new MemoryStream(imageBytes))
+                                {
+                                    ptbImagemAtendente.Image = Image.FromStream(ms); // Carrega a imagem do banco
+                                }
+                            }
+                            else
+                            {
+                                // Se não houver imagem, carrega a imagem padrão
+                                ptbImagemAtendente.Image = Properties.Resources.Ima; // Defina sua imagem padrão aqui
+                                
+                            }
+                        }
+                        else
+                        {
+                            // Caso não encontre o atendente no banco
+                            ptbImagemAtendente.Image = Properties.Resources.ImagemPadrao; // Defina sua imagem padrão aqui
+                            
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar a foto: " + ex.Message);
+            }
+        }
+
+
 
         //Extrai os valores da Linha do Grid Selecionado
         private void GridSetores_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -234,6 +299,25 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 else
                 {
                     cmbListaDeSetores.SelectedIndex = 0;
+                }
+
+                bool valido = int.TryParse(txtIdAtendente.Text, out int intSetorId);
+
+                if (valido)
+                {
+                    byte[] imagemBytes = CarregarFoto(intSetorId);
+
+                    if (imagemBytes != null)
+                    {
+                        using (var ms = new MemoryStream(imagemBytes))
+                        {
+                            ptbImagemAtendente.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Imagem não encontrada para o atendente.");
+                    }
                 }
             }
         }

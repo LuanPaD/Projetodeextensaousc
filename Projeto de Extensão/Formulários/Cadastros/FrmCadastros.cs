@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -57,10 +58,51 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             if (await validaCadastro())
                 cadastrarAdminNoBanco();
         }
-        private void btnCadastraAtendente_Click(object sender, EventArgs e)
+
+        private async void btnCadastraAtendente_Click(object sender, EventArgs e)
         {
-            cadastraAtendenteNoBanco();
+            int atendenteId = await cadastraAtendenteNoBanco();
+
+            if (atendenteId > 0 && ptbImagemAtendente != null && ptbImagemAtendente.Image != null)
+            {
+                string nome = txtNome2.Text;
+                await SaveImageToDatabase(atendenteId, nome);
+                ptbImagemAtendente.Image = null;
+                //DELETAR COLUNA NOME  -- SEM NECESSIDADE DEVIVO A TER A COLUNA ATENDETE_ID e TBM NN CONSEGUI PASSAR O NOME
+            }
+
+            FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Cadastro realizado com sucesso");
         }
+
+
+
+        private int UltimoAtendenteCadastrado()
+        {
+            int ultAtendente = 1;
+            string sql = @"SELECT MAX(atendente_id) FROM atendente;";
+
+            using (MySqlConnection conn = new MySqlConnection(ClsConexao.connectionString))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != DBNull.Value)
+                    {
+                        int ultimoAtendenteId = Convert.ToInt32(result);
+                        ultAtendente = ultimoAtendenteId + 1;
+                    }
+                }
+            }
+
+            return ultAtendente;
+        }
+
+
+
+
         private async void btnCadastrarSetor_Click(object sender, EventArgs e)
         {
             string nome = txtNomeSetor.Text;
@@ -140,8 +182,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
- 
-        private async void cadastraAtendenteNoBanco()
+
+        private async Task<int> cadastraAtendenteNoBanco()
         {
             string nome = txtNome2.Text;
             string email2 = txtEmail2.Text;
@@ -163,16 +205,16 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                 if (setor.Equals("0"))
                 {
-                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente,"Escolha um setor.\n");
+                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Escolha um setor.\n");
                 }
 
-                return;
+                return 0; // Retorna 0 em caso de erro
             }
 
             if (!ValidaEmail(email2))
             {
                 await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "E-mail inválido.");
-                return;
+                return 0; // Retorna 0 em caso de erro
             }
 
             StringBuilder sql = new StringBuilder();
@@ -186,28 +228,42 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                 try
                 {
+                    // Executa a inserção
                     int rowsAffected = await cmd.ExecuteNonQueryAsync();
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Cadastro realizado com sucesso.");
-                        Console.WriteLine("Cadastro realizado com sucesso.");
-                        lblMsgErroAtendente.Text = string.Empty;
-                        txtNome2.Text = string.Empty;
-                        txtEmail2.Text = string.Empty;
-                        cmbListaDeSetores.SelectedIndex = 0;
+                        // Recupera o ID do último atendente inserido
+                        string sqlLastInsertId = "SELECT LAST_INSERT_ID();";
+                        using (var cmdLastId = new MySqlCommand(sqlLastInsertId, ClsConexao.Conexao))
+                        {
+                            int atendenteId = Convert.ToInt32(await cmdLastId.ExecuteScalarAsync());
+                            Console.WriteLine("Atendente cadastrado com sucesso. ID: " + atendenteId);
+                            lblMsgErroAtendente.Text = string.Empty;
+
+                            // Limpa os campos após cadastro
+                            txtNome2.Text = string.Empty;
+                            txtEmail2.Text = string.Empty;
+                            cmbListaDeSetores.SelectedIndex = 0;
+
+                            // Retorna o ID do atendente
+                            return atendenteId;
+                        }
                     }
                     else
                     {
                         await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Nenhum dado foi inserido.");
                         Console.WriteLine("Nenhum dado foi inserido.");
+                        return 0;
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Erro ao cadastrar atendente: " + ex.Message);
+                    return 0; // Em caso de erro, retorna 0
                 }
             }
         }
+
 
 
         private async void cadastraSetorNoBanco()
@@ -274,10 +330,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             if (!ValidaEmail(txtEmail.Text))
             {
-                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAdmin,"E-mail inválido.");
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAdmin, "E-mail inválido.");
                 return false;
             }
-            if (! await validarPreenchimentoCampos(campos))
+            if (!await validarPreenchimentoCampos(campos))
                 return false;
             if (txtSenha.Text != txtConfirmaSenha.Text)
             {
@@ -496,6 +552,82 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
             }
         }
+
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Imagens|*.jpg;*.jpeg;*.png;*.bmp";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    ptbImagemAtendente.Image = Image.FromFile(ofd.FileName);
+                }
+            }
+        }
+
+        private byte[] ConvertImageToBytes(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, img.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
+        private async Task SaveImageToDatabase(int atendenteId, string nome)
+        {
+            if (ptbImagemAtendente.Image != null)
+            {
+                try
+                {
+                    // Converte a imagem para um array de bytes
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        ptbImagemAtendente.Image.Save(ms, ptbImagemAtendente.Image.RawFormat);
+                        byte[] imageBytes = ms.ToArray();
+
+                        // SQL para salvar a imagem
+                        string sql = @"INSERT INTO fotos (atendente_id, nome, tamanho, dataUpload, imagem)
+                               VALUES (@atendente_id, @nome, @tamanho, @dataUpload, @imagem)";
+
+                        using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+                        {
+                            cmd.Parameters.AddWithValue("@atendente_id", atendenteId);
+                            cmd.Parameters.AddWithValue("@nome", nome);
+                            cmd.Parameters.AddWithValue("@tamanho", imageBytes.Length);
+                            cmd.Parameters.AddWithValue("@dataUpload", DateTime.Now);
+                            cmd.Parameters.AddWithValue("@imagem", imageBytes);
+
+                            // Executa o comando de inserção
+                            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Imagem salva com sucesso.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Falha ao salvar a imagem.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao salvar a imagem: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Imagem não selecionada.");
+            }
+        }
+
+
+
+
+
+
+
 
         /*********
          * 
