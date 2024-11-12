@@ -79,6 +79,7 @@
             tbAtendentes = new TabPage();
             lblMsgErroAtendente = new Label();
             gbBotoesAtendente = new GroupBox();
+            ptbImagemAtendente = new PictureBox();
             cmbListaDeSetores = new ComboBox();
             lblSetorAtendente = new Label();
             btnSalvarAtendentes = new Button();
@@ -118,7 +119,6 @@
             btnEditarPerguntas = new Button();
             btnCarregarDadosPerguntas = new Button();
             label1 = new Label();
-            ptbImagemAtendente = new PictureBox();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -134,11 +134,11 @@
             ((System.ComponentModel.ISupportInitialize)GridAdmin).BeginInit();
             tbAtendentes.SuspendLayout();
             gbBotoesAtendente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbImagemAtendente).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GridAtendentes).BeginInit();
             tbPerguntas.SuspendLayout();
             gbPerguntas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridViewPerguntas).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ptbImagemAtendente).BeginInit();
             SuspendLayout();
             // 
             // pnlMenu
@@ -811,6 +811,15 @@
             gbBotoesAtendente.TabStop = false;
             gbBotoesAtendente.Visible = false;
             // 
+            // ptbImagemAtendente
+            // 
+            ptbImagemAtendente.Location = new Point(530, 27);
+            ptbImagemAtendente.Name = "ptbImagemAtendente";
+            ptbImagemAtendente.Size = new Size(161, 149);
+            ptbImagemAtendente.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbImagemAtendente.TabIndex = 55;
+            ptbImagemAtendente.TabStop = false;
+            // 
             // cmbListaDeSetores
             // 
             cmbListaDeSetores.Font = new Font("Segoe UI", 15.75F);
@@ -1249,15 +1258,6 @@
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
             // 
-            // ptbImagemAtendente
-            // 
-            ptbImagemAtendente.Location = new Point(529, 27);
-            ptbImagemAtendente.Name = "ptbImagemAtendente";
-            ptbImagemAtendente.Size = new Size(161, 180);
-            ptbImagemAtendente.SizeMode = PictureBoxSizeMode.Zoom;
-            ptbImagemAtendente.TabIndex = 55;
-            ptbImagemAtendente.TabStop = false;
-            // 
             // FrmEditarCadastroscs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1290,13 +1290,13 @@
             tbAtendentes.PerformLayout();
             gbBotoesAtendente.ResumeLayout(false);
             gbBotoesAtendente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbImagemAtendente).EndInit();
             ((System.ComponentModel.ISupportInitialize)GridAtendentes).EndInit();
             tbPerguntas.ResumeLayout(false);
             tbPerguntas.PerformLayout();
             gbPerguntas.ResumeLayout(false);
             gbPerguntas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridViewPerguntas).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ptbImagemAtendente).EndInit();
             ResumeLayout(false);
         }
 

@@ -18,6 +18,7 @@ using System.Web;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace Projeto_de_Extensao.Formulários.Admnistrativo
@@ -175,7 +176,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             MostraBotoes(gbBotoesAdmin, true);
         }
 
-        private void CarregarFoto(int atendenteID)
+        private byte[] CarregarFoto(int atendenteID)
         {
             string sql = @"SELECT Imagem FROM fotos WHERE atendente_id = @atendente_id";
 
@@ -192,23 +193,16 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             if (reader["Imagem"] != DBNull.Value)
                             {
                                 byte[] imageBytes = (byte[])reader["Imagem"];
-                                using (var ms = new MemoryStream(imageBytes))
-                                {
-                                    ptbImagemAtendente.Image = Image.FromStream(ms); // Carrega a imagem do banco
-                                }
+                                return imageBytes; // Retorna o array de bytes da imagem
                             }
                             else
                             {
-                                // Se não houver imagem, carrega a imagem padrão
-                                ptbImagemAtendente.Image = Properties.Resources.Ima; // Defina sua imagem padrão aqui
-                                
+                                return null; // Se não houver imagem, retorna null
                             }
                         }
                         else
                         {
-                            // Caso não encontre o atendente no banco
-                            ptbImagemAtendente.Image = Properties.Resources.ImagemPadrao; // Defina sua imagem padrão aqui
-                            
+                            return null; // Se o atendente não for encontrado, retorna null
                         }
                     }
                 }
@@ -216,8 +210,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao carregar a foto: " + ex.Message);
+                return null; // Retorna null em caso de erro
             }
         }
+
 
 
 
@@ -305,19 +301,19 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                 if (valido)
                 {
-                    byte[] imagemBytes = CarregarFoto(intSetorId);
-
-                    if (imagemBytes != null)
+                    byte[] imageBytes = CarregarFoto(intSetorId);
+                    if (imageBytes != null)
                     {
-                        using (var ms = new MemoryStream(imagemBytes))
+                        using (var ms = new MemoryStream(imageBytes))
                         {
                             ptbImagemAtendente.Image = Image.FromStream(ms);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Imagem não encontrada para o atendente.");
+                        ptbImagemAtendente.Image = Properties.Resources.Foto_de_perfil_para_redes_sociais_gradiente_simples__1__removebg_preview;
                     }
+
                 }
             }
         }
