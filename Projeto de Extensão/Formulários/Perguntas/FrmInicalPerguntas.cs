@@ -20,8 +20,8 @@ namespace Projeto_de_Extensao.Formulários.Perguntas
 
         private void bntInicar_Click(object sender, EventArgs e)
         {
-            FrmPergunta frmPerguntas = new FrmPergunta();
-            frmPerguntas.ShowDialog();
+            FrmEscolhaSetorAvaliacao FrmEscolhaSetorAvaliacao = new FrmEscolhaSetorAvaliacao();
+            FrmEscolhaSetorAvaliacao.ShowDialog();
 
             this.Dispose();
         }

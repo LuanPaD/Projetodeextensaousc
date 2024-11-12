@@ -158,3 +158,5 @@ C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Ex
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\PdfSharp.dll
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\de\PdfSharp.Charting.resources.dll
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\de\PdfSharp.resources.dll
+C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Perguntas.FrmEscolhaSetorAvaliacao.resources
+C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Cadastros.FrmSelecionarAtendentes.resources
