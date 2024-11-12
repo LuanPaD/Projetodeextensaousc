@@ -119,6 +119,7 @@
             btnEditarPerguntas = new Button();
             btnCarregarDadosPerguntas = new Button();
             label1 = new Label();
+            btnUploadImage = new Button();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -793,6 +794,7 @@
             // 
             // gbBotoesAtendente
             // 
+            gbBotoesAtendente.Controls.Add(btnUploadImage);
             gbBotoesAtendente.Controls.Add(ptbImagemAtendente);
             gbBotoesAtendente.Controls.Add(cmbListaDeSetores);
             gbBotoesAtendente.Controls.Add(lblSetorAtendente);
@@ -1258,6 +1260,17 @@
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
             // 
+            // btnUploadImage
+            // 
+            btnUploadImage.BackgroundImage = (Image)resources.GetObject("btnUploadImage.BackgroundImage");
+            btnUploadImage.BackgroundImageLayout = ImageLayout.Stretch;
+            btnUploadImage.Location = new Point(697, 27);
+            btnUploadImage.Name = "btnUploadImage";
+            btnUploadImage.Size = new Size(51, 47);
+            btnUploadImage.TabIndex = 57;
+            btnUploadImage.UseVisualStyleBackColor = true;
+            btnUploadImage.Click += btnUploadImage_Click;
+            // 
             // FrmEditarCadastroscs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1402,5 +1415,6 @@
         private Label lblMsgErroPerguntas;
         private Button btnSalvarPerguntas;
         private PictureBox ptbImagemAtendente;
+        private Button btnUploadImage;
     }
 }

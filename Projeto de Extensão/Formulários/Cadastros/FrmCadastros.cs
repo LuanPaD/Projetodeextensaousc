@@ -66,9 +66,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             if (atendenteId > 0 && ptbImagemAtendente != null && ptbImagemAtendente.Image != null)
             {
                 string nome = txtNome2.Text;
-                await SaveImageToDatabase(atendenteId, nome);
+                await FrmEditarCadastroscs.SaveImageToDatabase(ptbImagemAtendente,atendenteId, nome);
                 ptbImagemAtendente.Image = null;
-                //DELETAR COLUNA NOME  -- SEM NECESSIDADE DEVIVO A TER A COLUNA ATENDETE_ID e TBM NN CONSEGUI PASSAR O NOME
+                
             }
 
             FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Cadastro realizado com sucesso");
@@ -555,79 +555,23 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
+            SelecionaImagem(ptbImagemAtendente);
+        }
+
+        public static void SelecionaImagem(PictureBox picture)
+        {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Filter = "Imagens|*.jpg;*.jpeg;*.png;*.bmp";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    ptbImagemAtendente.Image = Image.FromFile(ofd.FileName);
+                    picture.Image = Image.FromFile(ofd.FileName);
                 }
             }
         }
 
-        private byte[] ConvertImageToBytes(Image img)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                img.Save(ms, img.RawFormat);
-                return ms.ToArray();
-            }
-        }
 
-        private async Task SaveImageToDatabase(int atendenteId, string nome)
-        {
-            if (ptbImagemAtendente.Image != null)
-            {
-                try
-                {
-                    // Converte a imagem para um array de bytes
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        ptbImagemAtendente.Image.Save(ms, ptbImagemAtendente.Image.RawFormat);
-                        byte[] imageBytes = ms.ToArray();
-
-                        // SQL para salvar a imagem
-                        string sql = @"INSERT INTO fotos (atendente_id, nome, tamanho, dataUpload, imagem)
-                               VALUES (@atendente_id, @nome, @tamanho, @dataUpload, @imagem)";
-
-                        using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
-                        {
-                            cmd.Parameters.AddWithValue("@atendente_id", atendenteId);
-                            cmd.Parameters.AddWithValue("@nome", nome);
-                            cmd.Parameters.AddWithValue("@tamanho", imageBytes.Length);
-                            cmd.Parameters.AddWithValue("@dataUpload", DateTime.Now);
-                            cmd.Parameters.AddWithValue("@imagem", imageBytes);
-
-                            // Executa o comando de inserção
-                            int rowsAffected = await cmd.ExecuteNonQueryAsync();
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Imagem salva com sucesso.");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Falha ao salvar a imagem.");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao salvar a imagem: " + ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Imagem não selecionada.");
-            }
-        }
-
-
-
-
-
-
-
+        //DELETAR COLUNA NOME  -- SEM NECESSIDADE DEVIVO A TER A COLUNA ATENDETE_ID e TBM NN CONSEGUI PASSAR O NOME
 
         /*********
          * 

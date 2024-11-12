@@ -150,25 +150,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private void btnEditarAtendentes_Click(object sender, EventArgs e)
         {
             MostraBotoes(gbBotoesAtendente, true);
-
-            //bool valido = int.TryParse(txtIdAtendente.Text, out int setorId);
-
-            //if (valido)
-            //{
-            //    byte[] imagemBytes = CarregarFoto(setorId); 
-
-            //    if (imagemBytes != null)
-            //    {
-            //        using (var ms = new MemoryStream(imagemBytes)) 
-            //        {
-            //            ptbImagemAtendente.Image = Image.FromStream(ms); 
-            //        }
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Imagem não encontrada para o atendente.");
-            //    }
-            //}
         }
 
         private void btnEditarAdmin_Click(object sender, EventArgs e)
@@ -344,14 +325,69 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnSalvarAtendentes_Click(object sender, EventArgs e)
         {
-            int.TryParse(txtIdAtendente.Text, out int AtentendenteId);
+            int.TryParse(txtIdAtendente.Text, out int atendenteId);
             int.TryParse(cmbListaDeSetores.SelectedValue?.ToString(), out int setorId);
 
-            bool operacaoRealizada = await AtualizarAtendenteAsync(AtentendenteId, txtNomeAtendente.Text, txtEmailAtendente.Text, setorId);
+            bool operacaoRealizada = await AtualizarAtendenteAsync(atendenteId, txtNomeAtendente.Text, txtEmailAtendente.Text, setorId);
 
             if (operacaoRealizada)
                 MostraBotoes(gbBotoesAtendente, false);
+
+            await SaveImageToDatabase(ptbImagemAtendente, atendenteId, txtNomeAtendente.Text);
         }
+
+        public static async Task SaveImageToDatabase(PictureBox picture, int atendenteId, string nome)
+        {
+            if (picture.Image != null)
+            {
+                try
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        picture.Image.Save(ms, picture.Image.RawFormat);
+                        byte[] imageBytes = ms.ToArray();
+
+                        string sql = @"
+                        INSERT INTO fotos (atendente_id, nome, tamanho, dataUpload, imagem)
+                        VALUES (@atendente_id, @nome, @tamanho, @dataUpload, @imagem)
+                        ON DUPLICATE KEY UPDATE
+                        nome = @nome,
+                        tamanho = @tamanho,
+                        dataUpload = @dataUpload,
+                        imagem = @imagem;";
+
+                        using (var connection = new MySqlConnection(ClsConexao.connectionString))
+                        {
+                            await connection.OpenAsync();
+
+                            using (var cmd = new MySqlCommand(sql, connection))
+                            {
+                                cmd.Parameters.AddWithValue("@atendente_id", atendenteId);
+                                cmd.Parameters.AddWithValue("@nome", nome);
+                                cmd.Parameters.AddWithValue("@tamanho", imageBytes.Length);
+                                cmd.Parameters.AddWithValue("@dataUpload", DateTime.Now);
+                                cmd.Parameters.AddWithValue("@imagem", imageBytes);
+
+                                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao salvar a imagem: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Imagem não selecionada.");
+            }
+        }
+
+
+
+
+
 
 
         public static async Task ExibirMensagemTemporaria(Label label, string mensagem, int tempoEmMilissegundos = 5000)
@@ -373,6 +409,18 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 {
                     try
                     {
+                        // Excluir fotos dos atendentes antes de excluir os atendentes
+                        string sqlDeletaFotos = @"
+                        DELETE FROM fotos
+                        WHERE atendente_id IN (SELECT atendente_id FROM atendente WHERE setor_id = @SetorId);";
+
+                        using (var cmdDeletaFotos = new MySqlCommand(sqlDeletaFotos, ClsConexao.Conexao, transacao))
+                        {
+                            cmdDeletaFotos.Parameters.AddWithValue("@SetorId", SetorId);
+                            await cmdDeletaFotos.ExecuteNonQueryAsync();
+                        }
+
+                        // Excluir atendentes associados ao setor
                         string sqlAtendentes = @"
                         DELETE FROM atendente
                         WHERE setor_id = @SetorId";
@@ -383,6 +431,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             await cmdAtendentes.ExecuteNonQueryAsync();
                         }
 
+                        // Excluir o setor
                         string sqlSetor = @"
                         DELETE FROM setores
                         WHERE setor_id = @SetorId";
@@ -395,14 +444,17 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             if (rowsAffected > 0)
                             {
                                 await transacao.CommitAsync();
+                                MessageBox.Show("Setor e atendentes excluídos com sucesso.");
                                 return true;
                             }
                             else
                             {
                                 await transacao.RollbackAsync();
+                                MessageBox.Show("Erro ao excluir setor.");
                                 return false;
                             }
                         }
+
                     }
                     catch (Exception ex)
                     {
@@ -417,6 +469,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
         }
+
 
         //Atualiza os dados dos setores e verifica se os campos estão preenchidos corretamente.
         private async Task<bool> AtualizarSetorAsync(int setorId, string nome)
@@ -715,7 +768,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             {
                                 txtBox.Text = reader["texto"].ToString();
                                 txtBox.Visible = true;
-                                
+
                             }
                             index++;
                         }
@@ -724,7 +777,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
                             if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox)
                             {
-                                
+
                                 txtBox.Visible = false;
                             }
                         }
@@ -778,32 +831,37 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 MessageBox.Show("Erro ao deletar administrador: " + ex.Message);
             }
         }
-        private async Task DeletaAtendenteAsync(int AtendenteId)
+        private async Task DeletaAtendenteAsync(int atendenteId)
         {
-            string sql = @"DELETE FROM atendente
-                           WHERE atendente_id = @atendenteId";
+            string sql = @"DELETE FROM fotos WHERE atendente_id = @atendenteId;
+                   DELETE FROM atendente WHERE atendente_id = @atendenteId;";
 
             try
             {
-                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+                using (var connection = new MySqlConnection(ClsConexao.connectionString))
                 {
+                    await connection.OpenAsync();
 
-                    cmd.Parameters.AddWithValue("atendenteId", AtendenteId);
-                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
-
-                    if (rowsAffected > 0)
+                    using (var transaction = await connection.BeginTransactionAsync())
+                    using (var cmd = new MySqlCommand(sql, connection, transaction))
                     {
-                        MessageBox.Show("Atendente deletado com sucesso.");
+                        cmd.Parameters.AddWithValue("@atendenteId", atendenteId);
 
+                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        await transaction.CommitAsync();
 
-                        txtEmailAtendente.Text = string.Empty;
-                        txtNomeAtendente.Text = string.Empty;
-                        txtIdAtendente.Text = string.Empty;
-                        cmbListaDeSetores.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Nenhum Atendente encontrado com esse ID.");
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Atendente deletado com sucesso.");
+                            txtEmailAtendente.Text = string.Empty;
+                            txtNomeAtendente.Text = string.Empty;
+                            txtIdAtendente.Text = string.Empty;
+                            cmbListaDeSetores.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nenhum Atendente encontrado com esse ID.");
+                        }
                     }
                 }
             }
@@ -811,12 +869,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             {
                 MessageBox.Show("Erro ao deletar Atendente: " + ex.Message);
             }
-
         }
+
         private async void btnDeletarAtendentes_Click(object sender, EventArgs e)
         {
-            bool v = int.TryParse(txtIdAtendente.Text, out int atendeteId);
-            if (v)
+            if (int.TryParse(txtIdAtendente.Text, out int atendeteId))
                 await DeletaAtendenteAsync(atendeteId);
         }
 
@@ -886,7 +943,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
 
 
-        private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta,string text)
+        private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text)
         {
             string sql = @"UPDATE perguntas
                            SET texto = @texto
@@ -904,13 +961,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro " + ex.Message);
             }
         }
 
-        private async void SalvarOpcoesBancoDeDados(int idOpcao,int idPergunta , string opcao)
+        private async void SalvarOpcoesBancoDeDados(int idOpcao, int idPergunta, string opcao)
         {
             string sql = @"UPDATE opcoes
                            SET texto = @opcao
@@ -932,6 +989,16 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 MessageBox.Show("Erro" + ex.Message);
             }
         }
+
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            FrmCadastros.SelecionaImagem(ptbImagemAtendente);
+        }
+
+
     }
 }
+
+
+//LINHA 314 ALTERA - IMAGEM DE USUÁRIO
 
