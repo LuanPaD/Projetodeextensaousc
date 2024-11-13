@@ -66,9 +66,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             if (atendenteId > 0 && ptbImagemAtendente != null && ptbImagemAtendente.Image != null)
             {
                 string nome = txtNome2.Text;
-                await FrmEditarCadastroscs.SaveImageToDatabase(ptbImagemAtendente,atendenteId, nome);
+                await FrmEditarCadastroscs.SaveImageToDatabase(ptbImagemAtendente, atendenteId, nome);
                 ptbImagemAtendente.Image = null;
-                
+
             }
 
             FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Cadastro realizado com sucesso");

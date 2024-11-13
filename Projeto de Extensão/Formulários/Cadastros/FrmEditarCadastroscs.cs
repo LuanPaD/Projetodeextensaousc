@@ -336,6 +336,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             await SaveImageToDatabase(ptbImagemAtendente, atendenteId, txtNomeAtendente.Text);
         }
 
+
+        //Não atualiza a foto , quando já tem uma 
         public static async Task SaveImageToDatabase(PictureBox picture, int atendenteId, string nome)
         {
             if (picture.Image != null)

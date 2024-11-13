@@ -13,7 +13,7 @@
     <Compile Update="Formulários\Cadastros\FrmEscolhaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formulários\Cadastros\FrmSelecionarAtendentes.cs">
+    <Compile Update="Formulários\Perguntas\FrmSelecionarAtendentes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formulários\Creditos\FrmCreditos.cs">
@@ -26,9 +26,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formulários\Perguntas\FrmPergunta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formulários\Perguntas\FrmPerguntaTipo1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formulários\Relatórios\FrmGraficos.cs">
