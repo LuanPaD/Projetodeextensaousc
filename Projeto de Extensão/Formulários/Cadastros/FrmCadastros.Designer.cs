@@ -983,6 +983,7 @@
             ClientSize = new Size(1310, 783);
             Controls.Add(tbcPaginas);
             Controls.Add(pnlMenu);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmCadastros";
             Text = "FrmCadastros";

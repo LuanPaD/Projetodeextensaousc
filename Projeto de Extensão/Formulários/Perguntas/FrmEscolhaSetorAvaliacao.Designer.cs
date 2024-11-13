@@ -188,6 +188,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1225, 652);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmEscolhaSetorAvaliacao";
             Text = "FrmEscolhaSetorAvaliacao";
             WindowState = FormWindowState.Maximized;

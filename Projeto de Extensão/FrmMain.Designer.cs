@@ -37,10 +37,10 @@
             btnAdmnistrador.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnAdmnistrador.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnAdmnistrador.FlatStyle = FlatStyle.Flat;
-            btnAdmnistrador.Location = new Point(1262, 629);
-            btnAdmnistrador.Margin = new Padding(17, 20, 17, 20);
+            btnAdmnistrador.Location = new Point(1104, 472);
+            btnAdmnistrador.Margin = new Padding(15, 15, 15, 15);
             btnAdmnistrador.Name = "btnAdmnistrador";
-            btnAdmnistrador.Size = new Size(70, 72);
+            btnAdmnistrador.Size = new Size(61, 54);
             btnAdmnistrador.TabIndex = 2;
             btnAdmnistrador.UseVisualStyleBackColor = true;
             btnAdmnistrador.Click += btnAdmnistrador_Click;
@@ -60,21 +60,23 @@
             tlpAlinhamento.Controls.Add(btnCreditos, 0, 2);
             tlpAlinhamento.Dock = DockStyle.Fill;
             tlpAlinhamento.Location = new Point(0, 0);
+            tlpAlinhamento.Margin = new Padding(3, 2, 3, 2);
             tlpAlinhamento.Name = "tlpAlinhamento";
             tlpAlinhamento.RowCount = 3;
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tlpAlinhamento.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            tlpAlinhamento.Size = new Size(1349, 721);
+            tlpAlinhamento.Size = new Size(1180, 541);
             tlpAlinhamento.TabIndex = 3;
             // 
             // pbLogo
             // 
             pbLogo.Anchor = AnchorStyles.None;
             pbLogo.Image = (Image)resources.GetObject("pbLogo.Image");
-            pbLogo.Location = new Point(335, 3);
+            pbLogo.Location = new Point(293, 2);
+            pbLogo.Margin = new Padding(3, 2, 3, 2);
             pbLogo.Name = "pbLogo";
-            pbLogo.Size = new Size(677, 282);
+            pbLogo.Size = new Size(592, 212);
             pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbLogo.TabIndex = 0;
             pbLogo.TabStop = false;
@@ -90,9 +92,10 @@
             btnAvaliar.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnAvaliar.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnAvaliar.FlatStyle = FlatStyle.Flat;
-            btnAvaliar.Location = new Point(420, 341);
+            btnAvaliar.Location = new Point(367, 256);
+            btnAvaliar.Margin = new Padding(3, 2, 3, 2);
             btnAvaliar.Name = "btnAvaliar";
-            btnAvaliar.Size = new Size(507, 109);
+            btnAvaliar.Size = new Size(444, 82);
             btnAvaliar.TabIndex = 1;
             btnAvaliar.UseVisualStyleBackColor = false;
             btnAvaliar.Click += btnAvaliar_Click;
@@ -107,21 +110,23 @@
             btnCreditos.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnCreditos.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCreditos.FlatStyle = FlatStyle.Flat;
-            btnCreditos.Location = new Point(17, 629);
-            btnCreditos.Margin = new Padding(17, 20, 17, 20);
+            btnCreditos.Location = new Point(15, 472);
+            btnCreditos.Margin = new Padding(15, 15, 15, 15);
             btnCreditos.Name = "btnCreditos";
-            btnCreditos.Size = new Size(70, 72);
+            btnCreditos.Size = new Size(61, 54);
             btnCreditos.TabIndex = 3;
             btnCreditos.UseVisualStyleBackColor = true;
             btnCreditos.Click += btnCreditos_Click;
             // 
             // FrmMain
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(208, 212, 214);
-            ClientSize = new Size(1349, 721);
+            ClientSize = new Size(1180, 541);
             Controls.Add(tlpAlinhamento);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMain";
             Text = "Sistema de Avaliação - UNISAGRADO";
             WindowState = FormWindowState.Maximized;

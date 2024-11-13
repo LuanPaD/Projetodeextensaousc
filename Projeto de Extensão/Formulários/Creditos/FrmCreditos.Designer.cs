@@ -32,13 +32,13 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            btnHomeCreditos = new Button();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             lblNomes1 = new Label();
             lblTitle = new Label();
-            btnHomeCreditos = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -85,6 +85,20 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1307, 517);
             panel1.TabIndex = 1;
+            // 
+            // btnHomeCreditos
+            // 
+            btnHomeCreditos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHomeCreditos.BackColor = Color.Gainsboro;
+            btnHomeCreditos.BackgroundImage = (Image)resources.GetObject("btnHomeCreditos.BackgroundImage");
+            btnHomeCreditos.BackgroundImageLayout = ImageLayout.Stretch;
+            btnHomeCreditos.FlatAppearance.BorderSize = 0;
+            btnHomeCreditos.Location = new Point(1228, 13);
+            btnHomeCreditos.Name = "btnHomeCreditos";
+            btnHomeCreditos.Size = new Size(70, 68);
+            btnHomeCreditos.TabIndex = 38;
+            btnHomeCreditos.UseVisualStyleBackColor = false;
+            btnHomeCreditos.Click += btnHomeCreditos_Click;
             // 
             // label4
             // 
@@ -152,26 +166,13 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Créditos";
             // 
-            // btnHomeCreditos
-            // 
-            btnHomeCreditos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnHomeCreditos.BackColor = Color.Gainsboro;
-            btnHomeCreditos.BackgroundImage = (Image)resources.GetObject("btnHomeCreditos.BackgroundImage");
-            btnHomeCreditos.BackgroundImageLayout = ImageLayout.Stretch;
-            btnHomeCreditos.FlatAppearance.BorderSize = 0;
-            btnHomeCreditos.Location = new Point(1228, 13);
-            btnHomeCreditos.Name = "btnHomeCreditos";
-            btnHomeCreditos.Size = new Size(70, 68);
-            btnHomeCreditos.TabIndex = 38;
-            btnHomeCreditos.UseVisualStyleBackColor = false;
-            btnHomeCreditos.Click += btnHomeCreditos_Click;
-            // 
             // FrmCreditos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1313, 675);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmCreditos";
             Text = "FrmCreditos";
             WindowState = FormWindowState.Maximized;

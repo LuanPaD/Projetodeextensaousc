@@ -1,11 +1,13 @@
 ﻿using MySqlConnector;
 using Projeto_de_Extensao.Classes;
+using Projeto_de_Extensão.Formulários.Perguntas;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,24 +39,32 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
         {
             ptbAtendente1.Image = null;
             ptbAtendente2.Image = null;
-            lblNomeAtendente1.Text = string.Empty;
-            lblNomeAtendente2.Text = string.Empty;
+            rdbAtendente1.Checked = false;
+            rdbAtendente2.Checked = false;
         }
 
         private void btnAvancarAtendentes_Click(object sender, EventArgs e)
         {
             int quantidade = numAtendentes(setorSelecionado);
 
-            if(quantidade == 0)
-            {
-                btnProxAtendente.Visible = false;
-            }
+            bool qtdImpar = quantidade % 2 != 0;
 
             if (pular < (quantidade - 2))
             {
                 pular += 2;
                 limpaCampos();
                 getAtendentes(setorSelecionado, pular);
+
+                if (qtdImpar && pular >= quantidade - 1)
+                {
+                    rdbAtendente1.Visible = true;
+                    rdbAtendente2.Visible = false;
+                }
+                else
+                {
+                    rdbAtendente1.Visible = true;
+                    rdbAtendente2.Visible = true;
+                }
 
                 btnVoltarAtendentes.Visible = true;
 
@@ -69,10 +79,13 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             }
         }
 
+
         private void btnVoltarAtendentes_Click(object sender, EventArgs e)
         {
             if (pular >= 2)
             {
+                rdbAtendente1.Visible = true;
+                rdbAtendente2.Visible = true;
                 pular -= 2;
                 limpaCampos();
                 getAtendentes(setorSelecionado, pular);
@@ -134,50 +147,12 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             }
         }
 
-
-
-        public static async Task ListaTodosOsSetoresAsync(ComboBox comboBox)
-        {
-            string sql = "SELECT * FROM setores";
-
-            try
-            {
-                using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
-                {
-                    using (var reader = await cmd.ExecuteReaderAsync())
-                    {
-                        var setores = new List<DictionaryEntry>
-                        {
-                            new DictionaryEntry(0,"--SELECIONE--")
-                        };
-
-                        while (await reader.ReadAsync())
-                        {
-                            int setorId = reader.GetInt32("setor_id");
-                            string nomeSetor = reader.GetString("nome");
-
-                            setores.Add(new DictionaryEntry(setorId, nomeSetor));
-                        }
-
-                        comboBox.DataSource = setores;
-                        comboBox.DisplayMember = "Value";
-                        comboBox.ValueMember = "Key";
-
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Erro ao listar setores: " + ex.Message);
-            }
-        }
-
         private void setaImagemENomeNoPTB(byte[] imageBytes, string nome)
         {
             var ptbImagem = buscaPtb();
-            var lblNomeAtendente = buscalblNome();
+            var rdbAtendeteSelecionado = buscaRBNome();
 
-            if (ptbImagem == null || lblNomeAtendente == null) return;
+            if (ptbImagem == null || rdbAtendeteSelecionado == null) return;
 
             if (imageBytes != null)
             {
@@ -190,8 +165,7 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             {
                 ptbImagem.Image = Properties.Resources.Foto_de_perfil_para_redes_sociais_gradiente_simples__1__removebg_preview;
             }
-
-            lblNomeAtendente.Text = nome;
+            rdbAtendeteSelecionado.Text = nome;
         }
 
         private PictureBox buscaPtb()
@@ -200,33 +174,87 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
 
             if (ptbImagemAtendente != null)
             {
-                //if (ptbImagemAtendente.Visible)
-                {
-                    //ptbImagemAtendentes.Visible = true;
-                    return (PictureBox)ptbImagemAtendente;
-                }
-            }
-
-            
-            return null; 
-        }
-
-        private Label buscalblNome()
-        {
-            var lblNomeAtendente = this.Controls.Find($"lblNomeAtendente{numCampoPreenchidoAtual}", true).FirstOrDefault();
-
-            if (lblNomeAtendente != null)
-            {
-                //
-                //if (lblNomeAtendente.Visible)
-                {
-                    return (Label)lblNomeAtendente;
-                }
+                return (PictureBox)ptbImagemAtendente;
             }
 
             return null;
         }
 
-        
+
+        private RadioButton buscaRBNome()
+        {
+            var rdbNomeAtendente = this.Controls.Find($"rdbAtendente{numCampoPreenchidoAtual}", true).FirstOrDefault();
+
+            if (rdbNomeAtendente != null)
+            {
+                return (RadioButton)rdbNomeAtendente;
+            }
+
+            return null;
+        }
+
+        private void btnAvancarAtendentes_Click_1(object sender, EventArgs e)
+        {
+            if (ValidarAtendenteSelecionado())
+            {
+                FrmPergunta FrmPergunta = new FrmPergunta(atendenteId);
+                FrmPergunta.ShowDialog();
+                this.Hide();
+            }
+        }
+
+        private int atendenteId = -1;
+
+        private bool ValidarAtendenteSelecionado()
+        {
+            if (!rdbAtendente1.Checked && !rdbAtendente2.Checked)
+            {
+                MessageBox.Show("Por favor, selecione um atendente.");
+                return false;
+            }
+
+            if (rdbAtendente1.Checked)
+            {
+                string nomeAtendente1 = rdbAtendente1.Text;
+                atendenteId = GetAtendenteId(nomeAtendente1);
+            }
+            else if (rdbAtendente2.Checked)
+            {
+                string nomeAtendente2 = rdbAtendente2.Text;
+                atendenteId = GetAtendenteId(nomeAtendente2);
+            }
+
+            if (atendenteId != -1)
+                return true;
+            else
+            {
+                MessageBox.Show("Nenhum atendente encontrado.");
+                return false;
+            }
+        }
+
+        private int GetAtendenteId(string nome)
+        {
+            string sql = @"SELECT atendente_id FROM atendente WHERE nome = @nome";
+
+            using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("@nome", nome);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt32("atendente_id");
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                }
+            }
+        }
+
+
     }
 }

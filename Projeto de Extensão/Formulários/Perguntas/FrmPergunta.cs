@@ -10,7 +10,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 {
     public partial class FrmPergunta : Form
     {
-        public FrmPergunta()
+        public FrmPergunta(int AtendenteId)
         {
             InitializeComponent();
             CriarAlternativas();

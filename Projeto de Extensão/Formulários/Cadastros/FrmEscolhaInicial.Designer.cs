@@ -135,6 +135,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1180, 541);
             Controls.Add(tlpAlinhamento);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmEscolhaInicial";
             Text = "FrmEscolhaInicial";
             WindowState = FormWindowState.Maximized;
