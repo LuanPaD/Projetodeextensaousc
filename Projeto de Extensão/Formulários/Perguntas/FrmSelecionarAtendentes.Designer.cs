@@ -42,12 +42,12 @@
             panel2 = new Panel();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
-            button1 = new Button();
+            btnVoltarAtendentes = new Button();
             lblNomeAtendente2 = new Label();
             ptbAtendente2 = new PictureBox();
             lblNomeAtendente1 = new Label();
             ptbAtendente1 = new PictureBox();
-            button2 = new Button();
+            btnProxAtendente = new Button();
             lblDireitos = new Label();
             imageList1 = new ImageList(components);
             tableLayoutPanel1.SuspendLayout();
@@ -187,12 +187,12 @@
             // 
             panel2.Controls.Add(radioButton2);
             panel2.Controls.Add(radioButton1);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(btnVoltarAtendentes);
             panel2.Controls.Add(lblNomeAtendente2);
             panel2.Controls.Add(ptbAtendente2);
             panel2.Controls.Add(lblNomeAtendente1);
             panel2.Controls.Add(ptbAtendente1);
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(btnProxAtendente);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 111);
             panel2.Name = "panel2";
@@ -223,18 +223,20 @@
             radioButton1.Text = "radioButton1";
             radioButton1.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnVoltarAtendentes
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.BackColor = Color.FromArgb(181, 0, 0);
-            button1.BackgroundImage = Properties.Resources.Group_855;
-            button1.BackgroundImageLayout = ImageLayout.Stretch;
-            button1.ForeColor = Color.FromArgb(181, 0, 0);
-            button1.Location = new Point(3, 169);
-            button1.Name = "button1";
-            button1.Size = new Size(57, 49);
-            button1.TabIndex = 10;
-            button1.UseVisualStyleBackColor = false;
+            btnVoltarAtendentes.Anchor = AnchorStyles.None;
+            btnVoltarAtendentes.BackColor = Color.FromArgb(181, 0, 0);
+            btnVoltarAtendentes.BackgroundImage = Properties.Resources.Group_855;
+            btnVoltarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
+            btnVoltarAtendentes.ForeColor = Color.FromArgb(181, 0, 0);
+            btnVoltarAtendentes.Location = new Point(3, 169);
+            btnVoltarAtendentes.Name = "btnVoltarAtendentes";
+            btnVoltarAtendentes.Size = new Size(57, 49);
+            btnVoltarAtendentes.TabIndex = 10;
+            btnVoltarAtendentes.UseVisualStyleBackColor = false;
+            btnVoltarAtendentes.Visible = false;
+            btnVoltarAtendentes.Click += btnVoltarAtendentes_Click;
             // 
             // lblNomeAtendente2
             // 
@@ -276,19 +278,20 @@
             ptbAtendente1.TabIndex = 4;
             ptbAtendente1.TabStop = false;
             // 
-            // button2
+            // btnProxAtendente
             // 
-            button2.Anchor = AnchorStyles.None;
-            button2.BackColor = Color.FromArgb(181, 0, 0);
-            button2.BackgroundImage = Properties.Resources.Group_856;
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.Font = new Font("Microsoft Sans Serif", 26.25F);
-            button2.ForeColor = Color.FromArgb(181, 0, 0);
-            button2.Location = new Point(635, 169);
-            button2.Name = "button2";
-            button2.Size = new Size(57, 49);
-            button2.TabIndex = 3;
-            button2.UseVisualStyleBackColor = false;
+            btnProxAtendente.Anchor = AnchorStyles.None;
+            btnProxAtendente.BackColor = Color.FromArgb(181, 0, 0);
+            btnProxAtendente.BackgroundImage = Properties.Resources.Group_856;
+            btnProxAtendente.BackgroundImageLayout = ImageLayout.Stretch;
+            btnProxAtendente.Font = new Font("Microsoft Sans Serif", 26.25F);
+            btnProxAtendente.ForeColor = Color.FromArgb(181, 0, 0);
+            btnProxAtendente.Location = new Point(635, 169);
+            btnProxAtendente.Name = "btnProxAtendente";
+            btnProxAtendente.Size = new Size(57, 49);
+            btnProxAtendente.TabIndex = 3;
+            btnProxAtendente.UseVisualStyleBackColor = false;
+            btnProxAtendente.Click += btnAvancarAtendentes_Click;
             // 
             // lblDireitos
             // 
@@ -346,12 +349,12 @@
         private Panel panel2;
         private Label lblDireitos;
         private Button btnAvancarAtendentes;
-        private Button button2;
+        private Button btnProxAtendente;
         private Label lblNomeAtendente2;
         private PictureBox ptbAtendente2;
         private Label lblNomeAtendente1;
         private PictureBox ptbAtendente1;
-        private Button button1;
+        private Button btnVoltarAtendentes;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private ImageList imageList1;

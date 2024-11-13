@@ -79,6 +79,7 @@
             tbAtendentes = new TabPage();
             lblMsgErroAtendente = new Label();
             gbBotoesAtendente = new GroupBox();
+            btnUploadImage = new Button();
             ptbImagemAtendente = new PictureBox();
             cmbListaDeSetores = new ComboBox();
             lblSetorAtendente = new Label();
@@ -119,7 +120,6 @@
             btnEditarPerguntas = new Button();
             btnCarregarDadosPerguntas = new Button();
             label1 = new Label();
-            btnUploadImage = new Button();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -813,12 +813,23 @@
             gbBotoesAtendente.TabStop = false;
             gbBotoesAtendente.Visible = false;
             // 
+            // btnUploadImage
+            // 
+            btnUploadImage.BackgroundImage = (Image)resources.GetObject("btnUploadImage.BackgroundImage");
+            btnUploadImage.BackgroundImageLayout = ImageLayout.Stretch;
+            btnUploadImage.Location = new Point(697, 27);
+            btnUploadImage.Name = "btnUploadImage";
+            btnUploadImage.Size = new Size(51, 47);
+            btnUploadImage.TabIndex = 57;
+            btnUploadImage.UseVisualStyleBackColor = true;
+            btnUploadImage.Click += btnUploadImage_Click;
+            // 
             // ptbImagemAtendente
             // 
             ptbImagemAtendente.Location = new Point(530, 27);
             ptbImagemAtendente.Name = "ptbImagemAtendente";
             ptbImagemAtendente.Size = new Size(161, 149);
-            ptbImagemAtendente.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbImagemAtendente.SizeMode = PictureBoxSizeMode.StretchImage;
             ptbImagemAtendente.TabIndex = 55;
             ptbImagemAtendente.TabStop = false;
             // 
@@ -1259,17 +1270,6 @@
             label1.Size = new Size(255, 65);
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
-            // 
-            // btnUploadImage
-            // 
-            btnUploadImage.BackgroundImage = (Image)resources.GetObject("btnUploadImage.BackgroundImage");
-            btnUploadImage.BackgroundImageLayout = ImageLayout.Stretch;
-            btnUploadImage.Location = new Point(697, 27);
-            btnUploadImage.Name = "btnUploadImage";
-            btnUploadImage.Size = new Size(51, 47);
-            btnUploadImage.TabIndex = 57;
-            btnUploadImage.UseVisualStyleBackColor = true;
-            btnUploadImage.Click += btnUploadImage_Click;
             // 
             // FrmEditarCadastroscs
             // 

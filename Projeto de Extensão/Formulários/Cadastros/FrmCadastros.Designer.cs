@@ -327,7 +327,7 @@
             ptbImagemAtendente.Location = new Point(76, 364);
             ptbImagemAtendente.Name = "ptbImagemAtendente";
             ptbImagemAtendente.Size = new Size(218, 237);
-            ptbImagemAtendente.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbImagemAtendente.SizeMode = PictureBoxSizeMode.StretchImage;
             ptbImagemAtendente.TabIndex = 54;
             ptbImagemAtendente.TabStop = false;
             // 
