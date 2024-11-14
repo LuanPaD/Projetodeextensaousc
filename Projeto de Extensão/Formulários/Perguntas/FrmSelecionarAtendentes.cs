@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D; 
 
 namespace Projeto_de_Extensao.Formulários.Cadastros
 {
@@ -24,6 +25,11 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
         public FrmSelecionarAtendentes(string setorSelecionado)
         {
             InitializeComponent();
+            EstilizarPictureBox(ptbAtendente1);
+            EstilizarPictureBox(ptbAtendente2);
+            EstilizarRadioButton(rdbAtendente1);
+            EstilizarRadioButton(rdbAtendente2);
+
             this.setorSelecionado = setorSelecionado;
             getAtendentes(this.setorSelecionado, pular);
             int quantidade = numAtendentes(this.setorSelecionado);
@@ -32,9 +38,128 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             {
                 btnProxAtendente.Visible = false;
             }
-
         }
 
+        private void EstilizarRadioButton(RadioButton radioButton)
+        {
+            // Customizando o estilo visual do RadioButton
+            radioButton.Appearance = Appearance.Normal;
+            radioButton.FlatStyle = FlatStyle.Flat;
+            radioButton.FlatAppearance.BorderSize = 0;
+            radioButton.BackColor = Color.Transparent;  // Fundo transparente
+            radioButton.ForeColor = Color.Black;  // Cor do texto
+            radioButton.TextAlign = ContentAlignment.MiddleCenter;
+            radioButton.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+
+            // Criando borda circular para o RadioButton
+            radioButton.Paint += (s, e) =>
+            {
+                int size = radioButton.Height - 4;
+                RectangleF bounds = new RectangleF(2, 2, size, size);
+                Color borderColor = radioButton.Checked ? Color.Red : Color.LightGray;
+                Color fillColor = radioButton.Checked ? Color.Red : Color.Transparent;
+
+                // Desenhando o círculo do RadioButton
+                using (Pen borderPen = new Pen(borderColor, 2))
+                using (SolidBrush fillBrush = new SolidBrush(fillColor))
+                {
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    e.Graphics.FillEllipse(fillBrush, bounds);
+                    e.Graphics.DrawEllipse(borderPen, bounds);
+                }
+
+                // Desenhando o texto
+                using (Brush textBrush = new SolidBrush(radioButton.ForeColor))
+                {
+                    e.Graphics.DrawString(radioButton.Text, radioButton.Font, textBrush, new RectangleF(1000, 0, radioButton.Width - 50, radioButton.Height));
+                }
+            };
+
+            // Adicionando animação para hover e clique
+            //radioButton.MouseEnter += (s, e) => radioButton.BackColor = Color.FromArgb(40, 40, 40);  // Escurecendo um pouco ao passar o mouse
+            //radioButton.MouseLeave += (s, e) => radioButton.BackColor = Color.Transparent;
+
+            radioButton.CheckedChanged += (s, e) =>
+            {
+                radioButton.Invalidate();  // Forçando o repaint para atualizar o estado
+            };
+        }
+        /*private void EstilizarRadioButton(RadioButton rb)
+{
+    rb.Appearance = Appearance.Button; // Faz com que o RadioButton tenha aparência de botão
+    rb.FlatStyle = FlatStyle.Flat;
+    rb.BackColor = Color.White; // Cor de fundo padrão
+    rb.ForeColor = Color.DarkSlateGray; // Cor do texto padrão
+    rb.FlatAppearance.BorderColor = Color.DarkGray; // Cor da borda
+    rb.FlatAppearance.BorderSize = 2;
+    rb.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+    rb.Size = new Size(120, 50); // Tamanho do botão para dar mais destaque
+    rb.TextAlign = ContentAlignment.MiddleCenter;
+
+    // Eventos para alterar o estilo quando o botão é clicado
+    rb.CheckedChanged += (sender, e) =>
+    {
+        if (rb.Checked)
+        {
+            rb.BackColor = Color.Red; // Cor de fundo vermelha ao selecionar
+            rb.ForeColor = Color.White; // Texto em branco para contraste
+        }
+        else
+        {
+            rb.BackColor = Color.White; // Volta à cor padrão ao desmarcar
+            rb.ForeColor = Color.DarkSlateGray;
+        }
+    };
+
+    // Evento para mudar a aparência ao passar o mouse
+    rb.MouseEnter += (sender, e) =>
+    {
+        if (!rb.Checked) rb.BackColor = Color.LightGray;
+    };
+    rb.MouseLeave += (sender, e) =>
+    {
+        if (!rb.Checked) rb.BackColor = Color.White;
+    };
+}
+
+         */
+        private void EstilizarPictureBox(PictureBox pictureBox)
+        {
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage; // Preenchimento total do PictureBox
+            pictureBox.BackColor = Color.Transparent;
+            pictureBox.Paint += (sender, e) =>
+            {
+                int borderRadius = 20; // Aumentado para uma aparência mais moderna
+                int borderThickness = 2;
+
+                // Criação do caminho arredondado para os cantos
+                GraphicsPath path = new GraphicsPath();
+                path.AddArc(0, 0, borderRadius, borderRadius, 180, 90);
+                path.AddArc(pictureBox.Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
+                path.AddArc(pictureBox.Width - borderRadius, pictureBox.Height - borderRadius, borderRadius, borderRadius, 0, 90);
+                path.AddArc(0, pictureBox.Height - borderRadius, borderRadius, borderRadius, 90, 90);
+                path.CloseFigure();
+
+                // Aplicando máscara arredondada
+                pictureBox.Region = new Region(path);
+
+                // Sombra suave para destacar o PictureBox
+                Color shadowColor = Color.FromArgb(60, 0, 0, 0); // Sombra mais suave e difusa
+                using (Pen shadowPen = new Pen(shadowColor, borderThickness * 4))
+                {
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    e.Graphics.DrawPath(shadowPen, path);
+                }
+
+                // Borda arredondada moderna
+                Color borderColor = Color.Gray;
+                using (Pen borderPen = new Pen(borderColor, borderThickness))
+                {
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    e.Graphics.DrawPath(borderPen, path);
+                }
+            };
+        }
         private void limpaCampos()
         {
             ptbAtendente1.Image = null;

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 using OfficeOpenXml;
-using System.Data;
 using System.IO;
 
 namespace Projeto_de_Extensao.Classes

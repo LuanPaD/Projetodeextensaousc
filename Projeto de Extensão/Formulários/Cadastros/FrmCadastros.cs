@@ -66,8 +66,17 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             if (atendenteId > 0 && ptbImagemAtendente != null && ptbImagemAtendente.Image != null)
             {
                 string nome = txtNome2.Text;
-                await FrmEditarCadastroscs.SaveImageToDatabase(ptbImagemAtendente, atendenteId, nome);
-                ptbImagemAtendente.Image = null;
+                try
+                {
+                    await FrmEditarCadastroscs.SaveImageToDatabase(ptbImagemAtendente, atendenteId, nome);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: ", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Erro ao realizar cadastro.");
+                    return;
+                }
+                    ptbImagemAtendente.Image = null;
 
             }
 

@@ -351,12 +351,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
                         string sql = @"
                         INSERT INTO fotos (atendente_id, nome, tamanho, dataUpload, imagem)
-                        VALUES (@atendente_id, @nome, @tamanho, @dataUpload, @imagem)
-                        ON DUPLICATE KEY UPDATE
-                        nome = @nome,
-                        tamanho = @tamanho,
-                        dataUpload = @dataUpload,
-                        imagem = @imagem;";
+                            VALUES (@atendente_id, @nome, @tamanho, @dataUpload, @imagem)
+                            ON DUPLICATE KEY UPDATE
+                            nome = @nome,
+                            tamanho = @tamanho,
+                            dataUpload = @dataUpload,
+                            imagem = @imagem;";
 
                         using (var connection = new MySqlConnection(ClsConexao.connectionString))
                         {
