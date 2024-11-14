@@ -68,19 +68,22 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 string nome = txtNome2.Text;
                 try
                 {
-                    await FrmEditarCadastroscs.SaveImageToDatabase(ptbImagemAtendente, atendenteId, nome);
+                    await SaveImageToDatabase(ptbImagemAtendente, atendenteId, nome);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro: ", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Erro ao realizar cadastro.");
+                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Erro ao realizar cadastro.");
                     return;
                 }
                     ptbImagemAtendente.Image = null;
 
             }
+            txtNome2.Text = string.Empty;
+            txtEmail2.Text = string.Empty;
+            cmbListaDeSetores.SelectedIndex = 0;
 
-            FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Cadastro realizado com sucesso");
+            await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Cadastro realizado com sucesso");
         }
 
 
@@ -248,11 +251,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             int atendenteId = Convert.ToInt32(await cmdLastId.ExecuteScalarAsync());
                             Console.WriteLine("Atendente cadastrado com sucesso. ID: " + atendenteId);
                             lblMsgErroAtendente.Text = string.Empty;
-
-                            // Limpa os campos após cadastro
-                            txtNome2.Text = string.Empty;
-                            txtEmail2.Text = string.Empty;
-                            cmbListaDeSetores.SelectedIndex = 0;
+                            
 
                             // Retorna o ID do atendente
                             return atendenteId;
@@ -593,5 +592,54 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
            RENAME COLUMN valor to setor_id;
            Como vai ser necessário criar perguntas para cada setor acho melhor alterar esse valor para setor_id
          */
+
+        private async Task SaveImageToDatabase(PictureBox picture, int atendenteId, string nome)
+        {
+            if (picture.Image != null)
+            {
+                try
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        picture.Image.Save(ms, picture.Image.RawFormat);
+                        byte[] imageBytes = ms.ToArray();
+
+                        string sql = @"
+                        INSERT INTO fotos (atendente_id, nome, tamanho, dataUpload, imagem)
+                            VALUES (@atendente_id, @nome, @tamanho, @dataUpload, @imagem)
+                            ON DUPLICATE KEY UPDATE
+                            nome = @nome,
+                            tamanho = @tamanho,
+                            dataUpload = @dataUpload,
+                            imagem = @imagem;";
+
+                        using (var connection = new MySqlConnection(ClsConexao.connectionString))
+                        {
+                            await connection.OpenAsync();
+
+                            using (var cmd = new MySqlCommand(sql, connection))
+                            {
+                                cmd.Parameters.AddWithValue("@atendente_id", atendenteId);
+                                cmd.Parameters.AddWithValue("@nome", $"{nome}_{atendenteId}");
+                                cmd.Parameters.AddWithValue("@tamanho", imageBytes.Length);
+                                cmd.Parameters.AddWithValue("@dataUpload", DateTime.Now);
+                                cmd.Parameters.AddWithValue("@imagem", imageBytes);
+
+                                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao salvar a imagem: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Imagem não selecionada.");
+            }
+
+        }
     }
 }

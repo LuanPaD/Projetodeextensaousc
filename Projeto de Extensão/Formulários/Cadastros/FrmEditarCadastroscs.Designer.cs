@@ -150,9 +150,8 @@
             pnlMenu.Controls.Add(panel1);
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
-            pnlMenu.Margin = new Padding(3, 4, 3, 4);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(297, 964);
+            pnlMenu.Size = new Size(260, 723);
             pnlMenu.TabIndex = 9;
             // 
             // tlpBotoesEscolha
@@ -163,8 +162,7 @@
             tlpBotoesEscolha.Controls.Add(btnSetor, 0, 0);
             tlpBotoesEscolha.Controls.Add(btnPerguntas, 0, 1);
             tlpBotoesEscolha.Controls.Add(btnAtendentes, 0, 3);
-            tlpBotoesEscolha.Location = new Point(0, 161);
-            tlpBotoesEscolha.Margin = new Padding(3, 4, 3, 4);
+            tlpBotoesEscolha.Location = new Point(0, 121);
             tlpBotoesEscolha.Name = "tlpBotoesEscolha";
             tlpBotoesEscolha.RowCount = 5;
             tlpBotoesEscolha.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -172,7 +170,7 @@
             tlpBotoesEscolha.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tlpBotoesEscolha.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tlpBotoesEscolha.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tlpBotoesEscolha.Size = new Size(297, 444);
+            tlpBotoesEscolha.Size = new Size(260, 333);
             tlpBotoesEscolha.TabIndex = 10;
             // 
             // btnCadrastoAdmin
@@ -185,10 +183,9 @@
             btnCadrastoAdmin.FlatStyle = FlatStyle.Flat;
             btnCadrastoAdmin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCadrastoAdmin.ForeColor = Color.White;
-            btnCadrastoAdmin.Location = new Point(3, 180);
-            btnCadrastoAdmin.Margin = new Padding(3, 4, 3, 4);
+            btnCadrastoAdmin.Location = new Point(3, 135);
             btnCadrastoAdmin.Name = "btnCadrastoAdmin";
-            btnCadrastoAdmin.Size = new Size(291, 80);
+            btnCadrastoAdmin.Size = new Size(254, 60);
             btnCadrastoAdmin.TabIndex = 13;
             btnCadrastoAdmin.UseVisualStyleBackColor = false;
             btnCadrastoAdmin.Click += btnCadrastoAdmin_Click;
@@ -203,10 +200,9 @@
             btnSetor.FlatStyle = FlatStyle.Flat;
             btnSetor.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSetor.ForeColor = Color.White;
-            btnSetor.Location = new Point(3, 4);
-            btnSetor.Margin = new Padding(3, 4, 3, 4);
+            btnSetor.Location = new Point(3, 3);
             btnSetor.Name = "btnSetor";
-            btnSetor.Size = new Size(291, 80);
+            btnSetor.Size = new Size(254, 60);
             btnSetor.TabIndex = 8;
             btnSetor.UseVisualStyleBackColor = false;
             btnSetor.Click += btnSetor_Click;
@@ -221,10 +217,9 @@
             btnPerguntas.FlatStyle = FlatStyle.Flat;
             btnPerguntas.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPerguntas.ForeColor = Color.White;
-            btnPerguntas.Location = new Point(3, 92);
-            btnPerguntas.Margin = new Padding(3, 4, 3, 4);
+            btnPerguntas.Location = new Point(3, 69);
             btnPerguntas.Name = "btnPerguntas";
-            btnPerguntas.Size = new Size(291, 80);
+            btnPerguntas.Size = new Size(254, 60);
             btnPerguntas.TabIndex = 12;
             btnPerguntas.UseVisualStyleBackColor = false;
             btnPerguntas.Click += btnPerguntas_Click;
@@ -239,10 +234,9 @@
             btnAtendentes.FlatStyle = FlatStyle.Flat;
             btnAtendentes.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAtendentes.ForeColor = Color.White;
-            btnAtendentes.Location = new Point(3, 268);
-            btnAtendentes.Margin = new Padding(3, 4, 3, 4);
+            btnAtendentes.Location = new Point(3, 201);
             btnAtendentes.Name = "btnAtendentes";
-            btnAtendentes.Size = new Size(291, 80);
+            btnAtendentes.Size = new Size(254, 60);
             btnAtendentes.TabIndex = 14;
             btnAtendentes.UseVisualStyleBackColor = false;
             btnAtendentes.Click += btnAtendentes_Click;
@@ -252,21 +246,21 @@
             panelTopo.Controls.Add(pictureBoxLogo);
             panelTopo.Dock = DockStyle.Top;
             panelTopo.Location = new Point(0, 0);
-            panelTopo.Margin = new Padding(7, 8, 7, 8);
+            panelTopo.Margin = new Padding(6, 6, 6, 6);
             panelTopo.Name = "panelTopo";
-            panelTopo.Padding = new Padding(7, 8, 7, 8);
-            panelTopo.Size = new Size(297, 149);
+            panelTopo.Padding = new Padding(6, 6, 6, 6);
+            panelTopo.Size = new Size(260, 112);
             panelTopo.TabIndex = 0;
             // 
             // pictureBoxLogo
             // 
             pictureBoxLogo.Dock = DockStyle.Fill;
             pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
-            pictureBoxLogo.Location = new Point(7, 8);
-            pictureBoxLogo.Margin = new Padding(11, 13, 11, 13);
+            pictureBoxLogo.Location = new Point(6, 6);
+            pictureBoxLogo.Margin = new Padding(10, 10, 10, 10);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Padding = new Padding(11, 13, 11, 13);
-            pictureBoxLogo.Size = new Size(283, 133);
+            pictureBoxLogo.Padding = new Padding(10, 10, 10, 10);
+            pictureBoxLogo.Size = new Size(248, 100);
             pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo.TabIndex = 0;
             pictureBoxLogo.TabStop = false;
@@ -275,10 +269,9 @@
             // 
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 743);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(0, 557);
             panel1.Name = "panel1";
-            panel1.Size = new Size(297, 221);
+            panel1.Size = new Size(260, 166);
             panel1.TabIndex = 9;
             // 
             // tableLayoutPanel2
@@ -288,12 +281,11 @@
             tableLayoutPanel2.Controls.Add(btnSair, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
-            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 93F));
-            tableLayoutPanel2.Size = new Size(297, 221);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            tableLayoutPanel2.Size = new Size(260, 166);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // btnSair
@@ -306,10 +298,9 @@
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(3, 132);
-            btnSair.Margin = new Padding(3, 4, 3, 4);
+            btnSair.Location = new Point(3, 99);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(291, 85);
+            btnSair.Size = new Size(254, 64);
             btnSair.TabIndex = 19;
             btnSair.UseVisualStyleBackColor = false;
             btnSair.Click += btnSair_Click;
@@ -321,11 +312,10 @@
             tbcPaginas.Controls.Add(tbAtendentes);
             tbcPaginas.Controls.Add(tbPerguntas);
             tbcPaginas.Dock = DockStyle.Fill;
-            tbcPaginas.Location = new Point(297, 0);
-            tbcPaginas.Margin = new Padding(3, 4, 3, 4);
+            tbcPaginas.Location = new Point(260, 0);
             tbcPaginas.Name = "tbcPaginas";
             tbcPaginas.SelectedIndex = 0;
-            tbcPaginas.Size = new Size(1157, 964);
+            tbcPaginas.Size = new Size(1012, 723);
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 10;
             // 
@@ -342,11 +332,10 @@
             tbSetor.Controls.Add(button4);
             tbSetor.Controls.Add(lblTituloSetor);
             tbSetor.ForeColor = Color.Transparent;
-            tbSetor.Location = new Point(4, 29);
-            tbSetor.Margin = new Padding(3, 4, 3, 4);
+            tbSetor.Location = new Point(4, 24);
             tbSetor.Name = "tbSetor";
-            tbSetor.Padding = new Padding(3, 4, 3, 4);
-            tbSetor.Size = new Size(1149, 931);
+            tbSetor.Padding = new Padding(3, 3, 3, 3);
+            tbSetor.Size = new Size(1004, 695);
             tbSetor.TabIndex = 0;
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
@@ -356,9 +345,9 @@
             lblMsgErroSetor.AutoSize = true;
             lblMsgErroSetor.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroSetor.ForeColor = Color.Black;
-            lblMsgErroSetor.Location = new Point(357, 633);
+            lblMsgErroSetor.Location = new Point(312, 475);
             lblMsgErroSetor.Name = "lblMsgErroSetor";
-            lblMsgErroSetor.Size = new Size(258, 28);
+            lblMsgErroSetor.Size = new Size(174, 21);
             lblMsgErroSetor.TabIndex = 44;
             lblMsgErroSetor.Text = "                                         ";
             // 
@@ -370,11 +359,9 @@
             gbBotoesSetor.Controls.Add(txtNomeSetor);
             gbBotoesSetor.Controls.Add(btnDeletarSetor);
             gbBotoesSetor.Controls.Add(txtIdSetor);
-            gbBotoesSetor.Location = new Point(42, 683);
-            gbBotoesSetor.Margin = new Padding(3, 4, 3, 4);
+            gbBotoesSetor.Location = new Point(37, 512);
             gbBotoesSetor.Name = "gbBotoesSetor";
-            gbBotoesSetor.Padding = new Padding(3, 4, 3, 4);
-            gbBotoesSetor.Size = new Size(821, 173);
+            gbBotoesSetor.Size = new Size(718, 130);
             gbBotoesSetor.TabIndex = 43;
             gbBotoesSetor.TabStop = false;
             gbBotoesSetor.Visible = false;
@@ -386,10 +373,9 @@
             btnSalvarSetor.FlatAppearance.BorderSize = 0;
             btnSalvarSetor.FlatStyle = FlatStyle.Flat;
             btnSalvarSetor.ForeColor = Color.Black;
-            btnSalvarSetor.Location = new Point(659, 28);
-            btnSalvarSetor.Margin = new Padding(3, 4, 3, 4);
+            btnSalvarSetor.Location = new Point(577, 21);
             btnSalvarSetor.Name = "btnSalvarSetor";
-            btnSalvarSetor.Size = new Size(146, 61);
+            btnSalvarSetor.Size = new Size(128, 46);
             btnSalvarSetor.TabIndex = 42;
             btnSalvarSetor.UseVisualStyleBackColor = true;
             btnSalvarSetor.Click += btnSalvarSetor_Click;
@@ -399,9 +385,9 @@
             lblNomeSetor.AutoSize = true;
             lblNomeSetor.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNomeSetor.ForeColor = Color.Black;
-            lblNomeSetor.Location = new Point(229, 39);
+            lblNomeSetor.Location = new Point(200, 29);
             lblNomeSetor.Name = "lblNomeSetor";
-            lblNomeSetor.Size = new Size(104, 37);
+            lblNomeSetor.Size = new Size(80, 30);
             lblNomeSetor.TabIndex = 41;
             lblNomeSetor.Text = "NOME:";
             // 
@@ -410,19 +396,18 @@
             lblIdSetor.AutoSize = true;
             lblIdSetor.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblIdSetor.ForeColor = Color.Black;
-            lblIdSetor.Location = new Point(56, 39);
+            lblIdSetor.Location = new Point(49, 29);
             lblIdSetor.Name = "lblIdSetor";
-            lblIdSetor.Size = new Size(51, 37);
+            lblIdSetor.Size = new Size(39, 30);
             lblIdSetor.TabIndex = 40;
             lblIdSetor.Text = "ID:";
             // 
             // txtNomeSetor
             // 
             txtNomeSetor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNomeSetor.Location = new Point(327, 39);
-            txtNomeSetor.Margin = new Padding(3, 4, 3, 4);
+            txtNomeSetor.Location = new Point(286, 29);
             txtNomeSetor.Name = "txtNomeSetor";
-            txtNomeSetor.Size = new Size(257, 42);
+            txtNomeSetor.Size = new Size(225, 35);
             txtNomeSetor.TabIndex = 39;
             // 
             // btnDeletarSetor
@@ -436,9 +421,10 @@
             btnDeletarSetor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnDeletarSetor.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarSetor.FlatStyle = FlatStyle.Flat;
-            btnDeletarSetor.Location = new Point(674, 96);
+            btnDeletarSetor.Location = new Point(590, 72);
+            btnDeletarSetor.Margin = new Padding(3, 2, 3, 2);
             btnDeletarSetor.Name = "btnDeletarSetor";
-            btnDeletarSetor.Size = new Size(118, 57);
+            btnDeletarSetor.Size = new Size(103, 43);
             btnDeletarSetor.TabIndex = 35;
             btnDeletarSetor.UseVisualStyleBackColor = false;
             btnDeletarSetor.Click += btnDeletarSetor_Click;
@@ -446,11 +432,10 @@
             // txtIdSetor
             // 
             txtIdSetor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtIdSetor.Location = new Point(107, 35);
-            txtIdSetor.Margin = new Padding(3, 4, 3, 4);
+            txtIdSetor.Location = new Point(94, 26);
             txtIdSetor.Name = "txtIdSetor";
             txtIdSetor.ReadOnly = true;
-            txtIdSetor.Size = new Size(82, 42);
+            txtIdSetor.Size = new Size(72, 35);
             txtIdSetor.TabIndex = 38;
             // 
             // btnHomeSetor
@@ -460,10 +445,9 @@
             btnHomeSetor.BackgroundImage = (Image)resources.GetObject("btnHomeSetor.BackgroundImage");
             btnHomeSetor.BackgroundImageLayout = ImageLayout.Stretch;
             btnHomeSetor.FlatAppearance.BorderSize = 0;
-            btnHomeSetor.Location = new Point(1045, 27);
-            btnHomeSetor.Margin = new Padding(3, 4, 3, 4);
+            btnHomeSetor.Location = new Point(914, 20);
             btnHomeSetor.Name = "btnHomeSetor";
-            btnHomeSetor.Size = new Size(80, 91);
+            btnHomeSetor.Size = new Size(70, 68);
             btnHomeSetor.TabIndex = 37;
             btnHomeSetor.UseVisualStyleBackColor = false;
             btnHomeSetor.Click += btnHomeSetor_Click;
@@ -479,9 +463,10 @@
             btnEditarSetor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnEditarSetor.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarSetor.FlatStyle = FlatStyle.Flat;
-            btnEditarSetor.Location = new Point(918, 296);
+            btnEditarSetor.Location = new Point(803, 222);
+            btnEditarSetor.Margin = new Padding(3, 2, 3, 2);
             btnEditarSetor.Name = "btnEditarSetor";
-            btnEditarSetor.Size = new Size(192, 71);
+            btnEditarSetor.Size = new Size(168, 53);
             btnEditarSetor.TabIndex = 36;
             btnEditarSetor.UseVisualStyleBackColor = false;
             btnEditarSetor.Click += btnEditarSetor_Click;
@@ -496,9 +481,10 @@
             btnCarregarSetores.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregarSetores.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregarSetores.FlatStyle = FlatStyle.Flat;
-            btnCarregarSetores.Location = new Point(878, 133);
+            btnCarregarSetores.Location = new Point(768, 100);
+            btnCarregarSetores.Margin = new Padding(3, 2, 3, 2);
             btnCarregarSetores.Name = "btnCarregarSetores";
-            btnCarregarSetores.Size = new Size(62, 72);
+            btnCarregarSetores.Size = new Size(54, 54);
             btnCarregarSetores.TabIndex = 34;
             btnCarregarSetores.UseVisualStyleBackColor = false;
             btnCarregarSetores.Click += btnCarregarSetores_Click;
@@ -506,11 +492,10 @@
             // GridSetores
             // 
             GridSetores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridSetores.Location = new Point(42, 133);
-            GridSetores.Margin = new Padding(3, 4, 3, 4);
+            GridSetores.Location = new Point(37, 100);
             GridSetores.Name = "GridSetores";
             GridSetores.RowHeadersWidth = 51;
-            GridSetores.Size = new Size(829, 457);
+            GridSetores.Size = new Size(725, 343);
             GridSetores.TabIndex = 30;
             GridSetores.CellClick += GridSetores_CellClick;
             // 
@@ -521,10 +506,9 @@
             btnVoltarParaMenu.BackgroundImage = (Image)resources.GetObject("btnVoltarParaMenu.BackgroundImage");
             btnVoltarParaMenu.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltarParaMenu.FlatAppearance.BorderSize = 0;
-            btnVoltarParaMenu.Location = new Point(1960, 31);
-            btnVoltarParaMenu.Margin = new Padding(3, 4, 3, 4);
+            btnVoltarParaMenu.Location = new Point(1715, 23);
             btnVoltarParaMenu.Name = "btnVoltarParaMenu";
-            btnVoltarParaMenu.Size = new Size(80, 91);
+            btnVoltarParaMenu.Size = new Size(70, 68);
             btnVoltarParaMenu.TabIndex = 27;
             btnVoltarParaMenu.UseVisualStyleBackColor = false;
             // 
@@ -533,9 +517,10 @@
             button3.Anchor = AnchorStyles.Left;
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(558, 1204);
+            button3.Location = new Point(488, 903);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(278, 83);
+            button3.Size = new Size(243, 62);
             button3.TabIndex = 26;
             button3.UseVisualStyleBackColor = true;
             // 
@@ -544,9 +529,10 @@
             button4.Anchor = AnchorStyles.Left;
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
-            button4.Location = new Point(70, 1208);
+            button4.Location = new Point(61, 906);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(287, 75);
+            button4.Size = new Size(251, 56);
             button4.TabIndex = 25;
             button4.UseVisualStyleBackColor = true;
             // 
@@ -555,9 +541,9 @@
             lblTituloSetor.AutoSize = true;
             lblTituloSetor.Font = new Font("Segoe UI", 36F, FontStyle.Bold);
             lblTituloSetor.ForeColor = Color.Black;
-            lblTituloSetor.Location = new Point(42, 31);
+            lblTituloSetor.Location = new Point(37, 23);
             lblTituloSetor.Name = "lblTituloSetor";
-            lblTituloSetor.Size = new Size(185, 81);
+            lblTituloSetor.Size = new Size(148, 65);
             lblTituloSetor.TabIndex = 14;
             lblTituloSetor.Text = "Setor";
             // 
@@ -570,11 +556,10 @@
             tbAdmin.Controls.Add(btnCarregaAdmin);
             tbAdmin.Controls.Add(lblTitle);
             tbAdmin.Controls.Add(GridAdmin);
-            tbAdmin.Location = new Point(4, 29);
-            tbAdmin.Margin = new Padding(3, 4, 3, 4);
+            tbAdmin.Location = new Point(4, 24);
             tbAdmin.Name = "tbAdmin";
-            tbAdmin.Padding = new Padding(3, 4, 3, 4);
-            tbAdmin.Size = new Size(1149, 931);
+            tbAdmin.Padding = new Padding(3, 3, 3, 3);
+            tbAdmin.Size = new Size(1004, 695);
             tbAdmin.TabIndex = 2;
             tbAdmin.Text = "Administradores";
             tbAdmin.UseVisualStyleBackColor = true;
@@ -584,9 +569,9 @@
             lblMsgErroAdmin.AutoSize = true;
             lblMsgErroAdmin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroAdmin.ForeColor = Color.Black;
-            lblMsgErroAdmin.Location = new Point(350, 600);
+            lblMsgErroAdmin.Location = new Point(306, 450);
             lblMsgErroAdmin.Name = "lblMsgErroAdmin";
-            lblMsgErroAdmin.Size = new Size(258, 28);
+            lblMsgErroAdmin.Size = new Size(174, 21);
             lblMsgErroAdmin.TabIndex = 60;
             lblMsgErroAdmin.Text = "                                         ";
             // 
@@ -602,11 +587,9 @@
             gbBotoesAdmin.Controls.Add(txtEmailAdmin);
             gbBotoesAdmin.Controls.Add(txtNomeAdimin);
             gbBotoesAdmin.Controls.Add(txtIdAdmin);
-            gbBotoesAdmin.Location = new Point(42, 632);
-            gbBotoesAdmin.Margin = new Padding(3, 4, 3, 4);
+            gbBotoesAdmin.Location = new Point(37, 474);
             gbBotoesAdmin.Name = "gbBotoesAdmin";
-            gbBotoesAdmin.Padding = new Padding(3, 4, 3, 4);
-            gbBotoesAdmin.Size = new Size(803, 269);
+            gbBotoesAdmin.Size = new Size(703, 202);
             gbBotoesAdmin.TabIndex = 59;
             gbBotoesAdmin.TabStop = false;
             gbBotoesAdmin.Visible = false;
@@ -615,19 +598,18 @@
             // 
             lblSenhaAdmin.AutoSize = true;
             lblSenhaAdmin.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSenhaAdmin.Location = new Point(11, 183);
+            lblSenhaAdmin.Location = new Point(10, 137);
             lblSenhaAdmin.Name = "lblSenhaAdmin";
-            lblSenhaAdmin.Size = new Size(112, 37);
+            lblSenhaAdmin.Size = new Size(85, 30);
             lblSenhaAdmin.TabIndex = 58;
             lblSenhaAdmin.Text = "SENHA:";
             // 
             // txtSenhaAdmin
             // 
             txtSenhaAdmin.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSenhaAdmin.Location = new Point(115, 183);
-            txtSenhaAdmin.Margin = new Padding(3, 4, 3, 4);
+            txtSenhaAdmin.Location = new Point(101, 137);
             txtSenhaAdmin.Name = "txtSenhaAdmin";
-            txtSenhaAdmin.Size = new Size(409, 42);
+            txtSenhaAdmin.Size = new Size(358, 35);
             txtSenhaAdmin.TabIndex = 57;
             // 
             // btnSalvarAdmin
@@ -637,10 +619,9 @@
             btnSalvarAdmin.FlatAppearance.BorderSize = 0;
             btnSalvarAdmin.FlatStyle = FlatStyle.Flat;
             btnSalvarAdmin.ForeColor = SystemColors.ControlText;
-            btnSalvarAdmin.Location = new Point(621, 65);
-            btnSalvarAdmin.Margin = new Padding(3, 4, 3, 4);
+            btnSalvarAdmin.Location = new Point(543, 49);
             btnSalvarAdmin.Name = "btnSalvarAdmin";
-            btnSalvarAdmin.Size = new Size(134, 69);
+            btnSalvarAdmin.Size = new Size(117, 52);
             btnSalvarAdmin.TabIndex = 56;
             btnSalvarAdmin.UseVisualStyleBackColor = true;
             btnSalvarAdmin.Click += btnSalvarAdmin_Click;
@@ -649,9 +630,9 @@
             // 
             lblEmailAdmin.AutoSize = true;
             lblEmailAdmin.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmailAdmin.Location = new Point(11, 128);
+            lblEmailAdmin.Location = new Point(10, 96);
             lblEmailAdmin.Name = "lblEmailAdmin";
-            lblEmailAdmin.Size = new Size(102, 37);
+            lblEmailAdmin.Size = new Size(78, 30);
             lblEmailAdmin.TabIndex = 55;
             lblEmailAdmin.Text = "EMAIL:";
             // 
@@ -666,9 +647,10 @@
             btnDeletarAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnDeletarAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarAdmin.FlatStyle = FlatStyle.Flat;
-            btnDeletarAdmin.Location = new Point(621, 141);
+            btnDeletarAdmin.Location = new Point(543, 106);
+            btnDeletarAdmin.Margin = new Padding(3, 2, 3, 2);
             btnDeletarAdmin.Name = "btnDeletarAdmin";
-            btnDeletarAdmin.Size = new Size(134, 65);
+            btnDeletarAdmin.Size = new Size(117, 49);
             btnDeletarAdmin.TabIndex = 37;
             btnDeletarAdmin.UseVisualStyleBackColor = false;
             btnDeletarAdmin.Click += btnDeletarAdmin_Click;
@@ -677,9 +659,9 @@
             // 
             lblNomeAdmin.AutoSize = true;
             lblNomeAdmin.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNomeAdmin.Location = new Point(11, 76);
+            lblNomeAdmin.Location = new Point(10, 57);
             lblNomeAdmin.Name = "lblNomeAdmin";
-            lblNomeAdmin.Size = new Size(104, 37);
+            lblNomeAdmin.Size = new Size(80, 30);
             lblNomeAdmin.TabIndex = 54;
             lblNomeAdmin.Text = "NOME:";
             // 
@@ -687,38 +669,35 @@
             // 
             lblIdAdimin.AutoSize = true;
             lblIdAdimin.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblIdAdimin.Location = new Point(56, 24);
+            lblIdAdimin.Location = new Point(49, 18);
             lblIdAdimin.Name = "lblIdAdimin";
-            lblIdAdimin.Size = new Size(51, 37);
+            lblIdAdimin.Size = new Size(39, 30);
             lblIdAdimin.TabIndex = 53;
             lblIdAdimin.Text = "ID:";
             // 
             // txtEmailAdmin
             // 
             txtEmailAdmin.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmailAdmin.Location = new Point(115, 128);
-            txtEmailAdmin.Margin = new Padding(3, 4, 3, 4);
+            txtEmailAdmin.Location = new Point(101, 96);
             txtEmailAdmin.Name = "txtEmailAdmin";
-            txtEmailAdmin.Size = new Size(409, 42);
+            txtEmailAdmin.Size = new Size(358, 35);
             txtEmailAdmin.TabIndex = 52;
             // 
             // txtNomeAdimin
             // 
             txtNomeAdimin.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNomeAdimin.Location = new Point(115, 72);
-            txtNomeAdimin.Margin = new Padding(3, 4, 3, 4);
+            txtNomeAdimin.Location = new Point(101, 54);
             txtNomeAdimin.Name = "txtNomeAdimin";
-            txtNomeAdimin.Size = new Size(409, 42);
+            txtNomeAdimin.Size = new Size(358, 35);
             txtNomeAdimin.TabIndex = 51;
             // 
             // txtIdAdmin
             // 
             txtIdAdmin.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtIdAdmin.Location = new Point(115, 17);
-            txtIdAdmin.Margin = new Padding(3, 4, 3, 4);
+            txtIdAdmin.Location = new Point(101, 13);
             txtIdAdmin.Name = "txtIdAdmin";
             txtIdAdmin.ReadOnly = true;
-            txtIdAdmin.Size = new Size(109, 42);
+            txtIdAdmin.Size = new Size(96, 35);
             txtIdAdmin.TabIndex = 50;
             // 
             // btnHomeAdm
@@ -728,10 +707,9 @@
             btnHomeAdm.BackgroundImage = (Image)resources.GetObject("btnHomeAdm.BackgroundImage");
             btnHomeAdm.BackgroundImageLayout = ImageLayout.Stretch;
             btnHomeAdm.FlatAppearance.BorderSize = 0;
-            btnHomeAdm.Location = new Point(1045, 27);
-            btnHomeAdm.Margin = new Padding(3, 4, 3, 4);
+            btnHomeAdm.Location = new Point(914, 20);
             btnHomeAdm.Name = "btnHomeAdm";
-            btnHomeAdm.Size = new Size(80, 91);
+            btnHomeAdm.Size = new Size(70, 68);
             btnHomeAdm.TabIndex = 39;
             btnHomeAdm.UseVisualStyleBackColor = false;
             btnHomeAdm.Click += btnHomeSetor_Click;
@@ -747,9 +725,10 @@
             btnEditarAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnEditarAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarAdmin.FlatStyle = FlatStyle.Flat;
-            btnEditarAdmin.Location = new Point(918, 296);
+            btnEditarAdmin.Location = new Point(803, 222);
+            btnEditarAdmin.Margin = new Padding(3, 2, 3, 2);
             btnEditarAdmin.Name = "btnEditarAdmin";
-            btnEditarAdmin.Size = new Size(192, 71);
+            btnEditarAdmin.Size = new Size(168, 53);
             btnEditarAdmin.TabIndex = 38;
             btnEditarAdmin.UseVisualStyleBackColor = false;
             btnEditarAdmin.Click += btnEditarAdmin_Click;
@@ -764,9 +743,10 @@
             btnCarregaAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregaAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregaAdmin.FlatStyle = FlatStyle.Flat;
-            btnCarregaAdmin.Location = new Point(878, 133);
+            btnCarregaAdmin.Location = new Point(768, 100);
+            btnCarregaAdmin.Margin = new Padding(3, 2, 3, 2);
             btnCarregaAdmin.Name = "btnCarregaAdmin";
-            btnCarregaAdmin.Size = new Size(62, 72);
+            btnCarregaAdmin.Size = new Size(54, 54);
             btnCarregaAdmin.TabIndex = 32;
             btnCarregaAdmin.UseVisualStyleBackColor = false;
             btnCarregaAdmin.Click += btnCarregaAdmin_Click;
@@ -775,20 +755,19 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 36F, FontStyle.Bold);
-            lblTitle.Location = new Point(42, 31);
+            lblTitle.Location = new Point(37, 23);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(500, 81);
+            lblTitle.Size = new Size(403, 65);
             lblTitle.TabIndex = 15;
             lblTitle.Text = "Administradores";
             // 
             // GridAdmin
             // 
             GridAdmin.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridAdmin.Location = new Point(42, 133);
-            GridAdmin.Margin = new Padding(3, 4, 3, 4);
+            GridAdmin.Location = new Point(37, 100);
             GridAdmin.Name = "GridAdmin";
             GridAdmin.RowHeadersWidth = 51;
-            GridAdmin.Size = new Size(829, 457);
+            GridAdmin.Size = new Size(725, 343);
             GridAdmin.TabIndex = 6;
             GridAdmin.CellClick += GridAdimin_CellClick;
             // 
@@ -801,11 +780,10 @@
             tbAtendentes.Controls.Add(btnCarregaAtendentes);
             tbAtendentes.Controls.Add(GridAtendentes);
             tbAtendentes.Controls.Add(lblTituloAjuda);
-            tbAtendentes.Location = new Point(4, 29);
-            tbAtendentes.Margin = new Padding(3, 4, 3, 4);
+            tbAtendentes.Location = new Point(4, 24);
             tbAtendentes.Name = "tbAtendentes";
-            tbAtendentes.Padding = new Padding(3, 4, 3, 4);
-            tbAtendentes.Size = new Size(1149, 931);
+            tbAtendentes.Padding = new Padding(3, 3, 3, 3);
+            tbAtendentes.Size = new Size(1004, 695);
             tbAtendentes.TabIndex = 3;
             tbAtendentes.Text = "Atendentes";
             tbAtendentes.UseVisualStyleBackColor = true;
@@ -815,9 +793,9 @@
             lblMsgErroAtendente.AutoSize = true;
             lblMsgErroAtendente.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroAtendente.ForeColor = Color.Black;
-            lblMsgErroAtendente.Location = new Point(342, 611);
+            lblMsgErroAtendente.Location = new Point(299, 458);
             lblMsgErroAtendente.Name = "lblMsgErroAtendente";
-            lblMsgErroAtendente.Size = new Size(258, 28);
+            lblMsgErroAtendente.Size = new Size(174, 21);
             lblMsgErroAtendente.TabIndex = 61;
             lblMsgErroAtendente.Text = "                                         ";
             // 
@@ -835,11 +813,9 @@
             gbBotoesAtendente.Controls.Add(txtEmailAtendente);
             gbBotoesAtendente.Controls.Add(txtNomeAtendente);
             gbBotoesAtendente.Controls.Add(txtIdAtendente);
-            gbBotoesAtendente.Location = new Point(42, 643);
-            gbBotoesAtendente.Margin = new Padding(3, 4, 3, 4);
+            gbBotoesAtendente.Location = new Point(37, 482);
             gbBotoesAtendente.Name = "gbBotoesAtendente";
-            gbBotoesAtendente.Padding = new Padding(3, 4, 3, 4);
-            gbBotoesAtendente.Size = new Size(1067, 276);
+            gbBotoesAtendente.Size = new Size(934, 207);
             gbBotoesAtendente.TabIndex = 52;
             gbBotoesAtendente.TabStop = false;
             gbBotoesAtendente.Visible = false;
@@ -848,20 +824,18 @@
             // 
             btnUploadImage.BackgroundImage = (Image)resources.GetObject("btnUploadImage.BackgroundImage");
             btnUploadImage.BackgroundImageLayout = ImageLayout.Stretch;
-            btnUploadImage.Location = new Point(797, 36);
-            btnUploadImage.Margin = new Padding(3, 4, 3, 4);
+            btnUploadImage.Location = new Point(697, 27);
             btnUploadImage.Name = "btnUploadImage";
-            btnUploadImage.Size = new Size(58, 63);
+            btnUploadImage.Size = new Size(51, 47);
             btnUploadImage.TabIndex = 57;
             btnUploadImage.UseVisualStyleBackColor = true;
             btnUploadImage.Click += btnUploadImage_Click;
             // 
             // ptbImagemAtendente
             // 
-            ptbImagemAtendente.Location = new Point(606, 36);
-            ptbImagemAtendente.Margin = new Padding(3, 4, 3, 4);
+            ptbImagemAtendente.Location = new Point(530, 27);
             ptbImagemAtendente.Name = "ptbImagemAtendente";
-            ptbImagemAtendente.Size = new Size(184, 199);
+            ptbImagemAtendente.Size = new Size(161, 149);
             ptbImagemAtendente.SizeMode = PictureBoxSizeMode.StretchImage;
             ptbImagemAtendente.TabIndex = 55;
             ptbImagemAtendente.TabStop = false;
@@ -870,19 +844,19 @@
             // 
             cmbListaDeSetores.Font = new Font("Segoe UI", 15.75F);
             cmbListaDeSetores.FormattingEnabled = true;
-            cmbListaDeSetores.Location = new Point(118, 195);
-            cmbListaDeSetores.Margin = new Padding(3, 4, 3, 4);
+            cmbListaDeSetores.Location = new Point(103, 146);
             cmbListaDeSetores.Name = "cmbListaDeSetores";
-            cmbListaDeSetores.Size = new Size(289, 44);
+            cmbListaDeSetores.Size = new Size(253, 38);
             cmbListaDeSetores.TabIndex = 54;
+            cmbListaDeSetores.Click += TentouAleterarOSetor_Click;
             // 
             // lblSetorAtendente
             // 
             lblSetorAtendente.AutoSize = true;
             lblSetorAtendente.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSetorAtendente.Location = new Point(14, 195);
+            lblSetorAtendente.Location = new Point(12, 146);
             lblSetorAtendente.Name = "lblSetorAtendente";
-            lblSetorAtendente.Size = new Size(104, 37);
+            lblSetorAtendente.Size = new Size(80, 30);
             lblSetorAtendente.TabIndex = 51;
             lblSetorAtendente.Text = "SETOR:";
             // 
@@ -895,10 +869,9 @@
             btnSalvarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnSalvarAtendentes.FlatStyle = FlatStyle.Flat;
             btnSalvarAtendentes.ForeColor = SystemColors.ControlText;
-            btnSalvarAtendentes.Location = new Point(898, 71);
-            btnSalvarAtendentes.Margin = new Padding(3, 4, 3, 4);
+            btnSalvarAtendentes.Location = new Point(786, 53);
             btnSalvarAtendentes.Name = "btnSalvarAtendentes";
-            btnSalvarAtendentes.Size = new Size(130, 61);
+            btnSalvarAtendentes.Size = new Size(114, 46);
             btnSalvarAtendentes.TabIndex = 49;
             btnSalvarAtendentes.UseVisualStyleBackColor = true;
             btnSalvarAtendentes.Click += btnSalvarAtendentes_Click;
@@ -907,9 +880,9 @@
             // 
             lblEmailAtendente.AutoSize = true;
             lblEmailAtendente.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmailAtendente.Location = new Point(14, 140);
+            lblEmailAtendente.Location = new Point(12, 105);
             lblEmailAtendente.Name = "lblEmailAtendente";
-            lblEmailAtendente.Size = new Size(102, 37);
+            lblEmailAtendente.Size = new Size(78, 30);
             lblEmailAtendente.TabIndex = 48;
             lblEmailAtendente.Text = "EMAIL:";
             // 
@@ -924,9 +897,10 @@
             btnDeletarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnDeletarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnDeletarAtendentes.Location = new Point(906, 152);
+            btnDeletarAtendentes.Location = new Point(793, 114);
+            btnDeletarAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnDeletarAtendentes.Name = "btnDeletarAtendentes";
-            btnDeletarAtendentes.Size = new Size(122, 60);
+            btnDeletarAtendentes.Size = new Size(107, 45);
             btnDeletarAtendentes.TabIndex = 39;
             btnDeletarAtendentes.UseVisualStyleBackColor = false;
             btnDeletarAtendentes.Click += btnDeletarAtendentes_Click;
@@ -935,9 +909,9 @@
             // 
             lblNomeAtendente.AutoSize = true;
             lblNomeAtendente.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNomeAtendente.Location = new Point(14, 88);
+            lblNomeAtendente.Location = new Point(12, 66);
             lblNomeAtendente.Name = "lblNomeAtendente";
-            lblNomeAtendente.Size = new Size(104, 37);
+            lblNomeAtendente.Size = new Size(80, 30);
             lblNomeAtendente.TabIndex = 47;
             lblNomeAtendente.Text = "NOME:";
             // 
@@ -945,38 +919,35 @@
             // 
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblId.Location = new Point(58, 36);
+            lblId.Location = new Point(51, 27);
             lblId.Name = "lblId";
-            lblId.Size = new Size(51, 37);
+            lblId.Size = new Size(39, 30);
             lblId.TabIndex = 46;
             lblId.Text = "ID:";
             // 
             // txtEmailAtendente
             // 
             txtEmailAtendente.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmailAtendente.Location = new Point(118, 140);
-            txtEmailAtendente.Margin = new Padding(3, 4, 3, 4);
+            txtEmailAtendente.Location = new Point(103, 105);
             txtEmailAtendente.Name = "txtEmailAtendente";
-            txtEmailAtendente.Size = new Size(409, 42);
+            txtEmailAtendente.Size = new Size(358, 35);
             txtEmailAtendente.TabIndex = 44;
             // 
             // txtNomeAtendente
             // 
             txtNomeAtendente.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNomeAtendente.Location = new Point(118, 84);
-            txtNomeAtendente.Margin = new Padding(3, 4, 3, 4);
+            txtNomeAtendente.Location = new Point(103, 63);
             txtNomeAtendente.Name = "txtNomeAtendente";
-            txtNomeAtendente.Size = new Size(409, 42);
+            txtNomeAtendente.Size = new Size(358, 35);
             txtNomeAtendente.TabIndex = 43;
             // 
             // txtIdAtendente
             // 
             txtIdAtendente.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtIdAtendente.Location = new Point(118, 29);
-            txtIdAtendente.Margin = new Padding(3, 4, 3, 4);
+            txtIdAtendente.Location = new Point(103, 22);
             txtIdAtendente.Name = "txtIdAtendente";
             txtIdAtendente.ReadOnly = true;
-            txtIdAtendente.Size = new Size(109, 42);
+            txtIdAtendente.Size = new Size(96, 35);
             txtIdAtendente.TabIndex = 42;
             // 
             // btnHomeAtendente
@@ -986,10 +957,9 @@
             btnHomeAtendente.BackgroundImage = (Image)resources.GetObject("btnHomeAtendente.BackgroundImage");
             btnHomeAtendente.BackgroundImageLayout = ImageLayout.Stretch;
             btnHomeAtendente.FlatAppearance.BorderSize = 0;
-            btnHomeAtendente.Location = new Point(1045, 27);
-            btnHomeAtendente.Margin = new Padding(3, 4, 3, 4);
+            btnHomeAtendente.Location = new Point(914, 20);
             btnHomeAtendente.Name = "btnHomeAtendente";
-            btnHomeAtendente.Size = new Size(80, 91);
+            btnHomeAtendente.Size = new Size(70, 68);
             btnHomeAtendente.TabIndex = 41;
             btnHomeAtendente.UseVisualStyleBackColor = false;
             btnHomeAtendente.Click += btnHomeSetor_Click;
@@ -1005,9 +975,10 @@
             btnEditarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnEditarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnEditarAtendentes.Location = new Point(918, 296);
+            btnEditarAtendentes.Location = new Point(803, 222);
+            btnEditarAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnEditarAtendentes.Name = "btnEditarAtendentes";
-            btnEditarAtendentes.Size = new Size(192, 71);
+            btnEditarAtendentes.Size = new Size(168, 53);
             btnEditarAtendentes.TabIndex = 40;
             btnEditarAtendentes.UseVisualStyleBackColor = false;
             btnEditarAtendentes.Click += btnEditarAtendentes_Click;
@@ -1022,9 +993,10 @@
             btnCarregaAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnCarregaAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregaAtendentes.FlatStyle = FlatStyle.Flat;
-            btnCarregaAtendentes.Location = new Point(878, 133);
+            btnCarregaAtendentes.Location = new Point(768, 100);
+            btnCarregaAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnCarregaAtendentes.Name = "btnCarregaAtendentes";
-            btnCarregaAtendentes.Size = new Size(62, 72);
+            btnCarregaAtendentes.Size = new Size(54, 54);
             btnCarregaAtendentes.TabIndex = 31;
             btnCarregaAtendentes.UseVisualStyleBackColor = false;
             btnCarregaAtendentes.Click += btnCarregaAtendentes_Click;
@@ -1032,11 +1004,10 @@
             // GridAtendentes
             // 
             GridAtendentes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridAtendentes.Location = new Point(42, 133);
-            GridAtendentes.Margin = new Padding(3, 4, 3, 4);
+            GridAtendentes.Location = new Point(37, 100);
             GridAtendentes.Name = "GridAtendentes";
             GridAtendentes.RowHeadersWidth = 51;
-            GridAtendentes.Size = new Size(829, 457);
+            GridAtendentes.Size = new Size(725, 343);
             GridAtendentes.TabIndex = 30;
             GridAtendentes.CellClick += GridAtendentes_CellClick;
             // 
@@ -1044,9 +1015,9 @@
             // 
             lblTituloAjuda.AutoSize = true;
             lblTituloAjuda.Font = new Font("Segoe UI", 36F, FontStyle.Bold);
-            lblTituloAjuda.Location = new Point(42, 31);
+            lblTituloAjuda.Location = new Point(37, 23);
             lblTituloAjuda.Name = "lblTituloAjuda";
-            lblTituloAjuda.Size = new Size(353, 81);
+            lblTituloAjuda.Size = new Size(286, 65);
             lblTituloAjuda.TabIndex = 15;
             lblTituloAjuda.Text = "Atendentes";
             // 
@@ -1059,11 +1030,10 @@
             tbPerguntas.Controls.Add(btnEditarPerguntas);
             tbPerguntas.Controls.Add(btnCarregarDadosPerguntas);
             tbPerguntas.Controls.Add(label1);
-            tbPerguntas.Location = new Point(4, 29);
-            tbPerguntas.Margin = new Padding(3, 4, 3, 4);
+            tbPerguntas.Location = new Point(4, 24);
             tbPerguntas.Name = "tbPerguntas";
-            tbPerguntas.Padding = new Padding(3, 4, 3, 4);
-            tbPerguntas.Size = new Size(1149, 931);
+            tbPerguntas.Padding = new Padding(3, 3, 3, 3);
+            tbPerguntas.Size = new Size(1004, 695);
             tbPerguntas.TabIndex = 4;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
@@ -1073,9 +1043,9 @@
             lblMsgErroPerguntas.AutoSize = true;
             lblMsgErroPerguntas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroPerguntas.ForeColor = Color.Black;
-            lblMsgErroPerguntas.Location = new Point(405, 515);
+            lblMsgErroPerguntas.Location = new Point(354, 386);
             lblMsgErroPerguntas.Name = "lblMsgErroPerguntas";
-            lblMsgErroPerguntas.Size = new Size(258, 28);
+            lblMsgErroPerguntas.Size = new Size(174, 21);
             lblMsgErroPerguntas.TabIndex = 61;
             lblMsgErroPerguntas.Text = "                                         ";
             // 
@@ -1097,11 +1067,9 @@
             gbPerguntas.Controls.Add(txtOpcao2);
             gbPerguntas.Controls.Add(txtOpcao1);
             gbPerguntas.Controls.Add(btnDeletarPerguntas);
-            gbPerguntas.Location = new Point(23, 543);
-            gbPerguntas.Margin = new Padding(3, 4, 3, 4);
+            gbPerguntas.Location = new Point(20, 407);
             gbPerguntas.Name = "gbPerguntas";
-            gbPerguntas.Padding = new Padding(3, 4, 3, 4);
-            gbPerguntas.Size = new Size(1103, 361);
+            gbPerguntas.Size = new Size(965, 271);
             gbPerguntas.TabIndex = 47;
             gbPerguntas.TabStop = false;
             // 
@@ -1111,20 +1079,18 @@
             btnSalvarPerguntas.BackgroundImageLayout = ImageLayout.Stretch;
             btnSalvarPerguntas.FlatAppearance.BorderSize = 0;
             btnSalvarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnSalvarPerguntas.Location = new Point(923, 167);
-            btnSalvarPerguntas.Margin = new Padding(3, 4, 3, 4);
+            btnSalvarPerguntas.Location = new Point(808, 125);
             btnSalvarPerguntas.Name = "btnSalvarPerguntas";
-            btnSalvarPerguntas.Size = new Size(126, 40);
+            btnSalvarPerguntas.Size = new Size(110, 30);
             btnSalvarPerguntas.TabIndex = 58;
             btnSalvarPerguntas.UseVisualStyleBackColor = true;
             btnSalvarPerguntas.Click += btnSalvarPerguntas_Click;
             // 
             // btnRemoverAlternativa
             // 
-            btnRemoverAlternativa.Location = new Point(760, 217);
-            btnRemoverAlternativa.Margin = new Padding(3, 4, 3, 4);
+            btnRemoverAlternativa.Location = new Point(665, 163);
             btnRemoverAlternativa.Name = "btnRemoverAlternativa";
-            btnRemoverAlternativa.Size = new Size(115, 40);
+            btnRemoverAlternativa.Size = new Size(101, 30);
             btnRemoverAlternativa.TabIndex = 57;
             btnRemoverAlternativa.Text = "-Alternativa";
             btnRemoverAlternativa.UseVisualStyleBackColor = true;
@@ -1132,10 +1098,9 @@
             // 
             // btnAdiconarAlternativa
             // 
-            btnAdiconarAlternativa.Location = new Point(760, 168);
-            btnAdiconarAlternativa.Margin = new Padding(3, 4, 3, 4);
+            btnAdiconarAlternativa.Location = new Point(665, 126);
             btnAdiconarAlternativa.Name = "btnAdiconarAlternativa";
-            btnAdiconarAlternativa.Size = new Size(115, 40);
+            btnAdiconarAlternativa.Size = new Size(101, 30);
             btnAdiconarAlternativa.TabIndex = 56;
             btnAdiconarAlternativa.Text = "+Alternativa";
             btnAdiconarAlternativa.UseVisualStyleBackColor = true;
@@ -1143,107 +1108,95 @@
             // 
             // txtPerguntaId
             // 
-            txtPerguntaId.Location = new Point(48, 29);
-            txtPerguntaId.Margin = new Padding(3, 4, 3, 4);
+            txtPerguntaId.Location = new Point(42, 22);
             txtPerguntaId.Name = "txtPerguntaId";
-            txtPerguntaId.Size = new Size(103, 27);
+            txtPerguntaId.Size = new Size(91, 23);
             txtPerguntaId.TabIndex = 55;
             // 
             // txtPergunta
             // 
-            txtPergunta.Location = new Point(224, 29);
-            txtPergunta.Margin = new Padding(3, 4, 3, 4);
+            txtPergunta.Location = new Point(196, 22);
             txtPergunta.Name = "txtPergunta";
-            txtPergunta.Size = new Size(735, 27);
+            txtPergunta.Size = new Size(644, 23);
             txtPergunta.TabIndex = 54;
             // 
             // txtOpcao10
             // 
-            txtOpcao10.Location = new Point(382, 319);
-            txtOpcao10.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao10.Location = new Point(334, 239);
             txtOpcao10.Name = "txtOpcao10";
-            txtOpcao10.Size = new Size(220, 27);
+            txtOpcao10.Size = new Size(193, 23);
             txtOpcao10.TabIndex = 53;
             txtOpcao10.Visible = false;
             // 
             // txtOpcao9
             // 
-            txtOpcao9.Location = new Point(382, 265);
-            txtOpcao9.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao9.Location = new Point(334, 199);
             txtOpcao9.Name = "txtOpcao9";
-            txtOpcao9.Size = new Size(220, 27);
+            txtOpcao9.Size = new Size(193, 23);
             txtOpcao9.TabIndex = 52;
             txtOpcao9.Visible = false;
             // 
             // txtOpcao8
             // 
-            txtOpcao8.Location = new Point(382, 201);
-            txtOpcao8.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao8.Location = new Point(334, 151);
             txtOpcao8.Name = "txtOpcao8";
-            txtOpcao8.Size = new Size(220, 27);
+            txtOpcao8.Size = new Size(193, 23);
             txtOpcao8.TabIndex = 51;
             txtOpcao8.Visible = false;
             // 
             // txtOpcao7
             // 
-            txtOpcao7.Location = new Point(382, 139);
-            txtOpcao7.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao7.Location = new Point(334, 104);
             txtOpcao7.Name = "txtOpcao7";
-            txtOpcao7.Size = new Size(220, 27);
+            txtOpcao7.Size = new Size(193, 23);
             txtOpcao7.TabIndex = 50;
             txtOpcao7.Visible = false;
             // 
             // txtOpcao6
             // 
-            txtOpcao6.Location = new Point(382, 80);
-            txtOpcao6.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao6.Location = new Point(334, 60);
             txtOpcao6.Name = "txtOpcao6";
-            txtOpcao6.Size = new Size(220, 27);
+            txtOpcao6.Size = new Size(193, 23);
             txtOpcao6.TabIndex = 49;
             txtOpcao6.Visible = false;
             // 
             // txtOpcao5
             // 
-            txtOpcao5.Location = new Point(48, 319);
-            txtOpcao5.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao5.Location = new Point(42, 239);
             txtOpcao5.Name = "txtOpcao5";
-            txtOpcao5.Size = new Size(220, 27);
+            txtOpcao5.Size = new Size(193, 23);
             txtOpcao5.TabIndex = 48;
             txtOpcao5.Visible = false;
             // 
             // txtOpcao4
             // 
-            txtOpcao4.Location = new Point(48, 265);
-            txtOpcao4.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao4.Location = new Point(42, 199);
             txtOpcao4.Name = "txtOpcao4";
-            txtOpcao4.Size = new Size(220, 27);
+            txtOpcao4.Size = new Size(193, 23);
             txtOpcao4.TabIndex = 47;
             txtOpcao4.Visible = false;
             // 
             // txtOpcao3
             // 
-            txtOpcao3.Location = new Point(48, 201);
-            txtOpcao3.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao3.Location = new Point(42, 151);
             txtOpcao3.Name = "txtOpcao3";
-            txtOpcao3.Size = new Size(220, 27);
+            txtOpcao3.Size = new Size(193, 23);
             txtOpcao3.TabIndex = 46;
             txtOpcao3.Visible = false;
             // 
             // txtOpcao2
             // 
-            txtOpcao2.Location = new Point(48, 139);
-            txtOpcao2.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao2.Location = new Point(42, 104);
             txtOpcao2.Name = "txtOpcao2";
-            txtOpcao2.Size = new Size(220, 27);
+            txtOpcao2.Size = new Size(193, 23);
             txtOpcao2.TabIndex = 45;
             txtOpcao2.Visible = false;
             // 
             // txtOpcao1
             // 
-            txtOpcao1.Location = new Point(48, 80);
-            txtOpcao1.Margin = new Padding(3, 4, 3, 4);
+            txtOpcao1.Location = new Point(42, 60);
             txtOpcao1.Name = "txtOpcao1";
-            txtOpcao1.Size = new Size(220, 27);
+            txtOpcao1.Size = new Size(193, 23);
             txtOpcao1.TabIndex = 44;
             txtOpcao1.Visible = false;
             // 
@@ -1258,20 +1211,20 @@
             btnDeletarPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnDeletarPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnDeletarPerguntas.Location = new Point(923, 213);
+            btnDeletarPerguntas.Location = new Point(808, 160);
+            btnDeletarPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnDeletarPerguntas.Name = "btnDeletarPerguntas";
-            btnDeletarPerguntas.Size = new Size(126, 44);
+            btnDeletarPerguntas.Size = new Size(110, 33);
             btnDeletarPerguntas.TabIndex = 43;
             btnDeletarPerguntas.UseVisualStyleBackColor = false;
             // 
             // GridViewPerguntas
             // 
             GridViewPerguntas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridViewPerguntas.Location = new Point(23, 95);
-            GridViewPerguntas.Margin = new Padding(3, 4, 3, 4);
+            GridViewPerguntas.Location = new Point(20, 71);
             GridViewPerguntas.Name = "GridViewPerguntas";
             GridViewPerguntas.RowHeadersWidth = 51;
-            GridViewPerguntas.Size = new Size(807, 416);
+            GridViewPerguntas.Size = new Size(706, 312);
             GridViewPerguntas.TabIndex = 46;
             GridViewPerguntas.CellClick += GridViewPerguntas_CellClick;
             // 
@@ -1282,10 +1235,9 @@
             btnVoltarHomePerguntas.BackgroundImage = (Image)resources.GetObject("btnVoltarHomePerguntas.BackgroundImage");
             btnVoltarHomePerguntas.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltarHomePerguntas.FlatAppearance.BorderSize = 0;
-            btnVoltarHomePerguntas.Location = new Point(1039, 27);
-            btnVoltarHomePerguntas.Margin = new Padding(3, 4, 3, 4);
+            btnVoltarHomePerguntas.Location = new Point(909, 20);
             btnVoltarHomePerguntas.Name = "btnVoltarHomePerguntas";
-            btnVoltarHomePerguntas.Size = new Size(80, 91);
+            btnVoltarHomePerguntas.Size = new Size(70, 68);
             btnVoltarHomePerguntas.TabIndex = 45;
             btnVoltarHomePerguntas.UseVisualStyleBackColor = false;
             btnVoltarHomePerguntas.Click += btnHomeSetor_Click;
@@ -1301,9 +1253,10 @@
             btnEditarPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnEditarPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnEditarPerguntas.Location = new Point(913, 261);
+            btnEditarPerguntas.Location = new Point(799, 196);
+            btnEditarPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnEditarPerguntas.Name = "btnEditarPerguntas";
-            btnEditarPerguntas.Size = new Size(192, 71);
+            btnEditarPerguntas.Size = new Size(168, 53);
             btnEditarPerguntas.TabIndex = 44;
             btnEditarPerguntas.UseVisualStyleBackColor = false;
             // 
@@ -1317,9 +1270,10 @@
             btnCarregarDadosPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregarDadosPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCarregarDadosPerguntas.FlatStyle = FlatStyle.Flat;
-            btnCarregarDadosPerguntas.Location = new Point(837, 95);
+            btnCarregarDadosPerguntas.Location = new Point(732, 71);
+            btnCarregarDadosPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnCarregarDadosPerguntas.Name = "btnCarregarDadosPerguntas";
-            btnCarregarDadosPerguntas.Size = new Size(62, 72);
+            btnCarregarDadosPerguntas.Size = new Size(54, 54);
             btnCarregarDadosPerguntas.TabIndex = 42;
             btnCarregarDadosPerguntas.UseVisualStyleBackColor = false;
             btnCarregarDadosPerguntas.Click += btnCarregarDadosPerguntas_Click;
@@ -1328,20 +1282,21 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold);
-            label1.Location = new Point(3, 4);
+            label1.Location = new Point(3, 3);
             label1.Name = "label1";
-            label1.Size = new Size(316, 81);
+            label1.Size = new Size(255, 65);
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
             // 
             // FrmEditarCadastroscs
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1454, 964);
+            ClientSize = new Size(1272, 723);
             Controls.Add(tbcPaginas);
             Controls.Add(pnlMenu);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmEditarCadastroscs";
             Text = "FrmEditarCadastroscs";
             WindowState = FormWindowState.Maximized;

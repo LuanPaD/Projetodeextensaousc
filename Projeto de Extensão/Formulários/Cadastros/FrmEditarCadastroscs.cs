@@ -296,6 +296,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     }
 
                 }
+
+                // Salvar os valores originais para comparação posterior
+                nomeOriginal = txtNomeAtendente.Text;
+                emailOriginal = txtEmailAtendente.Text;
+                setorIdOriginal = int.TryParse(setorId, out int parsedSetorId) ? parsedSetorId : 0;
             }
         }
 
@@ -323,21 +328,54 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 MostraBotoes(gbBotoesAdmin, false);
         }
 
+        private string nomeOriginal;
+        private string emailOriginal;
+        private int setorIdOriginal;
+        private int contadorClickUpload = 0;
+        private int alteraSetor = 0;
+
         private async void btnSalvarAtendentes_Click(object sender, EventArgs e)
         {
+            
             int.TryParse(txtIdAtendente.Text, out int atendenteId);
+
+
+
             int.TryParse(cmbListaDeSetores.SelectedValue?.ToString(), out int setorId);
+            setorIdOriginal = setorId + alteraSetor;
+
+
+            // Verificar se os campos de texto sofreram alteração
+            bool camposTextoAlterados =
+            !string.Equals(txtNomeAtendente.Text.Trim().Replace(" ", ""), nomeOriginal?.Trim().Replace(" ", ""), StringComparison.OrdinalIgnoreCase) ||
+            !string.Equals(txtEmailAtendente.Text.Trim().Replace(" ", ""), emailOriginal?.Trim().Replace(" ", ""), StringComparison.OrdinalIgnoreCase) ||
+            setorId != setorIdOriginal;
+
+
+
+            if (!camposTextoAlterados && contadorClickUpload == 0)
+            {
+                await ExibirMensagemTemporaria(lblMsgErroAtendente,"Nenhum campo foi alterado.");
+                return;
+            }
 
             bool operacaoRealizada = await AtualizarAtendenteAsync(atendenteId, txtNomeAtendente.Text, txtEmailAtendente.Text, setorId);
 
             if (operacaoRealizada)
+            {
                 MostraBotoes(gbBotoesAtendente, false);
+                alteraSetor = 0;
+            }
 
-            await SaveImageToDatabase(ptbImagemAtendente, atendenteId, txtNomeAtendente.Text);
+            // Se a imagem foi alterada, salvar a nova imagem no banco
+            if (contadorClickUpload != 0)
+            {
+                string nomeSemEspacos = txtNomeAtendente.Text.Replace(" ", "");
+                await SaveImageToDatabase(ptbImagemAtendente, atendenteId, nomeSemEspacos);
+            }
         }
 
 
-        //Não atualiza a foto , quando já tem uma 
         public static async Task SaveImageToDatabase(PictureBox picture, int atendenteId, string nome)
         {
             if (picture.Image != null)
@@ -345,9 +383,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 try
                 {
                     using (MemoryStream ms = new MemoryStream())
+                    using (var clonedImage = new Bitmap(picture.Image))
                     {
-                        picture.Image.Save(ms, picture.Image.RawFormat);
-                        byte[] imageBytes = ms.ToArray();
+                        clonedImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        byte[] newImageBytes = ms.ToArray();
 
                         string sql = @"
                         INSERT INTO fotos (atendente_id, nome, tamanho, dataUpload, imagem)
@@ -365,10 +404,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             using (var cmd = new MySqlCommand(sql, connection))
                             {
                                 cmd.Parameters.AddWithValue("@atendente_id", atendenteId);
-                                cmd.Parameters.AddWithValue("@nome", nome);
-                                cmd.Parameters.AddWithValue("@tamanho", imageBytes.Length);
+                                cmd.Parameters.AddWithValue("@nome", $"{nome}_{atendenteId}");
+                                cmd.Parameters.AddWithValue("@tamanho", newImageBytes.Length);
                                 cmd.Parameters.AddWithValue("@dataUpload", DateTime.Now);
-                                cmd.Parameters.AddWithValue("@imagem", imageBytes);
+                                cmd.Parameters.AddWithValue("@imagem", newImageBytes);
 
                                 int rowsAffected = await cmd.ExecuteNonQueryAsync();
                             }
@@ -385,11 +424,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 MessageBox.Show("Imagem não selecionada.");
             }
         }
-
-
-
-
-
 
 
         public static async Task ExibirMensagemTemporaria(Label label, string mensagem, int tempoEmMilissegundos = 5000)
@@ -995,9 +1029,13 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
             FrmCadastros.SelecionaImagem(ptbImagemAtendente);
+            contadorClickUpload++;
         }
 
-
+        private void TentouAleterarOSetor_Click(object sender, EventArgs e)
+        {
+            alteraSetor++;
+        }
     }
 }
 
