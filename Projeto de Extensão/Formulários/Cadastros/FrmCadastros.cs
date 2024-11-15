@@ -56,7 +56,14 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private async void btnCadastrar_Click(object sender, EventArgs e)
         {
             if (await validaCadastro())
+            {
                 cadastrarAdminNoBanco();
+                txtNome.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+                txtConfirmaSenha.Text = string.Empty;
+                txtSenha.Text = string.Empty;
+            }
+                
         }
 
         private async void btnCadastraAtendente_Click(object sender, EventArgs e)

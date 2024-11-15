@@ -243,6 +243,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 txtEmailAdmin.Text = row.Cells["email"].Value?.ToString();
                 txtSenhaAdmin.Text = row.Cells["senha"].Value?.ToString();
 
+                txtNomeadminInical = txtNomeAdimin.Text;
+                txtSenhaInical = txtSenhaAdmin.Text;
+                txtEmailadminInical = txtEmailAdmin.Text;
+
             }
         }
 
@@ -318,10 +322,19 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
+        private string txtNomeadminInical;
+        private string txtEmailadminInical;
+        private string txtSenhaInical;
+
         private async void btnSalvarAdmin_Click(object sender, EventArgs e)
         {
             int.TryParse(txtIdAdmin.Text, out int AdminId);
 
+            if (txtEmailadminInical == txtEmailAdmin.Text && txtNomeadminInical == txtNomeAdimin.Text && txtSenhaAdmin.Text == txtSenhaInical)
+            {
+                await ExibirMensagemTemporaria(lblMsgErroAdmin, "Nenhum campo foi alterado.");
+                return;
+            }
             bool operacaoRealizada = await AtualizarAdminAsync(AdminId, txtNomeAdimin.Text, txtEmailAdmin.Text, txtSenhaAdmin.Text);
 
             if (operacaoRealizada)
@@ -550,7 +563,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-        //Atualiza os dados dos Admin e verifica se os campos estão preenchidos corretamente.
         private async Task<bool> AtualizarAdminAsync(int adminId, string nome, string email, string senha)
         {
             if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha))
@@ -565,7 +577,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
 
-            if (await FrmCadastros.JaExisteCadastroEmailAdmin(email))
+            int.TryParse(txtIdAdmin.Text, out int AdminId);
+
+            if (await verificaEmailJaCadastrado("admin","admin_id",AdminId, email))
             {
                 await ExibirMensagemTemporaria(lblMsgErroAdmin, "Este e-mail já está cadastrado com outro administrador.");
                 return false;
@@ -622,7 +636,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
 
-            if (await verificaEmailJaCadastrado(atendenteId, email))
+            if (await verificaEmailJaCadastrado("atendente","atendente_id",atendenteId, email))
             {
                 await ExibirMensagemTemporaria(lblMsgErroAtendente, "Este e-mail já está cadastrado com outro atendente.");
                 return false;
@@ -664,10 +678,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-        private async Task<bool> verificaEmailJaCadastrado(int atendenteId, string email)
+        private async Task<bool> verificaEmailJaCadastrado(string tabela,string campoProucurado,int atendenteId, string email)
         {
             StringBuilder sql = new StringBuilder();
-            sql.AppendLine($"SELECT COUNT(*) FROM ATENDENTE WHERE EMAIL = @email AND atendente_id <> @id ");
+            sql.AppendLine($"SELECT COUNT(*) FROM {tabela} WHERE email = @email AND {campoProucurado} <> @id ");
 
             using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
             {
