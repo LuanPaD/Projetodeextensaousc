@@ -1,30 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using OfficeOpenXml;
 using System.IO;
+using ClosedXML.Excel;
 
 namespace Projeto_de_Extensao.Classes
 {
     internal class EXCELgerador
     {
-        public void Export(DataTable data, string filePath)
+        public void Export(DataTable data, string filePath, string sheetName = "Dados")
         {
-            // Definindo o contexto da licença para uso gratuito
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            // Validar entradas
+            if (data == null || data.Rows.Count == 0)
+                throw new ArgumentException("O DataTable está vazio ou nulo.", nameof(data));
 
+            if (string.IsNullOrWhiteSpace(filePath))
+                throw new ArgumentException("O caminho do arquivo é inválido.", nameof(filePath));
 
-            using (ExcelPackage excel = new ExcelPackage())
+            try
             {
-                var workSheet = excel.Workbook.Worksheets.Add("Dados");
-                workSheet.Cells["A1"].LoadFromDataTable(data, true);
+                // Criando um novo arquivo Excel
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add(sheetName);
 
-                FileInfo fi = new FileInfo(filePath);
-                excel.SaveAs(fi);
+                    // Carregando os dados do DataTable
+                    worksheet.Cell(1, 1).InsertTable(data);
+
+                    // Ajustando automaticamente a largura das colunas
+                    worksheet.Columns().AdjustToContents();
+
+                    // Salvando o arquivo no caminho especificado
+                    workbook.SaveAs(filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Lidar com erros (pode ser substituído por um logger)
+                throw new IOException($"Erro ao salvar o arquivo Excel: {ex.Message}", ex);
             }
         }
     }

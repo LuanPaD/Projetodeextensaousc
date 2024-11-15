@@ -32,6 +32,8 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
             List<string> alternativas = await getPertguntaEalternativas();
             CriarBotoesAlternativas(alternativas);
+            lblQtdPerguntas.Text = $"{num_perguntaAtual}/{qtdDePerguntas}";
+
         }
 
         private async Task<List<string>> getPertguntaEalternativas()

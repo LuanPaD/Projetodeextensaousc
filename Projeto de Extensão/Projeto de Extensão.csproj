@@ -40,7 +40,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="EPPlus" Version="7.4.2" />
+	  <PackageReference Include="ClosedXML" Version="0.104.2" />
 	  <PackageReference Include="MySqlConnector" Version="2.3.7" />
 	  <PackageReference Include="PDFsharp" Version="6.1.1" />
 	  <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />

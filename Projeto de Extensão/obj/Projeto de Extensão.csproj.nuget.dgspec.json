@@ -46,9 +46,9 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "EPPlus": {
+            "ClosedXML": {
               "target": "Package",
-              "version": "[7.4.2, )"
+              "version": "[0.104.2, )"
             },
             "MySqlConnector": {
               "target": "Package",

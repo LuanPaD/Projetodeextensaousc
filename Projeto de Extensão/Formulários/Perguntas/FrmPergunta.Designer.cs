@@ -36,6 +36,7 @@
             btnProximaPergunta = new Button();
             lblPergunta = new Label();
             label1 = new Label();
+            lblQtdPerguntas = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableImagens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -183,14 +184,16 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.Controls.Add(panel3, 0, 2);
             tableLayoutPanel2.Controls.Add(label1, 0, 0);
+            tableLayoutPanel2.Controls.Add(lblQtdPerguntas, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Top;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 67F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 66.41791F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.58209F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 97F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(757, 232);
             tableLayoutPanel2.TabIndex = 14;
             // 
@@ -265,7 +268,7 @@
             lblPergunta.Name = "lblPergunta";
             lblPergunta.Size = new Size(537, 87);
             lblPergunta.TabIndex = 3;
-            lblPergunta.Text = "N\\N";
+            lblPergunta.Text = "Texto";
             lblPergunta.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -279,6 +282,16 @@
             label1.Size = new Size(382, 81);
             label1.TabIndex = 0;
             label1.Text = "PERGUNTAS";
+            // 
+            // lblQtdPerguntas
+            // 
+            lblQtdPerguntas.Dock = DockStyle.Fill;
+            lblQtdPerguntas.Location = new Point(3, 89);
+            lblQtdPerguntas.Name = "lblQtdPerguntas";
+            lblQtdPerguntas.Size = new Size(751, 45);
+            lblQtdPerguntas.TabIndex = 16;
+            lblQtdPerguntas.Text = "N/N";
+            lblQtdPerguntas.TextAlign = ContentAlignment.BottomCenter;
             // 
             // FrmPergunta
             // 
@@ -328,5 +341,6 @@
         private Panel panel4;
         private Panel panel5;
         private GroupBox grbAlternativas;
+        private Label lblQtdPerguntas;
     }
 }

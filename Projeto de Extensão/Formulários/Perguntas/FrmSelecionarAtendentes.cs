@@ -53,37 +53,47 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             rb.Appearance = Appearance.Button;
             rb.FlatStyle = FlatStyle.Flat;
 
+            // Estilo padrão quando não está clicado
             rb.BackColor = Color.White;
             rb.ForeColor = Color.Black;
-            rb.FlatAppearance.BorderColor = Color.DarkGray;
+            rb.FlatAppearance.BorderColor = Color.DarkRed;
             rb.FlatAppearance.BorderSize = 2;
-            rb.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            int widthPtb = ptbAtendente1.Width;
-
-            rb.Size = new Size(widthPtb, 40);
+            rb.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            rb.Size = new Size(ptbAtendente1.Width, 45); // Ajuste ao tamanho do PictureBox
             rb.TextAlign = ContentAlignment.MiddleCenter;
 
+            // Evento para alterar a aparência quando o estado muda
             rb.CheckedChanged += (sender, e) =>
             {
                 if (rb.Checked)
                 {
-                    rb.BackColor = Color.Red;
+                    rb.BackColor = Color.DarkRed;
                     rb.ForeColor = Color.White;
+                    rb.FlatAppearance.BorderColor = Color.Maroon;
                 }
                 else
                 {
                     rb.BackColor = Color.White;
                     rb.ForeColor = Color.DarkSlateGray;
+                    rb.FlatAppearance.BorderColor = Color.DarkRed;
                 }
             };
 
+            // Evento de hover para mouse
             rb.MouseEnter += (sender, e) =>
             {
-                if (!rb.Checked) rb.BackColor = Color.LightGray;
+                if (!rb.Checked)
+                {
+                    rb.BackColor = Color.LightCoral; // Tom de vermelho claro
+                }
             };
+
             rb.MouseLeave += (sender, e) =>
             {
-                if (!rb.Checked) rb.BackColor = Color.White;
+                if (!rb.Checked)
+                {
+                    rb.BackColor = Color.White; // Volta ao padrão
+                }
             };
         }
 
