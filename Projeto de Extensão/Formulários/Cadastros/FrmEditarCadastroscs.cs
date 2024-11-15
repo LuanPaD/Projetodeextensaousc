@@ -36,7 +36,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private async void ConsultaSqlPerguntas()
         {
             string sql = @"
-                SELECT a.pergunta_id,a.texto, s.nome AS setor
+                SELECT a.pergunta_id,a.ordem,a.texto, s.nome AS setor
                 FROM perguntas a
                 JOIN setores s ON a.setor_id = s.setor_id;";
             await CarregarDadosAsync(sql, GridViewPerguntas, "pergunta_id");
@@ -62,6 +62,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnPerguntas_Click(object sender, EventArgs e)
         {
+            await FrmCadastros.ListaTodosOsSetoresAsync(cmbListaDeSetoresPerguntas);
             ConsultaSqlPerguntas();
             tbcPaginas.SelectedTab = tbPerguntas;
         }
@@ -210,16 +211,51 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-        private void GridViewPerguntas_CellClick(object sender, DataGridViewCellEventArgs e)
+        private string pergunta_id;
+        private async void GridViewPerguntas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 var row = GridViewPerguntas.Rows[e.RowIndex];
 
                 txtPergunta.Text = row.Cells["texto"].Value?.ToString();
-                txtPerguntaId.Text = row.Cells["pergunta_id"].Value?.ToString();
 
-                if (int.TryParse(txtPerguntaId.Text, out int perguntaId))
+
+                int ordem = Convert.ToInt32(row.Cells["ordem"].Value ?? 0);
+                if (cmbListaDeSetores.Items.Cast<DictionaryEntry>().Any(item => Convert.ToInt32(item.Key) == ordem))
+                {
+                    MessageBox.Show("Chega aq " + ordem);
+                    cmbListaDeSetores.SelectedValue = ordem;
+                }
+
+                pergunta_id = row.Cells["pergunta_id"].Value?.ToString();
+                string setorId = row.Cells["setor"].Value?.ToString();
+
+                if (!string.IsNullOrEmpty(setorId))
+                {
+                    var setorSelecionado = cmbListaDeSetoresPerguntas.Items
+                        .Cast<DictionaryEntry>()
+                        .FirstOrDefault(item => item.Value.ToString() == setorId);
+
+                    int setor_int = Convert.ToInt32(setorSelecionado.Key);
+                    await ListaTodasAsOrdensAsync(cbxOrdemPerguntas, setor_int);
+
+                    if (setorSelecionado.Key != null)
+                    {
+
+                        cmbListaDeSetoresPerguntas.SelectedValue = setorSelecionado.Key;
+                    }
+                    else
+                    {
+                        cmbListaDeSetoresPerguntas.SelectedIndex = 0;
+                    }
+                }
+                else
+                {
+                    cmbListaDeSetoresPerguntas.SelectedIndex = 0;
+                }
+
+                if (int.TryParse(pergunta_id, out int perguntaId))
                 {
                     CarregarOpcoes(perguntaId);
                 }
@@ -349,7 +385,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnSalvarAtendentes_Click(object sender, EventArgs e)
         {
-            
+
             int.TryParse(txtIdAtendente.Text, out int atendenteId);
 
 
@@ -368,7 +404,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             if (!camposTextoAlterados && contadorClickUpload == 0)
             {
-                await ExibirMensagemTemporaria(lblMsgErroAtendente,"Nenhum campo foi alterado.");
+                await ExibirMensagemTemporaria(lblMsgErroAtendente, "Nenhum campo foi alterado.");
                 return;
             }
 
@@ -579,7 +615,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             int.TryParse(txtIdAdmin.Text, out int AdminId);
 
-            if (await verificaEmailJaCadastrado("admin","admin_id",AdminId, email))
+            if (await verificaEmailJaCadastrado("admin", "admin_id", AdminId, email))
             {
                 await ExibirMensagemTemporaria(lblMsgErroAdmin, "Este e-mail já está cadastrado com outro administrador.");
                 return false;
@@ -636,7 +672,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
 
-            if (await verificaEmailJaCadastrado("atendente","atendente_id",atendenteId, email))
+            if (await verificaEmailJaCadastrado("atendente", "atendente_id", atendenteId, email))
             {
                 await ExibirMensagemTemporaria(lblMsgErroAtendente, "Este e-mail já está cadastrado com outro atendente.");
                 return false;
@@ -678,7 +714,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-        private async Task<bool> verificaEmailJaCadastrado(string tabela,string campoProucurado,int atendenteId, string email)
+        private async Task<bool> verificaEmailJaCadastrado(string tabela, string campoProucurado, int atendenteId, string email)
         {
             StringBuilder sql = new StringBuilder();
             sql.AppendLine($"SELECT COUNT(*) FROM {tabela} WHERE email = @email AND {campoProucurado} <> @id ");
@@ -755,10 +791,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             for (int i = 1; i <= 10; i++)
             {
                 var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
-                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && !txtBox.Visible)
+                var lblOpcao = this.Controls.Find($"lblOp{i}",true);
+                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && !txtBox.Visible && lblOpcao[0] is Label lblBox)
                 {
                     txtBox.Text = string.Empty;
                     txtBox.Visible = true;
+                    lblBox.Visible = true;
                     break;
                 }
                 if (i == 10)
@@ -771,10 +809,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             for (int i = 10; i >= 3; i--)
             {
                 var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
-                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && txtBox.Visible)
+                var lblOpcao = this.Controls.Find($"lblOp{i}", true);
+                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && txtBox.Visible && lblOpcao[0] is Label lblBox )
                 {
                     txtBox.Text = string.Empty;
                     txtBox.Visible = false;
+                    lblBox.Visible = false;
                     break;
                 }
                 if (i == 3)
@@ -814,9 +854,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         while (reader.Read() && index <= 10)
                         {
                             var txtOpcao = this.Controls.Find($"txtOpcao{index}", true);
-                            if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox)
+                            var lblopcao = this.Controls.Find($"lblOp{index}",true);
+                            if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && lblopcao[0] is Label lblBox)
                             {
                                 txtBox.Text = reader["texto"].ToString();
+                                lblBox.Visible =true;
                                 txtBox.Visible = true;
 
                             }
@@ -923,15 +965,15 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnDeletarAtendentes_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtIdAtendente.Text, out int atendeteId))
+            if (int.TryParse(pergunta_id, out int atendeteId))
                 await DeletaAtendenteAsync(atendeteId);
         }
 
         private async void btnSalvarPerguntas_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtPerguntaId.Text, out int perguntaId))
+            if (!int.TryParse(pergunta_id, out int perguntaId))
             {
-                MessageBox.Show("ID da pergunta inválido.");
+                MessageBox.Show($"ID da pergunta inválido : {perguntaId}." );
                 return;
             }
 
@@ -996,7 +1038,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text)
         {
             string sql = @"UPDATE perguntas
-                           SET texto = @texto
+                           SET texto = @texto, ordem = @ordem,setor_id = @setor_id
                            WHERE pergunta_id = @idPergunta";
 
             try
@@ -1017,28 +1059,90 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-        private async void SalvarOpcoesBancoDeDados(int idOpcao, int idPergunta, string opcao)
+        public static async Task ListaTodasAsOrdensAsync(ComboBox comboBox, int setor)
         {
-            string sql = @"UPDATE opcoes
-                           SET texto = @opcao
-                           WHERE opcao_id = @idOpcao AND pergunta_id = @idPergunta";
+            string sql = @"SELECT COUNT(ordem) 
+                 FROM perguntas
+                 WHERE setor_id = @setor";
 
             try
             {
                 using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
                 {
-                    cmd.Parameters.AddWithValue("@opcao", opcao);
-                    cmd.Parameters.AddWithValue("@opcao_id", idOpcao);
-                    cmd.Parameters.AddWithValue("@pergunta_id", idPergunta);
+                    cmd.Parameters.AddWithValue("@setor", setor);
+                    var ordemList = new List<int>();
 
-                    await cmd.ExecuteNonQueryAsync();
+                    int totalPerguntas = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                    for (int i = 1; i <= totalPerguntas; i++)
+                    {
+                        ordemList.Add(i);
+                    }
+
+                    comboBox.DataSource = ordemList;
+                    comboBox.SelectedIndex = 0; // Seleciona o primeiro valor, se existir
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("Erro" + ex.Message);
+                MessageBox.Show("Erro ao listar ordens: " + ex.Message);
             }
         }
+
+
+
+
+
+        //private async void SalvarOpcoesBancoDeDados(int idOpcao, int idPergunta, string opcao)
+        //{
+        //    string sql = @"UPDATE opcoes
+        //                   SET texto = @opcao
+        //                   WHERE opcao_id = @idOpcao AND pergunta_id = @idPergunta";
+
+        //    try
+        //    {
+        //        using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+        //        {
+        //            cmd.Parameters.AddWithValue("@opcao", opcao);
+        //            cmd.Parameters.AddWithValue("@opcao_id", idOpcao);
+        //            cmd.Parameters.AddWithValue("@pergunta_id", idPergunta);
+
+        //            await cmd.ExecuteNonQueryAsync();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Erro" + ex.Message);
+        //    }
+        //}
+
+        //public async Task AtualizarOrdemPerguntaAsync(int idPergunta, int novaOrdem, int setorId)
+        //{
+        //    var perguntas = await CarregarPerguntasPorSetorAsync(setorId);
+
+        //    // Encontra a pergunta e a move para a nova posição
+        //    var pergunta = perguntas.FirstOrDefault(p => p.Id == idPergunta);
+        //    if (pergunta != null)
+        //    {
+        //        perguntas.Remove(pergunta);
+        //        perguntas.Insert(novaOrdem - 1, pergunta); // Insere na nova ordem (ajuste 0-base)
+
+        //        // Atualiza todas as ordens na lista
+        //        for (int i = 0; i < perguntas.Count; i++)
+        //        {
+        //            perguntas[i].Ordem = i + 1;
+        //        }
+
+        //        await SalvarPerguntasAsync(perguntas); // Salva a lista reorganizada no banco
+        //        MessageBox.Show("Ordem atualizada com sucesso!");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Pergunta não encontrada no setor.");
+        //    }
+        //}
+
+
 
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
@@ -1049,6 +1153,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private void TentouAleterarOSetor_Click(object sender, EventArgs e)
         {
             alteraSetor++;
+        }
+
+        private void btnEditarPerguntas_Click(object sender, EventArgs e)
+        {
+            gbPerguntas.Visible = true;
         }
     }
 }

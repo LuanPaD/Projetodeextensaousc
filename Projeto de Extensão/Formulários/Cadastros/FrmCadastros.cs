@@ -488,6 +488,16 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             {
                 await InserirOpcoesAsync(idPergunta, alternativas);
                 MessageBox.Show("Pergunta inserida com sucesso!");
+
+                for (int i = 1; i <= 10; i++)
+                {
+                    var txtOpcao = this.Controls["txtAlternativa" + i] as TextBox;
+                    if (txtOpcao != null)
+                    {
+                        txtOpcao.Text = string.Empty;
+                    }
+                }
+
             }
             else
             {
@@ -516,19 +526,28 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             return alternativas;
         }
+
         private async Task<int> InserirPerguntaAsync(string pergunta, string setorId)
         {
             StringBuilder sql = new StringBuilder();
-            sql.AppendLine("INSERT INTO perguntas (texto, setor_id) VALUES (@pergunta, @setor)");
+            sql.AppendLine("SELECT COALESCE(MAX(ordem), 0) + 1 FROM perguntas WHERE setor_id = @setor");
 
             using (var cmd = new MySqlCommand(sql.ToString(), ClsConexao.Conexao))
             {
-                cmd.Parameters.AddWithValue("@pergunta", pergunta);
                 cmd.Parameters.AddWithValue("@setor", setorId);
 
                 try
                 {
+                    int novaOrdem = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+                    
+                    cmd.CommandText = "INSERT INTO perguntas (texto, setor_id, ordem) VALUES (@pergunta, @setor, @ordem)";
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@pergunta", pergunta);
+                    cmd.Parameters.AddWithValue("@setor", setorId);
+                    cmd.Parameters.AddWithValue("@ordem", novaOrdem);
+
                     await cmd.ExecuteNonQueryAsync();
+
                     cmd.CommandText = "SELECT LAST_INSERT_ID()";
                     return Convert.ToInt32(await cmd.ExecuteScalarAsync());
                 }
@@ -539,6 +558,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
             }
         }
+
 
         private async Task InserirOpcoesAsync(int perguntaId, List<string> alternativas)
         {
