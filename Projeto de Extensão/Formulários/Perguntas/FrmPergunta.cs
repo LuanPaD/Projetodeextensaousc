@@ -36,28 +36,42 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
         private async Task<List<string>> getPertguntaEalternativas()
         {
+            if (string.IsNullOrWhiteSpace(setorSelecionado))
+            {
+                MessageBox.Show("Setor não foi selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return new List<string>();
+            }
+
             int IDpergunta = 0;
             List<string> alternativas = new List<string>();
 
-            string sqlPergunta = @$"
-                                    SELECT 
-                                     pergunta_id, texto 
-                                    FROM 
-                                     perguntas 
-                                    WHERE
-                                      SETOR_ID = (SELECT setor_id from setores where nome = {setorSelecionado})  
-                                    ORDER BY ordem LIMIT 1 OFFSET {num_perguntaAtual - 1}";
+            string sqlPergunta = @"
+        SELECT 
+            pergunta_id, texto 
+        FROM 
+            perguntas 
+        WHERE 
+            SETOR_ID = (SELECT setor_id FROM setores WHERE nome = @setorNome) 
+        ORDER BY ordem 
+        LIMIT 1 OFFSET @offset";
 
             try
             {
-                using (var cmd = new MySqlCommand(sqlPergunta, ClsConexao.Conexao))
+                using (var conexao = new MySqlConnection(ClsConexao.connectionString))
                 {
-                    using (var reader = await cmd.ExecuteReaderAsync())
+                    await conexao.OpenAsync();
+                    using (var cmd = new MySqlCommand(sqlPergunta, conexao))
                     {
-                        if (await reader.ReadAsync())
+                        cmd.Parameters.AddWithValue("@setorNome", setorSelecionado);
+                        cmd.Parameters.AddWithValue("@offset", num_perguntaAtual - 1);
+
+                        using (var reader = await cmd.ExecuteReaderAsync())
                         {
-                            IDpergunta = reader.GetInt32(reader.GetOrdinal("pergunta_id"));
-                            lblPergunta.Text = reader.GetString("texto");
+                            if (await reader.ReadAsync())
+                            {
+                                IDpergunta = reader.GetInt32(reader.GetOrdinal("pergunta_id"));
+                                lblPergunta.Text = reader.GetString("texto");
+                            }
                         }
                     }
                 }
@@ -68,19 +82,24 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
                 return alternativas;
             }
 
+            // Consultar alternativas
             string sqlAlternativas = "SELECT texto FROM opcoes WHERE pergunta_id = @pergunta_id";
 
             try
             {
-                using (var cmd = new MySqlCommand(sqlAlternativas, ClsConexao.Conexao))
+                using (var conexao = new MySqlConnection(ClsConexao.connectionString))
                 {
-                    cmd.Parameters.AddWithValue("@pergunta_id", IDpergunta);
-
-                    using (var reader = await cmd.ExecuteReaderAsync())
+                    await conexao.OpenAsync();
+                    using (var cmd = new MySqlCommand(sqlAlternativas, conexao))
                     {
-                        while (await reader.ReadAsync())
+                        cmd.Parameters.AddWithValue("@pergunta_id", IDpergunta);
+
+                        using (var reader = await cmd.ExecuteReaderAsync())
                         {
-                            alternativas.Add(reader.GetString("texto"));
+                            while (await reader.ReadAsync())
+                            {
+                                alternativas.Add(reader.GetString("texto"));
+                            }
                         }
                     }
                 }
@@ -92,6 +111,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
             return alternativas;
         }
+
         private int calculaEspacamentoPorQtdAlternativas(int quantidade)
         {
             if (quantidade <= 2) return 40;
