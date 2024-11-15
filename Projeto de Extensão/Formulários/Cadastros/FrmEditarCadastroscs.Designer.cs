@@ -918,7 +918,6 @@
             btnDeletarAtendentes.Size = new Size(107, 45);
             btnDeletarAtendentes.TabIndex = 39;
             btnDeletarAtendentes.UseVisualStyleBackColor = false;
-            btnDeletarAtendentes.Click += btnDeletarAtendentes_Click;
             // 
             // lblNomeAtendente
             // 

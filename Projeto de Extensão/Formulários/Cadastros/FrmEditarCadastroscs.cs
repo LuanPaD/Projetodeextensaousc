@@ -969,39 +969,92 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-        private async void btnDeletarAtendentes_Click(object sender, EventArgs e)
-        {
-            if (int.TryParse(pergunta_id, out int atendeteId))
-                await DeletaAtendenteAsync(atendeteId);
-        }
+        //private async void btnDeletarAtendentes_Click(object sender, EventArgs e)
+        //{
+        //    if (int.TryParse(pergunta_id, out int atendeteId))
+        //        await DeletaAtendenteAsync(atendeteId);
+        //}
+
+        //private async void btnSalvarPerguntas_Click(object sender, EventArgs e)
+        //{
+        //    int novaOrdem = Convert.ToInt32(cbxOrdemPerguntas.SelectedItem);
+
+        //    int ordemAtual = Convert.ToInt32(ordemAtualGrid); 
+
+        //    if(novaOrdem != ordemAtual) //Verifica se teve alteração nos valores dos campos.
+        //    {
+        //        await AlterarOrdemNoBanco(ordemAtual, novaOrdem);
+        //    }
+
+        //    if (!int.TryParse(pergunta_id, out int perguntaId))
+        //    {
+        //        MessageBox.Show("Deu erro setor " + perguntaId);
+        //        return;
+        //    }
+
+        //    if(!int.TryParse(cbxOrdemPerguntas.SelectedValue?.ToString(), out int setorId))
+        //    {
+        //        return;
+        //    }
+
+
+        //    await SalvarPerguntaBancoDeDadosAsync(perguntaId, txtPergunta.Text,setorId);
+
+        //    var listaOpcoes = ObterOpcoesPreenchidas();
+        //    await SubstituirOpcoesNoBancoDeDadosAsync(perguntaId, listaOpcoes);
+
+        //    MessageBox.Show("Pergunta e opções salvas com sucesso!");
+        //}
 
         private async void btnSalvarPerguntas_Click(object sender, EventArgs e)
         {
-            int novaOrdem = Convert.ToInt32(cbxOrdemPerguntas.SelectedItem);
-
-            // Obtém a ordem atual da pergunta
-            int ordemAtual = Convert.ToInt32(ordemAtualGrid); 
-
-            // Chama o método para alterar a ordem no banco
-            await AlterarOrdemNoBanco(ordemAtual, novaOrdem);
-
-
-
-            if (!int.TryParse(pergunta_id, out int perguntaId))
+            try
             {
-                MessageBox.Show($"ID da pergunta inválido : {perguntaId}." );
-                return;
+                // Verifica se a ordem foi alterada
+                if (cbxOrdemPerguntas.SelectedValue is int novaOrdem &&
+                    novaOrdem != ordemAtualGrid)
+                {
+                    await AlterarOrdemNoBanco(ordemAtualGrid, novaOrdem);
+                }
+
+                // Validação e conversão do ID da pergunta
+                if (!int.TryParse(pergunta_id, out int perguntaId))
+                {
+                    MessageBox.Show("Erro ao identificar o ID da pergunta.");
+                    return;
+                }
+
+                // Validação e conversão do ID do setor (usando SelectedValue do ComboBox)
+                if (cbxOrdemPerguntas.SelectedValue is not int setorIdPergunta)
+                {
+                    MessageBox.Show("Erro ao identificar o ID do setor.");
+                    return;
+                }
+                MessageBox.Show("Setor ID :" + setorIdPergunta);
+                // Salva a pergunta no banco de dados
+                await SalvarPerguntaBancoDeDadosAsync(perguntaId, txtPergunta.Text, setorIdPergunta);
+
+                // Obtém as opções preenchidas e atualiza no banco de dados
+                var listaOpcoes = ObterOpcoesPreenchidas();
+                if (listaOpcoes != null && listaOpcoes.Any())
+                {
+                    await SubstituirOpcoesNoBancoDeDadosAsync(perguntaId, listaOpcoes, setorIdPergunta);
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma opção foi preenchida.");
+                }
+
+                // Mensagem de sucesso
+                MessageBox.Show("Pergunta e opções salvas com sucesso!");
             }
-
-            // Salvar a pergunta no banco de dados
-            await SalvarPerguntaBancoDeDadosAsync(perguntaId, txtPergunta.Text);
-
-            // Obter opções preenchidas e salvá-las
-            var listaOpcoes = ObterOpcoesPreenchidas();
-            await SubstituirOpcoesNoBancoDeDadosAsync(perguntaId, listaOpcoes);
-
-            MessageBox.Show("Pergunta e opções salvas com sucesso!");
+            catch (Exception ex)
+            {
+                // Tratamento genérico de erros
+                MessageBox.Show($"Ocorreu um erro: {ex.Message}");
+            }
         }
+
 
         private List<string> ObterOpcoesPreenchidas()
         {
@@ -1017,7 +1070,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             return listaOpcoes;
         }
 
-        private async Task SubstituirOpcoesNoBancoDeDadosAsync(int perguntaId, List<string> listaOpcoes)
+        private async Task SubstituirOpcoesNoBancoDeDadosAsync(int perguntaId, List<string> listaOpcoes,int setor)
         {
             string deleteSql = "DELETE FROM opcoes WHERE pergunta_id = @perguntaId";
             string insertSql = "INSERT INTO opcoes (pergunta_id, texto,setor_id) VALUES (@perguntaId, @texto,@setor_id)";
@@ -1040,7 +1093,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     {
                         insertCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
                         insertCommand.Parameters.AddWithValue("@texto", opcao);
-                        insertCommand.Parameters.AddWithValue("@setor_id", 1);
+                        insertCommand.Parameters.AddWithValue("@setor_id", setor);
                         await insertCommand.ExecuteNonQueryAsync();
                     }
                 }
@@ -1048,10 +1101,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         }
 
 
-        private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text)
+        private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text,int setor_id)
         {
             string sql = @"UPDATE perguntas
-                           SET texto = @texto, ordem = @ordem,setor_id = @setor_id
+                           SET texto = @texto,setor_id = @setor_id
                            WHERE pergunta_id = @idPergunta";
 
             try
@@ -1060,6 +1113,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 {
                     cmd.Parameters.AddWithValue("@idPergunta", idPergunta);
                     cmd.Parameters.AddWithValue("@texto", text);
+                    cmd.Parameters.AddWithValue("@setor_id", setor_id);
                     await cmd.ExecuteNonQueryAsync();
 
                     MessageBox.Show("Pergunta atualizada com sucesso!");
