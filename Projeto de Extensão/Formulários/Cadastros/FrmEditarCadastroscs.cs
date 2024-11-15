@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,6 +63,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnPerguntas_Click(object sender, EventArgs e)
         {
+            //await ListaTodasAsOrdensAsync(cbxOrdemPerguntas, setorIdOriginal);
             await FrmCadastros.ListaTodosOsSetoresAsync(cmbListaDeSetoresPerguntas);
             ConsultaSqlPerguntas();
             tbcPaginas.SelectedTab = tbPerguntas;
@@ -171,20 +173,19 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     {
                         if (reader.Read())
                         {
-                            // Verifica se a imagem foi retornada
                             if (reader["Imagem"] != DBNull.Value)
                             {
                                 byte[] imageBytes = (byte[])reader["Imagem"];
-                                return imageBytes; // Retorna o array de bytes da imagem
+                                return imageBytes; 
                             }
                             else
                             {
-                                return null; // Se não houver imagem, retorna null
+                                return null;
                             }
                         }
                         else
                         {
-                            return null; // Se o atendente não for encontrado, retorna null
+                            return null;
                         }
                     }
                 }
@@ -192,14 +193,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao carregar a foto: " + ex.Message);
-                return null; // Retorna null em caso de erro
+                return null;
             }
         }
 
-
-
-
-        //Extrai os valores da Linha do Grid Selecionado
         private void GridSetores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -212,6 +209,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         }
 
         private string pergunta_id;
+
+
+        private int ordemAtualGrid;
         private async void GridViewPerguntas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -219,14 +219,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 var row = GridViewPerguntas.Rows[e.RowIndex];
 
                 txtPergunta.Text = row.Cells["texto"].Value?.ToString();
-
-
-                int ordem = Convert.ToInt32(row.Cells["ordem"].Value ?? 0);
-                if (cmbListaDeSetores.Items.Cast<DictionaryEntry>().Any(item => Convert.ToInt32(item.Key) == ordem))
-                {
-                    MessageBox.Show("Chega aq " + ordem);
-                    cmbListaDeSetores.SelectedValue = ordem;
-                }
 
                 pergunta_id = row.Cells["pergunta_id"].Value?.ToString();
                 string setorId = row.Cells["setor"].Value?.ToString();
@@ -237,11 +229,25 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         .Cast<DictionaryEntry>()
                         .FirstOrDefault(item => item.Value.ToString() == setorId);
 
-                    int setor_int = Convert.ToInt32(setorSelecionado.Key);
-                    await ListaTodasAsOrdensAsync(cbxOrdemPerguntas, setor_int);
-
                     if (setorSelecionado.Key != null)
                     {
+                        int setor_int = Convert.ToInt32(setorSelecionado.Key);
+                        await ListaTodasAsOrdensAsync(cbxOrdemPerguntas, setor_int);
+
+                        int ordem = Convert.ToInt32(row.Cells["ordem"].Value ?? 0);
+                        ordemAtualGrid = ordem;
+
+                        if (cbxOrdemPerguntas.Items.Count > 0)
+                        {
+                            if (cbxOrdemPerguntas.Items.Contains(ordem))
+                            {
+                                cbxOrdemPerguntas.SelectedItem = ordem;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("O ComboBox cbxOrdemPerguntas está vazio.");
+                        }
 
                         cmbListaDeSetoresPerguntas.SelectedValue = setorSelecionado.Key;
                     }
@@ -971,6 +977,16 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnSalvarPerguntas_Click(object sender, EventArgs e)
         {
+            int novaOrdem = Convert.ToInt32(cbxOrdemPerguntas.SelectedItem);
+
+            // Obtém a ordem atual da pergunta
+            int ordemAtual = Convert.ToInt32(ordemAtualGrid); 
+
+            // Chama o método para alterar a ordem no banco
+            await AlterarOrdemNoBanco(ordemAtual, novaOrdem);
+
+
+
             if (!int.TryParse(pergunta_id, out int perguntaId))
             {
                 MessageBox.Show($"ID da pergunta inválido : {perguntaId}." );
@@ -1032,9 +1048,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         }
 
 
-
-
-
         private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text)
         {
             string sql = @"UPDATE perguntas
@@ -1080,7 +1093,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     }
 
                     comboBox.DataSource = ordemList;
-                    comboBox.SelectedIndex = 0; // Seleciona o primeiro valor, se existir
                 }
             }
             catch (MySqlException ex)
@@ -1092,57 +1104,57 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
 
 
+        private async Task AlterarOrdemNoBanco(int ordem1, int ordem2)
+        {
+            try
+            {
+                // Verifica se as ordens são diferentes
+                if (ordem1 != ordem2)
+                {
+                    // Utiliza transações para garantir que a troca seja atômica
+                    using (var transaction = ClsConexao.Conexao.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Troca as ordens diretamente
+                            string updateSql = @"
+                                UPDATE perguntas
+                                SET ordem = CASE
+                                    WHEN ordem = @ordem1 THEN @ordem2
+                                    WHEN ordem = @ordem2 THEN @ordem1
+                                    ELSE ordem
+                                END
+                                WHERE ordem IN (@ordem1, @ordem2)";
 
-        //private async void SalvarOpcoesBancoDeDados(int idOpcao, int idPergunta, string opcao)
-        //{
-        //    string sql = @"UPDATE opcoes
-        //                   SET texto = @opcao
-        //                   WHERE opcao_id = @idOpcao AND pergunta_id = @idPergunta";
+                            using (var cmd = new MySqlCommand(updateSql, ClsConexao.Conexao, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@ordem1", ordem1);
+                                cmd.Parameters.AddWithValue("@ordem2", ordem2);
 
-        //    try
-        //    {
-        //        using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
-        //        {
-        //            cmd.Parameters.AddWithValue("@opcao", opcao);
-        //            cmd.Parameters.AddWithValue("@opcao_id", idOpcao);
-        //            cmd.Parameters.AddWithValue("@pergunta_id", idPergunta);
+                                await cmd.ExecuteNonQueryAsync();
+                            }
 
-        //            await cmd.ExecuteNonQueryAsync();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Erro" + ex.Message);
-        //    }
-        //}
+                            transaction.Commit();
 
-        //public async Task AtualizarOrdemPerguntaAsync(int idPergunta, int novaOrdem, int setorId)
-        //{
-        //    var perguntas = await CarregarPerguntasPorSetorAsync(setorId);
-
-        //    // Encontra a pergunta e a move para a nova posição
-        //    var pergunta = perguntas.FirstOrDefault(p => p.Id == idPergunta);
-        //    if (pergunta != null)
-        //    {
-        //        perguntas.Remove(pergunta);
-        //        perguntas.Insert(novaOrdem - 1, pergunta); // Insere na nova ordem (ajuste 0-base)
-
-        //        // Atualiza todas as ordens na lista
-        //        for (int i = 0; i < perguntas.Count; i++)
-        //        {
-        //            perguntas[i].Ordem = i + 1;
-        //        }
-
-        //        await SalvarPerguntasAsync(perguntas); // Salva a lista reorganizada no banco
-        //        MessageBox.Show("Ordem atualizada com sucesso!");
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Pergunta não encontrada no setor.");
-        //    }
-        //}
-
-
+                            MessageBox.Show("Ordem trocada com sucesso no banco de dados!");
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Erro ao trocar a ordem no banco de dados: " + ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("As ordens são iguais, nenhuma troca foi realizada.");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro ao tentar realizar a transação: " + ex.Message);
+            }
+        }
 
         private void btnUploadImage_Click(object sender, EventArgs e)
         {

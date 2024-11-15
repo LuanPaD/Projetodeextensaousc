@@ -605,21 +605,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-
-        //DELETAR COLUNA NOME  -- SEM NECESSIDADE DEVIVO A TER A COLUNA ATENDETE_ID e TBM NN CONSEGUI PASSAR O NOME
-
-        /*********
-         * 
-         * 
-         * REVER O PQ DA COLUNA VALOR NA TABELA OPCOES
-         * 
-         * NN TEM NENHUMA EXPLICAÇÃO POSSÍVEL PRA ELA EXISTIR
-         * 
-         * ALTER TABLE opcoes
-           RENAME COLUMN valor to setor_id;
-           Como vai ser necessário criar perguntas para cada setor acho melhor alterar esse valor para setor_id
-         */
-
         private async Task SaveImageToDatabase(PictureBox picture, int atendenteId, string nome)
         {
             if (picture.Image != null)

@@ -97,6 +97,7 @@
             GridAtendentes = new DataGridView();
             lblTituloAjuda = new Label();
             tbPerguntas = new TabPage();
+            label3 = new Label();
             lblMsgErroPerguntas = new Label();
             gbPerguntas = new GroupBox();
             cbxOrdemPerguntas = new ComboBox();
@@ -134,7 +135,6 @@
             btnEditarPerguntas = new Button();
             btnCarregarDadosPerguntas = new Button();
             label1 = new Label();
-            label3 = new Label();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -1055,6 +1055,15 @@
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(836, 208);
+            label3.Name = "label3";
+            label3.Size = new Size(272, 137);
+            label3.TabIndex = 63;
+            label3.Text = "Precisa corrigir o UPDATE e o DELETE. Ah, e quando for apenas trocar apenas o setor, pensei em adicionar no último lugar do destino, mas vê aí o q vc acha mais fácil.";
+            // 
             // lblMsgErroPerguntas
             // 
             lblMsgErroPerguntas.AutoSize = true;
@@ -1469,15 +1478,6 @@
             label1.Size = new Size(255, 65);
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
-            // 
-            // label3
-            // 
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(836, 208);
-            label3.Name = "label3";
-            label3.Size = new Size(272, 137);
-            label3.TabIndex = 63;
-            label3.Text = resources.GetString("label3.Text");
             // 
             // FrmEditarCadastroscs
             // 

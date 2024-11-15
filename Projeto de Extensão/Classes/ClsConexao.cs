@@ -7,7 +7,8 @@ namespace Projeto_de_Extensao.Classes
     internal class ClsConexao
     {
         public static MySqlConnection? Conexao { get; private set; }
-        public static string connectionString = "Server=127.0.0.1;Port=3306;Database=avaliacaoatendimento;User=root;Password=1234;";
+        public static string connectionString = "Server=127.0.0.1;Port=3306;Database=avaliacaoatendimento;User=root;Password=1234;AllowUserVariables=True;";
+
 
         // Método para obter a conexão com o banco de dados
         public async Task GetConexao()
