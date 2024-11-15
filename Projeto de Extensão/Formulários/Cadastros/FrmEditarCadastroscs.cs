@@ -1025,7 +1025,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
 
                 // Validação e conversão do ID do setor (usando SelectedValue do ComboBox)
-                if (cbxOrdemPerguntas.SelectedValue is not int setorIdPergunta)
+                if (cmbListaDeSetoresPerguntas.SelectedValue is not int setorIdPergunta)
                 {
                     MessageBox.Show("Erro ao identificar o ID do setor.");
                     return;

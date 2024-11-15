@@ -58,7 +58,9 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             rb.FlatAppearance.BorderColor = Color.DarkGray;
             rb.FlatAppearance.BorderSize = 2;
             rb.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            rb.Size = new Size(191, 40);
+            int widthPtb = ptbAtendente1.Width;
+
+            rb.Size = new Size(widthPtb, 40);
             rb.TextAlign = ContentAlignment.MiddleCenter;
 
             rb.CheckedChanged += (sender, e) =>
@@ -287,8 +289,9 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
         {
             if (ValidarAtendenteSelecionado())
             {
-                FrmPergunta FrmPergunta = new FrmPergunta(atendenteId);
-                FrmPergunta.ShowDialog();
+                FrmPergunta FrmPergunta = new FrmPergunta(atendenteId, setorSelecionado);
+                //FrmPergunta.ShowDialog();
+                FrmPergunta.Show();
                 this.Hide();
             }
         }

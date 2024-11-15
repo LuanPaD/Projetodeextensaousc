@@ -10,10 +10,16 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 {
     public partial class FrmPergunta : Form
     {
-        public FrmPergunta(int AtendenteId)
+        private int num_perguntaAtual = 1;
+        private int qtdDePerguntas = 0;
+        private string setorSelecionado = String.Empty;
+        public FrmPergunta(int AtendenteId, string setorSelecionado)
         {
             InitializeComponent();
+            this.setorSelecionado = setorSelecionado;
+
             CriarAlternativas();
+            controlaVisibilidadeBotoesVoltarAvancar();
         }
 
         public async void CriarAlternativas()
@@ -22,18 +28,25 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
             //var alternativas = new List<string> { "1", "2", "3", "4", "5"};
             //lblPergunta.Text ="Pergunta Genérica"; 
 
+            qtdDePerguntas = await getQuantidadeDePerguntas();
+
             List<string> alternativas = await getPertguntaEalternativas();
             CriarBotoesAlternativas(alternativas);
         }
 
         private async Task<List<string>> getPertguntaEalternativas()
         {
-            MessageBox.Show("Por enquanto só ta pegando a 1a pergunta pq n ta feito os botoes de avançar ainda! se n cadastrou pergunta ainda descomenta a linha de alternativas", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
             int IDpergunta = 0;
             List<string> alternativas = new List<string>();
 
-            string sqlPergunta = "SELECT pergunta_id, texto FROM perguntas LIMIT 1";
+            string sqlPergunta = @$"
+                                    SELECT 
+                                     pergunta_id, texto 
+                                    FROM 
+                                     perguntas 
+                                    WHERE
+                                      SETOR_ID = (SELECT setor_id from setores where nome = {setorSelecionado})  
+                                    ORDER BY ordem LIMIT 1 OFFSET {num_perguntaAtual - 1}";
 
             try
             {
@@ -41,10 +54,10 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
                 {
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
-                        if (await reader.ReadAsync()) 
+                        if (await reader.ReadAsync())
                         {
                             IDpergunta = reader.GetInt32(reader.GetOrdinal("pergunta_id"));
-                            lblPergunta.Text = reader.GetString("texto"); 
+                            lblPergunta.Text = reader.GetString("texto");
                         }
                     }
                 }
@@ -52,7 +65,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
             catch (MySqlException ex)
             {
                 MessageBox.Show("Erro ao buscar pergunta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return alternativas; 
+                return alternativas;
             }
 
             string sqlAlternativas = "SELECT texto FROM opcoes WHERE pergunta_id = @pergunta_id";
@@ -79,7 +92,94 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
             return alternativas;
         }
+        private int calculaEspacamentoPorQtdAlternativas(int quantidade)
+        {
+            if (quantidade <= 2) return 40;
+            if (quantidade <= 4) return 30;
+            return 10;
+        }
 
+        private void btnPerguntaAnterior_Click(object sender, EventArgs e)
+        {
+            if (num_perguntaAtual == 1) return;
+
+            num_perguntaAtual--;
+            CriarAlternativas();
+            controlaVisibilidadeBotoesVoltarAvancar();
+        }
+
+        private void btnProximaPergunta_Click(object sender, EventArgs e)
+        {
+            num_perguntaAtual++;
+            CriarAlternativas();
+
+            controlaVisibilidadeBotoesVoltarAvancar();
+
+            //se é a ulitma n mostra mais o botao
+            //armzane a resposta
+            //Validar se preencheu
+        }
+
+        private async Task<int> getQuantidadeDePerguntas()
+        {
+            int qtdPerguntas = 0;
+            string sqlQtd = @$" SELECT 
+                                      count(pergunta_id) as 'quantidade'
+                                     FROM 
+                                      perguntas 
+                                     WHERE
+                                        SETOR_ID = (SELECT setor_id from setores where nome = @setor);  
+                                    ";
+            try
+            {
+                using (var cmd = new MySqlCommand(sqlQtd, ClsConexao.Conexao))
+                {
+                    cmd.Parameters.AddWithValue("@setor", setorSelecionado);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            qtdPerguntas = reader.GetInt32(reader.GetOrdinal("quantidade"));
+                        }
+                    }
+                }
+                return qtdPerguntas;
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro ao buscar quantidade de perguntas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return qtdPerguntas;
+            }
+        }
+
+        private void controlaVisibilidadeBotoesVoltarAvancar()
+        {
+            if (num_perguntaAtual == 1)
+            {
+                btnPerguntaAnterior.Visible = false;
+                btnProximaPergunta.Visible = true;
+                return;
+            }
+
+            if (num_perguntaAtual == qtdDePerguntas)
+            {
+                btnProximaPergunta.Visible = false;
+                btnPerguntaAnterior.Visible = true;
+                return;
+            }
+
+            if (qtdDePerguntas == 1)
+            {
+                btnProximaPergunta.Visible = false;
+                btnPerguntaAnterior.Visible = false;
+                return;
+            }
+
+            btnProximaPergunta.Visible = true;
+            btnPerguntaAnterior.Visible = true;
+        }
 
         #region Botões
 
@@ -201,39 +301,32 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
             clickedButton.BackColor = Color.FromArgb(153, 39, 30); // Cor mais escura
         }
 
-        private int calculaEspacamentoPorQtdAlternativas(int quantidade)
+        public class CustomButton : Button
         {
-            if (quantidade <= 2) return 40;
-            if (quantidade <= 4) return 30;
-            return 10;
-        }
-    }
-
-    public class CustomButton : Button
-    {
-        protected override void OnPaint(PaintEventArgs pevent)
-        {
-            base.OnPaint(pevent);
-
-            // Definindo bordas arredondadas
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, 30, 30, 180, 90); // Canto superior esquerdo
-            path.AddArc(this.Width - 30, 0, 30, 30, 270, 90); // Canto superior direito
-            path.AddArc(this.Width - 30, this.Height - 30, 30, 30, 0, 90); // Canto inferior direito
-            path.AddArc(0, this.Height - 30, 30, 30, 90, 90); // Canto inferior esquerdo
-            path.CloseFigure();
-
-            this.Region = new Region(path);
-
-            // Preenchendo o fundo e a borda do botão
-            using (SolidBrush brush = new SolidBrush(this.BackColor))
+            protected override void OnPaint(PaintEventArgs pevent)
             {
-                pevent.Graphics.FillPath(brush, path);
-            }
+                base.OnPaint(pevent);
 
-            // Desenhando o texto
-            TextRenderer.DrawText(pevent.Graphics, this.Text, this.Font, new Point(Width / 2 - TextRenderer.MeasureText(this.Text, this.Font).Width / 2, Height / 2 - TextRenderer.MeasureText(this.Text, this.Font).Height / 2), this.ForeColor);
+                // Definindo bordas arredondadas
+                GraphicsPath path = new GraphicsPath();
+                path.AddArc(0, 0, 30, 30, 180, 90); // Canto superior esquerdo
+                path.AddArc(this.Width - 30, 0, 30, 30, 270, 90); // Canto superior direito
+                path.AddArc(this.Width - 30, this.Height - 30, 30, 30, 0, 90); // Canto inferior direito
+                path.AddArc(0, this.Height - 30, 30, 30, 90, 90); // Canto inferior esquerdo
+                path.CloseFigure();
+
+                this.Region = new Region(path);
+
+                // Preenchendo o fundo e a borda do botão
+                using (SolidBrush brush = new SolidBrush(this.BackColor))
+                {
+                    pevent.Graphics.FillPath(brush, path);
+                }
+
+                // Desenhando o texto
+                TextRenderer.DrawText(pevent.Graphics, this.Text, this.Font, new Point(Width / 2 - TextRenderer.MeasureText(this.Text, this.Font).Width / 2, Height / 2 - TextRenderer.MeasureText(this.Text, this.Font).Height / 2), this.ForeColor);
+            }
         }
+        #endregion
     }
-    #endregion
 }

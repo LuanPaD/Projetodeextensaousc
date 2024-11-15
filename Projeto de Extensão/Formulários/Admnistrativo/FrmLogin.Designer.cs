@@ -61,9 +61,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             panel1.Controls.Add(tableLogin);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1336, 671);
+            panel1.Size = new Size(1527, 895);
             panel1.TabIndex = 10;
             // 
             // tableLogin
@@ -76,10 +75,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             tableLogin.Controls.Add(panel3, 0, 0);
             tableLogin.Dock = DockStyle.Fill;
             tableLogin.Location = new Point(0, 0);
+            tableLogin.Margin = new Padding(3, 4, 3, 4);
             tableLogin.Name = "tableLogin";
             tableLogin.RowCount = 1;
             tableLogin.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLogin.Size = new Size(1336, 671);
+            tableLogin.Size = new Size(1527, 895);
             tableLogin.TabIndex = 10;
             // 
             // panel2
@@ -94,9 +94,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             panel2.Controls.Add(txtUsuario);
             panel2.Controls.Add(lblUsuario);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(671, 3);
+            panel2.Location = new Point(766, 4);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(662, 665);
+            panel2.Size = new Size(758, 887);
             panel2.TabIndex = 9;
             // 
             // lblDireitos
@@ -105,9 +106,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             lblDireitos.AutoSize = true;
             lblDireitos.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDireitos.ForeColor = SystemColors.AppWorkspace;
-            lblDireitos.Location = new Point(251, 631);
+            lblDireitos.Location = new Point(288, 841);
             lblDireitos.Name = "lblDireitos";
-            lblDireitos.Size = new Size(200, 17);
+            lblDireitos.Size = new Size(260, 23);
             lblDireitos.TabIndex = 8;
             lblDireitos.Text = "Reserved directs to Unisagrado";
             // 
@@ -116,11 +117,12 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             label1.Anchor = AnchorStyles.Top;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(251, 6);
+            label1.Location = new Point(0, 8);
             label1.Name = "label1";
-            label1.Size = new Size(178, 75);
+            label1.Size = new Size(761, 100);
             label1.TabIndex = 1;
             label1.Text = "LOGIN";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             label1.Click += label1_Click;
             // 
             // btnEntrar
@@ -135,10 +137,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             btnEntrar.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btnEntrar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEntrar.ForeColor = SystemColors.ButtonFace;
-            btnEntrar.Location = new Point(197, 554);
-            btnEntrar.Margin = new Padding(3, 2, 3, 2);
+            btnEntrar.Location = new Point(226, 739);
             btnEntrar.Name = "btnEntrar";
-            btnEntrar.Size = new Size(287, 60);
+            btnEntrar.Size = new Size(328, 80);
             btnEntrar.TabIndex = 4;
             btnEntrar.UseVisualStyleBackColor = false;
             btnEntrar.Click += btnEntrar_Click;
@@ -149,9 +150,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             lblErro.BackColor = Color.Transparent;
             lblErro.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblErro.ForeColor = Color.Red;
-            lblErro.Location = new Point(176, 478);
+            lblErro.Location = new Point(202, 637);
             lblErro.Name = "lblErro";
-            lblErro.Size = new Size(328, 56);
+            lblErro.Size = new Size(375, 75);
             lblErro.TabIndex = 7;
             lblErro.TextAlign = ContentAlignment.MiddleCenter;
             lblErro.Click += lblErro_Click;
@@ -162,9 +163,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             lblSenha.AutoSize = true;
             lblSenha.BackColor = Color.Transparent;
             lblSenha.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
-            lblSenha.Location = new Point(305, 301);
+            lblSenha.Location = new Point(350, 401);
             lblSenha.Name = "lblSenha";
-            lblSenha.Size = new Size(70, 30);
+            lblSenha.Size = new Size(92, 37);
             lblSenha.TabIndex = 6;
             lblSenha.Text = "Senha";
             lblSenha.Click += lblSenha_Click;
@@ -173,11 +174,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // 
             txtSenha.Anchor = AnchorStyles.None;
             txtSenha.Font = new Font("Segoe UI", 15.75F);
-            txtSenha.Location = new Point(176, 333);
-            txtSenha.Margin = new Padding(3, 2, 3, 2);
+            txtSenha.Location = new Point(202, 444);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '●';
-            txtSenha.Size = new Size(328, 35);
+            txtSenha.Size = new Size(374, 42);
             txtSenha.TabIndex = 3;
             txtSenha.TextChanged += txtSenha_TextChanged;
             // 
@@ -185,10 +185,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // 
             txtUsuario.Anchor = AnchorStyles.None;
             txtUsuario.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(176, 236);
-            txtUsuario.Margin = new Padding(3, 2, 3, 2);
+            txtUsuario.Location = new Point(202, 315);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(328, 35);
+            txtUsuario.Size = new Size(374, 42);
             txtUsuario.TabIndex = 2;
             txtUsuario.TextChanged += txtUsuario_TextChanged;
             // 
@@ -198,9 +197,9 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             lblUsuario.AutoSize = true;
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUsuario.Location = new Point(297, 204);
+            lblUsuario.Location = new Point(340, 272);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(86, 30);
+            lblUsuario.Size = new Size(111, 37);
             lblUsuario.TabIndex = 5;
             lblUsuario.Text = "Usuário";
             lblUsuario.Click += lblUsuario_Click;
@@ -209,9 +208,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // 
             panel3.Controls.Add(tableLayoutPanel1);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 3);
+            panel3.Location = new Point(3, 4);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(662, 665);
+            panel3.Size = new Size(757, 887);
             panel3.TabIndex = 10;
             // 
             // tableLayoutPanel1
@@ -222,20 +222,22 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             tableLayoutPanel1.Controls.Add(pictureBox2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 81.167984F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 18.8320236F));
-            tableLayoutPanel1.Size = new Size(662, 665);
+            tableLayoutPanel1.Size = new Size(757, 887);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 542);
+            pictureBox1.Location = new Point(3, 723);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(656, 120);
+            pictureBox1.Size = new Size(751, 160);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -244,22 +246,22 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             // 
             pictureBox2.Dock = DockStyle.Fill;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 3);
+            pictureBox2.Location = new Point(3, 4);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(656, 533);
+            pictureBox2.Size = new Size(751, 711);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
             // FrmLogin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1336, 671);
+            ClientSize = new Size(1527, 895);
             Controls.Add(panel1);
             DoubleBuffered = true;
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmLogin";
             Text = "FrmLogin";
             WindowState = FormWindowState.Maximized;
