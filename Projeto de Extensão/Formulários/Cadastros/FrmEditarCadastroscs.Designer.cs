@@ -471,10 +471,11 @@
             // btnHomeSetor
             // 
             btnHomeSetor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnHomeSetor.BackColor = Color.Gainsboro;
+            btnHomeSetor.BackColor = SystemColors.Control;
             btnHomeSetor.BackgroundImage = (Image)resources.GetObject("btnHomeSetor.BackgroundImage");
             btnHomeSetor.BackgroundImageLayout = ImageLayout.Stretch;
             btnHomeSetor.FlatAppearance.BorderSize = 0;
+            btnHomeSetor.FlatStyle = FlatStyle.Flat;
             btnHomeSetor.Location = new Point(1188, 27);
             btnHomeSetor.Margin = new Padding(3, 4, 3, 4);
             btnHomeSetor.Name = "btnHomeSetor";
@@ -589,7 +590,7 @@
             tbAdmin.Margin = new Padding(3, 4, 3, 4);
             tbAdmin.Name = "tbAdmin";
             tbAdmin.Padding = new Padding(3, 4, 3, 4);
-            tbAdmin.Size = new Size(1291, 1051);
+            tbAdmin.Size = new Size(1292, 1022);
             tbAdmin.TabIndex = 2;
             tbAdmin.Text = "Administradores";
             tbAdmin.UseVisualStyleBackColor = true;
@@ -820,7 +821,7 @@
             tbAtendentes.Margin = new Padding(3, 4, 3, 4);
             tbAtendentes.Name = "tbAtendentes";
             tbAtendentes.Padding = new Padding(3, 4, 3, 4);
-            tbAtendentes.Size = new Size(1291, 1051);
+            tbAtendentes.Size = new Size(1292, 1022);
             tbAtendentes.TabIndex = 3;
             tbAtendentes.Text = "Atendentes";
             tbAtendentes.UseVisualStyleBackColor = true;

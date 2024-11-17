@@ -37,6 +37,7 @@
             lblPergunta = new Label();
             label1 = new Label();
             lblQtdPerguntas = new Label();
+            btnFinalizarAvaliacao = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableImagens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -136,6 +137,7 @@
             // 
             // pnlDirects
             // 
+            pnlDirects.Controls.Add(btnFinalizarAvaliacao);
             pnlDirects.Controls.Add(lblDireitos);
             pnlDirects.Dock = DockStyle.Bottom;
             pnlDirects.Location = new Point(0, 730);
@@ -293,6 +295,20 @@
             lblQtdPerguntas.Text = "N/N";
             lblQtdPerguntas.TextAlign = ContentAlignment.BottomCenter;
             // 
+            // btnFinalizarAvaliacao
+            // 
+            btnFinalizarAvaliacao.Anchor = AnchorStyles.None;
+            btnFinalizarAvaliacao.BackColor = Color.Brown;
+            btnFinalizarAvaliacao.BackgroundImage = Projeto_de_Extensao.Properties.Resources.btnFinalizarAvaliacao;
+            btnFinalizarAvaliacao.BackgroundImageLayout = ImageLayout.Stretch;
+            btnFinalizarAvaliacao.Location = new Point(185, 0);
+            btnFinalizarAvaliacao.Margin = new Padding(3, 4, 3, 4);
+            btnFinalizarAvaliacao.Name = "btnFinalizarAvaliacao";
+            btnFinalizarAvaliacao.Size = new Size(386, 83);
+            btnFinalizarAvaliacao.TabIndex = 16;
+            btnFinalizarAvaliacao.UseVisualStyleBackColor = false;
+            btnFinalizarAvaliacao.Click += btnFinalizarAvaliacao_Click;
+            // 
             // FrmPergunta
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -342,5 +358,6 @@
         private Panel panel5;
         private GroupBox grbAlternativas;
         private Label lblQtdPerguntas;
+        private Button btnFinalizarAvaliacao;
     }
 }

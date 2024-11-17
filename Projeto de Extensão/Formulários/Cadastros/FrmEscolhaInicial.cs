@@ -37,8 +37,11 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
-            FrmGraficos frmGraficos = new FrmGraficos();
-            frmGraficos.Show();
+            //FrmGraficos frmGraficos = new FrmGraficos();
+            //frmGraficos.Show();
+
+            FrmDashboard frmDashboard = new FrmDashboard();
+            frmDashboard.Show();
 
             this.Hide();
         }

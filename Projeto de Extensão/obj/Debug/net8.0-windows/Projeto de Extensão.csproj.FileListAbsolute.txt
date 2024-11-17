@@ -157,3 +157,5 @@ C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Proje
 C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\RBush.dll
 C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\SixLabors.Fonts.dll
 C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\bin\Debug\net8.0-windows\System.IO.Packaging.dll
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Relatórios.FrmDashboard.resources
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Perguntas.FrmAgradecimento.resources

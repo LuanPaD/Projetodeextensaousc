@@ -59,10 +59,9 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             rb.FlatAppearance.BorderColor = Color.DarkRed;
             rb.FlatAppearance.BorderSize = 2;
             rb.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            rb.Size = new Size(ptbAtendente1.Width, 45); // Ajuste ao tamanho do PictureBox
+            rb.Size = new Size(ptbAtendente1.Width, 45);
             rb.TextAlign = ContentAlignment.MiddleCenter;
 
-            // Evento para alterar a aparência quando o estado muda
             rb.CheckedChanged += (sender, e) =>
             {
                 if (rb.Checked)
@@ -84,7 +83,7 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             {
                 if (!rb.Checked)
                 {
-                    rb.BackColor = Color.LightCoral; // Tom de vermelho claro
+                    rb.BackColor = Color.LightCoral; 
                 }
             };
 
@@ -92,7 +91,7 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
             {
                 if (!rb.Checked)
                 {
-                    rb.BackColor = Color.White; // Volta ao padrão
+                    rb.BackColor = Color.White; 
                 }
             };
         }
