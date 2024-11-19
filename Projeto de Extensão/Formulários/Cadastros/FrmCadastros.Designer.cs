@@ -216,9 +216,9 @@
             panelTopo.Controls.Add(pictureBoxLogo);
             panelTopo.Dock = DockStyle.Top;
             panelTopo.Location = new Point(0, 0);
-            panelTopo.Margin = new Padding(6, 6, 6, 6);
+            panelTopo.Margin = new Padding(6);
             panelTopo.Name = "panelTopo";
-            panelTopo.Padding = new Padding(6, 6, 6, 6);
+            panelTopo.Padding = new Padding(6);
             panelTopo.Size = new Size(260, 112);
             panelTopo.TabIndex = 0;
             // 
@@ -227,9 +227,9 @@
             pictureBoxLogo.Dock = DockStyle.Fill;
             pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
             pictureBoxLogo.Location = new Point(6, 6);
-            pictureBoxLogo.Margin = new Padding(10, 10, 10, 10);
+            pictureBoxLogo.Margin = new Padding(10);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Padding = new Padding(10, 10, 10, 10);
+            pictureBoxLogo.Padding = new Padding(10);
             pictureBoxLogo.Size = new Size(248, 100);
             pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo.TabIndex = 0;
@@ -292,7 +292,7 @@
             tbAtendente.Controls.Add(label8);
             tbAtendente.Location = new Point(4, 24);
             tbAtendente.Name = "tbAtendente";
-            tbAtendente.Padding = new Padding(3, 3, 3, 3);
+            tbAtendente.Padding = new Padding(3);
             tbAtendente.Size = new Size(1043, 754);
             tbAtendente.TabIndex = 3;
             tbAtendente.Text = "Atendente";
@@ -461,7 +461,7 @@
             tbAdmin.Controls.Add(lblSenha);
             tbAdmin.Location = new Point(4, 24);
             tbAdmin.Name = "tbAdmin";
-            tbAdmin.Padding = new Padding(3, 3, 3, 3);
+            tbAdmin.Padding = new Padding(3);
             tbAdmin.Size = new Size(1043, 754);
             tbAdmin.TabIndex = 2;
             tbAdmin.Text = "Usuário";
@@ -630,7 +630,7 @@
             tbPerguntas.Controls.Add(btnAdicionarAlternativa);
             tbPerguntas.Location = new Point(4, 24);
             tbPerguntas.Name = "tbPerguntas";
-            tbPerguntas.Padding = new Padding(3, 3, 3, 3);
+            tbPerguntas.Padding = new Padding(3);
             tbPerguntas.Size = new Size(1043, 754);
             tbPerguntas.TabIndex = 1;
             tbPerguntas.Text = "Perguntas";
@@ -759,6 +759,7 @@
             btnCadastrarPergunta.Anchor = AnchorStyles.Left;
             btnCadastrarPergunta.BackgroundImage = (Image)resources.GetObject("btnCadastrarPergunta.BackgroundImage");
             btnCadastrarPergunta.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCadastrarPergunta.FlatStyle = FlatStyle.Flat;
             btnCadastrarPergunta.Location = new Point(499, 669);
             btnCadastrarPergunta.Margin = new Padding(3, 2, 3, 2);
             btnCadastrarPergunta.Name = "btnCadastrarPergunta";
@@ -770,11 +771,11 @@
             // txtPergunta
             // 
             txtPergunta.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPergunta.Location = new Point(72, 184);
+            txtPergunta.Location = new Point(72, 141);
             txtPergunta.Margin = new Padding(3, 2, 3, 2);
             txtPergunta.Multiline = true;
             txtPergunta.Name = "txtPergunta";
-            txtPergunta.Size = new Size(671, 64);
+            txtPergunta.Size = new Size(671, 107);
             txtPergunta.TabIndex = 1;
             // 
             // txtAlternativa2
@@ -809,7 +810,7 @@
             // 
             lblTituloPergunta.AutoSize = true;
             lblTituloPergunta.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTituloPergunta.Location = new Point(66, 159);
+            lblTituloPergunta.Location = new Point(71, 114);
             lblTituloPergunta.Name = "lblTituloPergunta";
             lblTituloPergunta.Size = new Size(88, 25);
             lblTituloPergunta.TabIndex = 16;
@@ -850,7 +851,7 @@
             tbSetor.ForeColor = Color.Transparent;
             tbSetor.Location = new Point(4, 24);
             tbSetor.Name = "tbSetor";
-            tbSetor.Padding = new Padding(3, 3, 3, 3);
+            tbSetor.Padding = new Padding(3);
             tbSetor.Size = new Size(1043, 754);
             tbSetor.TabIndex = 0;
             tbSetor.Text = "Setor";
@@ -887,6 +888,7 @@
             btnCadastrarSetor.Anchor = AnchorStyles.Left;
             btnCadastrarSetor.BackgroundImage = (Image)resources.GetObject("btnCadastrarSetor.BackgroundImage");
             btnCadastrarSetor.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCadastrarSetor.FlatStyle = FlatStyle.Flat;
             btnCadastrarSetor.Location = new Point(485, 594);
             btnCadastrarSetor.Margin = new Padding(3, 2, 3, 2);
             btnCadastrarSetor.Name = "btnCadastrarSetor";
@@ -900,6 +902,7 @@
             button4.Anchor = AnchorStyles.Left;
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
+            button4.FlatStyle = FlatStyle.Flat;
             button4.Location = new Point(58, 597);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";

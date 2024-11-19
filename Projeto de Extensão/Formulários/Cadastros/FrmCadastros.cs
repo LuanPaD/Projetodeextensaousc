@@ -498,6 +498,18 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     }
                 }
 
+                txtPergunta.Text = string.Empty;
+
+                for (int i = 1; i <= 10; i++)
+                {
+                    var textBoxAlternativa = this.Controls.Find($"txtAlternativa{i}", true).FirstOrDefault();
+
+                    textBoxAlternativa.Text = String.Empty;
+
+
+                    if (i > 2)
+                        textBoxAlternativa.Visible = false;
+                }
             }
             else
             {

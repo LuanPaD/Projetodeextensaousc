@@ -34,16 +34,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboard));
             pnlNavBar = new Panel();
             btnVoltar = new Button();
-            button1 = new Button();
             lblTituloPrincipal = new Label();
             pnlOpcoes = new Panel();
-            button5 = new Button();
-            pictureBox4 = new PictureBox();
             button4 = new Button();
             pictureBox3 = new PictureBox();
             button3 = new Button();
             pictureBox2 = new PictureBox();
-            button2 = new Button();
+            btnHome = new Button();
             pictureBox1 = new PictureBox();
             pnlTitulo = new Panel();
             lblLinkHome = new Label();
@@ -76,7 +73,6 @@
             btnExportaExcel = new Button();
             pnlNavBar.SuspendLayout();
             pnlOpcoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -87,7 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chtGrafico).BeginInit();
             SuspendLayout();
             // 
@@ -95,12 +90,12 @@
             // 
             pnlNavBar.BackColor = Color.Brown;
             pnlNavBar.Controls.Add(btnVoltar);
-            pnlNavBar.Controls.Add(button1);
             pnlNavBar.Controls.Add(lblTituloPrincipal);
             pnlNavBar.Dock = DockStyle.Top;
             pnlNavBar.Location = new Point(0, 0);
+            pnlNavBar.Margin = new Padding(3, 2, 3, 2);
             pnlNavBar.Name = "pnlNavBar";
-            pnlNavBar.Size = new Size(1527, 74);
+            pnlNavBar.Size = new Size(1336, 56);
             pnlNavBar.TabIndex = 0;
             // 
             // btnVoltar
@@ -111,19 +106,12 @@
             btnVoltar.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltar.FlatAppearance.BorderSize = 0;
             btnVoltar.FlatStyle = FlatStyle.Flat;
-            btnVoltar.Location = new Point(1430, 7);
+            btnVoltar.Location = new Point(1251, 5);
+            btnVoltar.Margin = new Padding(3, 2, 3, 2);
             btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(94, 65);
+            btnVoltar.Size = new Size(82, 49);
             btnVoltar.TabIndex = 2;
             btnVoltar.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(262, 25);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.UseVisualStyleBackColor = true;
             // 
             // lblTituloPrincipal
             // 
@@ -131,7 +119,7 @@
             lblTituloPrincipal.ForeColor = Color.WhiteSmoke;
             lblTituloPrincipal.Location = new Point(3, 0);
             lblTituloPrincipal.Name = "lblTituloPrincipal";
-            lblTituloPrincipal.Size = new Size(234, 71);
+            lblTituloPrincipal.Size = new Size(205, 53);
             lblTituloPrincipal.TabIndex = 0;
             lblTituloPrincipal.Text = "Relatórios ADMIN";
             lblTituloPrincipal.TextAlign = ContentAlignment.MiddleCenter;
@@ -139,43 +127,18 @@
             // pnlOpcoes
             // 
             pnlOpcoes.BackColor = Color.FromArgb(52, 73, 94);
-            pnlOpcoes.Controls.Add(button5);
-            pnlOpcoes.Controls.Add(pictureBox4);
             pnlOpcoes.Controls.Add(button4);
             pnlOpcoes.Controls.Add(pictureBox3);
             pnlOpcoes.Controls.Add(button3);
             pnlOpcoes.Controls.Add(pictureBox2);
-            pnlOpcoes.Controls.Add(button2);
+            pnlOpcoes.Controls.Add(btnHome);
             pnlOpcoes.Controls.Add(pictureBox1);
             pnlOpcoes.Dock = DockStyle.Left;
-            pnlOpcoes.Location = new Point(0, 74);
+            pnlOpcoes.Location = new Point(0, 56);
+            pnlOpcoes.Margin = new Padding(3, 2, 3, 2);
             pnlOpcoes.Name = "pnlOpcoes";
-            pnlOpcoes.Size = new Size(250, 821);
+            pnlOpcoes.Size = new Size(219, 615);
             pnlOpcoes.TabIndex = 1;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.FromArgb(52, 73, 94);
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI", 11F);
-            button5.ForeColor = Color.WhiteSmoke;
-            button5.Location = new Point(78, 511);
-            button5.Name = "button5";
-            button5.Size = new Size(159, 62);
-            button5.TabIndex = 7;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = Properties.Resources.graph;
-            pictureBox4.Location = new Point(12, 511);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(60, 62);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 6;
-            pictureBox4.TabStop = false;
             // 
             // button4
             // 
@@ -184,19 +147,21 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 11F);
             button4.ForeColor = Color.WhiteSmoke;
-            button4.Location = new Point(78, 394);
+            button4.Location = new Point(69, 356);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(159, 62);
+            button4.Size = new Size(139, 46);
             button4.TabIndex = 5;
-            button4.Text = "button4";
+            button4.Text = "Sugestões";
             button4.UseVisualStyleBackColor = false;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.graph;
-            pictureBox3.Location = new Point(12, 394);
+            pictureBox3.Location = new Point(11, 356);
+            pictureBox3.Margin = new Padding(3, 2, 3, 2);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(60, 62);
+            pictureBox3.Size = new Size(52, 46);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
@@ -208,43 +173,47 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 11F);
             button3.ForeColor = Color.WhiteSmoke;
-            button3.Location = new Point(78, 279);
+            button3.Location = new Point(69, 269);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(159, 62);
+            button3.Size = new Size(139, 46);
             button3.TabIndex = 3;
-            button3.Text = "button3";
+            button3.Text = "Perguntas";
             button3.UseVisualStyleBackColor = false;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.graph;
-            pictureBox2.Location = new Point(12, 279);
+            pictureBox2.Location = new Point(11, 269);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(60, 62);
+            pictureBox2.Size = new Size(52, 46);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
             // 
-            // button2
+            // btnHome
             // 
-            button2.BackColor = Color.FromArgb(52, 73, 94);
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 11F);
-            button2.ForeColor = Color.WhiteSmoke;
-            button2.Location = new Point(78, 161);
-            button2.Name = "button2";
-            button2.Size = new Size(159, 62);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = false;
+            btnHome.BackColor = Color.FromArgb(52, 73, 94);
+            btnHome.FlatAppearance.BorderSize = 0;
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Segoe UI", 11F);
+            btnHome.ForeColor = Color.WhiteSmoke;
+            btnHome.Location = new Point(69, 181);
+            btnHome.Margin = new Padding(3, 2, 3, 2);
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(139, 46);
+            btnHome.TabIndex = 1;
+            btnHome.Text = "Home";
+            btnHome.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.user;
-            pictureBox1.Location = new Point(12, 161);
+            pictureBox1.Location = new Point(11, 181);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(60, 62);
+            pictureBox1.Size = new Size(52, 46);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -254,9 +223,10 @@
             pnlTitulo.Controls.Add(lblLinkHome);
             pnlTitulo.Controls.Add(lblTituloPagina);
             pnlTitulo.Dock = DockStyle.Top;
-            pnlTitulo.Location = new Point(250, 74);
+            pnlTitulo.Location = new Point(219, 56);
+            pnlTitulo.Margin = new Padding(3, 2, 3, 2);
             pnlTitulo.Name = "pnlTitulo";
-            pnlTitulo.Size = new Size(1277, 60);
+            pnlTitulo.Size = new Size(1117, 45);
             pnlTitulo.TabIndex = 2;
             // 
             // lblLinkHome
@@ -264,9 +234,9 @@
             lblLinkHome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLinkHome.AutoSize = true;
             lblLinkHome.Font = new Font("Segoe UI", 10F);
-            lblLinkHome.Location = new Point(1102, 20);
+            lblLinkHome.Location = new Point(964, 15);
             lblLinkHome.Name = "lblLinkHome";
-            lblLinkHome.Size = new Size(156, 23);
+            lblLinkHome.Size = new Size(126, 19);
             lblLinkHome.TabIndex = 1;
             lblLinkHome.Text = "Home / Dashboard";
             // 
@@ -274,9 +244,9 @@
             // 
             lblTituloPagina.AutoSize = true;
             lblTituloPagina.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblTituloPagina.Location = new Point(28, 20);
+            lblTituloPagina.Location = new Point(24, 15);
             lblTituloPagina.Name = "lblTituloPagina";
-            lblTituloPagina.Size = new Size(97, 23);
+            lblTituloPagina.Size = new Size(82, 19);
             lblTituloPagina.TabIndex = 0;
             lblTituloPagina.Text = "Dashboard";
             // 
@@ -288,9 +258,10 @@
             panel1.Controls.Add(lblAvaliaçõesRespondidas);
             panel1.Controls.Add(lblAvaliações);
             panel1.Controls.Add(pictureBox5);
-            panel1.Location = new Point(278, 167);
+            panel1.Location = new Point(243, 125);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(333, 181);
+            panel1.Size = new Size(291, 136);
             panel1.TabIndex = 3;
             // 
             // lblTotalDeAvaliacoes
@@ -298,9 +269,9 @@
             lblTotalDeAvaliacoes.AutoSize = true;
             lblTotalDeAvaliacoes.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
             lblTotalDeAvaliacoes.ForeColor = Color.WhiteSmoke;
-            lblTotalDeAvaliacoes.Location = new Point(0, 61);
+            lblTotalDeAvaliacoes.Location = new Point(0, 46);
             lblTotalDeAvaliacoes.Name = "lblTotalDeAvaliacoes";
-            lblTotalDeAvaliacoes.Size = new Size(97, 57);
+            lblTotalDeAvaliacoes.Size = new Size(80, 46);
             lblTotalDeAvaliacoes.TabIndex = 6;
             lblTotalDeAvaliacoes.Text = "100";
             // 
@@ -308,9 +279,9 @@
             // 
             lblAvaliaçõesRespondidas.AutoSize = true;
             lblAvaliaçõesRespondidas.ForeColor = Color.WhiteSmoke;
-            lblAvaliaçõesRespondidas.Location = new Point(20, 149);
+            lblAvaliaçõesRespondidas.Location = new Point(18, 112);
             lblAvaliaçõesRespondidas.Name = "lblAvaliaçõesRespondidas";
-            lblAvaliaçõesRespondidas.Size = new Size(247, 20);
+            lblAvaliaçõesRespondidas.Size = new Size(194, 15);
             lblAvaliaçõesRespondidas.TabIndex = 5;
             lblAvaliaçõesRespondidas.Text = "Avaliações Respondidas no período";
             // 
@@ -318,18 +289,19 @@
             // 
             lblAvaliações.AutoSize = true;
             lblAvaliações.ForeColor = Color.WhiteSmoke;
-            lblAvaliações.Location = new Point(20, 10);
+            lblAvaliações.Location = new Point(18, 8);
             lblAvaliações.Name = "lblAvaliações";
-            lblAvaliações.Size = new Size(80, 20);
+            lblAvaliações.Size = new Size(63, 15);
             lblAvaliações.TabIndex = 4;
             lblAvaliações.Text = "Avaliações";
             // 
             // pictureBox5
             // 
             pictureBox5.Image = Properties.Resources.graph;
-            pictureBox5.Location = new Point(241, 56);
+            pictureBox5.Location = new Point(211, 42);
+            pictureBox5.Margin = new Padding(3, 2, 3, 2);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(60, 62);
+            pictureBox5.Size = new Size(52, 46);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 3;
             pictureBox5.TabStop = false;
@@ -342,9 +314,10 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(pictureBox7);
-            panel2.Location = new Point(643, 167);
+            panel2.Location = new Point(563, 125);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(499, 181);
+            panel2.Size = new Size(437, 136);
             panel2.TabIndex = 4;
             // 
             // lblTotalAtendentesAvaliados
@@ -352,9 +325,9 @@
             lblTotalAtendentesAvaliados.AutoSize = true;
             lblTotalAtendentesAvaliados.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
             lblTotalAtendentesAvaliados.ForeColor = Color.WhiteSmoke;
-            lblTotalAtendentesAvaliados.Location = new Point(3, 61);
+            lblTotalAtendentesAvaliados.Location = new Point(3, 46);
             lblTotalAtendentesAvaliados.Name = "lblTotalAtendentesAvaliados";
-            lblTotalAtendentesAvaliados.Size = new Size(73, 57);
+            lblTotalAtendentesAvaliados.Size = new Size(60, 46);
             lblTotalAtendentesAvaliados.TabIndex = 9;
             lblTotalAtendentesAvaliados.Text = "10";
             // 
@@ -362,9 +335,9 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.WhiteSmoke;
-            label3.Location = new Point(18, 149);
+            label3.Location = new Point(16, 112);
             label3.Name = "label3";
-            label3.Size = new Size(153, 20);
+            label3.Size = new Size(121, 15);
             label3.TabIndex = 8;
             label3.Text = "Atendentes Avaliados";
             // 
@@ -372,18 +345,19 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.WhiteSmoke;
-            label4.Location = new Point(18, 10);
+            label4.Location = new Point(16, 8);
             label4.Name = "label4";
-            label4.Size = new Size(84, 20);
+            label4.Size = new Size(67, 15);
             label4.TabIndex = 7;
             label4.Text = "Atendentes";
             // 
             // pictureBox7
             // 
             pictureBox7.Image = Properties.Resources.about_us;
-            pictureBox7.Location = new Point(412, 61);
+            pictureBox7.Location = new Point(360, 46);
+            pictureBox7.Margin = new Padding(3, 2, 3, 2);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(60, 62);
+            pictureBox7.Size = new Size(52, 46);
             pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox7.TabIndex = 1;
             pictureBox7.TabStop = false;
@@ -396,9 +370,10 @@
             panel3.Controls.Add(label6);
             panel3.Controls.Add(label7);
             panel3.Controls.Add(pictureBox6);
-            panel3.Location = new Point(1175, 167);
+            panel3.Location = new Point(1028, 125);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(333, 181);
+            panel3.Size = new Size(291, 136);
             panel3.TabIndex = 5;
             // 
             // lblTotalSetoresCadastrados
@@ -406,9 +381,9 @@
             lblTotalSetoresCadastrados.AutoSize = true;
             lblTotalSetoresCadastrados.Font = new Font("Segoe UI", 25F, FontStyle.Bold);
             lblTotalSetoresCadastrados.ForeColor = Color.WhiteSmoke;
-            lblTotalSetoresCadastrados.Location = new Point(14, 68);
+            lblTotalSetoresCadastrados.Location = new Point(12, 51);
             lblTotalSetoresCadastrados.Name = "lblTotalSetoresCadastrados";
-            lblTotalSetoresCadastrados.Size = new Size(49, 57);
+            lblTotalSetoresCadastrados.Size = new Size(40, 46);
             lblTotalSetoresCadastrados.TabIndex = 12;
             lblTotalSetoresCadastrados.Text = "4";
             // 
@@ -416,9 +391,9 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.WhiteSmoke;
-            label6.Location = new Point(14, 149);
+            label6.Location = new Point(12, 112);
             label6.Name = "label6";
-            label6.Size = new Size(144, 20);
+            label6.Size = new Size(113, 15);
             label6.TabIndex = 11;
             label6.Text = "Setores Cadastrados";
             // 
@@ -426,18 +401,19 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.WhiteSmoke;
-            label7.Location = new Point(14, 10);
+            label7.Location = new Point(12, 8);
             label7.Name = "label7";
-            label7.Size = new Size(58, 20);
+            label7.Size = new Size(45, 15);
             label7.TabIndex = 10;
             label7.Text = "Setores";
             // 
             // pictureBox6
             // 
             pictureBox6.Image = Properties.Resources.user;
-            pictureBox6.Location = new Point(244, 56);
+            pictureBox6.Location = new Point(214, 42);
+            pictureBox6.Margin = new Padding(3, 2, 3, 2);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(60, 62);
+            pictureBox6.Size = new Size(52, 46);
             pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox6.TabIndex = 1;
             pictureBox6.TabStop = false;
@@ -446,45 +422,46 @@
             // 
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
-            label8.Location = new Point(1195, 415);
+            label8.Location = new Point(1046, 311);
             label8.Name = "label8";
-            label8.Size = new Size(60, 20);
+            label8.Size = new Size(48, 15);
             label8.TabIndex = 6;
             label8.Text = "Período";
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Anchor = AnchorStyles.None;
-            dateTimePicker1.Location = new Point(1198, 438);
+            dateTimePicker1.Location = new Point(1048, 328);
+            dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(299, 27);
+            dateTimePicker1.Size = new Size(262, 23);
             dateTimePicker1.TabIndex = 7;
             // 
             // label9
             // 
             label9.Anchor = AnchorStyles.None;
             label9.AutoSize = true;
-            label9.Location = new Point(1198, 468);
+            label9.Location = new Point(1048, 351);
             label9.Name = "label9";
-            label9.Size = new Size(30, 20);
+            label9.Size = new Size(23, 15);
             label9.TabIndex = 8;
             label9.Text = "até";
             // 
             // dateTimePicker2
             // 
             dateTimePicker2.Anchor = AnchorStyles.None;
-            dateTimePicker2.Location = new Point(1198, 491);
+            dateTimePicker2.Location = new Point(1048, 368);
+            dateTimePicker2.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(299, 27);
+            dateTimePicker2.Size = new Size(262, 23);
             dateTimePicker2.TabIndex = 9;
             // 
             // panel4
             // 
-            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel4.Controls.Add(chtGrafico);
-            panel4.Location = new Point(278, 450);
+            panel4.Location = new Point(243, 552);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(724, 433);
+            panel4.Size = new Size(634, 77);
             panel4.TabIndex = 10;
             // 
             // chtGrafico
@@ -494,13 +471,14 @@
             chtGrafico.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chtGrafico.Legends.Add(legend1);
-            chtGrafico.Location = new Point(3, 4);
+            chtGrafico.Location = new Point(246, 484);
+            chtGrafico.Margin = new Padding(3, 2, 3, 2);
             chtGrafico.Name = "chtGrafico";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chtGrafico.Series.Add(series1);
-            chtGrafico.Size = new Size(720, 453);
+            chtGrafico.Size = new Size(657, 176);
             chtGrafico.TabIndex = 1;
             chtGrafico.Text = "Gráfico";
             // 
@@ -511,10 +489,9 @@
             btnAvancarAtendentes.BackgroundImage = (Image)resources.GetObject("btnAvancarAtendentes.BackgroundImage");
             btnAvancarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
             btnAvancarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnAvancarAtendentes.Location = new Point(1195, 604);
-            btnAvancarAtendentes.Margin = new Padding(3, 4, 3, 4);
+            btnAvancarAtendentes.Location = new Point(1046, 453);
             btnAvancarAtendentes.Name = "btnAvancarAtendentes";
-            btnAvancarAtendentes.Size = new Size(299, 60);
+            btnAvancarAtendentes.Size = new Size(262, 45);
             btnAvancarAtendentes.TabIndex = 15;
             btnAvancarAtendentes.UseVisualStyleBackColor = false;
             // 
@@ -522,9 +499,9 @@
             // 
             lblSetor.Anchor = AnchorStyles.None;
             lblSetor.AutoSize = true;
-            lblSetor.Location = new Point(1198, 526);
+            lblSetor.Location = new Point(1048, 394);
             lblSetor.Name = "lblSetor";
-            lblSetor.Size = new Size(44, 20);
+            lblSetor.Size = new Size(34, 15);
             lblSetor.TabIndex = 17;
             lblSetor.Text = "Setor";
             // 
@@ -532,9 +509,10 @@
             // 
             cmbSetores.Anchor = AnchorStyles.None;
             cmbSetores.FormattingEnabled = true;
-            cmbSetores.Location = new Point(1198, 549);
+            cmbSetores.Location = new Point(1048, 412);
+            cmbSetores.Margin = new Padding(3, 2, 3, 2);
             cmbSetores.Name = "cmbSetores";
-            cmbSetores.Size = new Size(296, 28);
+            cmbSetores.Size = new Size(260, 23);
             cmbSetores.TabIndex = 18;
             // 
             // btnExportaPdf
@@ -544,10 +522,9 @@
             btnExportaPdf.BackgroundImage = Properties.Resources.btnExportaPdf;
             btnExportaPdf.BackgroundImageLayout = ImageLayout.Stretch;
             btnExportaPdf.FlatStyle = FlatStyle.Flat;
-            btnExportaPdf.Location = new Point(1195, 697);
-            btnExportaPdf.Margin = new Padding(3, 4, 3, 4);
+            btnExportaPdf.Location = new Point(1046, 523);
             btnExportaPdf.Name = "btnExportaPdf";
-            btnExportaPdf.Size = new Size(299, 60);
+            btnExportaPdf.Size = new Size(262, 45);
             btnExportaPdf.TabIndex = 19;
             btnExportaPdf.UseVisualStyleBackColor = false;
             btnExportaPdf.Click += btnExportarPdf_Click;
@@ -559,19 +536,19 @@
             btnExportaExcel.BackgroundImage = Properties.Resources.btnExportaExcel;
             btnExportaExcel.BackgroundImageLayout = ImageLayout.Stretch;
             btnExportaExcel.FlatStyle = FlatStyle.Flat;
-            btnExportaExcel.Location = new Point(1195, 779);
-            btnExportaExcel.Margin = new Padding(3, 4, 3, 4);
+            btnExportaExcel.Location = new Point(1046, 584);
             btnExportaExcel.Name = "btnExportaExcel";
-            btnExportaExcel.Size = new Size(299, 60);
+            btnExportaExcel.Size = new Size(262, 45);
             btnExportaExcel.TabIndex = 20;
             btnExportaExcel.UseVisualStyleBackColor = false;
             btnExportaExcel.Click += btnExportarExcel_Click;
             // 
             // FrmDashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1527, 895);
+            ClientSize = new Size(1336, 671);
+            Controls.Add(chtGrafico);
             Controls.Add(btnExportaExcel);
             Controls.Add(btnExportaPdf);
             Controls.Add(cmbSetores);
@@ -588,12 +565,12 @@
             Controls.Add(pnlTitulo);
             Controls.Add(pnlOpcoes);
             Controls.Add(pnlNavBar);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmDashboard";
             Text = "FrmRelatorios";
             WindowState = FormWindowState.Maximized;
             pnlNavBar.ResumeLayout(false);
             pnlOpcoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -608,7 +585,6 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chtGrafico).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -618,18 +594,15 @@
 
         private Panel pnlNavBar;
         private Panel pnlOpcoes;
-        private Button button1;
         private Label lblTituloPrincipal;
         private Panel pnlTitulo;
         private Label lblLinkHome;
         private Label lblTituloPagina;
-        private Button button5;
-        private PictureBox pictureBox4;
         private Button button4;
         private PictureBox pictureBox3;
         private Button button3;
         private PictureBox pictureBox2;
-        private Button button2;
+        private Button btnHome;
         private PictureBox pictureBox1;
         private Button btnVoltar;
         private Panel panel1;

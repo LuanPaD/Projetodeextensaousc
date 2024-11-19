@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Projeto_de_Extensao.Formulários.Relatórios
 {
@@ -17,13 +18,45 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
     {
         MySqlConnection conexao = ClsConexao.Conexao;
 
+
         public FrmDashboard()
         {
             InitializeComponent();
             preencheStaticValues();
+            
         }
 
         #region Funções 
+        private void carregaGraficos()
+        {
+            try
+            {
+                // Gráfico 1: Total de Atendentes e Administradores
+                int totalAtendentes = GetTotal("SELECT COUNT(*) FROM atendente;");
+                int totalAdmins = GetTotal("SELECT COUNT(*) FROM admin;");
+
+                chtGrafico.Series.Clear();
+                chtGrafico.Series.Add("Total");
+                chtGrafico.Series["Total"].ChartType = SeriesChartType.Column;
+                chtGrafico.Series["Total"].IsXValueIndexed = true;
+                chtGrafico.Series["Total"].Points.AddXY("Atendentes", totalAtendentes);
+                chtGrafico.Series["Total"].Points.AddXY("Administradores", totalAdmins);
+                chtGrafico.Titles.Clear();
+                chtGrafico.Titles.Add("Total de Atendentes e Administradores");
+                chtGrafico.Series["Total"].Color = Color.Blue;
+
+                // Gráfico 2: Distribuição de Atendentes por Setor
+                /*chtGrafico.Series.Clear();
+                chtGrafico.Series.Add("Atendentes por Setor");
+                chtGrafico.Series["Atendentes por Setor"].ChartType = SeriesChartType.Bar;
+                chtGrafico.Series["Atendentes por Setor"].IsXValueIndexed = true;*/
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Erro ao obter dados: " + err.Message);
+            }
+        }
+
         private async void preencheStaticValues()
         {
             int totalAtendentesAvaliados = GetTotal("SELECT COUNT(DISTINCT ATENDENTE_ID) FROM AVALIACAO;");
@@ -35,6 +68,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             lblTotalDeAvaliacoes.Text = totalAvaliacoes.ToString();
 
             await FrmCadastros.ListaTodosOsSetoresAsync(cmbSetores);
+            carregaGraficos();
         }
 
         private int GetTotal(string query)
