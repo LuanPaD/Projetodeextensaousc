@@ -969,43 +969,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
         }
 
-        //private async void btnDeletarAtendentes_Click(object sender, EventArgs e)
-        //{
-        //    if (int.TryParse(pergunta_id, out int atendeteId))
-        //        await DeletaAtendenteAsync(atendeteId);
-        //}
-
-        //private async void btnSalvarPerguntas_Click(object sender, EventArgs e)
-        //{
-        //    int novaOrdem = Convert.ToInt32(cbxOrdemPerguntas.SelectedItem);
-
-        //    int ordemAtual = Convert.ToInt32(ordemAtualGrid); 
-
-        //    if(novaOrdem != ordemAtual) //Verifica se teve alteração nos valores dos campos.
-        //    {
-        //        await AlterarOrdemNoBanco(ordemAtual, novaOrdem);
-        //    }
-
-        //    if (!int.TryParse(pergunta_id, out int perguntaId))
-        //    {
-        //        MessageBox.Show("Deu erro setor " + perguntaId);
-        //        return;
-        //    }
-
-        //    if(!int.TryParse(cbxOrdemPerguntas.SelectedValue?.ToString(), out int setorId))
-        //    {
-        //        return;
-        //    }
-
-
-        //    await SalvarPerguntaBancoDeDadosAsync(perguntaId, txtPergunta.Text,setorId);
-
-        //    var listaOpcoes = ObterOpcoesPreenchidas();
-        //    await SubstituirOpcoesNoBancoDeDadosAsync(perguntaId, listaOpcoes);
-
-        //    MessageBox.Show("Pergunta e opções salvas com sucesso!");
-        //}
-
         private async void btnSalvarPerguntas_Click(object sender, EventArgs e)
         {
             try
@@ -1072,7 +1035,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async Task SubstituirOpcoesNoBancoDeDadosAsync(int perguntaId, List<string> listaOpcoes,int setor)
         {
-            string deleteSql = "DELETE FROM opcoes WHERE pergunta_id = @perguntaId";
+            string deleteSql = "DELETE FROM opcoes,respostas,avaliacao WHERE pergunta_id = @perguntaId";
             string insertSql = "INSERT INTO opcoes (pergunta_id, texto,setor_id) VALUES (@perguntaId, @texto,@setor_id)";
 
             using (var connection = new MySqlConnection(ClsConexao.connectionString))
@@ -1227,7 +1190,4 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         }
     }
 }
-
-
-//LINHA 314 ALTERA - IMAGEM DE USUÁRIO
 

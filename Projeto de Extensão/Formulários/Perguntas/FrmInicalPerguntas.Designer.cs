@@ -124,8 +124,8 @@
             tableLayoutPanel3.Location = new Point(671, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 4;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 40.06309F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 59.93691F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 34.2553177F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 65.74468F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 131F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
             tableLayoutPanel3.Size = new Size(662, 665);
@@ -159,7 +159,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(656, 182);
+            panel1.Size = new Size(656, 155);
             panel1.TabIndex = 12;
             // 
             // label1
@@ -167,7 +167,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(87, 66);
+            label1.Location = new Point(87, 52);
             label1.Name = "label1";
             label1.Size = new Size(510, 50);
             label1.TabIndex = 11;
@@ -177,21 +177,20 @@
             // 
             panel2.Controls.Add(lblMensagemPrincipal);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 191);
+            panel2.Location = new Point(3, 164);
             panel2.Name = "panel2";
-            panel2.Size = new Size(656, 276);
+            panel2.Size = new Size(656, 303);
             panel2.TabIndex = 13;
             // 
             // lblMensagemPrincipal
             // 
             lblMensagemPrincipal.Anchor = AnchorStyles.None;
-            lblMensagemPrincipal.AutoSize = true;
-            lblMensagemPrincipal.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMensagemPrincipal.Location = new Point(3, 76);
+            lblMensagemPrincipal.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMensagemPrincipal.Location = new Point(0, 32);
             lblMensagemPrincipal.Name = "lblMensagemPrincipal";
-            lblMensagemPrincipal.Size = new Size(659, 125);
+            lblMensagemPrincipal.Size = new Size(659, 230);
             lblMensagemPrincipal.TabIndex = 0;
-            lblMensagemPrincipal.Text = "Olá! Sou a GRÁ, assistente virtual do UNISAGRADO.\r\n\r\nSua opinião é muito importante para nós! \r\nPor favor, compartilhe sua avaliação sobre o atendimento que você recebeu. \r\nÉ rápido e fácil!";
+            lblMensagemPrincipal.Text = "Olá! Sou a GRÁ, assistente virtual do UNISAGRADO.\r\n\r\nSua opinião é muito importante para nós! \r\nPor favor, compartilhe sua avaliação sobre o atendimento que você recebeu.\r\n\r\nÉ rápido e fácil!";
             lblMensagemPrincipal.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblDireitos
@@ -227,7 +226,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             ResumeLayout(false);
         }
 

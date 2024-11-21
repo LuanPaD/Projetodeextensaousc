@@ -1,6 +1,8 @@
 ﻿using MySqlConnector;
 using Projeto_de_Extensao.Classes;
 using Projeto_de_Extensao.Formulários.Admnistrativo;
+using System.Data;
+using System.Windows.Forms.DataVisualization.Charting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using Projeto_de_Extensao.Formulários.Cadastros;
 
 namespace Projeto_de_Extensao.Formulários.Relatórios
 {
@@ -23,33 +27,53 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
         {
             InitializeComponent();
             preencheStaticValues();
-            
+
+
         }
+
+        private void btnDashboard_Click(object sender, EventArgs e) => tbcDashboard.SelectedTab = tabPageDashboard;
+
+        private void btnPerguntas_Click(object sender, EventArgs e) => tbcDashboard.SelectedTab = tabPagePerguntas;
+
+        private void btnSugestoes_Click(object sender, EventArgs e) => tbcDashboard.SelectedTab = tabPageSugestoes;
 
         #region Funções 
         private void carregaGraficos()
         {
             try
             {
-                // Gráfico 1: Total de Atendentes e Administradores
-                int totalAtendentes = GetTotal("SELECT COUNT(*) FROM atendente;");
-                int totalAdmins = GetTotal("SELECT COUNT(*) FROM admin;");
+                //Gráfico 2: Distribuição de Atendentes por Setor
+                chtGrafico1.Series.Clear();
+                chtGrafico1.Series.Add("Atendentes por Setor");
+                chtGrafico1.Series["Atendentes por Setor"].ChartType = SeriesChartType.Bar;
+                chtGrafico1.Series["Atendentes por Setor"].IsXValueIndexed = true;
 
-                chtGrafico.Series.Clear();
-                chtGrafico.Series.Add("Total");
-                chtGrafico.Series["Total"].ChartType = SeriesChartType.Column;
-                chtGrafico.Series["Total"].IsXValueIndexed = true;
-                chtGrafico.Series["Total"].Points.AddXY("Atendentes", totalAtendentes);
-                chtGrafico.Series["Total"].Points.AddXY("Administradores", totalAdmins);
-                chtGrafico.Titles.Clear();
-                chtGrafico.Titles.Add("Total de Atendentes e Administradores");
-                chtGrafico.Series["Total"].Color = Color.Blue;
+                string querySetores = @"
+                    SELECT setores.nome AS setor_nome, COUNT(atendente.atendente_id) AS total
+                    FROM setores
+                    LEFT JOIN atendente ON atendente.setor_id = setores.setor_id
+                    GROUP BY setores.nome;";
 
-                // Gráfico 2: Distribuição de Atendentes por Setor
-                /*chtGrafico.Series.Clear();
-                chtGrafico.Series.Add("Atendentes por Setor");
-                chtGrafico.Series["Atendentes por Setor"].ChartType = SeriesChartType.Bar;
-                chtGrafico.Series["Atendentes por Setor"].IsXValueIndexed = true;*/
+                var commandSetores = new MySqlCommand(querySetores, conexao);
+                var readerSetores = commandSetores.ExecuteReader();
+
+                while (readerSetores.Read())
+                {
+                    string setorNome = readerSetores["setor_nome"].ToString();
+                    int total = Convert.ToInt32(readerSetores["total"]);
+                    chtGrafico1.Series["Atendentes por Setor"].Points.AddXY(setorNome, total);
+                }
+                readerSetores.Close();
+
+                if (chtGrafico1.Series["Atendentes por Setor"].Points.Count == 0)
+                {
+                    chtGrafico1.Series["Atendentes por Setor"].Points.AddXY("Nenhum Atendente", 0);
+                }
+
+                chtGrafico1.Titles.Clear();
+                chtGrafico1.Titles.Add("Atendentes por Setor");
+                chtGrafico1.Series["Atendentes por Setor"].Color = Color.Red;
+
             }
             catch (Exception err)
             {
@@ -57,8 +81,10 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             }
         }
 
+
         private async void preencheStaticValues()
         {
+            int totalAdministradores = GetTotal("SELECT COUNT(ADMIN_ID) FROM ADMIN");
             int totalAtendentesAvaliados = GetTotal("SELECT COUNT(DISTINCT ATENDENTE_ID) FROM AVALIACAO;");
             int totalSetores = GetTotal("SELECT COUNT(SETOR_ID) FROM SETORES;");
             int totalAvaliacoes = GetTotal("SELECT COUNT(avaliacao_id) FROM AVALIACAO; ");
@@ -66,9 +92,11 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             lblTotalAtendentesAvaliados.Text = totalAtendentesAvaliados.ToString();
             lblTotalSetoresCadastrados.Text = totalSetores.ToString();
             lblTotalDeAvaliacoes.Text = totalAvaliacoes.ToString();
+            lblTotalAdmin.Text = totalAdministradores.ToString();
 
             await FrmCadastros.ListaTodosOsSetoresAsync(cmbSetores);
             carregaGraficos();
+
         }
 
         private int GetTotal(string query)
@@ -121,7 +149,15 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             MessageBox.Show("Arquivo PDF gerado com sucesso em:\n" + filePath);
         }
 
-        
+
         #endregion
+
+        private void btnVoltarParaMenu_Click(object sender, EventArgs e)
+        {
+            FrmEscolhaInicial frmEscolhaInicial = new FrmEscolhaInicial();
+            frmEscolhaInicial.ShowDialog();
+            this.Hide();
+        }
+
     }
 }

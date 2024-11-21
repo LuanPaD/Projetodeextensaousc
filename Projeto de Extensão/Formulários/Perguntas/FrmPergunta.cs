@@ -127,8 +127,8 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
                 }
 
                 //MessageBox.Show("Questionário finalizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FrmAgradecimento frmAgradecimento = new FrmAgradecimento();
-                frmAgradecimento.Show();
+                FrmSugestoes frmSugestoes = new FrmSugestoes(setorSelecionado);
+                frmSugestoes.Show();
                 this.Hide();
             }
             catch (MySqlException ex)

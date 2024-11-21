@@ -16,5 +16,12 @@ namespace Projeto_de_Extensao.Formulários.Perguntas
         {
             InitializeComponent();
         }
+
+        private void bntInicar_Click(object sender, EventArgs e)
+        {
+            FrmInicalPerguntas frmInicalPerguntas = new FrmInicalPerguntas();
+            frmInicalPerguntas.ShowDialog();
+            this.Hide();
+        }
     }
 }

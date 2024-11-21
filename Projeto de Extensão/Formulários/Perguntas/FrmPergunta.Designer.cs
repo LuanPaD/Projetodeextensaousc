@@ -145,7 +145,7 @@
             // 
             btnFinalizarAvaliacao.Anchor = AnchorStyles.None;
             btnFinalizarAvaliacao.BackColor = Color.Brown;
-            btnFinalizarAvaliacao.BackgroundImage = Projeto_de_Extensao.Properties.Resources.btnFinalizarAvaliacao;
+            btnFinalizarAvaliacao.BackgroundImage = (Image)resources.GetObject("btnFinalizarAvaliacao.BackgroundImage");
             btnFinalizarAvaliacao.BackgroundImageLayout = ImageLayout.Stretch;
             btnFinalizarAvaliacao.Location = new Point(162, 0);
             btnFinalizarAvaliacao.Name = "btnFinalizarAvaliacao";
