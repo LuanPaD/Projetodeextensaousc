@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditarCadastroscs));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pnlMenu = new Panel();
             tlpBotoesEscolha = new TableLayoutPanel();
             btnCadrastoAdmin = new Button();
@@ -366,6 +367,7 @@
             button1.Size = new Size(70, 68);
             button1.TabIndex = 45;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += btnHomeSetor_Click;
             // 
             // lblMsgErroSetor
             // 
@@ -1408,6 +1410,14 @@
             // GridViewPerguntas
             // 
             GridViewPerguntas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            GridViewPerguntas.DefaultCellStyle = dataGridViewCellStyle1;
             GridViewPerguntas.Location = new Point(37, 91);
             GridViewPerguntas.Name = "GridViewPerguntas";
             GridViewPerguntas.RowHeadersWidth = 51;

@@ -43,7 +43,7 @@ namespace Projeto_de_Extensao.Formulários.Perguntas
             string dataFormatada = dataAtual.ToString("yyyy-MM-dd HH:mm:ss");
 
             string sql = @"
-            INSERT INTO sugestoes (setor_id, data_avaliacao, sugestao)
+            INSERT INTO sugestoes (setor_id, data, sugestao)
             VALUES ((SELECT setor_id FROM setores WHERE nome = @setor), @data, @sugestao);
             SELECT LAST_INSERT_ID();";
 

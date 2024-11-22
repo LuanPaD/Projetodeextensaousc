@@ -36,6 +36,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void ConsultaSqlPerguntas()
         {
+            GridViewPerguntas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             string sql = @"
                 SELECT a.pergunta_id,a.ordem,a.texto, s.nome AS setor
                 FROM perguntas a
@@ -88,7 +89,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             this.Hide();
         }
 
-        public async Task CarregarDadosAsync(string sql, DataGridView grid, params string[] colunasOcultar)
+        public static async Task CarregarDadosAsync(string sql, DataGridView grid, params string[] colunasOcultar)
         {
             try
             {

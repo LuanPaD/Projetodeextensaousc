@@ -15,6 +15,9 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using Projeto_de_Extensao.Formulários.Cadastros;
+using System.Web;
+using System.Data.SqlTypes;
+using Microsoft.VisualBasic.Logging;
 
 namespace Projeto_de_Extensao.Formulários.Relatórios
 {
@@ -35,14 +38,24 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
 
         private void btnPerguntas_Click(object sender, EventArgs e) => tbcDashboard.SelectedTab = tabPagePerguntas;
 
-        private void btnSugestoes_Click(object sender, EventArgs e) => tbcDashboard.SelectedTab = tabPageSugestoes;
+
 
         #region Funções 
+        private async Task carregaSugestoes()
+        {
+
+            gridSugestoesDash.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            string sql = @"
+                SELECT a.data, s.nome AS setor,a.sugestao
+                FROM sugestoes a
+                JOIN setores s ON a.setor_id = s.setor_id;";
+            await FrmEditarCadastroscs.CarregarDadosAsync(sql, gridSugestoesDash);
+        }
         private void carregaGraficos()
         {
             try
             {
-                //Gráfico 2: Distribuição de Atendentes por Setor
+                //Gráfico : Distribuição de Atendentes por Setor
                 chtGrafico1.Series.Clear();
                 chtGrafico1.Series.Add("Atendentes por Setor");
                 chtGrafico1.Series["Atendentes por Setor"].ChartType = SeriesChartType.Bar;
@@ -124,6 +137,44 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
 
             return admins;
         }
+        private async void FiltraSugestao(DateTime dataInicial, DateTime dataFinal, int? setorId)
+        {
+            dataInicial = dataInicial.Date;
+            dataFinal = dataFinal.Date.AddDays(1).AddSeconds(-1);
+
+            string sql = @"SELECT a.data, s.nome AS setor, a.sugestao
+                   FROM sugestoes a
+                   JOIN setores s ON a.setor_id = s.setor_id
+                   WHERE a.data BETWEEN @dataInicial AND @dataFinal";
+
+            if (setorId.HasValue)
+            {
+                sql += " AND s.setor_id = @setorId";
+            }
+
+            using (var conexao = new MySqlConnection(ClsConexao.connectionString))
+            {
+                using (var comando = new MySqlCommand(sql, conexao))
+                {
+                    comando.Parameters.AddWithValue("@dataInicial", dataInicial);
+                    comando.Parameters.AddWithValue("@dataFinal", dataFinal);
+
+                    if (setorId.HasValue)
+                    {
+                        comando.Parameters.AddWithValue("@setorId", setorId.Value);
+                    }
+
+                    await conexao.OpenAsync();
+                    using (var reader = await comando.ExecuteReaderAsync())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(reader); 
+
+                        gridSugestoesDash.DataSource = dt;
+                    }
+                }
+            }
+        }
 
         #endregion
 
@@ -158,6 +209,36 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             frmEscolhaInicial.ShowDialog();
             this.Hide();
         }
+
+        private async void btnSugestoes_Click(object sender, EventArgs e)
+        {
+            tbcDashboard.SelectedTab = tabPageSugestoes;
+            await carregaSugestoes();
+            await FrmCadastros.ListaTodosOsSetoresAsync(cmbSetoresSugestoes);
+        }
+
+        private void btnCarregarSetoresSugestao_Click(object sender, EventArgs e)
+        {
+            if (dataInicialSugestoes.Value == DateTime.MinValue || dataFinalSugestoes.Value == DateTime.MinValue)
+            {
+                MessageBox.Show("Por favor, selecione ambas as datas (inicial e final).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (dataFinalSugestoes.Value < dataInicialSugestoes.Value)
+            {
+                MessageBox.Show("A data final não pode ser anterior à data inicial.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DateTime dataInicial = dataInicialSugestoes.Value;
+            DateTime dataFinal = dataFinalSugestoes.Value;
+
+            int setorId = (int)cmbSetoresSugestoes.SelectedValue;
+
+            FiltraSugestao(dataInicial, dataFinal, setorId == 0 ? null : setorId);
+        }
+
 
     }
 }
