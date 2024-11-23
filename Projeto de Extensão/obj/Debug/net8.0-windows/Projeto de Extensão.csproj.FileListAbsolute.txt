@@ -157,3 +157,4 @@ C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Ex
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Perguntas.FrmAgradecimento.resources
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Relatórios.FrmDashboard.resources
 C:\Users\educo\OneDrive\Área de Trabalho\Edu\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Perguntas.FrmSugestoes.resources
+C:\Users\luanp\OneDrive\CTi\Área de Trabalho\Projeto\Projetodeextensaousc\Projeto de Extensão\obj\Debug\net8.0-windows\Projeto_de_Extensao.Formulários.Perguntas.FrmSugestoes.resources

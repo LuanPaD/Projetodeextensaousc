@@ -25,7 +25,10 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
     public partial class FrmDashboard : Form
     {
         MySqlConnection conexao = ClsConexao.Conexao;
-
+        string tipoDeRelatorio = String.Empty;
+        private DateTime DataPerguntaInical;
+        private DateTime DataFinalPerguntaInical;
+        private int id_pergunta = 0;
 
         public FrmDashboard()
         {
@@ -88,7 +91,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
                 //Gráfico : Distribuição de Atendentes por Setor
                 chtGrafico1.Series.Clear();
                 chtGrafico1.Series.Add("Atendentes por Setor");
-                chtGrafico1.Series["Atendentes por Setor"].ChartType = SeriesChartType.Bar;
+                chtGrafico1.Series["Atendentes por Setor"].ChartType = SeriesChartType.Pie;
                 chtGrafico1.Series["Atendentes por Setor"].IsXValueIndexed = true;
 
                 string querySetores = @"
@@ -147,7 +150,117 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             var command = new MySqlCommand(query, conexao);
             return Convert.ToInt32(command.ExecuteScalar());
         }
+
         private DataTable GetData()
+        {
+            DataTable dados = new DataTable();
+            string tipoDeRelatorio = cmbTipoRelatorio.Text;
+
+            if (string.IsNullOrEmpty(tipoDeRelatorio) || string.IsNullOrWhiteSpace(tipoDeRelatorio))
+            {
+                MessageBox.Show("Escolha um tipo de Relatório", "Aviso");
+                return dados;
+            }
+
+            if (tipoDeRelatorio == "Avaliações")
+            {
+                dados = getAvaliacoes();
+            }
+
+            if (tipoDeRelatorio == "Admnistradores")
+            {
+                dados = getAdmnistradores();
+            }
+
+            if (tipoDeRelatorio == "Atendentes")
+            {
+                dados = getAtendentes();
+            }
+            return dados;
+        }
+
+        private DataTable getAvaliacoes()
+        {
+            var conexao = ClsConexao.Conexao; // Obtém a conexão global gerenciada
+            DataTable avaliacoes = new DataTable();
+            bool filtrarPeriodo = chkPeriodo.Checked;
+            bool filtrarSetor = chkSetor.Checked;
+            string setor = cmbSetores.Text;
+
+            try
+            {
+                string queryAvaliacoes = @"
+                SELECT 
+                    S.nome, 
+                    P.texto AS 'Pergunta', 
+                    O.texto AS 'Opção Escolhida', 
+                    A.data 
+                FROM AVALIACAO A
+                INNER JOIN RESPOSTAS R ON R.avaliacao_id = A.avaliacao_id 
+                INNER JOIN PERGUNTAS P ON P.pergunta_id = R.pergunta_id
+                INNER JOIN OPCOES O ON O.pergunta_id = P.pergunta_id
+                INNER JOIN SETORES S ON S.setor_id = A.setor_id";
+
+                List<string> condicoes = new List<string>();
+                var command = new MySqlCommand(queryAvaliacoes, conexao);
+
+                if (filtrarSetor && !string.IsNullOrWhiteSpace(setor))
+                {
+                    condicoes.Add("A.setor_id = (SELECT setor_id FROM SETORES WHERE nome = @setor)");
+                    command.Parameters.AddWithValue("@setor", setor);
+                }
+
+                if (filtrarPeriodo)
+                {
+                    condicoes.Add("A.data BETWEEN @dataInicio AND @dataFinal");
+                    command.Parameters.AddWithValue("@dataInicio", DateTime.Parse(dtDataInicio.Text));
+                    command.Parameters.AddWithValue("@dataFinal", DateTime.Parse(dtDataFinal.Text));
+                }
+
+                if (condicoes.Count > 0)
+                {
+                    queryAvaliacoes += " WHERE " + string.Join(" AND ", condicoes);
+                }
+
+                command.CommandText = queryAvaliacoes;
+
+                using (var readerAvaliacoes = command.ExecuteReader())
+                {
+                    avaliacoes.Load(readerAvaliacoes);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter dados: " + ex.Message);
+            }
+
+            return avaliacoes;
+        }
+
+
+
+        private DataTable getAtendentes()
+        {
+            var conexao = ClsConexao.Conexao;
+            DataTable atendentes = new DataTable();
+            try
+            {
+                string queryAtendentes = @"SELECT a.NOME, S.NOME AS 'SETOR', a.EMAIL FROM ATENDENTE A INNER JOIN SETORES S ON S.setor_id = A.setor_id;";
+                var commandAtendentes = new MySqlCommand(queryAtendentes, conexao);
+                var readerAtendentes = commandAtendentes.ExecuteReader();
+
+                atendentes.Load(readerAtendentes);
+                readerAtendentes.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter dados: " + ex.Message);
+            }
+
+            return atendentes;
+        }
+
+        private DataTable getAdmnistradores()
         {
             var conexao = ClsConexao.Conexao;
             DataTable admins = new DataTable();
@@ -167,6 +280,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
 
             return admins;
         }
+
         private async void FiltraSugestao(DateTime dataInicial, DateTime dataFinal, int? setorId)
         {
 
@@ -224,20 +338,44 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
         {
             var excelExporter = new EXCELgerador();
             string downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = Path.Combine(downloadsPath, "Dados.xlsx");
+            string filePath = Path.Combine(downloadsPath, "Relatorio.xlsx");
             DataTable data = GetData();
-            excelExporter.Export(data, filePath);
-            MessageBox.Show("Arquivo Excel gerado com sucesso em:\n" + filePath);
+
+            if (data != null )
+            {
+                if (data.Rows.Count > 0)
+                {
+                    excelExporter.Export(data, filePath);
+                    MessageBox.Show("Arquivo Excel gerado com sucesso em:\n" + filePath);
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum dado disponível para exportar.");
+                }
+            }
+            
         }
+
 
         private void btnExportarPdf_Click(object sender, EventArgs e)
         {
             var pdfExporter = new PDFgerador();
             string downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
-            string filePath = Path.Combine(downloadsPath, "Dados.pdf");
+            string filePath = Path.Combine(downloadsPath, "Relatorio.pdf");
             DataTable data = GetData();
-            pdfExporter.Export(data, filePath);
-            MessageBox.Show("Arquivo PDF gerado com sucesso em:\n" + filePath);
+
+            if (data != null)
+            {
+                if (data.Rows.Count > 0)
+                {
+                    pdfExporter.Export(data, filePath);
+                    MessageBox.Show("Arquivo PDF gerado com sucesso em:\n" + filePath);
+                }
+                else
+                {
+                    MessageBox.Show("Nenhum dado disponível para exportar.");
+                }
+            }
         }
 
 
@@ -351,35 +489,29 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
 
         private void btnFiltraSetorPergunta_Click(object sender, EventArgs e)
         {
-            // Validar as datas
             if (dataInicialPerguntas.Value == DateTime.MinValue || dataFinalPergunta.Value == DateTime.MinValue)
             {
                 MessageBox.Show("Por favor, selecione ambas as datas (inicial e final).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Ajustando os valores das datas
             DataPerguntaInical = dataInicialPerguntas.Value.Date;
             DataFinalPerguntaInical = dataFinalPergunta.Value.Date.AddDays(1).AddSeconds(-1);
 
-            // Validar se a data final é anterior à inicial
             if (DataFinalPerguntaInical < DataPerguntaInical)
             {
                 MessageBox.Show("A data final não pode ser anterior à data inicial.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Validar se foi selecionado um setor válido
             if (cmbSetoresPerguntas.SelectedValue == null || (int)cmbSetoresPerguntas.SelectedValue == 0)
             {
                 MessageBox.Show("Para prosseguir, você precisa escolher um setor.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Obter o ID do setor
             int setor_id = (int)cmbSetoresPerguntas.SelectedValue;
 
-            // Chamar a função de filtro
             FiltraSetorPerguntas(setor_id);
             chartGraficoRespostas.Series.Clear();
         }
@@ -425,11 +557,53 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             GerarGraficoRespostas(id_pergunta, DataPerguntaInical, DataFinalPerguntaInical);
         }
 
-        // Variáveis globais para armazenar os valores das datas e da pergunta
-        private DateTime DataPerguntaInical;
-        private DateTime DataFinalPerguntaInical;
-        private int id_pergunta = 0;
 
         private void button3_Click(object sender, EventArgs e) => this.Hide();
+
+        private void chkPeriodo_CheckedChanged(object sender, EventArgs e)
+        {
+            bool filtrarPeriodo = chkPeriodo.Checked;
+
+            dtDataInicio.Enabled = filtrarPeriodo;
+            dtDataFinal.Enabled = filtrarPeriodo;
+        }
+
+        private void chkSetor_CheckedChanged(object sender, EventArgs e)
+        {
+            bool filtrarSetor = chkSetor.Checked;
+
+            cmbSetores.Enabled = filtrarSetor;
+        }
+
+        private void cmbTipoRelatorio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tipoDeRelatorio = cmbTipoRelatorio.Text;
+
+            if (tipoDeRelatorio.Equals("Avaliações"))
+                mostraFiltrosPeriodos(true);
+            else
+                mostraFiltrosPeriodos(false);
+        }
+
+        private void mostraFiltrosPeriodos(bool mostrar)
+        {
+            List<Control> campos = new List<Control>
+            {
+                lblPeriodo,   
+                lblAte,
+                lblSetor,      
+                dtDataFinal,
+                dtDataInicio,
+                chkPeriodo,
+                chkSetor,
+                cmbSetores,
+            };
+
+            foreach (Control campo in campos)
+            {
+                campo.Visible = mostrar;
+            }
+
+        }
     }
 }
