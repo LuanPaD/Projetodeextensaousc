@@ -32,13 +32,15 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             pictureBox8 = new PictureBox();
             pnlOpcoes = new Panel();
+            button3 = new Button();
             btnSugestoes = new Button();
             pictureBox3 = new PictureBox();
             btnPerguntas = new Button();
@@ -81,8 +83,22 @@
             pictureBox4 = new PictureBox();
             tbcDashboard = new TabControl();
             tabPageDashboard = new TabPage();
+            panel8 = new Panel();
             tabPagePerguntas = new TabPage();
+            lblPergunta = new Label();
+            btnGerarGrafico = new Button();
+            panel7 = new Panel();
+            chartGraficoRespostas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            GridPerguntasRelatorio = new DataGridView();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
+            dataFinalPergunta = new DateTimePicker();
+            dataInicialPerguntas = new DateTimePicker();
+            cmbSetoresPerguntas = new ComboBox();
+            btnFiltraSetorPergunta = new Button();
             panel4 = new Panel();
+            button4 = new Button();
             button5 = new Button();
             button1 = new Button();
             label1 = new Label();
@@ -96,20 +112,10 @@
             btnCarregarSetoresSugestao = new Button();
             gridSugestoesDash = new DataGridView();
             panel6 = new Panel();
+            button7 = new Button();
             button6 = new Button();
             button2 = new Button();
             label2 = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
-            dateTimePicker3 = new DateTimePicker();
-            dateTimePicker4 = new DateTimePicker();
-            comboBox1 = new ComboBox();
-            button3 = new Button();
-            dataGridView1 = new DataGridView();
-            label16 = new Label();
-            panel7 = new Panel();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             pnlOpcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -128,14 +134,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             tbcDashboard.SuspendLayout();
             tabPageDashboard.SuspendLayout();
+            panel8.SuspendLayout();
             tabPagePerguntas.SuspendLayout();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartGraficoRespostas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)GridPerguntasRelatorio).BeginInit();
             panel4.SuspendLayout();
             tabPageSugestoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridSugestoesDash).BeginInit();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox8
@@ -152,6 +159,7 @@
             // pnlOpcoes
             // 
             pnlOpcoes.BackColor = Color.Brown;
+            pnlOpcoes.Controls.Add(button3);
             pnlOpcoes.Controls.Add(pictureBox8);
             pnlOpcoes.Controls.Add(btnSugestoes);
             pnlOpcoes.Controls.Add(pictureBox3);
@@ -166,6 +174,21 @@
             pnlOpcoes.Size = new Size(223, 767);
             pnlOpcoes.TabIndex = 1;
             // 
+            // button3
+            // 
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.BackgroundImageLayout = ImageLayout.Stretch;
+            button3.Dock = DockStyle.Bottom;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = Color.Transparent;
+            button3.Location = new Point(0, 710);
+            button3.Name = "button3";
+            button3.Size = new Size(223, 57);
+            button3.TabIndex = 6;
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // btnSugestoes
             // 
             btnSugestoes.BackColor = Color.Brown;
@@ -173,7 +196,7 @@
             btnSugestoes.FlatStyle = FlatStyle.Flat;
             btnSugestoes.Font = new Font("Segoe UI", 11F);
             btnSugestoes.ForeColor = Color.WhiteSmoke;
-            btnSugestoes.Location = new Point(69, 356);
+            btnSugestoes.Location = new Point(69, 419);
             btnSugestoes.Margin = new Padding(3, 2, 3, 2);
             btnSugestoes.Name = "btnSugestoes";
             btnSugestoes.Size = new Size(139, 46);
@@ -185,7 +208,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.graph;
-            pictureBox3.Location = new Point(11, 356);
+            pictureBox3.Location = new Point(11, 419);
             pictureBox3.Margin = new Padding(3, 2, 3, 2);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(52, 46);
@@ -200,7 +223,7 @@
             btnPerguntas.FlatStyle = FlatStyle.Flat;
             btnPerguntas.Font = new Font("Segoe UI", 11F);
             btnPerguntas.ForeColor = Color.WhiteSmoke;
-            btnPerguntas.Location = new Point(69, 269);
+            btnPerguntas.Location = new Point(69, 296);
             btnPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnPerguntas.Name = "btnPerguntas";
             btnPerguntas.Size = new Size(139, 46);
@@ -212,7 +235,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.graph;
-            pictureBox2.Location = new Point(11, 269);
+            pictureBox2.Location = new Point(11, 296);
             pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(52, 46);
@@ -292,7 +315,7 @@
             panel1.Controls.Add(lblAvaliaçõesRespondidas);
             panel1.Controls.Add(lblAvaliações);
             panel1.Controls.Add(pictureBox5);
-            panel1.Location = new Point(250, 150);
+            panel1.Location = new Point(133, 94);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(264, 136);
@@ -348,7 +371,7 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(pictureBox7);
-            panel2.Location = new Point(520, 150);
+            panel2.Location = new Point(421, 94);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(296, 136);
@@ -404,7 +427,7 @@
             panel3.Controls.Add(label6);
             panel3.Controls.Add(label7);
             panel3.Controls.Add(pictureBox6);
-            panel3.Location = new Point(831, 150);
+            panel3.Location = new Point(740, 94);
             panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
             panel3.Size = new Size(236, 136);
@@ -456,7 +479,7 @@
             // 
             label8.Anchor = AnchorStyles.None;
             label8.AutoSize = true;
-            label8.Location = new Point(929, 311);
+            label8.Location = new Point(928, 255);
             label8.Name = "label8";
             label8.Size = new Size(48, 15);
             label8.TabIndex = 6;
@@ -465,7 +488,7 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Anchor = AnchorStyles.None;
-            dateTimePicker1.Location = new Point(931, 328);
+            dateTimePicker1.Location = new Point(930, 272);
             dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(262, 23);
@@ -475,7 +498,7 @@
             // 
             label9.Anchor = AnchorStyles.None;
             label9.AutoSize = true;
-            label9.Location = new Point(931, 351);
+            label9.Location = new Point(930, 295);
             label9.Name = "label9";
             label9.Size = new Size(23, 15);
             label9.TabIndex = 8;
@@ -484,7 +507,7 @@
             // dateTimePicker2
             // 
             dateTimePicker2.Anchor = AnchorStyles.None;
-            dateTimePicker2.Location = new Point(931, 368);
+            dateTimePicker2.Location = new Point(930, 312);
             dateTimePicker2.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(262, 23);
@@ -494,10 +517,10 @@
             // 
             pnlGraficos.Anchor = AnchorStyles.None;
             pnlGraficos.Controls.Add(chtGrafico1);
-            pnlGraficos.Location = new Point(316, 328);
+            pnlGraficos.Location = new Point(133, 255);
             pnlGraficos.Margin = new Padding(3, 2, 3, 2);
             pnlGraficos.Name = "pnlGraficos";
-            pnlGraficos.Size = new Size(541, 285);
+            pnlGraficos.Size = new Size(765, 305);
             pnlGraficos.TabIndex = 10;
             // 
             // chtGrafico1
@@ -514,7 +537,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chtGrafico1.Series.Add(series1);
-            chtGrafico1.Size = new Size(541, 285);
+            chtGrafico1.Size = new Size(765, 305);
             chtGrafico1.TabIndex = 21;
             chtGrafico1.Text = "Gráfico";
             // 
@@ -525,7 +548,7 @@
             btnAvancarAtendentes.BackgroundImage = (Image)resources.GetObject("btnAvancarAtendentes.BackgroundImage");
             btnAvancarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
             btnAvancarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnAvancarAtendentes.Location = new Point(931, 444);
+            btnAvancarAtendentes.Location = new Point(930, 388);
             btnAvancarAtendentes.Name = "btnAvancarAtendentes";
             btnAvancarAtendentes.Size = new Size(262, 45);
             btnAvancarAtendentes.TabIndex = 15;
@@ -535,7 +558,7 @@
             // 
             lblSetor.Anchor = AnchorStyles.None;
             lblSetor.AutoSize = true;
-            lblSetor.Location = new Point(931, 394);
+            lblSetor.Location = new Point(930, 338);
             lblSetor.Name = "lblSetor";
             lblSetor.Size = new Size(34, 15);
             lblSetor.TabIndex = 17;
@@ -545,7 +568,7 @@
             // 
             cmbSetores.Anchor = AnchorStyles.None;
             cmbSetores.FormattingEnabled = true;
-            cmbSetores.Location = new Point(931, 412);
+            cmbSetores.Location = new Point(930, 356);
             cmbSetores.Margin = new Padding(3, 2, 3, 2);
             cmbSetores.Name = "cmbSetores";
             cmbSetores.Size = new Size(260, 23);
@@ -558,7 +581,7 @@
             btnExportaPdf.BackgroundImage = Properties.Resources.btnExportaPdf;
             btnExportaPdf.BackgroundImageLayout = ImageLayout.Stretch;
             btnExportaPdf.FlatStyle = FlatStyle.Flat;
-            btnExportaPdf.Location = new Point(931, 510);
+            btnExportaPdf.Location = new Point(930, 454);
             btnExportaPdf.Name = "btnExportaPdf";
             btnExportaPdf.Size = new Size(262, 45);
             btnExportaPdf.TabIndex = 19;
@@ -572,7 +595,7 @@
             btnExportaExcel.BackgroundImage = Properties.Resources.btnExportaExcel;
             btnExportaExcel.BackgroundImageLayout = ImageLayout.Stretch;
             btnExportaExcel.FlatStyle = FlatStyle.Flat;
-            btnExportaExcel.Location = new Point(931, 571);
+            btnExportaExcel.Location = new Point(930, 515);
             btnExportaExcel.Name = "btnExportaExcel";
             btnExportaExcel.Size = new Size(262, 45);
             btnExportaExcel.TabIndex = 20;
@@ -587,7 +610,7 @@
             panel5.Controls.Add(lbl7);
             panel5.Controls.Add(label5);
             panel5.Controls.Add(pictureBox4);
-            panel5.Location = new Point(1087, 150);
+            panel5.Location = new Point(995, 94);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
             panel5.Size = new Size(236, 136);
@@ -650,21 +673,8 @@
             // 
             // tabPageDashboard
             // 
+            tabPageDashboard.Controls.Add(panel8);
             tabPageDashboard.Controls.Add(pnlTitulo);
-            tabPageDashboard.Controls.Add(btnExportaExcel);
-            tabPageDashboard.Controls.Add(panel5);
-            tabPageDashboard.Controls.Add(panel1);
-            tabPageDashboard.Controls.Add(btnExportaPdf);
-            tabPageDashboard.Controls.Add(panel2);
-            tabPageDashboard.Controls.Add(panel3);
-            tabPageDashboard.Controls.Add(cmbSetores);
-            tabPageDashboard.Controls.Add(btnAvancarAtendentes);
-            tabPageDashboard.Controls.Add(pnlGraficos);
-            tabPageDashboard.Controls.Add(label8);
-            tabPageDashboard.Controls.Add(lblSetor);
-            tabPageDashboard.Controls.Add(label9);
-            tabPageDashboard.Controls.Add(dateTimePicker2);
-            tabPageDashboard.Controls.Add(dateTimePicker1);
             tabPageDashboard.Location = new Point(4, 24);
             tabPageDashboard.Name = "tabPageDashboard";
             tabPageDashboard.Padding = new Padding(3);
@@ -673,18 +683,41 @@
             tabPageDashboard.Text = "Dashboard";
             tabPageDashboard.UseVisualStyleBackColor = true;
             // 
+            // panel8
+            // 
+            panel8.Controls.Add(btnExportaExcel);
+            panel8.Controls.Add(panel5);
+            panel8.Controls.Add(panel1);
+            panel8.Controls.Add(btnExportaPdf);
+            panel8.Controls.Add(panel2);
+            panel8.Controls.Add(panel3);
+            panel8.Controls.Add(cmbSetores);
+            panel8.Controls.Add(btnAvancarAtendentes);
+            panel8.Controls.Add(pnlGraficos);
+            panel8.Controls.Add(label8);
+            panel8.Controls.Add(lblSetor);
+            panel8.Controls.Add(label9);
+            panel8.Controls.Add(dateTimePicker2);
+            panel8.Controls.Add(dateTimePicker1);
+            panel8.Dock = DockStyle.Fill;
+            panel8.Location = new Point(3, 64);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1351, 672);
+            panel8.TabIndex = 21;
+            // 
             // tabPagePerguntas
             // 
+            tabPagePerguntas.Controls.Add(lblPergunta);
+            tabPagePerguntas.Controls.Add(btnGerarGrafico);
             tabPagePerguntas.Controls.Add(panel7);
-            tabPagePerguntas.Controls.Add(label16);
-            tabPagePerguntas.Controls.Add(dataGridView1);
+            tabPagePerguntas.Controls.Add(GridPerguntasRelatorio);
             tabPagePerguntas.Controls.Add(label13);
             tabPagePerguntas.Controls.Add(label14);
             tabPagePerguntas.Controls.Add(label15);
-            tabPagePerguntas.Controls.Add(dateTimePicker3);
-            tabPagePerguntas.Controls.Add(dateTimePicker4);
-            tabPagePerguntas.Controls.Add(comboBox1);
-            tabPagePerguntas.Controls.Add(button3);
+            tabPagePerguntas.Controls.Add(dataFinalPergunta);
+            tabPagePerguntas.Controls.Add(dataInicialPerguntas);
+            tabPagePerguntas.Controls.Add(cmbSetoresPerguntas);
+            tabPagePerguntas.Controls.Add(btnFiltraSetorPergunta);
             tabPagePerguntas.Controls.Add(panel4);
             tabPagePerguntas.Location = new Point(4, 24);
             tabPagePerguntas.Name = "tabPagePerguntas";
@@ -694,9 +727,168 @@
             tabPagePerguntas.Text = "Perguntas";
             tabPagePerguntas.UseVisualStyleBackColor = true;
             // 
+            // lblPergunta
+            // 
+            lblPergunta.Anchor = AnchorStyles.None;
+            lblPergunta.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPergunta.Location = new Point(496, 197);
+            lblPergunta.Name = "lblPergunta";
+            lblPergunta.Size = new Size(684, 61);
+            lblPergunta.TabIndex = 53;
+            lblPergunta.Text = "Pergunta";
+            lblPergunta.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnGerarGrafico
+            // 
+            btnGerarGrafico.Anchor = AnchorStyles.None;
+            btnGerarGrafico.BackColor = Color.Brown;
+            btnGerarGrafico.BackgroundImage = (Image)resources.GetObject("btnGerarGrafico.BackgroundImage");
+            btnGerarGrafico.BackgroundImageLayout = ImageLayout.Stretch;
+            btnGerarGrafico.Location = new Point(1186, 182);
+            btnGerarGrafico.Name = "btnGerarGrafico";
+            btnGerarGrafico.Size = new Size(84, 59);
+            btnGerarGrafico.TabIndex = 52;
+            btnGerarGrafico.UseVisualStyleBackColor = false;
+            btnGerarGrafico.Click += btnGerarGrafico_Click;
+            // 
+            // panel7
+            // 
+            panel7.Anchor = AnchorStyles.None;
+            panel7.Controls.Add(chartGraficoRespostas);
+            panel7.Location = new Point(496, 272);
+            panel7.Margin = new Padding(3, 2, 3, 2);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(698, 411);
+            panel7.TabIndex = 51;
+            // 
+            // chartGraficoRespostas
+            // 
+            chartArea2.Name = "ChartArea1";
+            chartGraficoRespostas.ChartAreas.Add(chartArea2);
+            chartGraficoRespostas.Dock = DockStyle.Fill;
+            legend2.Name = "Legend1";
+            chartGraficoRespostas.Legends.Add(legend2);
+            chartGraficoRespostas.Location = new Point(0, 0);
+            chartGraficoRespostas.Margin = new Padding(3, 2, 3, 2);
+            chartGraficoRespostas.Name = "chartGraficoRespostas";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartGraficoRespostas.Series.Add(series2);
+            chartGraficoRespostas.Size = new Size(698, 411);
+            chartGraficoRespostas.TabIndex = 21;
+            chartGraficoRespostas.Text = "Gráfico";
+            // 
+            // GridPerguntasRelatorio
+            // 
+            GridPerguntasRelatorio.Anchor = AnchorStyles.None;
+            GridPerguntasRelatorio.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            GridPerguntasRelatorio.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            GridPerguntasRelatorio.DefaultCellStyle = dataGridViewCellStyle1;
+            GridPerguntasRelatorio.Location = new Point(79, 182);
+            GridPerguntasRelatorio.MultiSelect = false;
+            GridPerguntasRelatorio.Name = "GridPerguntasRelatorio";
+            GridPerguntasRelatorio.Size = new Size(342, 526);
+            GridPerguntasRelatorio.TabIndex = 49;
+            GridPerguntasRelatorio.CellClick += gridSugestoesDash_CellClick;
+            // 
+            // label13
+            // 
+            label13.Anchor = AnchorStyles.None;
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.Location = new Point(548, 105);
+            label13.Name = "label13";
+            label13.Size = new Size(83, 30);
+            label13.TabIndex = 44;
+            label13.Text = "Período";
+            // 
+            // label14
+            // 
+            label14.Anchor = AnchorStyles.None;
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label14.Location = new Point(259, 103);
+            label14.Name = "label14";
+            label14.Size = new Size(61, 30);
+            label14.TabIndex = 48;
+            label14.Text = "Setor";
+            // 
+            // label15
+            // 
+            label15.Anchor = AnchorStyles.None;
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label15.Location = new Point(782, 105);
+            label15.Name = "label15";
+            label15.Size = new Size(42, 30);
+            label15.TabIndex = 46;
+            label15.Text = "até";
+            // 
+            // dataFinalPergunta
+            // 
+            dataFinalPergunta.Anchor = AnchorStyles.None;
+            dataFinalPergunta.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataFinalPergunta.Format = DateTimePickerFormat.Short;
+            dataFinalPergunta.Location = new Point(830, 103);
+            dataFinalPergunta.Margin = new Padding(3, 2, 3, 2);
+            dataFinalPergunta.Name = "dataFinalPergunta";
+            dataFinalPergunta.Size = new Size(126, 35);
+            dataFinalPergunta.TabIndex = 47;
+            // 
+            // dataInicialPerguntas
+            // 
+            dataInicialPerguntas.Anchor = AnchorStyles.None;
+            dataInicialPerguntas.CustomFormat = "";
+            dataInicialPerguntas.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataInicialPerguntas.Format = DateTimePickerFormat.Short;
+            dataInicialPerguntas.Location = new Point(637, 103);
+            dataInicialPerguntas.Margin = new Padding(3, 2, 3, 2);
+            dataInicialPerguntas.Name = "dataInicialPerguntas";
+            dataInicialPerguntas.Size = new Size(128, 35);
+            dataInicialPerguntas.TabIndex = 45;
+            dataInicialPerguntas.Value = new DateTime(2024, 11, 22, 12, 52, 56, 0);
+            // 
+            // cmbSetoresPerguntas
+            // 
+            cmbSetoresPerguntas.Anchor = AnchorStyles.None;
+            cmbSetoresPerguntas.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbSetoresPerguntas.FormattingEnabled = true;
+            cmbSetoresPerguntas.Location = new Point(326, 100);
+            cmbSetoresPerguntas.Margin = new Padding(3, 2, 3, 2);
+            cmbSetoresPerguntas.Name = "cmbSetoresPerguntas";
+            cmbSetoresPerguntas.Size = new Size(204, 38);
+            cmbSetoresPerguntas.TabIndex = 43;
+            // 
+            // btnFiltraSetorPergunta
+            // 
+            btnFiltraSetorPergunta.Anchor = AnchorStyles.None;
+            btnFiltraSetorPergunta.BackColor = Color.Brown;
+            btnFiltraSetorPergunta.BackgroundImage = (Image)resources.GetObject("btnFiltraSetorPergunta.BackgroundImage");
+            btnFiltraSetorPergunta.BackgroundImageLayout = ImageLayout.Stretch;
+            btnFiltraSetorPergunta.Cursor = Cursors.Hand;
+            btnFiltraSetorPergunta.FlatAppearance.BorderSize = 0;
+            btnFiltraSetorPergunta.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
+            btnFiltraSetorPergunta.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
+            btnFiltraSetorPergunta.Location = new Point(983, 95);
+            btnFiltraSetorPergunta.Margin = new Padding(3, 2, 3, 2);
+            btnFiltraSetorPergunta.Name = "btnFiltraSetorPergunta";
+            btnFiltraSetorPergunta.Size = new Size(54, 54);
+            btnFiltraSetorPergunta.TabIndex = 42;
+            btnFiltraSetorPergunta.UseVisualStyleBackColor = false;
+            btnFiltraSetorPergunta.Click += btnFiltraSetorPergunta_Click;
+            // 
             // panel4
             // 
             panel4.BackColor = Color.Transparent;
+            panel4.Controls.Add(button4);
             panel4.Controls.Add(button5);
             panel4.Controls.Add(button1);
             panel4.Controls.Add(label1);
@@ -706,6 +898,20 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(1351, 61);
             panel4.TabIndex = 3;
+            // 
+            // button4
+            // 
+            button4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button4.BackColor = Color.Gainsboro;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.BackgroundImageLayout = ImageLayout.Stretch;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.Location = new Point(1280, 3);
+            button4.Name = "button4";
+            button4.Size = new Size(66, 52);
+            button4.TabIndex = 30;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += btnVoltarParaMenu_Click;
             // 
             // button5
             // 
@@ -852,7 +1058,10 @@
             // 
             // gridSugestoesDash
             // 
+            gridSugestoesDash.AllowUserToAddRows = false;
+            gridSugestoesDash.AllowUserToDeleteRows = false;
             gridSugestoesDash.Anchor = AnchorStyles.None;
+            gridSugestoesDash.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             gridSugestoesDash.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
@@ -865,12 +1074,15 @@
             gridSugestoesDash.Location = new Point(255, 222);
             gridSugestoesDash.MultiSelect = false;
             gridSugestoesDash.Name = "gridSugestoesDash";
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            gridSugestoesDash.RowsDefaultCellStyle = dataGridViewCellStyle3;
             gridSugestoesDash.Size = new Size(778, 453);
             gridSugestoesDash.TabIndex = 4;
             // 
             // panel6
             // 
             panel6.BackColor = Color.Transparent;
+            panel6.Controls.Add(button7);
             panel6.Controls.Add(button6);
             panel6.Controls.Add(button2);
             panel6.Controls.Add(label2);
@@ -880,6 +1092,20 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(1351, 61);
             panel6.TabIndex = 3;
+            // 
+            // button7
+            // 
+            button7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button7.BackColor = Color.Gainsboro;
+            button7.BackgroundImage = (Image)resources.GetObject("button7.BackgroundImage");
+            button7.BackgroundImageLayout = ImageLayout.Stretch;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.Location = new Point(1280, 3);
+            button7.Name = "button7";
+            button7.Size = new Size(66, 52);
+            button7.TabIndex = 30;
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += btnVoltarParaMenu_Click;
             // 
             // button6
             // 
@@ -919,145 +1145,6 @@
             label2.TabIndex = 0;
             label2.Text = "Sugestões";
             // 
-            // label13
-            // 
-            label13.Anchor = AnchorStyles.None;
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(548, 105);
-            label13.Name = "label13";
-            label13.Size = new Size(83, 30);
-            label13.TabIndex = 44;
-            label13.Text = "Período";
-            // 
-            // label14
-            // 
-            label14.Anchor = AnchorStyles.None;
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.Location = new Point(259, 103);
-            label14.Name = "label14";
-            label14.Size = new Size(61, 30);
-            label14.TabIndex = 48;
-            label14.Text = "Setor";
-            // 
-            // label15
-            // 
-            label15.Anchor = AnchorStyles.None;
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.Location = new Point(782, 105);
-            label15.Name = "label15";
-            label15.Size = new Size(42, 30);
-            label15.TabIndex = 46;
-            label15.Text = "até";
-            // 
-            // dateTimePicker3
-            // 
-            dateTimePicker3.Anchor = AnchorStyles.None;
-            dateTimePicker3.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dateTimePicker3.Format = DateTimePickerFormat.Short;
-            dateTimePicker3.Location = new Point(830, 103);
-            dateTimePicker3.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(126, 35);
-            dateTimePicker3.TabIndex = 47;
-            // 
-            // dateTimePicker4
-            // 
-            dateTimePicker4.Anchor = AnchorStyles.None;
-            dateTimePicker4.CustomFormat = "";
-            dateTimePicker4.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dateTimePicker4.Format = DateTimePickerFormat.Short;
-            dateTimePicker4.Location = new Point(637, 103);
-            dateTimePicker4.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(128, 35);
-            dateTimePicker4.TabIndex = 45;
-            dateTimePicker4.Value = new DateTime(2024, 11, 22, 12, 52, 56, 0);
-            // 
-            // comboBox1
-            // 
-            comboBox1.Anchor = AnchorStyles.None;
-            comboBox1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(326, 100);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(204, 38);
-            comboBox1.TabIndex = 43;
-            // 
-            // button3
-            // 
-            button3.Anchor = AnchorStyles.None;
-            button3.BackColor = Color.Brown;
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
-            button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Cursor = Cursors.Hand;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
-            button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
-            button3.Location = new Point(983, 95);
-            button3.Margin = new Padding(3, 2, 3, 2);
-            button3.Name = "button3";
-            button3.Size = new Size(54, 54);
-            button3.TabIndex = 42;
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.Anchor = AnchorStyles.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.Location = new Point(100, 182);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(342, 526);
-            dataGridView1.TabIndex = 49;
-            // 
-            // label16
-            // 
-            label16.Location = new Point(486, 182);
-            label16.Name = "label16";
-            label16.Size = new Size(681, 57);
-            label16.TabIndex = 50;
-            label16.Text = "Pergunta";
-            // 
-            // panel7
-            // 
-            panel7.Anchor = AnchorStyles.None;
-            panel7.Controls.Add(chart1);
-            panel7.Location = new Point(496, 272);
-            panel7.Margin = new Padding(3, 2, 3, 2);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(698, 411);
-            panel7.TabIndex = 51;
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea2);
-            chart1.Dock = DockStyle.Fill;
-            legend2.Name = "Legend1";
-            chart1.Legends.Add(legend2);
-            chart1.Location = new Point(0, 0);
-            chart1.Margin = new Padding(3, 2, 3, 2);
-            chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chart1.Series.Add(series2);
-            chart1.Size = new Size(698, 411);
-            chart1.TabIndex = 21;
-            chart1.Text = "Gráfico";
-            // 
             // FrmDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1092,9 +1179,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             tbcDashboard.ResumeLayout(false);
             tabPageDashboard.ResumeLayout(false);
-            tabPageDashboard.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
             tabPagePerguntas.ResumeLayout(false);
             tabPagePerguntas.PerformLayout();
+            panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartGraficoRespostas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)GridPerguntasRelatorio).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             tabPageSugestoes.ResumeLayout(false);
@@ -1102,9 +1193,6 @@
             ((System.ComponentModel.ISupportInitialize)gridSugestoesDash).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
         }
 
@@ -1175,13 +1263,18 @@
         private Label label13;
         private Label label14;
         private Label label15;
-        private DateTimePicker dateTimePicker3;
-        private DateTimePicker dateTimePicker4;
-        private ComboBox comboBox1;
-        private Button button3;
-        private Label label16;
-        private DataGridView dataGridView1;
+        private DateTimePicker dataFinalPergunta;
+        private DateTimePicker dataInicialPerguntas;
+        private ComboBox cmbSetoresPerguntas;
+        private Button btnFiltraSetorPergunta;
+        private DataGridView GridPerguntasRelatorio;
         private Panel panel7;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGraficoRespostas;
+        private Button btnGerarGrafico;
+        private Button button3;
+        private Button button4;
+        private Button button7;
+        private Panel panel8;
+        private Label lblPergunta;
     }
 }

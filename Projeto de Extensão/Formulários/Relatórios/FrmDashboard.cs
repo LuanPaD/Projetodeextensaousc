@@ -18,6 +18,7 @@ using Projeto_de_Extensao.Formulários.Cadastros;
 using System.Web;
 using System.Data.SqlTypes;
 using Microsoft.VisualBasic.Logging;
+using SixLabors.Fonts;
 
 namespace Projeto_de_Extensao.Formulários.Relatórios
 {
@@ -36,21 +37,50 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
 
         private void btnDashboard_Click(object sender, EventArgs e) => tbcDashboard.SelectedTab = tabPageDashboard;
 
-        private void btnPerguntas_Click(object sender, EventArgs e) => tbcDashboard.SelectedTab = tabPagePerguntas;
+        private async void btnPerguntas_Click(object sender, EventArgs e)
+        {
+            await FrmCadastros.ListaTodosOsSetoresAsync(cmbSetoresPerguntas);
+            tbcDashboard.SelectedTab = tabPagePerguntas;
+        }
+
+        private void EstilizaGrid(DataGridView grid)
+        {
+            // Remover o cabeçalho das linhas (linha lateral)
+            grid.RowHeadersVisible = false;
+
+            // Remover a borda entre as células
+            grid.CellBorderStyle = DataGridViewCellBorderStyle.None;
+
+            // Estilo para células padrão
+            grid.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            grid.DefaultCellStyle.BackColor = System.Drawing.Color.IndianRed;
+            grid.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightCoral;
+
+            // Estilo para o fundo do DataGridView
+            grid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            grid.GridColor = System.Drawing.Color.LightSlateGray;
+
+            // Estilo para cabeçalhos de coluna
+            grid.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Brown;
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            grid.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font(grid.Font.FontFamily, 12, System.Drawing.FontStyle.Bold);
+
+            // Desabilitar o estilo visual padrão do cabeçalho (para permitir personalização)
+            grid.EnableHeadersVisualStyles = false;
+
+            // Ajuste automático das colunas
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Impede a linha de adicionar dados ao final
+            grid.AllowUserToAddRows = false;
+
+
+        }
 
 
 
         #region Funções 
-        private async Task carregaSugestoes()
-        {
 
-            gridSugestoesDash.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            string sql = @"
-                SELECT a.data, s.nome AS setor,a.sugestao
-                FROM sugestoes a
-                JOIN setores s ON a.setor_id = s.setor_id;";
-            await FrmEditarCadastroscs.CarregarDadosAsync(sql, gridSugestoesDash);
-        }
         private void carregaGraficos()
         {
             try
@@ -85,7 +115,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
 
                 chtGrafico1.Titles.Clear();
                 chtGrafico1.Titles.Add("Atendentes por Setor");
-                chtGrafico1.Series["Atendentes por Setor"].Color = Color.Red;
+                chtGrafico1.Series["Atendentes por Setor"].Color = Color.Brown;
 
             }
             catch (Exception err)
@@ -139,6 +169,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
         }
         private async void FiltraSugestao(DateTime dataInicial, DateTime dataFinal, int? setorId)
         {
+
             dataInicial = dataInicial.Date;
             dataFinal = dataFinal.Date.AddDays(1).AddSeconds(-1);
 
@@ -168,12 +199,21 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
                     using (var reader = await comando.ExecuteReaderAsync())
                     {
                         DataTable dt = new DataTable();
-                        dt.Load(reader); 
-
+                        dt.Load(reader);
+                        EstilizaGrid(gridSugestoesDash);
                         gridSugestoesDash.DataSource = dt;
                     }
                 }
             }
+        }
+
+        private async void FiltraSetorPerguntas(int? setorId)
+        {
+
+            string sql = $@"SELECT pergunta_id,texto FROM perguntas
+            WHERE setor_id = {setorId} 
+            order by ordem;";
+            await FrmEditarCadastroscs.CarregarDadosAsync(sql, GridPerguntasRelatorio, "pergunta_id");
         }
 
         #endregion
@@ -213,7 +253,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
         private async void btnSugestoes_Click(object sender, EventArgs e)
         {
             tbcDashboard.SelectedTab = tabPageSugestoes;
-            await carregaSugestoes();
+
             await FrmCadastros.ListaTodosOsSetoresAsync(cmbSetoresSugestoes);
         }
 
@@ -240,5 +280,156 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
         }
 
 
+        private void GerarGraficoRespostas(int perguntaId, DateTime dataInicial, DateTime dataFinal)
+        {
+            // Verifica se o ID da pergunta é válido
+            if (perguntaId <= 0)
+            {
+                MessageBox.Show("Selecione uma pergunta válida antes de gerar o gráfico.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Configurando o SQL para contar respostas por opção
+            string sql = @"
+                SELECT o.opcao_id, o.texto, COUNT(r.resposta_id) AS total_respostas
+                FROM opcoes o
+                LEFT JOIN respostas r ON o.opcao_id = r.opcao_id
+                LEFT JOIN avaliacao a ON r.avaliacao_id = a.avaliacao_id
+                WHERE o.pergunta_id = @perguntaId 
+                  AND a.data BETWEEN @dataInicio AND @dataFim
+                GROUP BY o.opcao_id, o.texto
+                ORDER BY o.opcao_id;
+            ";
+
+            try
+            {
+                // Criar conexão com o banco de dados
+                using (var conexao = new MySqlConnection(ClsConexao.connectionString))
+                {
+                    using (var comando = new MySqlCommand(sql, conexao))
+                    {
+                        // Adicionar os parâmetros ao comando
+                        comando.Parameters.AddWithValue("@perguntaId", perguntaId);
+                        comando.Parameters.AddWithValue("@dataInicio", dataInicial);
+                        comando.Parameters.AddWithValue("@dataFim", dataFinal);
+
+                        // Abrir a conexão
+                        conexao.Open();
+
+                        using (var reader = comando.ExecuteReader())
+                        {
+                            // Preparar o gráfico
+                            chartGraficoRespostas.Series.Clear();
+                            var series = chartGraficoRespostas.Series.Add("Respostas");
+                            series.ChartType = SeriesChartType.Column;
+                            series.IsXValueIndexed = true;
+                            chartGraficoRespostas.Titles.Clear();
+
+                            // Adicionar os pontos ao gráfico
+                            while (reader.Read())
+                            {
+                                string descricaoOpcao = reader["texto"]?.ToString() ?? "Opção desconhecida";
+                                int totalRespostas = reader["total_respostas"] != DBNull.Value
+                                    ? Convert.ToInt32(reader["total_respostas"])
+                                    : 0;
+
+                                series.Points.AddXY(descricaoOpcao, totalRespostas);
+                            }
+
+                            // Estilização do gráfico
+                            series.Color = Color.Brown;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Exibir erro em caso de falha
+                MessageBox.Show($"Erro ao gerar gráfico: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnFiltraSetorPergunta_Click(object sender, EventArgs e)
+        {
+            // Validar as datas
+            if (dataInicialPerguntas.Value == DateTime.MinValue || dataFinalPergunta.Value == DateTime.MinValue)
+            {
+                MessageBox.Show("Por favor, selecione ambas as datas (inicial e final).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Ajustando os valores das datas
+            DataPerguntaInical = dataInicialPerguntas.Value.Date;
+            DataFinalPerguntaInical = dataFinalPergunta.Value.Date.AddDays(1).AddSeconds(-1);
+
+            // Validar se a data final é anterior à inicial
+            if (DataFinalPerguntaInical < DataPerguntaInical)
+            {
+                MessageBox.Show("A data final não pode ser anterior à data inicial.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validar se foi selecionado um setor válido
+            if (cmbSetoresPerguntas.SelectedValue == null || (int)cmbSetoresPerguntas.SelectedValue == 0)
+            {
+                MessageBox.Show("Para prosseguir, você precisa escolher um setor.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Obter o ID do setor
+            int setor_id = (int)cmbSetoresPerguntas.SelectedValue;
+
+            // Chamar a função de filtro
+            FiltraSetorPerguntas(setor_id);
+            chartGraficoRespostas.Series.Clear();
+        }
+
+        private void gridSugestoesDash_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                try
+                {
+                    var row = GridPerguntasRelatorio.Rows[e.RowIndex];
+
+                    lblPergunta.Text = row.Cells["texto"]?.Value?.ToString() ?? "Texto não encontrado";
+
+                    if (row.Cells["pergunta_id"]?.Value != null &&
+                        int.TryParse(row.Cells["pergunta_id"].Value.ToString(), out int perguntaId))
+                    {
+                        id_pergunta = perguntaId;
+                    }
+                    else
+                    {
+                        MessageBox.Show("ID da pergunta inválido ou ausente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        id_pergunta = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocorreu um erro ao processar os dados: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnGerarGrafico_Click(object sender, EventArgs e)
+        {
+            // Validar as datas antes de gerar o gráfico
+            if (DataPerguntaInical == DateTime.MinValue || DataFinalPerguntaInical == DateTime.MinValue)
+            {
+                MessageBox.Show("Por favor, selecione as datas antes de gerar o gráfico.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Gerar o gráfico
+            GerarGraficoRespostas(id_pergunta, DataPerguntaInical, DataFinalPerguntaInical);
+        }
+
+        // Variáveis globais para armazenar os valores das datas e da pergunta
+        private DateTime DataPerguntaInical;
+        private DateTime DataFinalPerguntaInical;
+        private int id_pergunta = 0;
+
+        private void button3_Click(object sender, EventArgs e) => this.Hide();
     }
 }

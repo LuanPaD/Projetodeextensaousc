@@ -31,6 +31,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
             this.AtendenteId = AtendenteId;
 
             CriarAlternativas();
+            
             controlaVisibilidadeBotoesVoltarAvancar();
         }
 
@@ -46,6 +47,8 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
         private void btnProximaPergunta_Click(object sender, EventArgs e)
         {
+            
+           
             if (alternativaEscolhida == false)
             {
                 MessageBox.Show("Você deve escolher uma alternativa antes de avançar !", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -164,7 +167,6 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
                         {
                             if (await reader.ReadAsync())
                             {
-                                MessageBox.Show("Pergunta id = " + reader.GetInt32(reader.GetOrdinal("pergunta_id")));
                                 return reader.GetInt32(reader.GetOrdinal("pergunta_id"));
                             }
                             throw new Exception("Erro ao buscar id da pergunta");
@@ -339,6 +341,8 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
         private void controlaVisibilidadeBotoesVoltarAvancar()
         {
+
+
             if (num_perguntaAtual == 1)
             {
                 btnPerguntaAnterior.Visible = false;
@@ -355,7 +359,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
                 return;
             }
 
-            if (qtdDePerguntas == 1)
+            if (qtdDePerguntas <= 1)
             {
                 btnProximaPergunta.Visible = false;
                 btnPerguntaAnterior.Visible = false;
@@ -400,7 +404,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
         private void DistribuirBotoesVerticalmente(List<Alternativa> alternativas, int larguraGroupBox, int alturaGroupBox, int espacamentoVertical)
         {
-            int posicaoY = 30;  // Começar no topo do GroupBox
+            int posicaoY = 180;  // Começar no topo do GroupBox
 
             foreach (var alternativa in alternativas)
             {
