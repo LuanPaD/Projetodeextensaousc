@@ -177,7 +177,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             if (reader["Imagem"] != DBNull.Value)
                             {
                                 byte[] imageBytes = (byte[])reader["Imagem"];
-                                return imageBytes; 
+                                return imageBytes;
                             }
                             else
                             {
@@ -492,7 +492,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async Task<bool> DeletaSetorAsync(int SetorId)
         {
-            var resultado = MessageBox.Show("Tem certeza que deseja excluir este setor e todos os atendentes associados?",
+            var resultado = MessageBox.Show("Tem certeza que deseja excluir este setor e todos os atendentes,perguntas,respostas e sugestões associados?",
                                             "Confirmação de Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
@@ -501,6 +501,58 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 {
                     try
                     {
+                        //Exclui todas as respostas asssociadas ao setor
+                        string sqlrespostas = @"
+                        DELETE FROM respostas
+                        WHERE avaliacao_id IN (SELECT avaliacao_id FROM avaliacao WHERE setor_id = @SetorId);";
+                        using (var cmdDeletaResposta = new MySqlCommand(sqlrespostas, ClsConexao.Conexao, transacao))
+                        {
+                            cmdDeletaResposta.Parameters.AddWithValue("@SetorId", SetorId);
+                            await cmdDeletaResposta.ExecuteNonQueryAsync();
+                        }
+
+                        // Exclui todas avaliações assosiados ao setor
+                        string sqlAvaliacao = @"
+                        DELETE FROM avaliacao
+                        WHERE setor_id = @SetorId";
+
+                        using (var cmdDeletaAvaliacao = new MySqlCommand(sqlAvaliacao, ClsConexao.Conexao, transacao))
+                        {
+                            cmdDeletaAvaliacao.Parameters.AddWithValue("@SetorId", SetorId);
+                            await cmdDeletaAvaliacao.ExecuteNonQueryAsync();
+                        }
+
+                        string sqlSugestoes = @"
+                        DELETE FROM sugestoes
+                        WHERE setor_id = @setorId";
+                        using (var cmdDeletaSugestao = new MySqlCommand(sqlSugestoes, ClsConexao.Conexao, transacao))
+                        {
+                            cmdDeletaSugestao.Parameters.AddWithValue("@SetorId", SetorId);
+                            await cmdDeletaSugestao.ExecuteNonQueryAsync();
+                        }
+
+                        //Exclui Opções associados ao setor 
+                        string sqlOpcoes = @"
+                        DELETE FROM opcoes
+                        WHERE setor_id = @SetorId";
+
+                        using (var cmdDeletaOpcao = new MySqlCommand(sqlOpcoes, ClsConexao.Conexao, transacao))
+                        {
+                            cmdDeletaOpcao.Parameters.AddWithValue("@SetorId", SetorId);
+                            await cmdDeletaOpcao.ExecuteNonQueryAsync();
+                        }
+
+                        //Exclui Pergunta associados ao setor
+                        string sqlPerguntas = @"
+                        DELETE FROM perguntas
+                        WHERE setor_id = @SetorId";
+
+                        using (var cmdDeletaPergunta = new MySqlCommand(sqlPerguntas, ClsConexao.Conexao, transacao))
+                        {
+                            cmdDeletaPergunta.Parameters.AddWithValue("@SetorId", SetorId);
+                            await cmdDeletaPergunta.ExecuteNonQueryAsync();
+                        }
+
                         // Excluir fotos dos atendentes antes de excluir os atendentes
                         string sqlDeletaFotos = @"
                         DELETE FROM fotos
@@ -536,17 +588,14 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             if (rowsAffected > 0)
                             {
                                 await transacao.CommitAsync();
-                                MessageBox.Show("Setor e atendentes excluídos com sucesso.");
                                 return true;
                             }
                             else
                             {
                                 await transacao.RollbackAsync();
-                                MessageBox.Show("Erro ao excluir setor.");
                                 return false;
                             }
                         }
-
                     }
                     catch (Exception ex)
                     {
@@ -798,7 +847,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             for (int i = 1; i <= 10; i++)
             {
                 var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
-                var lblOpcao = this.Controls.Find($"lblOp{i}",true);
+                var lblOpcao = this.Controls.Find($"lblOp{i}", true);
                 if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && !txtBox.Visible && lblOpcao[0] is Label lblBox)
                 {
                     txtBox.Text = string.Empty;
@@ -817,7 +866,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             {
                 var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
                 var lblOpcao = this.Controls.Find($"lblOp{i}", true);
-                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && txtBox.Visible && lblOpcao[0] is Label lblBox )
+                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && txtBox.Visible && lblOpcao[0] is Label lblBox)
                 {
                     txtBox.Text = string.Empty;
                     txtBox.Visible = false;
@@ -861,11 +910,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         while (reader.Read() && index <= 10)
                         {
                             var txtOpcao = this.Controls.Find($"txtOpcao{index}", true);
-                            var lblopcao = this.Controls.Find($"lblOp{index}",true);
+                            var lblopcao = this.Controls.Find($"lblOp{index}", true);
                             if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && lblopcao[0] is Label lblBox)
                             {
                                 txtBox.Text = reader["texto"].ToString();
-                                lblBox.Visible =true;
+                                lblBox.Visible = true;
                                 txtBox.Visible = true;
 
                             }
@@ -873,10 +922,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         }
                         for (int i = index; i <= 10; i++)
                         {
+                            var lblopcao = this.Controls.Find($"lblOp{i}", true);
                             var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
-                            if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox)
+                            if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && lblopcao[0] is Label lblBox)
                             {
-
+                                lblBox.Visible = false;
                                 txtBox.Visible = false;
                             }
                         }
@@ -1034,7 +1084,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             return listaOpcoes;
         }
 
-        private async Task SubstituirOpcoesNoBancoDeDadosAsync(int perguntaId, List<string> listaOpcoes,int setor)
+        private async Task SubstituirOpcoesNoBancoDeDadosAsync(int perguntaId, List<string> listaOpcoes, int setor)
         {
             string deleteSql = "DELETE FROM opcoes,respostas,avaliacao WHERE pergunta_id = @perguntaId";
             string insertSql = "INSERT INTO opcoes (pergunta_id, texto,setor_id) VALUES (@perguntaId, @texto,@setor_id)";
@@ -1065,7 +1115,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         }
 
 
-        private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text,int setor_id)
+        private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text, int setor_id)
         {
             string sql = @"UPDATE perguntas
                            SET texto = @texto,setor_id = @setor_id
@@ -1189,6 +1239,67 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         {
             gbPerguntas.Visible = true;
         }
+
+        private async void btnDeletarAtendentes_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtIdAtendente.Text, out int AtendenteId))
+            {
+                bool sucesso = await DeletaFotosEAtendente(AtendenteId);
+                if (sucesso)
+                {
+                    await ExibirMensagemTemporaria(lblMsgErroAtendente,"Atendente e fotos deletados com sucesso!");
+                }
+                else
+                {
+                    await ExibirMensagemTemporaria(lblMsgErroAtendente, "Erro ao deletar atendente e fotos.");
+                }
+            }
+        }
+
+
+        private async Task<bool> DeletaFotosEAtendente(int atendenteId)
+        {
+            using (var transacao = await ClsConexao.Conexao.BeginTransactionAsync())
+            {
+                try
+                {
+                    // Excluir fotos do atendente
+                    string sqlDeletaFotos = @"
+                    DELETE FROM fotos
+                    WHERE atendente_id = @atendente_id;";
+
+                    using (var cmdDeletaFotos = new MySqlCommand(sqlDeletaFotos, ClsConexao.Conexao, transacao))
+                    {
+                        cmdDeletaFotos.Parameters.AddWithValue("@atendente_id", atendenteId);
+                        await cmdDeletaFotos.ExecuteNonQueryAsync();
+                    }
+
+                    // Excluir o atendente
+                    string sqlDeletaAtendente = @"
+                    DELETE FROM atendente
+                    WHERE atendente_id = @atendente_id;";
+
+                    using (var cmdDeletaAtendente = new MySqlCommand(sqlDeletaAtendente, ClsConexao.Conexao, transacao))
+                    {
+                        cmdDeletaAtendente.Parameters.AddWithValue("@atendente_id", atendenteId);
+                        await cmdDeletaAtendente.ExecuteNonQueryAsync();
+                    }
+
+                    await transacao.CommitAsync();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    {
+                        MessageBox.Show("Erro" + ex);
+                        await transacao.RollbackAsync();
+                        throw;
+                    }
+
+                }
+            }
+        }
+
     }
 }
 

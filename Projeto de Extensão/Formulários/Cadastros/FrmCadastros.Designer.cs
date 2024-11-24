@@ -302,7 +302,7 @@
             // 
             btnUploadImage.BackgroundImage = (Image)resources.GetObject("btnUploadImage.BackgroundImage");
             btnUploadImage.BackgroundImageLayout = ImageLayout.Stretch;
-            btnUploadImage.Location = new Point(315, 436);
+            btnUploadImage.Location = new Point(317, 491);
             btnUploadImage.Name = "btnUploadImage";
             btnUploadImage.Size = new Size(74, 69);
             btnUploadImage.TabIndex = 56;
@@ -313,16 +313,16 @@
             // 
             lblFotoAtendente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblFotoAtendente.AutoSize = true;
-            lblFotoAtendente.Font = new Font("Segoe UI", 13.8F);
-            lblFotoAtendente.Location = new Point(76, 327);
+            lblFotoAtendente.Font = new Font("Segoe UI", 15.75F);
+            lblFotoAtendente.Location = new Point(80, 366);
             lblFotoAtendente.Name = "lblFotoAtendente";
-            lblFotoAtendente.Size = new Size(141, 25);
+            lblFotoAtendente.Size = new Size(157, 30);
             lblFotoAtendente.TabIndex = 55;
             lblFotoAtendente.Text = "Foto Atendente";
             // 
             // ptbImagemAtendente
             // 
-            ptbImagemAtendente.Location = new Point(76, 364);
+            ptbImagemAtendente.Location = new Point(78, 411);
             ptbImagemAtendente.Name = "ptbImagemAtendente";
             ptbImagemAtendente.Size = new Size(218, 237);
             ptbImagemAtendente.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -331,10 +331,11 @@
             // 
             // cmbListaDeSetores
             // 
+            cmbListaDeSetores.Font = new Font("Segoe UI", 15.75F);
             cmbListaDeSetores.FormattingEnabled = true;
-            cmbListaDeSetores.Location = new Point(76, 290);
+            cmbListaDeSetores.Location = new Point(78, 321);
             cmbListaDeSetores.Name = "cmbListaDeSetores";
-            cmbListaDeSetores.Size = new Size(253, 23);
+            cmbListaDeSetores.Size = new Size(253, 38);
             cmbListaDeSetores.TabIndex = 53;
             // 
             // lblMsgErroAtendente
@@ -353,10 +354,10 @@
             // 
             lblSetor.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblSetor.AutoSize = true;
-            lblSetor.Font = new Font("Segoe UI", 13.8F);
-            lblSetor.Location = new Point(76, 262);
+            lblSetor.Font = new Font("Segoe UI", 15.75F);
+            lblSetor.Location = new Point(80, 285);
             lblSetor.Name = "lblSetor";
-            lblSetor.Size = new Size(56, 25);
+            lblSetor.Size = new Size(61, 30);
             lblSetor.TabIndex = 49;
             lblSetor.Text = "Setor";
             // 
@@ -396,29 +397,31 @@
             // txtEmail2
             // 
             txtEmail2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail2.Location = new Point(74, 227);
+            txtEmail2.Font = new Font("Segoe UI", 15.75F);
+            txtEmail2.Location = new Point(76, 242);
             txtEmail2.Margin = new Padding(3, 2, 3, 2);
             txtEmail2.Name = "txtEmail2";
-            txtEmail2.Size = new Size(785, 23);
+            txtEmail2.Size = new Size(785, 35);
             txtEmail2.TabIndex = 43;
             // 
             // txtNome2
             // 
             txtNome2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtNome2.Location = new Point(76, 163);
+            txtNome2.Font = new Font("Segoe UI", 15.75F);
+            txtNome2.Location = new Point(78, 162);
             txtNome2.Margin = new Padding(3, 2, 3, 2);
             txtNome2.Name = "txtNome2";
-            txtNome2.Size = new Size(785, 23);
+            txtNome2.Size = new Size(785, 35);
             txtNome2.TabIndex = 42;
             // 
             // label5
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 13.8F);
-            label5.Location = new Point(74, 200);
+            label5.Font = new Font("Segoe UI", 15.75F);
+            label5.Location = new Point(78, 207);
             label5.Name = "label5";
-            label5.Size = new Size(58, 25);
+            label5.Size = new Size(63, 30);
             label5.TabIndex = 41;
             label5.Text = "Email";
             label5.TextAlign = ContentAlignment.MiddleLeft;
@@ -427,10 +430,10 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 13.8F);
-            label6.Location = new Point(76, 136);
+            label6.Font = new Font("Segoe UI", 15.75F);
+            label6.Location = new Point(80, 127);
             label6.Name = "label6";
-            label6.Size = new Size(63, 25);
+            label6.Size = new Size(70, 30);
             label6.TabIndex = 40;
             label6.Text = "Nome";
             label6.TextAlign = ContentAlignment.MiddleLeft;
@@ -473,7 +476,7 @@
             lblMsgErroAdmin.AutoSize = true;
             lblMsgErroAdmin.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
             lblMsgErroAdmin.ForeColor = Color.Red;
-            lblMsgErroAdmin.Location = new Point(339, 422);
+            lblMsgErroAdmin.Location = new Point(339, 509);
             lblMsgErroAdmin.Name = "lblMsgErroAdmin";
             lblMsgErroAdmin.Size = new Size(232, 25);
             lblMsgErroAdmin.TabIndex = 53;
@@ -504,7 +507,7 @@
             button9.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             button9.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             button9.FlatStyle = FlatStyle.Flat;
-            button9.Location = new Point(282, 461);
+            button9.Location = new Point(284, 556);
             button9.Margin = new Padding(3, 2, 3, 2);
             button9.Name = "button9";
             button9.Size = new Size(342, 77);
@@ -515,47 +518,51 @@
             // txtEmail
             // 
             txtEmail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtEmail.Location = new Point(77, 225);
+            txtEmail.Font = new Font("Microsoft Sans Serif", 15.75F);
+            txtEmail.Location = new Point(77, 249);
             txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(785, 23);
+            txtEmail.Size = new Size(785, 31);
             txtEmail.TabIndex = 24;
             // 
             // txtConfirmaSenha
             // 
             txtConfirmaSenha.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtConfirmaSenha.Location = new Point(77, 353);
+            txtConfirmaSenha.Font = new Font("Microsoft Sans Serif", 15.75F);
+            txtConfirmaSenha.Location = new Point(77, 409);
             txtConfirmaSenha.Margin = new Padding(3, 2, 3, 2);
             txtConfirmaSenha.Name = "txtConfirmaSenha";
-            txtConfirmaSenha.Size = new Size(785, 23);
+            txtConfirmaSenha.Size = new Size(785, 31);
             txtConfirmaSenha.TabIndex = 29;
             // 
             // txtNome
             // 
             txtNome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtNome.Location = new Point(79, 161);
+            txtNome.Font = new Font("Microsoft Sans Serif", 15.75F);
+            txtNome.Location = new Point(79, 169);
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(785, 23);
+            txtNome.Size = new Size(785, 31);
             txtNome.TabIndex = 23;
             // 
             // txtSenha
             // 
             txtSenha.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtSenha.Location = new Point(77, 289);
+            txtSenha.Font = new Font("Microsoft Sans Serif", 15.75F);
+            txtSenha.Location = new Point(77, 329);
             txtSenha.Margin = new Padding(3, 2, 3, 2);
             txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(785, 23);
+            txtSenha.Size = new Size(785, 31);
             txtSenha.TabIndex = 26;
             // 
             // lblEmail
             // 
             lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblEmail.AutoSize = true;
-            lblEmail.Font = new Font("Segoe UI", 13.8F);
-            lblEmail.Location = new Point(77, 198);
+            lblEmail.Font = new Font("Segoe UI", 15.75F);
+            lblEmail.Location = new Point(77, 209);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(58, 25);
+            lblEmail.Size = new Size(63, 30);
             lblEmail.TabIndex = 22;
             lblEmail.Text = "Email";
             lblEmail.TextAlign = ContentAlignment.MiddleLeft;
@@ -564,10 +571,10 @@
             // 
             lblNome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblNome.AutoSize = true;
-            lblNome.Font = new Font("Segoe UI", 13.8F);
-            lblNome.Location = new Point(79, 134);
+            lblNome.Font = new Font("Segoe UI", 15.75F);
+            lblNome.Location = new Point(79, 129);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(63, 25);
+            lblNome.Size = new Size(70, 30);
             lblNome.TabIndex = 21;
             lblNome.Text = "Nome";
             lblNome.TextAlign = ContentAlignment.MiddleLeft;
@@ -576,10 +583,10 @@
             // 
             lblConfirmarSenha.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblConfirmarSenha.AutoSize = true;
-            lblConfirmarSenha.Font = new Font("Segoe UI", 13.8F);
-            lblConfirmarSenha.Location = new Point(77, 326);
+            lblConfirmarSenha.Font = new Font("Segoe UI", 15.75F);
+            lblConfirmarSenha.Location = new Point(77, 369);
             lblConfirmarSenha.Name = "lblConfirmarSenha";
-            lblConfirmarSenha.Size = new Size(154, 25);
+            lblConfirmarSenha.Size = new Size(168, 30);
             lblConfirmarSenha.TabIndex = 28;
             lblConfirmarSenha.Text = "Confirmar Senha";
             lblConfirmarSenha.TextAlign = ContentAlignment.MiddleLeft;
@@ -598,10 +605,10 @@
             // 
             lblSenha.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblSenha.AutoSize = true;
-            lblSenha.Font = new Font("Segoe UI", 13.8F);
-            lblSenha.Location = new Point(77, 262);
+            lblSenha.Font = new Font("Segoe UI", 15.75F);
+            lblSenha.Location = new Point(77, 289);
             lblSenha.Name = "lblSenha";
-            lblSenha.Size = new Size(64, 25);
+            lblSenha.Size = new Size(70, 30);
             lblSenha.TabIndex = 25;
             lblSenha.Text = "Senha";
             lblSenha.TextAlign = ContentAlignment.MiddleLeft;
@@ -912,6 +919,7 @@
             // 
             // txtNomeSetor
             // 
+            txtNomeSetor.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNomeSetor.Location = new Point(58, 281);
             txtNomeSetor.Margin = new Padding(3, 2, 3, 2);
             txtNomeSetor.Multiline = true;
@@ -922,11 +930,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(52, 256);
+            label2.Location = new Point(58, 243);
             label2.Name = "label2";
-            label2.Size = new Size(63, 25);
+            label2.Size = new Size(70, 30);
             label2.TabIndex = 23;
             label2.Text = "Nome";
             // 

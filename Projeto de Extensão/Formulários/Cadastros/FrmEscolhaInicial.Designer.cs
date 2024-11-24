@@ -42,6 +42,7 @@
             // 
             tlpAlinhamento.Anchor = AnchorStyles.None;
             tlpAlinhamento.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            tlpAlinhamento.BackColor = SystemColors.Control;
             tlpAlinhamento.BackgroundImageLayout = ImageLayout.Center;
             tlpAlinhamento.ColumnCount = 3;
             tlpAlinhamento.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.63943F));

@@ -484,6 +484,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
             int idPergunta = await InserirPerguntaAsync(pergunta, setorId);
 
+
             if (idPergunta > 0)
             {
                 await InserirOpcoesAsync(idPergunta, alternativas);
@@ -510,6 +511,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     if (i > 2)
                         textBoxAlternativa.Visible = false;
                 }
+
+                cbxListaSetorPergunta.SelectedValue = 0;
             }
             else
             {

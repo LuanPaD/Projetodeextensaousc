@@ -166,7 +166,7 @@
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(260, 791);
+            pnlMenu.Size = new Size(260, 815);
             pnlMenu.TabIndex = 9;
             // 
             // tlpBotoesEscolha
@@ -284,7 +284,7 @@
             // 
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 625);
+            panel1.Location = new Point(0, 649);
             panel1.Name = "panel1";
             panel1.Size = new Size(260, 166);
             panel1.TabIndex = 9;
@@ -293,13 +293,13 @@
             // 
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(btnSair, 0, 1);
+            tableLayoutPanel2.Controls.Add(btnSair, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(260, 166);
             tableLayoutPanel2.TabIndex = 0;
             // 
@@ -308,7 +308,7 @@
             btnSair.BackColor = Color.Brown;
             btnSair.BackgroundImage = (Image)resources.GetObject("btnSair.BackgroundImage");
             btnSair.BackgroundImageLayout = ImageLayout.Stretch;
-            btnSair.Dock = DockStyle.Fill;
+            btnSair.Dock = DockStyle.Bottom;
             btnSair.FlatAppearance.BorderSize = 0;
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -330,7 +330,7 @@
             tbcPaginas.Location = new Point(260, 0);
             tbcPaginas.Name = "tbcPaginas";
             tbcPaginas.SelectedIndex = 0;
-            tbcPaginas.Size = new Size(1137, 791);
+            tbcPaginas.Size = new Size(1137, 815);
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 10;
             // 
@@ -350,7 +350,7 @@
             tbSetor.Location = new Point(4, 24);
             tbSetor.Name = "tbSetor";
             tbSetor.Padding = new Padding(3);
-            tbSetor.Size = new Size(1129, 763);
+            tbSetor.Size = new Size(1129, 787);
             tbSetor.TabIndex = 0;
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
@@ -450,10 +450,10 @@
             btnDeletarSetor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnDeletarSetor.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarSetor.FlatStyle = FlatStyle.Flat;
-            btnDeletarSetor.Location = new Point(590, 72);
+            btnDeletarSetor.Location = new Point(577, 72);
             btnDeletarSetor.Margin = new Padding(3, 2, 3, 2);
             btnDeletarSetor.Name = "btnDeletarSetor";
-            btnDeletarSetor.Size = new Size(103, 43);
+            btnDeletarSetor.Size = new Size(128, 46);
             btnDeletarSetor.TabIndex = 35;
             btnDeletarSetor.UseVisualStyleBackColor = false;
             btnDeletarSetor.Click += btnDeletarSetor_Click;
@@ -478,7 +478,7 @@
             btnEditarSetor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnEditarSetor.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarSetor.FlatStyle = FlatStyle.Flat;
-            btnEditarSetor.Location = new Point(865, 244);
+            btnEditarSetor.Location = new Point(865, 256);
             btnEditarSetor.Margin = new Padding(3, 2, 3, 2);
             btnEditarSetor.Name = "btnEditarSetor";
             btnEditarSetor.Size = new Size(168, 53);
@@ -532,7 +532,7 @@
             button3.Anchor = AnchorStyles.Left;
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(488, 926);
+            button3.Location = new Point(488, 938);
             button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
             button3.Size = new Size(243, 62);
@@ -544,7 +544,7 @@
             button4.Anchor = AnchorStyles.Left;
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
-            button4.Location = new Point(61, 928);
+            button4.Location = new Point(61, 940);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
             button4.Size = new Size(251, 56);
@@ -574,7 +574,7 @@
             tbAdmin.Location = new Point(4, 24);
             tbAdmin.Name = "tbAdmin";
             tbAdmin.Padding = new Padding(3);
-            tbAdmin.Size = new Size(1129, 763);
+            tbAdmin.Size = new Size(1129, 787);
             tbAdmin.TabIndex = 2;
             tbAdmin.Text = "Administradores";
             tbAdmin.UseVisualStyleBackColor = true;
@@ -634,9 +634,9 @@
             btnSalvarAdmin.FlatAppearance.BorderSize = 0;
             btnSalvarAdmin.FlatStyle = FlatStyle.Flat;
             btnSalvarAdmin.ForeColor = SystemColors.ControlText;
-            btnSalvarAdmin.Location = new Point(543, 49);
+            btnSalvarAdmin.Location = new Point(531, 49);
             btnSalvarAdmin.Name = "btnSalvarAdmin";
-            btnSalvarAdmin.Size = new Size(117, 52);
+            btnSalvarAdmin.Size = new Size(128, 46);
             btnSalvarAdmin.TabIndex = 56;
             btnSalvarAdmin.UseVisualStyleBackColor = true;
             btnSalvarAdmin.Click += btnSalvarAdmin_Click;
@@ -662,10 +662,10 @@
             btnDeletarAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnDeletarAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarAdmin.FlatStyle = FlatStyle.Flat;
-            btnDeletarAdmin.Location = new Point(543, 106);
+            btnDeletarAdmin.Location = new Point(531, 100);
             btnDeletarAdmin.Margin = new Padding(3, 2, 3, 2);
             btnDeletarAdmin.Name = "btnDeletarAdmin";
-            btnDeletarAdmin.Size = new Size(117, 49);
+            btnDeletarAdmin.Size = new Size(128, 46);
             btnDeletarAdmin.TabIndex = 37;
             btnDeletarAdmin.UseVisualStyleBackColor = false;
             btnDeletarAdmin.Click += btnDeletarAdmin_Click;
@@ -740,7 +740,7 @@
             btnEditarAdmin.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnEditarAdmin.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarAdmin.FlatStyle = FlatStyle.Flat;
-            btnEditarAdmin.Location = new Point(864, 255);
+            btnEditarAdmin.Location = new Point(864, 267);
             btnEditarAdmin.Margin = new Padding(3, 2, 3, 2);
             btnEditarAdmin.Name = "btnEditarAdmin";
             btnEditarAdmin.Size = new Size(168, 53);
@@ -798,7 +798,7 @@
             tbAtendentes.Location = new Point(4, 24);
             tbAtendentes.Name = "tbAtendentes";
             tbAtendentes.Padding = new Padding(3);
-            tbAtendentes.Size = new Size(1129, 763);
+            tbAtendentes.Size = new Size(1129, 787);
             tbAtendentes.TabIndex = 3;
             tbAtendentes.Text = "Atendentes";
             tbAtendentes.UseVisualStyleBackColor = true;
@@ -886,7 +886,7 @@
             btnSalvarAtendentes.ForeColor = SystemColors.ControlText;
             btnSalvarAtendentes.Location = new Point(786, 53);
             btnSalvarAtendentes.Name = "btnSalvarAtendentes";
-            btnSalvarAtendentes.Size = new Size(114, 46);
+            btnSalvarAtendentes.Size = new Size(128, 46);
             btnSalvarAtendentes.TabIndex = 49;
             btnSalvarAtendentes.UseVisualStyleBackColor = true;
             btnSalvarAtendentes.Click += btnSalvarAtendentes_Click;
@@ -912,12 +912,13 @@
             btnDeletarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnDeletarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnDeletarAtendentes.Location = new Point(793, 114);
+            btnDeletarAtendentes.Location = new Point(786, 104);
             btnDeletarAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnDeletarAtendentes.Name = "btnDeletarAtendentes";
-            btnDeletarAtendentes.Size = new Size(107, 45);
+            btnDeletarAtendentes.Size = new Size(128, 46);
             btnDeletarAtendentes.TabIndex = 39;
             btnDeletarAtendentes.UseVisualStyleBackColor = false;
+            btnDeletarAtendentes.Click += btnDeletarAtendentes_Click;
             // 
             // lblNomeAtendente
             // 
@@ -989,7 +990,7 @@
             btnEditarAtendentes.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnEditarAtendentes.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarAtendentes.FlatStyle = FlatStyle.Flat;
-            btnEditarAtendentes.Location = new Point(864, 255);
+            btnEditarAtendentes.Location = new Point(864, 267);
             btnEditarAtendentes.Margin = new Padding(3, 2, 3, 2);
             btnEditarAtendentes.Name = "btnEditarAtendentes";
             btnEditarAtendentes.Size = new Size(168, 53);
@@ -1048,7 +1049,7 @@
             tbPerguntas.Location = new Point(4, 24);
             tbPerguntas.Name = "tbPerguntas";
             tbPerguntas.Padding = new Padding(3);
-            tbPerguntas.Size = new Size(1129, 763);
+            tbPerguntas.Size = new Size(1129, 787);
             tbPerguntas.TabIndex = 4;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
@@ -1058,7 +1059,7 @@
             lblMsgErroPerguntas.AutoSize = true;
             lblMsgErroPerguntas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroPerguntas.ForeColor = Color.Black;
-            lblMsgErroPerguntas.Location = new Point(357, 424);
+            lblMsgErroPerguntas.Location = new Point(324, 431);
             lblMsgErroPerguntas.Name = "lblMsgErroPerguntas";
             lblMsgErroPerguntas.Size = new Size(174, 21);
             lblMsgErroPerguntas.TabIndex = 61;
@@ -1097,9 +1098,9 @@
             gbPerguntas.Controls.Add(txtOpcao1);
             gbPerguntas.Controls.Add(btnDeletarPerguntas);
             gbPerguntas.Font = new Font("Segoe UI", 14.25F);
-            gbPerguntas.Location = new Point(20, 441);
+            gbPerguntas.Location = new Point(17, 450);
             gbPerguntas.Name = "gbPerguntas";
-            gbPerguntas.Size = new Size(1101, 341);
+            gbPerguntas.Size = new Size(1035, 329);
             gbPerguntas.TabIndex = 47;
             gbPerguntas.TabStop = false;
             gbPerguntas.Visible = false;
@@ -1107,7 +1108,7 @@
             // cbxOrdemPerguntas
             // 
             cbxOrdemPerguntas.FormattingEnabled = true;
-            cbxOrdemPerguntas.Location = new Point(438, 71);
+            cbxOrdemPerguntas.Location = new Point(472, 65);
             cbxOrdemPerguntas.Name = "cbxOrdemPerguntas";
             cbxOrdemPerguntas.Size = new Size(90, 33);
             cbxOrdemPerguntas.TabIndex = 73;
@@ -1115,9 +1116,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(8, 76);
+            label2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            label2.Location = new Point(31, 64);
             label2.Name = "label2";
-            label2.Size = new Size(60, 25);
+            label2.Size = new Size(70, 30);
             label2.TabIndex = 72;
             label2.Text = "Setor:";
             // 
@@ -1125,7 +1127,7 @@
             // 
             cmbListaDeSetoresPerguntas.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbListaDeSetoresPerguntas.FormattingEnabled = true;
-            cmbListaDeSetoresPerguntas.Location = new Point(106, 71);
+            cmbListaDeSetoresPerguntas.Location = new Point(107, 65);
             cmbListaDeSetoresPerguntas.Name = "cmbListaDeSetoresPerguntas";
             cmbListaDeSetoresPerguntas.Size = new Size(253, 33);
             cmbListaDeSetoresPerguntas.TabIndex = 71;
@@ -1133,18 +1135,20 @@
             // lblOrdemPergunta
             // 
             lblOrdemPergunta.AutoSize = true;
-            lblOrdemPergunta.Location = new Point(398, 76);
+            lblOrdemPergunta.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOrdemPergunta.Location = new Point(428, 68);
             lblOrdemPergunta.Name = "lblOrdemPergunta";
-            lblOrdemPergunta.Size = new Size(34, 25);
+            lblOrdemPergunta.Size = new Size(38, 30);
             lblOrdemPergunta.TabIndex = 70;
             lblOrdemPergunta.Text = "Nº";
             // 
             // lblOp10
             // 
             lblOp10.AutoSize = true;
-            lblOp10.Location = new Point(306, 298);
+            lblOp10.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp10.Location = new Point(299, 292);
             lblOp10.Name = "lblOp10";
-            lblOp10.Size = new Size(96, 25);
+            lblOp10.Size = new Size(107, 30);
             lblOp10.TabIndex = 69;
             lblOp10.Text = "Opção 10:";
             lblOp10.Visible = false;
@@ -1152,9 +1156,10 @@
             // lblOp9
             // 
             lblOp9.AutoSize = true;
-            lblOp9.Location = new Point(306, 258);
+            lblOp9.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp9.Location = new Point(307, 252);
             lblOp9.Name = "lblOp9";
-            lblOp9.Size = new Size(86, 25);
+            lblOp9.Size = new Size(99, 30);
             lblOp9.TabIndex = 68;
             lblOp9.Text = "Opção 9:";
             lblOp9.Visible = false;
@@ -1162,9 +1167,10 @@
             // lblOp8
             // 
             lblOp8.AutoSize = true;
-            lblOp8.Location = new Point(306, 210);
+            lblOp8.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp8.Location = new Point(307, 204);
             lblOp8.Name = "lblOp8";
-            lblOp8.Size = new Size(86, 25);
+            lblOp8.Size = new Size(99, 30);
             lblOp8.TabIndex = 67;
             lblOp8.Text = "Opção 8:";
             lblOp8.Visible = false;
@@ -1172,9 +1178,10 @@
             // lblOp7
             // 
             lblOp7.AutoSize = true;
-            lblOp7.Location = new Point(306, 163);
+            lblOp7.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp7.Location = new Point(308, 157);
             lblOp7.Name = "lblOp7";
-            lblOp7.Size = new Size(86, 25);
+            lblOp7.Size = new Size(98, 30);
             lblOp7.TabIndex = 66;
             lblOp7.Text = "Opção 7:";
             lblOp7.Visible = false;
@@ -1182,9 +1189,10 @@
             // lblOp6
             // 
             lblOp6.AutoSize = true;
-            lblOp6.Location = new Point(306, 119);
+            lblOp6.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp6.Location = new Point(307, 110);
             lblOp6.Name = "lblOp6";
-            lblOp6.Size = new Size(86, 25);
+            lblOp6.Size = new Size(99, 30);
             lblOp6.TabIndex = 65;
             lblOp6.Text = "Opção 6:";
             lblOp6.Visible = false;
@@ -1192,9 +1200,10 @@
             // lblOp5
             // 
             lblOp5.AutoSize = true;
-            lblOp5.Location = new Point(8, 298);
+            lblOp5.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp5.Location = new Point(2, 292);
             lblOp5.Name = "lblOp5";
-            lblOp5.Size = new Size(86, 25);
+            lblOp5.Size = new Size(99, 30);
             lblOp5.TabIndex = 64;
             lblOp5.Text = "Opção 5:";
             lblOp5.Visible = false;
@@ -1202,9 +1211,10 @@
             // lblOp4
             // 
             lblOp4.AutoSize = true;
-            lblOp4.Location = new Point(8, 258);
+            lblOp4.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp4.Location = new Point(2, 252);
             lblOp4.Name = "lblOp4";
-            lblOp4.Size = new Size(86, 25);
+            lblOp4.Size = new Size(99, 30);
             lblOp4.TabIndex = 63;
             lblOp4.Text = "Opção 4:";
             lblOp4.Visible = false;
@@ -1212,9 +1222,10 @@
             // lblOp3
             // 
             lblOp3.AutoSize = true;
-            lblOp3.Location = new Point(8, 210);
+            lblOp3.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp3.Location = new Point(2, 204);
             lblOp3.Name = "lblOp3";
-            lblOp3.Size = new Size(86, 25);
+            lblOp3.Size = new Size(99, 30);
             lblOp3.TabIndex = 62;
             lblOp3.Text = "Opção 3:";
             lblOp3.Visible = false;
@@ -1222,9 +1233,10 @@
             // lblOp2
             // 
             lblOp2.AutoSize = true;
-            lblOp2.Location = new Point(8, 163);
+            lblOp2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp2.Location = new Point(2, 157);
             lblOp2.Name = "lblOp2";
-            lblOp2.Size = new Size(86, 25);
+            lblOp2.Size = new Size(99, 30);
             lblOp2.TabIndex = 61;
             lblOp2.Text = "Opção 2:";
             lblOp2.Visible = false;
@@ -1232,9 +1244,10 @@
             // lblOp1
             // 
             lblOp1.AutoSize = true;
-            lblOp1.Location = new Point(8, 123);
+            lblOp1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblOp1.Location = new Point(6, 110);
             lblOp1.Name = "lblOp1";
-            lblOp1.Size = new Size(86, 25);
+            lblOp1.Size = new Size(95, 30);
             lblOp1.TabIndex = 60;
             lblOp1.Text = "Opção 1:";
             lblOp1.Visible = false;
@@ -1242,9 +1255,10 @@
             // lblPergunta
             // 
             lblPergunta.AutoSize = true;
-            lblPergunta.Location = new Point(8, 35);
+            lblPergunta.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
+            lblPergunta.Location = new Point(-3, 25);
             lblPergunta.Name = "lblPergunta";
-            lblPergunta.Size = new Size(92, 25);
+            lblPergunta.Size = new Size(104, 30);
             lblPergunta.TabIndex = 59;
             lblPergunta.Text = "Pergunta:";
             // 
@@ -1254,9 +1268,9 @@
             btnSalvarPerguntas.BackgroundImageLayout = ImageLayout.Stretch;
             btnSalvarPerguntas.FlatAppearance.BorderSize = 0;
             btnSalvarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnSalvarPerguntas.Location = new Point(876, 137);
+            btnSalvarPerguntas.Location = new Point(831, 155);
             btnSalvarPerguntas.Name = "btnSalvarPerguntas";
-            btnSalvarPerguntas.Size = new Size(146, 49);
+            btnSalvarPerguntas.Size = new Size(128, 46);
             btnSalvarPerguntas.TabIndex = 58;
             btnSalvarPerguntas.UseVisualStyleBackColor = true;
             btnSalvarPerguntas.Click += btnSalvarPerguntas_Click;
@@ -1268,7 +1282,7 @@
             btnRemoverAlternativa.BackgroundImageLayout = ImageLayout.Stretch;
             btnRemoverAlternativa.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRemoverAlternativa.ForeColor = Color.White;
-            btnRemoverAlternativa.Location = new Point(786, 200);
+            btnRemoverAlternativa.Location = new Point(706, 200);
             btnRemoverAlternativa.Name = "btnRemoverAlternativa";
             btnRemoverAlternativa.Size = new Size(45, 45);
             btnRemoverAlternativa.TabIndex = 57;
@@ -1283,7 +1297,7 @@
             btnAdiconarAlternativa.BackgroundImageLayout = ImageLayout.Stretch;
             btnAdiconarAlternativa.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdiconarAlternativa.ForeColor = Color.White;
-            btnAdiconarAlternativa.Location = new Point(786, 149);
+            btnAdiconarAlternativa.Location = new Point(705, 152);
             btnAdiconarAlternativa.Name = "btnAdiconarAlternativa";
             btnAdiconarAlternativa.Size = new Size(45, 45);
             btnAdiconarAlternativa.TabIndex = 56;
@@ -1294,7 +1308,7 @@
             // txtPergunta
             // 
             txtPergunta.Font = new Font("Segoe UI", 14.25F);
-            txtPergunta.Location = new Point(106, 32);
+            txtPergunta.Location = new Point(107, 26);
             txtPergunta.Name = "txtPergunta";
             txtPergunta.Size = new Size(644, 33);
             txtPergunta.TabIndex = 54;
@@ -1302,7 +1316,7 @@
             // txtOpcao10
             // 
             txtOpcao10.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao10.Location = new Point(398, 294);
+            txtOpcao10.Location = new Point(412, 291);
             txtOpcao10.Name = "txtOpcao10";
             txtOpcao10.Size = new Size(193, 33);
             txtOpcao10.TabIndex = 53;
@@ -1311,7 +1325,7 @@
             // txtOpcao9
             // 
             txtOpcao9.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao9.Location = new Point(398, 254);
+            txtOpcao9.Location = new Point(412, 251);
             txtOpcao9.Name = "txtOpcao9";
             txtOpcao9.Size = new Size(193, 33);
             txtOpcao9.TabIndex = 52;
@@ -1320,7 +1334,7 @@
             // txtOpcao8
             // 
             txtOpcao8.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao8.Location = new Point(398, 206);
+            txtOpcao8.Location = new Point(412, 203);
             txtOpcao8.Name = "txtOpcao8";
             txtOpcao8.Size = new Size(193, 33);
             txtOpcao8.TabIndex = 51;
@@ -1329,7 +1343,7 @@
             // txtOpcao7
             // 
             txtOpcao7.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao7.Location = new Point(398, 159);
+            txtOpcao7.Location = new Point(412, 156);
             txtOpcao7.Name = "txtOpcao7";
             txtOpcao7.Size = new Size(193, 33);
             txtOpcao7.TabIndex = 50;
@@ -1338,7 +1352,7 @@
             // txtOpcao6
             // 
             txtOpcao6.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao6.Location = new Point(398, 115);
+            txtOpcao6.Location = new Point(412, 110);
             txtOpcao6.Name = "txtOpcao6";
             txtOpcao6.Size = new Size(193, 33);
             txtOpcao6.TabIndex = 49;
@@ -1347,7 +1361,7 @@
             // txtOpcao5
             // 
             txtOpcao5.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao5.Location = new Point(106, 294);
+            txtOpcao5.Location = new Point(107, 291);
             txtOpcao5.Name = "txtOpcao5";
             txtOpcao5.Size = new Size(193, 33);
             txtOpcao5.TabIndex = 48;
@@ -1356,7 +1370,7 @@
             // txtOpcao4
             // 
             txtOpcao4.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao4.Location = new Point(106, 254);
+            txtOpcao4.Location = new Point(107, 251);
             txtOpcao4.Name = "txtOpcao4";
             txtOpcao4.Size = new Size(193, 33);
             txtOpcao4.TabIndex = 47;
@@ -1365,7 +1379,7 @@
             // txtOpcao3
             // 
             txtOpcao3.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao3.Location = new Point(106, 206);
+            txtOpcao3.Location = new Point(107, 203);
             txtOpcao3.Name = "txtOpcao3";
             txtOpcao3.Size = new Size(193, 33);
             txtOpcao3.TabIndex = 46;
@@ -1374,7 +1388,7 @@
             // txtOpcao2
             // 
             txtOpcao2.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao2.Location = new Point(106, 159);
+            txtOpcao2.Location = new Point(107, 156);
             txtOpcao2.Name = "txtOpcao2";
             txtOpcao2.Size = new Size(193, 33);
             txtOpcao2.TabIndex = 45;
@@ -1383,7 +1397,7 @@
             // txtOpcao1
             // 
             txtOpcao1.Font = new Font("Segoe UI", 14.25F);
-            txtOpcao1.Location = new Point(106, 115);
+            txtOpcao1.Location = new Point(107, 109);
             txtOpcao1.Name = "txtOpcao1";
             txtOpcao1.Size = new Size(193, 33);
             txtOpcao1.TabIndex = 44;
@@ -1400,10 +1414,10 @@
             btnDeletarPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnDeletarPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnDeletarPerguntas.Location = new Point(876, 191);
+            btnDeletarPerguntas.Location = new Point(831, 200);
             btnDeletarPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnDeletarPerguntas.Name = "btnDeletarPerguntas";
-            btnDeletarPerguntas.Size = new Size(146, 52);
+            btnDeletarPerguntas.Size = new Size(128, 46);
             btnDeletarPerguntas.TabIndex = 43;
             btnDeletarPerguntas.UseVisualStyleBackColor = false;
             // 
@@ -1418,10 +1432,10 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             GridViewPerguntas.DefaultCellStyle = dataGridViewCellStyle1;
-            GridViewPerguntas.Location = new Point(37, 91);
+            GridViewPerguntas.Location = new Point(37, 85);
             GridViewPerguntas.Name = "GridViewPerguntas";
             GridViewPerguntas.RowHeadersWidth = 51;
-            GridViewPerguntas.Size = new Size(798, 330);
+            GridViewPerguntas.Size = new Size(725, 343);
             GridViewPerguntas.TabIndex = 46;
             GridViewPerguntas.CellClick += GridViewPerguntas_CellClick;
             // 
@@ -1450,7 +1464,7 @@
             btnEditarPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnEditarPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnEditarPerguntas.Location = new Point(864, 255);
+            btnEditarPerguntas.Location = new Point(864, 267);
             btnEditarPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnEditarPerguntas.Name = "btnEditarPerguntas";
             btnEditarPerguntas.Size = new Size(157, 53);
@@ -1480,7 +1494,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold);
-            label1.Location = new Point(37, 23);
+            label1.Location = new Point(37, 17);
             label1.Name = "label1";
             label1.Size = new Size(255, 65);
             label1.TabIndex = 40;
@@ -1490,7 +1504,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1397, 791);
+            ClientSize = new Size(1397, 815);
             Controls.Add(tbcPaginas);
             Controls.Add(pnlMenu);
             Icon = (Icon)resources.GetObject("$this.Icon");

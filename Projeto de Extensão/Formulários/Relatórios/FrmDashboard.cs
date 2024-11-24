@@ -19,6 +19,7 @@ using System.Web;
 using System.Data.SqlTypes;
 using Microsoft.VisualBasic.Logging;
 using SixLabors.Fonts;
+using PdfSharp.Drawing.BarCodes;
 
 namespace Projeto_de_Extensao.Formulários.Relatórios
 {
@@ -91,7 +92,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
                 //Gráfico : Distribuição de Atendentes por Setor
                 chtGrafico1.Series.Clear();
                 chtGrafico1.Series.Add("Atendentes por Setor");
-                chtGrafico1.Series["Atendentes por Setor"].ChartType = SeriesChartType.Pie;
+                chtGrafico1.Series["Atendentes por Setor"].ChartType = SeriesChartType.Bar;
                 chtGrafico1.Series["Atendentes por Setor"].IsXValueIndexed = true;
 
                 string querySetores = @"
@@ -237,9 +238,36 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             return avaliacoes;
         }
 
+        private async Task<int> GetQtdAvaliacaoSetorAsync(int setor_id,DateTime dataInicial, DateTime dataFinal)
+        {
+            string sql = @"SELECT COUNT(avaliacao_id) 
+                   FROM AVALIACAO 
+                   WHERE setor_id = @setor_id 
+                     AND data BETWEEN @DataInicial AND @DataFinal;";
+
+            using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
+            {
+                cmd.Parameters.AddWithValue("@setor_id", setor_id);
+                cmd.Parameters.AddWithValue("@DataInicial", dataInicial);
+                cmd.Parameters.AddWithValue("@DataFinal", dataFinal);
+
+                try
+                {
+                    var result = await cmd.ExecuteScalarAsync();
+
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao executar a consulta: {ex.Message}");
+                    return -1;
+                }
+            }
+        }
 
 
-        private DataTable getAtendentes()
+
+                private DataTable getAtendentes()
         {
             var conexao = ClsConexao.Conexao;
             DataTable atendentes = new DataTable();
@@ -487,7 +515,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             }
         }
 
-        private void btnFiltraSetorPergunta_Click(object sender, EventArgs e)
+        private async void btnFiltraSetorPergunta_Click(object sender, EventArgs e)
         {
             if (dataInicialPerguntas.Value == DateTime.MinValue || dataFinalPergunta.Value == DateTime.MinValue)
             {
@@ -511,6 +539,12 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             }
 
             int setor_id = (int)cmbSetoresPerguntas.SelectedValue;
+            int qtdAvaliacaoSetor = await GetQtdAvaliacaoSetorAsync(setor_id,DataPerguntaInical,DataFinalPerguntaInical);
+            
+    
+
+            lblQuantidadesAvaliacaoPerguntas.Text = qtdAvaliacaoSetor.ToString();
+            pnlEstaticoPerguntas.Visible = true;
 
             FiltraSetorPerguntas(setor_id);
             chartGraficoRespostas.Series.Clear();

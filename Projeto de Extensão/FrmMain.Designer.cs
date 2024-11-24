@@ -38,7 +38,7 @@
             btnAdmnistrador.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnAdmnistrador.FlatStyle = FlatStyle.Flat;
             btnAdmnistrador.Location = new Point(1104, 472);
-            btnAdmnistrador.Margin = new Padding(15, 15, 15, 15);
+            btnAdmnistrador.Margin = new Padding(15);
             btnAdmnistrador.Name = "btnAdmnistrador";
             btnAdmnistrador.Size = new Size(61, 54);
             btnAdmnistrador.TabIndex = 2;
@@ -48,7 +48,7 @@
             // tlpAlinhamento
             // 
             tlpAlinhamento.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            tlpAlinhamento.BackColor = SystemColors.InactiveBorder;
+            tlpAlinhamento.BackColor = SystemColors.Control;
             tlpAlinhamento.BackgroundImageLayout = ImageLayout.Center;
             tlpAlinhamento.ColumnCount = 3;
             tlpAlinhamento.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.63943F));
@@ -111,7 +111,7 @@
             btnCreditos.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnCreditos.FlatStyle = FlatStyle.Flat;
             btnCreditos.Location = new Point(15, 472);
-            btnCreditos.Margin = new Padding(15, 15, 15, 15);
+            btnCreditos.Margin = new Padding(15);
             btnCreditos.Name = "btnCreditos";
             btnCreditos.Size = new Size(61, 54);
             btnCreditos.TabIndex = 3;
