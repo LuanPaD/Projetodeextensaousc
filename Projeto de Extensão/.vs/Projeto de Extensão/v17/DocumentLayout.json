@@ -1,86 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|c:\\users\\educo\\onedrive\\\u00E1rea de trabalho\\edu\\projetodeextensaousc\\projeto de extens\u00E3o\\formul\u00E1rios\\perguntas\\frmpergunta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|solutionrelative:formul\u00E1rios\\perguntas\\frmpergunta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\formul\u00E1rios\\perguntas\\frmpergunta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|solutionrelative:formul\u00E1rios\\perguntas\\frmpergunta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|c:\\users\\educo\\onedrive\\\u00E1rea de trabalho\\edu\\projetodeextensaousc\\projeto de extens\u00E3o\\formul\u00E1rios\\cadastros\\frmeditarcadastroscs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|solutionrelative:formul\u00E1rios\\cadastros\\frmeditarcadastroscs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\formul\u00E1rios\\cadastros\\frmeditarcadastroscs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|solutionrelative:formul\u00E1rios\\cadastros\\frmeditarcadastroscs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmPergunta.cs",
-              "DocumentMoniker": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Perguntas\\FrmPergunta.cs",
-              "RelativeDocumentMoniker": "Formul\u00E1rios\\Perguntas\\FrmPergunta.cs",
-              "ToolTip": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Perguntas\\FrmPergunta.cs",
-              "RelativeToolTip": "Formul\u00E1rios\\Perguntas\\FrmPergunta.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T01:59:31.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmPergunta.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Perguntas\\FrmPergunta.cs",
-              "RelativeDocumentMoniker": "Formul\u00E1rios\\Perguntas\\FrmPergunta.cs",
-              "ToolTip": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Perguntas\\FrmPergunta.cs [Projeto]",
-              "RelativeToolTip": "Formul\u00E1rios\\Perguntas\\FrmPergunta.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T01:59:22.275Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FrmEditarCadastroscs.cs",
-              "DocumentMoniker": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmEditarCadastroscs.cs",
-              "RelativeDocumentMoniker": "Formul\u00E1rios\\Cadastros\\FrmEditarCadastroscs.cs",
-              "ToolTip": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmEditarCadastroscs.cs",
-              "RelativeToolTip": "Formul\u00E1rios\\Cadastros\\FrmEditarCadastroscs.cs",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAcwIsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T01:41:56.493Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FrmEditarCadastroscs.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmEditarCadastroscs.cs",
-              "RelativeDocumentMoniker": "Formul\u00E1rios\\Cadastros\\FrmEditarCadastroscs.cs",
-              "ToolTip": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmEditarCadastroscs.cs [Projeto]",
-              "RelativeToolTip": "Formul\u00E1rios\\Cadastros\\FrmEditarCadastroscs.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T01:41:52.528Z",
-              "EditorCaption": " [Projeto]"
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

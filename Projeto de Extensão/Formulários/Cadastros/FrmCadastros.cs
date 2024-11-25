@@ -133,7 +133,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 {
                     cadastraSetorNoBanco();
                     txtNomeSetor.Text = string.Empty;
-                    MessageBox.Show("Cadastro realizado.");
+                    await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroSetor, "Cadastro realizado com sucesso.");
                 }
                 else
                 {
@@ -488,7 +488,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             if (idPergunta > 0)
             {
                 await InserirOpcoesAsync(idPergunta, alternativas);
-                MessageBox.Show("Pergunta inserida com sucesso!");
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroPerguntas,"Pergunta inserida com sucesso!");
 
                 for (int i = 1; i <= 10; i++)
                 {
@@ -515,7 +515,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 cbxListaSetorPergunta.SelectedValue = 0;
             }
             else
-            {
+            { 
                 await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroPerguntas, "Erro ao cadastrar a pergunta.");
             }
         }

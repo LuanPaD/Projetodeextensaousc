@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditarCadastroscs));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlMenu = new Panel();
             tlpBotoesEscolha = new TableLayoutPanel();
             btnCadrastoAdmin = new Button();
@@ -100,6 +100,7 @@
             tbPerguntas = new TabPage();
             lblMsgErroPerguntas = new Label();
             gbPerguntas = new GroupBox();
+            label3 = new Label();
             cbxOrdemPerguntas = new ComboBox();
             label2 = new Label();
             cmbListaDeSetoresPerguntas = new ComboBox();
@@ -135,7 +136,6 @@
             btnEditarPerguntas = new Button();
             btnCarregarDadosPerguntas = new Button();
             label1 = new Label();
-            label3 = new Label();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -323,15 +323,15 @@
             // 
             // tbcPaginas
             // 
+            tbcPaginas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tbcPaginas.Controls.Add(tbSetor);
             tbcPaginas.Controls.Add(tbAdmin);
             tbcPaginas.Controls.Add(tbAtendentes);
             tbcPaginas.Controls.Add(tbPerguntas);
-            tbcPaginas.Dock = DockStyle.Fill;
-            tbcPaginas.Location = new Point(260, 0);
+            tbcPaginas.Location = new Point(260, -24);
             tbcPaginas.Name = "tbcPaginas";
             tbcPaginas.SelectedIndex = 0;
-            tbcPaginas.Size = new Size(1137, 815);
+            tbcPaginas.Size = new Size(1143, 850);
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 10;
             // 
@@ -351,7 +351,7 @@
             tbSetor.Location = new Point(4, 24);
             tbSetor.Name = "tbSetor";
             tbSetor.Padding = new Padding(3);
-            tbSetor.Size = new Size(1129, 787);
+            tbSetor.Size = new Size(1135, 822);
             tbSetor.TabIndex = 0;
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
@@ -363,7 +363,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.FlatAppearance.BorderSize = 0;
-            button1.Location = new Point(1038, 20);
+            button1.Location = new Point(1044, 20);
             button1.Name = "button1";
             button1.Size = new Size(70, 68);
             button1.TabIndex = 45;
@@ -372,14 +372,14 @@
             // 
             // lblMsgErroSetor
             // 
-            lblMsgErroSetor.AutoSize = true;
             lblMsgErroSetor.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroSetor.ForeColor = Color.Black;
-            lblMsgErroSetor.Location = new Point(312, 475);
+            lblMsgErroSetor.Location = new Point(37, 465);
             lblMsgErroSetor.Name = "lblMsgErroSetor";
-            lblMsgErroSetor.Size = new Size(174, 21);
+            lblMsgErroSetor.Size = new Size(718, 31);
             lblMsgErroSetor.TabIndex = 44;
             lblMsgErroSetor.Text = "                                         ";
+            lblMsgErroSetor.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // gbBotoesSetor
             // 
@@ -479,7 +479,7 @@
             btnEditarSetor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnEditarSetor.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarSetor.FlatStyle = FlatStyle.Flat;
-            btnEditarSetor.Location = new Point(865, 256);
+            btnEditarSetor.Location = new Point(868, 274);
             btnEditarSetor.Margin = new Padding(3, 2, 3, 2);
             btnEditarSetor.Name = "btnEditarSetor";
             btnEditarSetor.Size = new Size(168, 53);
@@ -522,7 +522,7 @@
             btnVoltarParaMenu.BackgroundImage = (Image)resources.GetObject("btnVoltarParaMenu.BackgroundImage");
             btnVoltarParaMenu.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltarParaMenu.FlatAppearance.BorderSize = 0;
-            btnVoltarParaMenu.Location = new Point(1840, 23);
+            btnVoltarParaMenu.Location = new Point(1846, 23);
             btnVoltarParaMenu.Name = "btnVoltarParaMenu";
             btnVoltarParaMenu.Size = new Size(70, 68);
             btnVoltarParaMenu.TabIndex = 27;
@@ -533,7 +533,7 @@
             button3.Anchor = AnchorStyles.Left;
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(488, 938);
+            button3.Location = new Point(488, 956);
             button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
             button3.Size = new Size(243, 62);
@@ -545,7 +545,7 @@
             button4.Anchor = AnchorStyles.Left;
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
-            button4.Location = new Point(61, 940);
+            button4.Location = new Point(61, 958);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
             button4.Size = new Size(251, 56);
@@ -582,14 +582,14 @@
             // 
             // lblMsgErroAdmin
             // 
-            lblMsgErroAdmin.AutoSize = true;
             lblMsgErroAdmin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroAdmin.ForeColor = Color.Black;
-            lblMsgErroAdmin.Location = new Point(306, 450);
+            lblMsgErroAdmin.Location = new Point(47, 446);
             lblMsgErroAdmin.Name = "lblMsgErroAdmin";
-            lblMsgErroAdmin.Size = new Size(174, 21);
+            lblMsgErroAdmin.Size = new Size(677, 34);
             lblMsgErroAdmin.TabIndex = 60;
             lblMsgErroAdmin.Text = "                                         ";
+            lblMsgErroAdmin.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // gbBotoesAdmin
             // 
@@ -806,14 +806,14 @@
             // 
             // lblMsgErroAtendente
             // 
-            lblMsgErroAtendente.AutoSize = true;
             lblMsgErroAtendente.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroAtendente.ForeColor = Color.Black;
-            lblMsgErroAtendente.Location = new Point(299, 458);
+            lblMsgErroAtendente.Location = new Point(37, 446);
             lblMsgErroAtendente.Name = "lblMsgErroAtendente";
-            lblMsgErroAtendente.Size = new Size(174, 21);
+            lblMsgErroAtendente.Size = new Size(725, 33);
             lblMsgErroAtendente.TabIndex = 61;
             lblMsgErroAtendente.Text = "                                         ";
+            lblMsgErroAtendente.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // gbBotoesAtendente
             // 
@@ -1057,14 +1057,14 @@
             // 
             // lblMsgErroPerguntas
             // 
-            lblMsgErroPerguntas.AutoSize = true;
             lblMsgErroPerguntas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMsgErroPerguntas.ForeColor = Color.Black;
-            lblMsgErroPerguntas.Location = new Point(324, 431);
+            lblMsgErroPerguntas.Location = new Point(37, 431);
             lblMsgErroPerguntas.Name = "lblMsgErroPerguntas";
-            lblMsgErroPerguntas.Size = new Size(174, 21);
+            lblMsgErroPerguntas.Size = new Size(704, 28);
             lblMsgErroPerguntas.TabIndex = 61;
             lblMsgErroPerguntas.Text = "                                         ";
+            lblMsgErroPerguntas.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // gbPerguntas
             // 
@@ -1106,6 +1106,16 @@
             gbPerguntas.TabIndex = 47;
             gbPerguntas.TabStop = false;
             gbPerguntas.Visible = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(639, 284);
+            label3.Name = "label3";
+            label3.Size = new Size(361, 30);
+            label3.TabIndex = 74;
+            label3.Text = "*Quando o valor de uma opção é alterado, o histórico de respostas \r\ndas avaliações anteriores é perdido completamente.";
             // 
             // cbxOrdemPerguntas
             // 
@@ -1427,14 +1437,14 @@
             // GridViewPerguntas
             // 
             GridViewPerguntas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            GridViewPerguntas.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            GridViewPerguntas.DefaultCellStyle = dataGridViewCellStyle2;
             GridViewPerguntas.Location = new Point(37, 85);
             GridViewPerguntas.Name = "GridViewPerguntas";
             GridViewPerguntas.RowHeadersWidth = 51;
@@ -1502,16 +1512,6 @@
             label1.Size = new Size(255, 65);
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(639, 284);
-            label3.Name = "label3";
-            label3.Size = new Size(361, 30);
-            label3.TabIndex = 74;
-            label3.Text = "*Quando o valor de uma opção é alterado, o histórico de respostas \r\ndas avaliações anteriores é perdido completamente.";
             // 
             // FrmEditarCadastroscs
             // 

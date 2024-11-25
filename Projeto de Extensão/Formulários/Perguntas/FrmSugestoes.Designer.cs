@@ -253,6 +253,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1099, 627);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmSugestoes";
             Text = "FrmSugestoes";
             WindowState = FormWindowState.Maximized;
