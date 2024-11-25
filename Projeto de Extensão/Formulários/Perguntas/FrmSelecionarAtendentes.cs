@@ -203,11 +203,10 @@ namespace Projeto_de_Extensao.Formulários.Cadastros
         private void getAtendentes(string setorSelecionado, int pular)
         {
             string sql = @"SELECT f.imagem as 'Imagem', a.nome as 'Nome'
-                    from fotos f 
-                    inner join atendente a 
-                    where 
-                        a.atendente_id = f.atendente_id
-                    and a.setor_id = ( select setor_id from setores where  nome = @setor ) LIMIT 2 OFFSET @pular;";
+            FROM fotos f
+            INNER JOIN atendente a ON a.atendente_id = f.atendente_id
+            AND a.setor_id = (SELECT setor_id FROM setores WHERE nome = @setor)
+            LIMIT 2 OFFSET @pular;";
 
             using (var cmd = new MySqlCommand(sql, ClsConexao.Conexao))
             {

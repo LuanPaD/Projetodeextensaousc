@@ -1,4 +1,5 @@
-﻿using MySqlConnector;
+﻿using DocumentFormat.OpenXml.Drawing.Diagrams;
+using MySqlConnector;
 using PdfSharp.Drawing.BarCodes;
 using Projeto_de_Extensao.Classes;
 using Projeto_de_Extensao.Formulários.Cadastros;
@@ -47,10 +48,10 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private async void ConsultaSqlAtendentes()
         {
             string sqlA = @"
-                        SELECT a.atendente_id,a.nome, s.nome AS setor, a.email
+                        SELECT a.atendente_id, a.nome, s.nome AS setor, a.email
                         FROM atendente a
-                        JOIN setores s ON a.setor_id = s.setor_id;";
-
+                        JOIN setores s ON a.setor_id = s.setor_id
+                        WHERE a.atendente_id <> 1;";
             await CarregarDadosAsync(sqlA, GridAtendentes, "atendente_id");
         }
 
@@ -1044,7 +1045,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     MessageBox.Show("Erro ao identificar o ID do setor.");
                     return;
                 }
-                MessageBox.Show("Setor ID :" + setorIdPergunta);
+
                 // Salva a pergunta no banco de dados
                 await SalvarPerguntaBancoDeDadosAsync(perguntaId, txtPergunta.Text, setorIdPergunta);
 
@@ -1056,15 +1057,14 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
                 else
                 {
-                    MessageBox.Show("Nenhuma opção foi preenchida.");
+                    await ExibirMensagemTemporaria(lblMsgErroPerguntas,"Nenhuma opção foi preenchida.");
                 }
 
-                // Mensagem de sucesso
-                MessageBox.Show("Pergunta e opções salvas com sucesso!");
+                gbPerguntas.Visible = false;
+                await ExibirMensagemTemporaria(lblMsgErroPerguntas,"Pergunta e opções salvas com sucesso!");
             }
             catch (Exception ex)
             {
-                // Tratamento genérico de erros
                 MessageBox.Show($"Ocorreu um erro: {ex.Message}");
             }
         }
@@ -1073,49 +1073,100 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         private List<string> ObterOpcoesPreenchidas()
         {
             var listaOpcoes = new List<string>();
+
             for (int i = 1; i <= 10; i++)
             {
                 var txtOpcao = this.Controls.Find($"txtOpcao{i}", true);
-                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox && !string.IsNullOrEmpty(txtBox.Text))
+                if (txtOpcao.Length > 0 && txtOpcao[0] is TextBox txtBox)
                 {
-                    listaOpcoes.Add(txtBox.Text);
+                    // Adiciona apenas se o texto estiver preenchido
+                    if (!string.IsNullOrWhiteSpace(txtBox.Text))
+                    {
+                        listaOpcoes.Add(txtBox.Text.Trim());
+                    }
                 }
             }
+
             return listaOpcoes;
         }
 
         private async Task SubstituirOpcoesNoBancoDeDadosAsync(int perguntaId, List<string> listaOpcoes, int setor)
         {
-            string deleteSql = "DELETE FROM opcoes,respostas,avaliacao WHERE pergunta_id = @perguntaId";
-            string insertSql = "INSERT INTO opcoes (pergunta_id, texto,setor_id) VALUES (@perguntaId, @texto,@setor_id)";
+            string selectExistentesSql = "SELECT texto, opcao_id FROM opcoes WHERE pergunta_id = @perguntaId";
+            string deleteRespostasSql = "DELETE FROM respostas WHERE opcao_id IN (SELECT opcao_id FROM opcoes WHERE pergunta_id = @perguntaId AND texto IN (@texto))";
+            string deleteOpcoesSql = "DELETE FROM opcoes WHERE pergunta_id = @perguntaId AND texto IN (@texto)";
+            string insertSql = "INSERT INTO opcoes (pergunta_id, texto, setor_id) VALUES (@perguntaId, @texto, @setor_id)";
 
-            using (var connection = new MySqlConnection(ClsConexao.connectionString))
+            try
             {
-                await connection.OpenAsync();
-
-                // Apaga todas as opções atuais da pergunta para evitar duplicações
-                using (var deleteCommand = new MySqlCommand(deleteSql, connection))
+                using (var connection = new MySqlConnection(ClsConexao.connectionString))
                 {
-                    deleteCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
-                    await deleteCommand.ExecuteNonQueryAsync();
-                }
+                    await connection.OpenAsync();
 
-                // Insere cada nova opção
-                foreach (var opcao in listaOpcoes)
-                {
-                    using (var insertCommand = new MySqlCommand(insertSql, connection))
+                    // Obtém as opções existentes
+                    List<string> opcoesExistentes = new List<string>();
+                    List<int> opcoesExistentesIds = new List<int>();
+                    using (var selectCommand = new MySqlCommand(selectExistentesSql, connection))
                     {
-                        insertCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
-                        insertCommand.Parameters.AddWithValue("@texto", opcao);
-                        insertCommand.Parameters.AddWithValue("@setor_id", setor);
-                        await insertCommand.ExecuteNonQueryAsync();
+                        selectCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                        using (var reader = await selectCommand.ExecuteReaderAsync())
+                        {
+                            while (await reader.ReadAsync())
+                            {
+                                opcoesExistentes.Add(reader.GetString("texto"));
+                                opcoesExistentesIds.Add(reader.GetInt32("opcao_id"));
+                            }
+                        }
+                    }
+
+                    // Identificar opções a serem removidas
+                    var opcoesParaRemover = opcoesExistentes.Except(listaOpcoes).ToList();
+
+                    // Remover as respostas associadas às opções a serem removidas
+                    foreach (var opcao in opcoesParaRemover)
+                    {
+                        using (var deleteRespostasCommand = new MySqlCommand(deleteRespostasSql, connection))
+                        {
+                            deleteRespostasCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                            deleteRespostasCommand.Parameters.AddWithValue("@texto", opcao);
+                            await deleteRespostasCommand.ExecuteNonQueryAsync();
+                        }
+                    }
+
+                    foreach (var opcao in opcoesParaRemover)
+                    {
+                        using (var deleteOpcoesCommand = new MySqlCommand(deleteOpcoesSql, connection))
+                        {
+                            deleteOpcoesCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                            deleteOpcoesCommand.Parameters.AddWithValue("@texto", opcao);
+                            await deleteOpcoesCommand.ExecuteNonQueryAsync();
+                        }
+                    }
+
+                    var novasOpcoes = listaOpcoes.Except(opcoesExistentes).ToList();
+
+                    foreach (var opcao in novasOpcoes)
+                    {
+                        using (var insertCommand = new MySqlCommand(insertSql, connection))
+                        {
+                            insertCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                            insertCommand.Parameters.AddWithValue("@texto", opcao);
+                            insertCommand.Parameters.AddWithValue("@setor_id", setor);
+                            await insertCommand.ExecuteNonQueryAsync();
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao substituir opções no banco de dados: " + ex.Message);
+                throw;
             }
         }
 
 
-        private async Task SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text, int setor_id)
+
+        private async Task<bool> SalvarPerguntaBancoDeDadosAsync(int idPergunta, string text, int setor_id)
         {
             string sql = @"UPDATE perguntas
                            SET texto = @texto,setor_id = @setor_id
@@ -1129,14 +1180,14 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     cmd.Parameters.AddWithValue("@texto", text);
                     cmd.Parameters.AddWithValue("@setor_id", setor_id);
                     await cmd.ExecuteNonQueryAsync();
-
-                    MessageBox.Show("Pergunta atualizada com sucesso!");
+                    return true;
 
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro " + ex.Message);
+                return false;
             }
         }
 
@@ -1203,8 +1254,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             }
 
                             transaction.Commit();
-
-                            MessageBox.Show("Ordem trocada com sucesso no banco de dados!");
                         }
                         catch (Exception ex)
                         {
@@ -1213,14 +1262,16 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         }
                     }
                 }
+
                 else
                 {
-                    MessageBox.Show("As ordens são iguais, nenhuma troca foi realizada.");
+                    return;
                 }
+               
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Erro ao tentar realizar a transação: " + ex.Message);
+                MessageBox.Show("Erro" + ex.Message);
             }
         }
 
@@ -1247,7 +1298,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 bool sucesso = await DeletaFotosEAtendente(AtendenteId);
                 if (sucesso)
                 {
-                    await ExibirMensagemTemporaria(lblMsgErroAtendente,"Atendente e fotos deletados com sucesso!");
+                    gbBotoesAtendente.Visible = false;
+                    await ExibirMensagemTemporaria(lblMsgErroAtendente, "Atendente e fotos deletados com sucesso!");
                 }
                 else
                 {
@@ -1263,6 +1315,17 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             {
                 try
                 {
+                    string sqlAlteraAvaliacao = @"
+                    UPDATE avaliacao
+                    SET atendente_id = 1
+                    WHERE atendente_id = @atendente_id";
+
+                    using (var cmdAlteraAvaliacao = new MySqlCommand(sqlAlteraAvaliacao, ClsConexao.Conexao, transacao))
+                    {
+                        cmdAlteraAvaliacao.Parameters.AddWithValue("@atendente_id", atendenteId);
+                        await cmdAlteraAvaliacao.ExecuteNonQueryAsync();
+                    }
+
                     // Excluir fotos do atendente
                     string sqlDeletaFotos = @"
                     DELETE FROM fotos
@@ -1285,18 +1348,69 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         await cmdDeletaAtendente.ExecuteNonQueryAsync();
                     }
 
+                    // Commit na transação
                     await transacao.CommitAsync();
                     return true;
                 }
                 catch (Exception ex)
                 {
+                    // Mensagem de erro e rollback da transação em caso de falha
+                    MessageBox.Show("Erro: " + ex.Message);
+                    await transacao.RollbackAsync();
+                    return false;
+                }
+            }
+        }
+
+
+        private async void btnDeletarPerguntas_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(pergunta_id, out int perguntaId))
+            {
+                MessageBox.Show("Erro ao identificar o ID da pergunta.");
+                return;
+            }
+            MessageBox.Show("Setor id: " + perguntaId);
+            await DeletarPerguntaESuasAssociacoesAsync(perguntaId);
+        }
+
+        private async Task DeletarPerguntaESuasAssociacoesAsync(int perguntaId)
+        {
+            string deleteRespostasSql = "DELETE FROM respostas WHERE opcao_id IN (SELECT opcao_id FROM opcoes WHERE pergunta_id = @perguntaId)";
+            string deleteOpcoesSql = "DELETE FROM opcoes WHERE pergunta_id = @perguntaId";
+            string deletePerguntaSql = "DELETE FROM perguntas WHERE pergunta_id = @perguntaId";
+
+            try
+            {
+                using (var connection = new MySqlConnection(ClsConexao.connectionString))
+                {
+                    await connection.OpenAsync();
+
+                    using (var deleteRespostasCommand = new MySqlCommand(deleteRespostasSql, connection))
                     {
-                        MessageBox.Show("Erro" + ex);
-                        await transacao.RollbackAsync();
-                        throw;
+                        deleteRespostasCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                        await deleteRespostasCommand.ExecuteNonQueryAsync();
                     }
 
+                    // Excluir opções associadas à pergunta
+                    using (var deleteOpcoesCommand = new MySqlCommand(deleteOpcoesSql, connection))
+                    {
+                        deleteOpcoesCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                        await deleteOpcoesCommand.ExecuteNonQueryAsync();
+                    }
+
+                    // Excluir a própria pergunta
+                    using (var deletePerguntaCommand = new MySqlCommand(deletePerguntaSql, connection))
+                    {
+                        deletePerguntaCommand.Parameters.AddWithValue("@perguntaId", perguntaId);
+                        await deletePerguntaCommand.ExecuteNonQueryAsync();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao deletar a pergunta e suas associações: " + ex.Message);
+                throw;
             }
         }
 

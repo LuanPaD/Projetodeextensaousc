@@ -135,6 +135,7 @@
             btnEditarPerguntas = new Button();
             btnCarregarDadosPerguntas = new Button();
             label1 = new Label();
+            label3 = new Label();
             pnlMenu.SuspendLayout();
             tlpBotoesEscolha.SuspendLayout();
             panelTopo.SuspendLayout();
@@ -1067,6 +1068,7 @@
             // 
             // gbPerguntas
             // 
+            gbPerguntas.Controls.Add(label3);
             gbPerguntas.Controls.Add(cbxOrdemPerguntas);
             gbPerguntas.Controls.Add(label2);
             gbPerguntas.Controls.Add(cmbListaDeSetoresPerguntas);
@@ -1420,6 +1422,7 @@
             btnDeletarPerguntas.Size = new Size(128, 46);
             btnDeletarPerguntas.TabIndex = 43;
             btnDeletarPerguntas.UseVisualStyleBackColor = false;
+            btnDeletarPerguntas.Click += btnDeletarPerguntas_Click;
             // 
             // GridViewPerguntas
             // 
@@ -1499,6 +1502,16 @@
             label1.Size = new Size(255, 65);
             label1.TabIndex = 40;
             label1.Text = "Perguntas";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(639, 284);
+            label3.Name = "label3";
+            label3.Size = new Size(361, 30);
+            label3.TabIndex = 74;
+            label3.Text = "*Quando o valor de uma opção é alterado, o histórico de respostas \r\ndas avaliações anteriores é perdido completamente.";
             // 
             // FrmEditarCadastroscs
             // 
@@ -1659,5 +1672,6 @@
         private ComboBox cmbListaDeSetoresPerguntas;
         private ComboBox cbxOrdemPerguntas;
         private Button button1;
+        private Label label3;
     }
 }
