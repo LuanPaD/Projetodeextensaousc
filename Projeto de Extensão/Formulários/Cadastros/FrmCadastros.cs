@@ -63,7 +63,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 txtConfirmaSenha.Text = string.Empty;
                 txtSenha.Text = string.Empty;
             }
-                
+
         }
 
         private async void btnCadastraAtendente_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                     await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblMsgErroAtendente, "Erro ao realizar cadastro.");
                     return;
                 }
-                    ptbImagemAtendente.Image = null;
+                ptbImagemAtendente.Image = null;
 
             }
             txtNome2.Text = string.Empty;
@@ -258,7 +258,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                             int atendenteId = Convert.ToInt32(await cmdLastId.ExecuteScalarAsync());
                             Console.WriteLine("Atendente cadastrado com sucesso. ID: " + atendenteId);
                             lblMsgErroAtendente.Text = string.Empty;
-                            
+
 
                             // Retorna o ID do atendente
                             return atendenteId;
@@ -488,7 +488,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             if (idPergunta > 0)
             {
                 await InserirOpcoesAsync(idPergunta, alternativas);
-                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroPerguntas,"Pergunta inserida com sucesso!");
+                await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroPerguntas, "Pergunta inserida com sucesso!");
 
                 for (int i = 1; i <= 10; i++)
                 {
@@ -515,7 +515,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 cbxListaSetorPergunta.SelectedValue = 0;
             }
             else
-            { 
+            {
                 await FrmEditarCadastroscs.ExibirMensagemTemporaria(lblErroPerguntas, "Erro ao cadastrar a pergunta.");
             }
         }
@@ -554,7 +554,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 try
                 {
                     int novaOrdem = Convert.ToInt32(await cmd.ExecuteScalarAsync());
-                    
+
                     cmd.CommandText = "INSERT INTO perguntas (texto, setor_id, ordem) VALUES (@pergunta, @setor, @ordem)";
                     cmd.Parameters.Clear();
                     cmd.Parameters.AddWithValue("@pergunta", pergunta);
@@ -615,7 +615,15 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 ofd.Filter = "Imagens|*.jpg;*.jpeg;*.png;*.bmp";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    picture.Image = Image.FromFile(ofd.FileName);
+                    try
+                    {
+                        picture.Image = Image.FromFile(ofd.FileName);
+                    }
+                    catch
+                    (Exception ex)
+                    {
+                        MessageBox.Show($"O tamanho da imagem é muito grande.");
+                    }
                 }
             }
         }
@@ -668,5 +676,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
             }
 
         }
+
     }
 }

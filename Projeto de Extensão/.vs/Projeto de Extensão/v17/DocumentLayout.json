@@ -1,12 +1,70 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\educo\\OneDrive\\\u00C1rea de Trabalho\\Edu\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\23110512\\Desktop\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|c:\\users\\23110512\\desktop\\projetodeextensaousc\\projeto de extens\u00E3o\\formul\u00E1rios\\cadastros\\frmcadastros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|solutionrelative:formul\u00E1rios\\cadastros\\frmcadastros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|c:\\users\\23110512\\desktop\\projetodeextensaousc\\projeto de extens\u00E3o\\formul\u00E1rios\\cadastros\\frmcadastros.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|solutionrelative:formul\u00E1rios\\cadastros\\frmcadastros.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|c:\\users\\23110512\\desktop\\projetodeextensaousc\\projeto de extens\u00E3o\\formul\u00E1rios\\cadastros\\frmcadastros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88739173-324F-495A-9D8A-1519805F6BA9}|Projeto de Extens\u00E3o.csproj|solutionrelative:formul\u00E1rios\\cadastros\\frmcadastros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmCadastros.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\23110512\\Desktop\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmCadastros.Designer.cs",
+              "RelativeDocumentMoniker": "Formul\u00E1rios\\Cadastros\\FrmCadastros.Designer.cs",
+              "ToolTip": "C:\\Users\\23110512\\Desktop\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmCadastros.Designer.cs",
+              "RelativeToolTip": "Formul\u00E1rios\\Cadastros\\FrmCadastros.Designer.cs",
+              "ViewState": "AQIAAD4DAAAAAAAAAAAowDcDAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T23:42:32.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmCadastros.cs",
+              "DocumentMoniker": "C:\\Users\\23110512\\Desktop\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmCadastros.cs",
+              "RelativeDocumentMoniker": "Formul\u00E1rios\\Cadastros\\FrmCadastros.cs",
+              "ToolTip": "C:\\Users\\23110512\\Desktop\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmCadastros.cs",
+              "RelativeToolTip": "Formul\u00E1rios\\Cadastros\\FrmCadastros.cs",
+              "ViewState": "AQIAAJ4CAAAAAAAAAAAowKYCAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T23:42:24.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmCadastros.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\23110512\\Desktop\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmCadastros.cs",
+              "RelativeDocumentMoniker": "Formul\u00E1rios\\Cadastros\\FrmCadastros.cs",
+              "ToolTip": "C:\\Users\\23110512\\Desktop\\Projetodeextensaousc\\Projeto de Extens\u00E3o\\Formul\u00E1rios\\Cadastros\\FrmCadastros.cs [Projeto]",
+              "RelativeToolTip": "Formul\u00E1rios\\Cadastros\\FrmCadastros.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T23:38:22.943Z",
+              "EditorCaption": " [Projeto]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

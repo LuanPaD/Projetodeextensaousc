@@ -404,7 +404,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
         private void DistribuirBotoesVerticalmente(List<Alternativa> alternativas, int larguraGroupBox, int alturaGroupBox, int espacamentoVertical)
         {
-            int posicaoY = 180;  // Começar no topo do GroupBox
+            int posicaoY = 50;  // Começar no topo do GroupBox
 
             foreach (var alternativa in alternativas)
             {
@@ -468,7 +468,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
                 Text = texto,
                 Tag = id,  // Armazenando o id da alternativa no Tag do botão
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
-                Size = new Size(400, 90), // Tamanho do botão
+                Size = new Size(300, 70), // Tamanho do botão
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(231, 76, 60),
                 ForeColor = Color.White,

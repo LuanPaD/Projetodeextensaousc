@@ -120,7 +120,7 @@
             pnlMenu.Dock = DockStyle.Left;
             pnlMenu.Location = new Point(0, 0);
             pnlMenu.Name = "pnlMenu";
-            pnlMenu.Size = new Size(260, 783);
+            pnlMenu.Size = new Size(260, 749);
             pnlMenu.TabIndex = 8;
             // 
             // tlpBotoesEscolha
@@ -238,7 +238,7 @@
             // 
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 617);
+            panel1.Location = new Point(0, 583);
             panel1.Name = "panel1";
             panel1.Size = new Size(260, 166);
             panel1.TabIndex = 9;
@@ -648,7 +648,7 @@
             lblErroPerguntas.BackColor = Color.Transparent;
             lblErroPerguntas.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
             lblErroPerguntas.ForeColor = Color.Red;
-            lblErroPerguntas.Location = new Point(71, 614);
+            lblErroPerguntas.Location = new Point(71, 605);
             lblErroPerguntas.Name = "lblErroPerguntas";
             lblErroPerguntas.Size = new Size(671, 37);
             lblErroPerguntas.TabIndex = 54;
@@ -676,7 +676,8 @@
             // 
             // txtAlternativa10
             // 
-            txtAlternativa10.Location = new Point(71, 594);
+            txtAlternativa10.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa10.Location = new Point(71, 551);
             txtAlternativa10.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa10.Multiline = true;
             txtAlternativa10.Name = "txtAlternativa10";
@@ -685,7 +686,8 @@
             // 
             // txtAlternativa9
             // 
-            txtAlternativa9.Location = new Point(72, 558);
+            txtAlternativa9.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa9.Location = new Point(72, 515);
             txtAlternativa9.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa9.Multiline = true;
             txtAlternativa9.Name = "txtAlternativa9";
@@ -694,7 +696,8 @@
             // 
             // txtAlternativa8
             // 
-            txtAlternativa8.Location = new Point(72, 523);
+            txtAlternativa8.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa8.Location = new Point(72, 480);
             txtAlternativa8.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa8.Multiline = true;
             txtAlternativa8.Name = "txtAlternativa8";
@@ -703,7 +706,8 @@
             // 
             // txtAlternativa7
             // 
-            txtAlternativa7.Location = new Point(72, 488);
+            txtAlternativa7.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa7.Location = new Point(72, 445);
             txtAlternativa7.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa7.Multiline = true;
             txtAlternativa7.Name = "txtAlternativa7";
@@ -712,7 +716,8 @@
             // 
             // txtAlternativa6
             // 
-            txtAlternativa6.Location = new Point(72, 452);
+            txtAlternativa6.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa6.Location = new Point(72, 409);
             txtAlternativa6.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa6.Multiline = true;
             txtAlternativa6.Name = "txtAlternativa6";
@@ -721,7 +726,8 @@
             // 
             // txtAlternativa5
             // 
-            txtAlternativa5.Location = new Point(72, 417);
+            txtAlternativa5.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa5.Location = new Point(72, 374);
             txtAlternativa5.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa5.Multiline = true;
             txtAlternativa5.Name = "txtAlternativa5";
@@ -730,7 +736,8 @@
             // 
             // txtAlternativa4
             // 
-            txtAlternativa4.Location = new Point(72, 382);
+            txtAlternativa4.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa4.Location = new Point(72, 339);
             txtAlternativa4.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa4.Multiline = true;
             txtAlternativa4.Name = "txtAlternativa4";
@@ -739,7 +746,8 @@
             // 
             // txtAlternativa3
             // 
-            txtAlternativa3.Location = new Point(72, 346);
+            txtAlternativa3.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa3.Location = new Point(72, 303);
             txtAlternativa3.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa3.Multiline = true;
             txtAlternativa3.Name = "txtAlternativa3";
@@ -781,12 +789,13 @@
             txtPergunta.Margin = new Padding(3, 2, 3, 2);
             txtPergunta.Multiline = true;
             txtPergunta.Name = "txtPergunta";
-            txtPergunta.Size = new Size(671, 107);
+            txtPergunta.Size = new Size(671, 56);
             txtPergunta.TabIndex = 1;
             // 
             // txtAlternativa2
             // 
-            txtAlternativa2.Location = new Point(72, 311);
+            txtAlternativa2.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa2.Location = new Point(72, 268);
             txtAlternativa2.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa2.Multiline = true;
             txtAlternativa2.Name = "txtAlternativa2";
@@ -795,7 +804,8 @@
             // 
             // txtAlternativa1
             // 
-            txtAlternativa1.Location = new Point(72, 275);
+            txtAlternativa1.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa1.Location = new Point(72, 232);
             txtAlternativa1.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa1.Multiline = true;
             txtAlternativa1.Name = "txtAlternativa1";
@@ -806,7 +816,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(66, 250);
+            label1.Location = new Point(72, 205);
             label1.Name = "label1";
             label1.Size = new Size(111, 25);
             label1.TabIndex = 18;
@@ -953,7 +963,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1310, 783);
+            ClientSize = new Size(1310, 749);
             Controls.Add(tbcPaginas);
             Controls.Add(pnlMenu);
             Icon = (Icon)resources.GetObject("$this.Icon");

@@ -1057,11 +1057,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 }
                 else
                 {
-                    await ExibirMensagemTemporaria(lblMsgErroPerguntas,"Nenhuma opção foi preenchida.");
+                    await ExibirMensagemTemporaria(lblMsgErroPerguntas, "Nenhuma opção foi preenchida.");
                 }
 
                 gbPerguntas.Visible = false;
-                await ExibirMensagemTemporaria(lblMsgErroPerguntas,"Pergunta e opções salvas com sucesso!");
+                await ExibirMensagemTemporaria(lblMsgErroPerguntas, "Pergunta e opções salvas com sucesso!");
             }
             catch (Exception ex)
             {
@@ -1267,7 +1267,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 {
                     return;
                 }
-               
+
             }
             catch (MySqlException ex)
             {
@@ -1413,7 +1413,6 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 throw;
             }
         }
-
     }
 }
 

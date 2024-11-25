@@ -77,7 +77,7 @@
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1681, 757);
+            tableLayoutPanel1.Size = new Size(1370, 749);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -93,7 +93,7 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 81.08911F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 18.91089F));
-            tableLayoutPanel2.Size = new Size(834, 753);
+            tableLayoutPanel2.Size = new Size(679, 745);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // pictureBox1
@@ -103,7 +103,7 @@
             pictureBox1.Location = new Point(3, 2);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(828, 606);
+            pictureBox1.Size = new Size(673, 600);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -112,10 +112,10 @@
             // 
             pictureBox2.Dock = DockStyle.Fill;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 613);
+            pictureBox2.Location = new Point(3, 607);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Padding = new Padding(0, 0, 0, 8);
-            pictureBox2.Size = new Size(828, 137);
+            pictureBox2.Size = new Size(673, 135);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -129,23 +129,23 @@
             tableLayoutPanel3.Controls.Add(panel2, 0, 1);
             tableLayoutPanel3.Controls.Add(lblDireitos, 0, 3);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(843, 3);
+            tableLayoutPanel3.Location = new Point(688, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 4;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 19.583334F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 80.4166641F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 102F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
-            tableLayoutPanel3.Size = new Size(835, 751);
+            tableLayoutPanel3.Size = new Size(679, 743);
             tableLayoutPanel3.TabIndex = 1;
             // 
             // panel3
             // 
             panel3.Controls.Add(btnAvancarAtendentes);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 608);
+            panel3.Location = new Point(3, 600);
             panel3.Name = "panel3";
-            panel3.Size = new Size(829, 96);
+            panel3.Size = new Size(673, 96);
             panel3.TabIndex = 14;
             // 
             // btnAvancarAtendentes
@@ -154,7 +154,7 @@
             btnAvancarAtendentes.BackColor = Color.Brown;
             btnAvancarAtendentes.BackgroundImage = (Image)resources.GetObject("btnAvancarAtendentes.BackgroundImage");
             btnAvancarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
-            btnAvancarAtendentes.Location = new Point(245, 17);
+            btnAvancarAtendentes.Location = new Point(167, 17);
             btnAvancarAtendentes.Name = "btnAvancarAtendentes";
             btnAvancarAtendentes.Size = new Size(338, 62);
             btnAvancarAtendentes.TabIndex = 15;
@@ -167,7 +167,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(829, 112);
+            panel1.Size = new Size(673, 111);
             panel1.TabIndex = 12;
             // 
             // label1
@@ -175,7 +175,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(109, 27);
+            label1.Location = new Point(31, 26);
             label1.Name = "label1";
             label1.Size = new Size(606, 50);
             label1.TabIndex = 11;
@@ -190,16 +190,16 @@
             panel2.Controls.Add(ptbAtendente1);
             panel2.Controls.Add(btnProxAtendente);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 121);
+            panel2.Location = new Point(3, 120);
             panel2.Name = "panel2";
-            panel2.Size = new Size(829, 481);
+            panel2.Size = new Size(673, 474);
             panel2.TabIndex = 13;
             // 
             // rdbAtendente2
             // 
             rdbAtendente2.Anchor = AnchorStyles.None;
             rdbAtendente2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
-            rdbAtendente2.Location = new Point(461, 329);
+            rdbAtendente2.Location = new Point(383, 326);
             rdbAtendente2.Name = "rdbAtendente2";
             rdbAtendente2.Size = new Size(102, 34);
             rdbAtendente2.TabIndex = 12;
@@ -211,7 +211,7 @@
             // 
             rdbAtendente1.Anchor = AnchorStyles.None;
             rdbAtendente1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            rdbAtendente1.Location = new Point(174, 329);
+            rdbAtendente1.Location = new Point(96, 326);
             rdbAtendente1.Name = "rdbAtendente1";
             rdbAtendente1.Size = new Size(98, 34);
             rdbAtendente1.TabIndex = 11;
@@ -226,7 +226,7 @@
             btnVoltarAtendentes.BackgroundImage = Properties.Resources.Group_855;
             btnVoltarAtendentes.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltarAtendentes.ForeColor = Color.FromArgb(181, 0, 0);
-            btnVoltarAtendentes.Location = new Point(3, 189);
+            btnVoltarAtendentes.Location = new Point(0, 173);
             btnVoltarAtendentes.Name = "btnVoltarAtendentes";
             btnVoltarAtendentes.Size = new Size(75, 68);
             btnVoltarAtendentes.TabIndex = 10;
@@ -237,7 +237,7 @@
             // ptbAtendente2
             // 
             ptbAtendente2.Anchor = AnchorStyles.None;
-            ptbAtendente2.Location = new Point(461, 98);
+            ptbAtendente2.Location = new Point(383, 95);
             ptbAtendente2.Name = "ptbAtendente2";
             ptbAtendente2.Size = new Size(191, 225);
             ptbAtendente2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -247,7 +247,7 @@
             // ptbAtendente1
             // 
             ptbAtendente1.Anchor = AnchorStyles.None;
-            ptbAtendente1.Location = new Point(174, 98);
+            ptbAtendente1.Location = new Point(96, 95);
             ptbAtendente1.Name = "ptbAtendente1";
             ptbAtendente1.Size = new Size(191, 225);
             ptbAtendente1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -262,7 +262,7 @@
             btnProxAtendente.BackgroundImageLayout = ImageLayout.Stretch;
             btnProxAtendente.Font = new Font("Microsoft Sans Serif", 26.25F);
             btnProxAtendente.ForeColor = Color.FromArgb(181, 0, 0);
-            btnProxAtendente.Location = new Point(748, 189);
+            btnProxAtendente.Location = new Point(592, 173);
             btnProxAtendente.Name = "btnProxAtendente";
             btnProxAtendente.Size = new Size(75, 68);
             btnProxAtendente.TabIndex = 3;
@@ -275,7 +275,7 @@
             lblDireitos.AutoSize = true;
             lblDireitos.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDireitos.ForeColor = SystemColors.AppWorkspace;
-            lblDireitos.Location = new Point(317, 720);
+            lblDireitos.Location = new Point(239, 712);
             lblDireitos.Name = "lblDireitos";
             lblDireitos.Size = new Size(200, 17);
             lblDireitos.TabIndex = 10;
@@ -291,7 +291,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1681, 757);
+            ClientSize = new Size(1370, 749);
             Controls.Add(tableLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmSelecionarAtendentes";
