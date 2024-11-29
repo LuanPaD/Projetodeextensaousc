@@ -197,11 +197,11 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
                     P.texto AS 'Pergunta', 
                     O.texto AS 'Opção Escolhida', 
                     A.data 
-                FROM AVALIACAO A
-                INNER JOIN RESPOSTAS R ON R.avaliacao_id = A.avaliacao_id 
-                INNER JOIN PERGUNTAS P ON P.pergunta_id = R.pergunta_id
-                INNER JOIN OPCOES O ON O.pergunta_id = P.pergunta_id
-                INNER JOIN SETORES S ON S.setor_id = A.setor_id";
+                    FROM AVALIACAO A
+                    INNER JOIN RESPOSTAS R ON R.avaliacao_id = A.avaliacao_id 
+                    INNER JOIN PERGUNTAS P ON P.pergunta_id = R.pergunta_id
+                    INNER JOIN OPCOES O ON O.pergunta_id = P.pergunta_id
+                    INNER JOIN SETORES S ON S.setor_id = A.setor_id";
 
                 List<string> condicoes = new List<string>();
                 var command = new MySqlCommand(queryAvaliacoes, conexao);
@@ -268,13 +268,26 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
 
 
         //ERRO AQ BEM PROVAVELMENTE
-                private DataTable getAtendentes()
+        private DataTable getAtendentes()
         {
             var conexao = ClsConexao.Conexao;
             DataTable atendentes = new DataTable();
             try
             {
-                string queryAtendentes = @"SELECT a.NOME, S.NOME AS 'SETOR', a.EMAIL FROM ATENDENTE A INNER JOIN SETORES S ON S.setor_id = A.setor_id WHERE a.Setor_id <> 3;";
+                string queryAtendentes = @"
+                SELECT 
+                    A.NOME, 
+                    S.NOME AS SETOR, 
+                    A.EMAIL 
+                FROM 
+                    ATENDENTE A 
+                INNER JOIN 
+                    SETORES S 
+                ON 
+                    S.setor_id = A.setor_id 
+                WHERE 
+                    A.setor_id <> 3;";
+
                 var commandAtendentes = new MySqlCommand(queryAtendentes, conexao);
                 var readerAtendentes = commandAtendentes.ExecuteReader();
 

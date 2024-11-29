@@ -98,8 +98,8 @@
             GridAtendentes = new DataGridView();
             lblTituloAjuda = new Label();
             tbPerguntas = new TabPage();
-            gbPerguntas = new GroupBox();
             lblMsgErroPerguntas = new Label();
+            gbPerguntas = new GroupBox();
             label3 = new Label();
             cbxOrdemPerguntas = new ComboBox();
             label2 = new Label();
@@ -1039,6 +1039,7 @@
             // 
             // tbPerguntas
             // 
+            tbPerguntas.Controls.Add(lblMsgErroPerguntas);
             tbPerguntas.Controls.Add(gbPerguntas);
             tbPerguntas.Controls.Add(GridViewPerguntas);
             tbPerguntas.Controls.Add(btnVoltarHomePerguntas);
@@ -1054,10 +1055,20 @@
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
             // 
+            // lblMsgErroPerguntas
+            // 
+            lblMsgErroPerguntas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMsgErroPerguntas.ForeColor = Color.Black;
+            lblMsgErroPerguntas.Location = new Point(779, 376);
+            lblMsgErroPerguntas.Name = "lblMsgErroPerguntas";
+            lblMsgErroPerguntas.Size = new Size(295, 28);
+            lblMsgErroPerguntas.TabIndex = 61;
+            lblMsgErroPerguntas.Text = "                                         ";
+            lblMsgErroPerguntas.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // gbPerguntas
             // 
             gbPerguntas.Anchor = AnchorStyles.None;
-            gbPerguntas.Controls.Add(lblMsgErroPerguntas);
             gbPerguntas.Controls.Add(label3);
             gbPerguntas.Controls.Add(cbxOrdemPerguntas);
             gbPerguntas.Controls.Add(label2);
@@ -1092,46 +1103,34 @@
             gbPerguntas.Font = new Font("Segoe UI", 14.25F);
             gbPerguntas.Location = new Point(6, 417);
             gbPerguntas.Name = "gbPerguntas";
-            gbPerguntas.Size = new Size(1035, 298);
+            gbPerguntas.Size = new Size(1035, 319);
             gbPerguntas.TabIndex = 47;
             gbPerguntas.TabStop = false;
             gbPerguntas.Visible = false;
             // 
-            // lblMsgErroPerguntas
-            // 
-            lblMsgErroPerguntas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMsgErroPerguntas.ForeColor = Color.Black;
-            lblMsgErroPerguntas.Location = new Point(773, 25);
-            lblMsgErroPerguntas.Name = "lblMsgErroPerguntas";
-            lblMsgErroPerguntas.Size = new Size(232, 28);
-            lblMsgErroPerguntas.TabIndex = 61;
-            lblMsgErroPerguntas.Text = "                                         ";
-            lblMsgErroPerguntas.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // label3
             // 
-            label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(623, 230);
+            label3.Location = new Point(750, 237);
             label3.Name = "label3";
-            label3.Size = new Size(361, 30);
+            label3.Size = new Size(249, 62);
             label3.TabIndex = 74;
-            label3.Text = "*Quando o valor de uma opção é alterado, o histórico de respostas \r\ndas avaliações anteriores é perdido completamente.";
+            label3.Text = "*Quando o valor de uma opção é alterado, o histórico de respostas das avaliações \r\nanteriores é perdido completamente.";
             // 
             // cbxOrdemPerguntas
             // 
-            cbxOrdemPerguntas.Font = new Font("Microsoft Sans Serif", 14.25F);
+            cbxOrdemPerguntas.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbxOrdemPerguntas.FormattingEnabled = true;
-            cbxOrdemPerguntas.Location = new Point(412, 53);
+            cbxOrdemPerguntas.Location = new Point(422, 77);
             cbxOrdemPerguntas.Name = "cbxOrdemPerguntas";
-            cbxOrdemPerguntas.Size = new Size(90, 32);
+            cbxOrdemPerguntas.Size = new Size(90, 28);
             cbxOrdemPerguntas.TabIndex = 73;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 14.25F);
-            label2.Location = new Point(41, 57);
+            label2.Location = new Point(44, 81);
             label2.Name = "label2";
             label2.Size = new Size(59, 24);
             label2.TabIndex = 72;
@@ -1139,18 +1138,18 @@
             // 
             // cmbListaDeSetoresPerguntas
             // 
-            cmbListaDeSetoresPerguntas.Font = new Font("Microsoft Sans Serif", 14.25F);
+            cmbListaDeSetoresPerguntas.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbListaDeSetoresPerguntas.FormattingEnabled = true;
-            cmbListaDeSetoresPerguntas.Location = new Point(106, 53);
+            cmbListaDeSetoresPerguntas.Location = new Point(116, 77);
             cmbListaDeSetoresPerguntas.Name = "cmbListaDeSetoresPerguntas";
-            cmbListaDeSetoresPerguntas.Size = new Size(253, 32);
+            cmbListaDeSetoresPerguntas.Size = new Size(253, 28);
             cmbListaDeSetoresPerguntas.TabIndex = 71;
             // 
             // lblOrdemPergunta
             // 
             lblOrdemPergunta.AutoSize = true;
             lblOrdemPergunta.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOrdemPergunta.Location = new Point(375, 57);
+            lblOrdemPergunta.Location = new Point(385, 81);
             lblOrdemPergunta.Name = "lblOrdemPergunta";
             lblOrdemPergunta.Size = new Size(31, 24);
             lblOrdemPergunta.TabIndex = 70;
@@ -1160,7 +1159,7 @@
             // 
             lblOp10.AutoSize = true;
             lblOp10.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp10.Location = new Point(298, 241);
+            lblOp10.Location = new Point(366, 265);
             lblOp10.Name = "lblOp10";
             lblOp10.Size = new Size(97, 24);
             lblOp10.TabIndex = 69;
@@ -1171,7 +1170,7 @@
             // 
             lblOp9.AutoSize = true;
             lblOp9.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp9.Location = new Point(308, 204);
+            lblOp9.Location = new Point(366, 228);
             lblOp9.Name = "lblOp9";
             lblOp9.Size = new Size(87, 24);
             lblOp9.TabIndex = 68;
@@ -1182,7 +1181,7 @@
             // 
             lblOp8.AutoSize = true;
             lblOp8.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp8.Location = new Point(305, 168);
+            lblOp8.Location = new Point(366, 190);
             lblOp8.Name = "lblOp8";
             lblOp8.Size = new Size(87, 24);
             lblOp8.TabIndex = 67;
@@ -1193,7 +1192,7 @@
             // 
             lblOp7.AutoSize = true;
             lblOp7.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp7.Location = new Point(308, 136);
+            lblOp7.Location = new Point(366, 157);
             lblOp7.Name = "lblOp7";
             lblOp7.Size = new Size(87, 24);
             lblOp7.TabIndex = 66;
@@ -1204,7 +1203,7 @@
             // 
             lblOp6.AutoSize = true;
             lblOp6.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp6.Location = new Point(308, 99);
+            lblOp6.Location = new Point(366, 123);
             lblOp6.Name = "lblOp6";
             lblOp6.Size = new Size(87, 24);
             lblOp6.TabIndex = 65;
@@ -1215,7 +1214,7 @@
             // 
             lblOp5.AutoSize = true;
             lblOp5.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp5.Location = new Point(16, 237);
+            lblOp5.Location = new Point(26, 261);
             lblOp5.Name = "lblOp5";
             lblOp5.Size = new Size(87, 24);
             lblOp5.TabIndex = 64;
@@ -1226,7 +1225,7 @@
             // 
             lblOp4.AutoSize = true;
             lblOp4.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp4.Location = new Point(17, 204);
+            lblOp4.Location = new Point(27, 228);
             lblOp4.Name = "lblOp4";
             lblOp4.Size = new Size(87, 24);
             lblOp4.TabIndex = 63;
@@ -1237,7 +1236,7 @@
             // 
             lblOp3.AutoSize = true;
             lblOp3.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp3.Location = new Point(17, 168);
+            lblOp3.Location = new Point(27, 192);
             lblOp3.Name = "lblOp3";
             lblOp3.Size = new Size(87, 24);
             lblOp3.TabIndex = 62;
@@ -1248,7 +1247,7 @@
             // 
             lblOp2.AutoSize = true;
             lblOp2.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp2.Location = new Point(17, 133);
+            lblOp2.Location = new Point(27, 157);
             lblOp2.Name = "lblOp2";
             lblOp2.Size = new Size(87, 24);
             lblOp2.TabIndex = 61;
@@ -1259,7 +1258,7 @@
             // 
             lblOp1.AutoSize = true;
             lblOp1.Font = new Font("Microsoft Sans Serif", 14.25F);
-            lblOp1.Location = new Point(21, 98);
+            lblOp1.Location = new Point(31, 122);
             lblOp1.Name = "lblOp1";
             lblOp1.Size = new Size(87, 24);
             lblOp1.TabIndex = 60;
@@ -1296,7 +1295,7 @@
             btnRemoverAlternativa.BackgroundImageLayout = ImageLayout.Stretch;
             btnRemoverAlternativa.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRemoverAlternativa.ForeColor = Color.White;
-            btnRemoverAlternativa.Location = new Point(674, 166);
+            btnRemoverAlternativa.Location = new Point(780, 182);
             btnRemoverAlternativa.Name = "btnRemoverAlternativa";
             btnRemoverAlternativa.Size = new Size(45, 45);
             btnRemoverAlternativa.TabIndex = 57;
@@ -1311,7 +1310,7 @@
             btnAdiconarAlternativa.BackgroundImageLayout = ImageLayout.Stretch;
             btnAdiconarAlternativa.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdiconarAlternativa.ForeColor = Color.White;
-            btnAdiconarAlternativa.Location = new Point(674, 108);
+            btnAdiconarAlternativa.Location = new Point(780, 123);
             btnAdiconarAlternativa.Name = "btnAdiconarAlternativa";
             btnAdiconarAlternativa.Size = new Size(45, 45);
             btnAdiconarAlternativa.TabIndex = 56;
@@ -1321,99 +1320,100 @@
             // 
             // txtPergunta
             // 
-            txtPergunta.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtPergunta.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPergunta.Location = new Point(106, 18);
+            txtPergunta.Multiline = true;
             txtPergunta.Name = "txtPergunta";
-            txtPergunta.Size = new Size(644, 29);
+            txtPergunta.Size = new Size(909, 53);
             txtPergunta.TabIndex = 54;
             // 
             // txtOpcao10
             // 
-            txtOpcao10.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao10.Location = new Point(401, 238);
+            txtOpcao10.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao10.Location = new Point(468, 265);
             txtOpcao10.Name = "txtOpcao10";
-            txtOpcao10.Size = new Size(193, 29);
+            txtOpcao10.Size = new Size(238, 26);
             txtOpcao10.TabIndex = 53;
             txtOpcao10.Visible = false;
             // 
             // txtOpcao9
             // 
-            txtOpcao9.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao9.Location = new Point(401, 203);
+            txtOpcao9.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao9.Location = new Point(468, 230);
             txtOpcao9.Name = "txtOpcao9";
-            txtOpcao9.Size = new Size(193, 29);
+            txtOpcao9.Size = new Size(238, 26);
             txtOpcao9.TabIndex = 52;
             txtOpcao9.Visible = false;
             // 
             // txtOpcao8
             // 
-            txtOpcao8.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao8.Location = new Point(401, 168);
+            txtOpcao8.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao8.Location = new Point(468, 192);
             txtOpcao8.Name = "txtOpcao8";
-            txtOpcao8.Size = new Size(193, 29);
+            txtOpcao8.Size = new Size(238, 26);
             txtOpcao8.TabIndex = 51;
             txtOpcao8.Visible = false;
             // 
             // txtOpcao7
             // 
-            txtOpcao7.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao7.Location = new Point(401, 133);
+            txtOpcao7.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao7.Location = new Point(468, 155);
             txtOpcao7.Name = "txtOpcao7";
-            txtOpcao7.Size = new Size(193, 29);
+            txtOpcao7.Size = new Size(238, 26);
             txtOpcao7.TabIndex = 50;
             txtOpcao7.Visible = false;
             // 
             // txtOpcao6
             // 
-            txtOpcao6.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao6.Location = new Point(401, 98);
+            txtOpcao6.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao6.Location = new Point(468, 123);
             txtOpcao6.Name = "txtOpcao6";
-            txtOpcao6.Size = new Size(193, 29);
+            txtOpcao6.Size = new Size(238, 26);
             txtOpcao6.TabIndex = 49;
             txtOpcao6.Visible = false;
             // 
             // txtOpcao5
             // 
-            txtOpcao5.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao5.Location = new Point(105, 235);
+            txtOpcao5.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao5.Location = new Point(115, 259);
             txtOpcao5.Name = "txtOpcao5";
-            txtOpcao5.Size = new Size(193, 29);
+            txtOpcao5.Size = new Size(239, 26);
             txtOpcao5.TabIndex = 48;
             txtOpcao5.Visible = false;
             // 
             // txtOpcao4
             // 
-            txtOpcao4.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao4.Location = new Point(106, 202);
+            txtOpcao4.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao4.Location = new Point(116, 226);
             txtOpcao4.Name = "txtOpcao4";
-            txtOpcao4.Size = new Size(193, 29);
+            txtOpcao4.Size = new Size(238, 26);
             txtOpcao4.TabIndex = 47;
             txtOpcao4.Visible = false;
             // 
             // txtOpcao3
             // 
-            txtOpcao3.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao3.Location = new Point(106, 166);
+            txtOpcao3.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao3.Location = new Point(116, 190);
             txtOpcao3.Name = "txtOpcao3";
-            txtOpcao3.Size = new Size(193, 29);
+            txtOpcao3.Size = new Size(238, 26);
             txtOpcao3.TabIndex = 46;
             txtOpcao3.Visible = false;
             // 
             // txtOpcao2
             // 
-            txtOpcao2.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao2.Location = new Point(106, 131);
+            txtOpcao2.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao2.Location = new Point(116, 155);
             txtOpcao2.Name = "txtOpcao2";
-            txtOpcao2.Size = new Size(193, 29);
+            txtOpcao2.Size = new Size(238, 26);
             txtOpcao2.TabIndex = 45;
             txtOpcao2.Visible = false;
             // 
             // txtOpcao1
             // 
-            txtOpcao1.Font = new Font("Microsoft Sans Serif", 14.25F);
-            txtOpcao1.Location = new Point(106, 96);
+            txtOpcao1.Font = new Font("Microsoft Sans Serif", 12F);
+            txtOpcao1.Location = new Point(116, 120);
             txtOpcao1.Name = "txtOpcao1";
-            txtOpcao1.Size = new Size(193, 29);
+            txtOpcao1.Size = new Size(238, 26);
             txtOpcao1.TabIndex = 44;
             txtOpcao1.Visible = false;
             txtOpcao1.TextChanged += txtOpcao1_TextChanged;
@@ -1429,7 +1429,7 @@
             btnDeletarPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnDeletarPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnDeletarPerguntas.Location = new Point(831, 185);
+            btnDeletarPerguntas.Location = new Point(831, 182);
             btnDeletarPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnDeletarPerguntas.Name = "btnDeletarPerguntas";
             btnDeletarPerguntas.Size = new Size(128, 46);
@@ -1462,7 +1462,7 @@
             btnVoltarHomePerguntas.BackgroundImage = (Image)resources.GetObject("btnVoltarHomePerguntas.BackgroundImage");
             btnVoltarHomePerguntas.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltarHomePerguntas.FlatAppearance.BorderSize = 0;
-            btnVoltarHomePerguntas.Location = new Point(1034, 20);
+            btnVoltarHomePerguntas.Location = new Point(1024, 17);
             btnVoltarHomePerguntas.Name = "btnVoltarHomePerguntas";
             btnVoltarHomePerguntas.Size = new Size(70, 68);
             btnVoltarHomePerguntas.TabIndex = 45;

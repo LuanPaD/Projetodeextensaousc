@@ -325,7 +325,7 @@
             panel1.Controls.Add(lblAvaliaçõesRespondidas);
             panel1.Controls.Add(lblAvaliações);
             panel1.Controls.Add(pictureBox5);
-            panel1.Location = new Point(24, 78);
+            panel1.Location = new Point(24, 88);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(221, 136);
@@ -381,7 +381,7 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(pictureBox7);
-            panel2.Location = new Point(251, 81);
+            panel2.Location = new Point(251, 91);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(296, 136);
@@ -437,7 +437,7 @@
             panel3.Controls.Add(label6);
             panel3.Controls.Add(label7);
             panel3.Controls.Add(pictureBox6);
-            panel3.Location = new Point(566, 81);
+            panel3.Location = new Point(566, 91);
             panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
             panel3.Size = new Size(236, 136);
@@ -489,7 +489,7 @@
             // 
             lblPeriodo.Anchor = AnchorStyles.None;
             lblPeriodo.AutoSize = true;
-            lblPeriodo.Location = new Point(720, 304);
+            lblPeriodo.Location = new Point(720, 314);
             lblPeriodo.Name = "lblPeriodo";
             lblPeriodo.Size = new Size(48, 15);
             lblPeriodo.TabIndex = 6;
@@ -500,7 +500,7 @@
             // 
             dtDataInicio.Anchor = AnchorStyles.None;
             dtDataInicio.Enabled = false;
-            dtDataInicio.Location = new Point(716, 323);
+            dtDataInicio.Location = new Point(716, 333);
             dtDataInicio.Margin = new Padding(3, 2, 3, 2);
             dtDataInicio.Name = "dtDataInicio";
             dtDataInicio.Size = new Size(262, 23);
@@ -511,7 +511,7 @@
             // 
             lblAte.Anchor = AnchorStyles.None;
             lblAte.AutoSize = true;
-            lblAte.Location = new Point(716, 352);
+            lblAte.Location = new Point(716, 362);
             lblAte.Name = "lblAte";
             lblAte.Size = new Size(23, 15);
             lblAte.TabIndex = 8;
@@ -522,7 +522,7 @@
             // 
             dtDataFinal.Anchor = AnchorStyles.None;
             dtDataFinal.Enabled = false;
-            dtDataFinal.Location = new Point(716, 370);
+            dtDataFinal.Location = new Point(716, 380);
             dtDataFinal.Margin = new Padding(3, 2, 3, 2);
             dtDataFinal.Name = "dtDataFinal";
             dtDataFinal.Size = new Size(262, 23);
@@ -533,7 +533,7 @@
             // 
             pnlGraficos.Anchor = AnchorStyles.None;
             pnlGraficos.Controls.Add(chtGrafico1);
-            pnlGraficos.Location = new Point(42, 239);
+            pnlGraficos.Location = new Point(42, 249);
             pnlGraficos.Margin = new Padding(3, 2, 3, 2);
             pnlGraficos.Name = "pnlGraficos";
             pnlGraficos.Size = new Size(623, 265);
@@ -561,7 +561,7 @@
             // 
             lblSetor.Anchor = AnchorStyles.None;
             lblSetor.AutoSize = true;
-            lblSetor.Location = new Point(716, 396);
+            lblSetor.Location = new Point(716, 406);
             lblSetor.Name = "lblSetor";
             lblSetor.Size = new Size(34, 15);
             lblSetor.TabIndex = 17;
@@ -573,7 +573,7 @@
             cmbSetores.Anchor = AnchorStyles.None;
             cmbSetores.Enabled = false;
             cmbSetores.FormattingEnabled = true;
-            cmbSetores.Location = new Point(716, 414);
+            cmbSetores.Location = new Point(718, 429);
             cmbSetores.Margin = new Padding(3, 2, 3, 2);
             cmbSetores.Name = "cmbSetores";
             cmbSetores.Size = new Size(260, 23);
@@ -588,7 +588,7 @@
             btnExportaPdf.BackgroundImageLayout = ImageLayout.Stretch;
             btnExportaPdf.FlatAppearance.BorderSize = 0;
             btnExportaPdf.FlatStyle = FlatStyle.Flat;
-            btnExportaPdf.Location = new Point(716, 445);
+            btnExportaPdf.Location = new Point(716, 469);
             btnExportaPdf.Name = "btnExportaPdf";
             btnExportaPdf.Size = new Size(262, 45);
             btnExportaPdf.TabIndex = 19;
@@ -603,7 +603,7 @@
             btnExportaExcel.BackgroundImageLayout = ImageLayout.Stretch;
             btnExportaExcel.FlatAppearance.BorderSize = 0;
             btnExportaExcel.FlatStyle = FlatStyle.Flat;
-            btnExportaExcel.Location = new Point(716, 507);
+            btnExportaExcel.Location = new Point(716, 517);
             btnExportaExcel.Name = "btnExportaExcel";
             btnExportaExcel.Size = new Size(262, 45);
             btnExportaExcel.TabIndex = 20;
@@ -618,7 +618,7 @@
             panel5.Controls.Add(lbl7);
             panel5.Controls.Add(label5);
             panel5.Controls.Add(pictureBox4);
-            panel5.Location = new Point(821, 81);
+            panel5.Location = new Point(821, 91);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
             panel5.Size = new Size(236, 136);
@@ -672,11 +672,10 @@
             tbcDashboard.Controls.Add(tabPageDashboard);
             tbcDashboard.Controls.Add(tabPagePerguntas);
             tbcDashboard.Controls.Add(tabPageSugestoes);
-            tbcDashboard.Dock = DockStyle.Fill;
-            tbcDashboard.Location = new Point(223, 0);
+            tbcDashboard.Location = new Point(223, -21);
             tbcDashboard.Name = "tbcDashboard";
             tbcDashboard.SelectedIndex = 0;
-            tbcDashboard.Size = new Size(1147, 749);
+            tbcDashboard.Size = new Size(1147, 770);
             tbcDashboard.TabIndex = 21;
             // 
             // tabPageDashboard
@@ -686,7 +685,7 @@
             tabPageDashboard.Location = new Point(4, 24);
             tabPageDashboard.Name = "tabPageDashboard";
             tabPageDashboard.Padding = new Padding(3);
-            tabPageDashboard.Size = new Size(1139, 721);
+            tabPageDashboard.Size = new Size(1139, 742);
             tabPageDashboard.TabIndex = 0;
             tabPageDashboard.Text = "Dashboard";
             tabPageDashboard.UseVisualStyleBackColor = true;
@@ -713,16 +712,16 @@
             panel8.Dock = DockStyle.Fill;
             panel8.Location = new Point(3, 76);
             panel8.Name = "panel8";
-            panel8.Size = new Size(1133, 642);
+            panel8.Size = new Size(1133, 663);
             panel8.TabIndex = 21;
             // 
             // lblTipoDeRelatorio
             // 
             lblTipoDeRelatorio.Anchor = AnchorStyles.None;
             lblTipoDeRelatorio.AutoSize = true;
-            lblTipoDeRelatorio.Location = new Point(720, 248);
+            lblTipoDeRelatorio.Location = new Point(716, 258);
             lblTipoDeRelatorio.Name = "lblTipoDeRelatorio";
-            lblTipoDeRelatorio.Size = new Size(96, 15);
+            lblTipoDeRelatorio.Size = new Size(97, 15);
             lblTipoDeRelatorio.TabIndex = 24;
             lblTipoDeRelatorio.Text = "Tipo de Relatório";
             // 
@@ -731,7 +730,7 @@
             cmbTipoRelatorio.Anchor = AnchorStyles.None;
             cmbTipoRelatorio.FormattingEnabled = true;
             cmbTipoRelatorio.Items.AddRange(new object[] { "Avaliações", "Admnistradores", "Atendentes" });
-            cmbTipoRelatorio.Location = new Point(722, 266);
+            cmbTipoRelatorio.Location = new Point(716, 275);
             cmbTipoRelatorio.Margin = new Padding(3, 2, 3, 2);
             cmbTipoRelatorio.Name = "cmbTipoRelatorio";
             cmbTipoRelatorio.Size = new Size(260, 23);
@@ -742,7 +741,7 @@
             // 
             chkSetor.Anchor = AnchorStyles.None;
             chkSetor.AutoSize = true;
-            chkSetor.Location = new Point(917, 396);
+            chkSetor.Location = new Point(928, 407);
             chkSetor.Margin = new Padding(3, 2, 3, 2);
             chkSetor.Name = "chkSetor";
             chkSetor.Size = new Size(54, 19);
@@ -756,7 +755,7 @@
             // 
             chkPeriodo.Anchor = AnchorStyles.None;
             chkPeriodo.AutoSize = true;
-            chkPeriodo.Location = new Point(928, 300);
+            chkPeriodo.Location = new Point(928, 310);
             chkPeriodo.Margin = new Padding(3, 2, 3, 2);
             chkPeriodo.Name = "chkPeriodo";
             chkPeriodo.Size = new Size(54, 19);
@@ -784,7 +783,7 @@
             tabPagePerguntas.Location = new Point(4, 24);
             tabPagePerguntas.Name = "tabPagePerguntas";
             tabPagePerguntas.Padding = new Padding(3);
-            tabPagePerguntas.Size = new Size(1139, 721);
+            tabPagePerguntas.Size = new Size(1139, 742);
             tabPagePerguntas.TabIndex = 1;
             tabPagePerguntas.Text = "Perguntas";
             tabPagePerguntas.UseVisualStyleBackColor = true;
@@ -797,7 +796,7 @@
             pnlEstaticoPerguntas.Controls.Add(label9);
             pnlEstaticoPerguntas.Controls.Add(lblSetorAvaPerguntas);
             pnlEstaticoPerguntas.Controls.Add(pictureBox9);
-            pnlEstaticoPerguntas.Location = new Point(15, 106);
+            pnlEstaticoPerguntas.Location = new Point(15, 117);
             pnlEstaticoPerguntas.Margin = new Padding(3, 2, 3, 2);
             pnlEstaticoPerguntas.Name = "pnlEstaticoPerguntas";
             pnlEstaticoPerguntas.Size = new Size(222, 127);
@@ -850,7 +849,7 @@
             // 
             lblPergunta.Anchor = AnchorStyles.None;
             lblPergunta.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPergunta.Location = new Point(349, 156);
+            lblPergunta.Location = new Point(349, 167);
             lblPergunta.Name = "lblPergunta";
             lblPergunta.Size = new Size(607, 61);
             lblPergunta.TabIndex = 53;
@@ -863,9 +862,9 @@
             btnGerarGrafico.BackColor = Color.Brown;
             btnGerarGrafico.BackgroundImage = (Image)resources.GetObject("btnGerarGrafico.BackgroundImage");
             btnGerarGrafico.BackgroundImageLayout = ImageLayout.Stretch;
-            btnGerarGrafico.Location = new Point(962, 167);
+            btnGerarGrafico.Location = new Point(962, 174);
             btnGerarGrafico.Name = "btnGerarGrafico";
-            btnGerarGrafico.Size = new Size(66, 40);
+            btnGerarGrafico.Size = new Size(66, 50);
             btnGerarGrafico.TabIndex = 52;
             btnGerarGrafico.UseVisualStyleBackColor = false;
             btnGerarGrafico.Click += btnGerarGrafico_Click;
@@ -874,10 +873,10 @@
             // 
             panel7.Anchor = AnchorStyles.None;
             panel7.Controls.Add(chartGraficoRespostas);
-            panel7.Location = new Point(349, 261);
+            panel7.Location = new Point(373, 293);
             panel7.Margin = new Padding(3, 2, 3, 2);
             panel7.Name = "panel7";
-            panel7.Size = new Size(615, 301);
+            panel7.Size = new Size(655, 358);
             panel7.TabIndex = 51;
             // 
             // chartGraficoRespostas
@@ -894,7 +893,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             chartGraficoRespostas.Series.Add(series2);
-            chartGraficoRespostas.Size = new Size(615, 301);
+            chartGraficoRespostas.Size = new Size(655, 358);
             chartGraficoRespostas.TabIndex = 21;
             chartGraficoRespostas.Text = "Gráfico";
             // 
@@ -911,7 +910,7 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             GridPerguntasRelatorio.DefaultCellStyle = dataGridViewCellStyle1;
-            GridPerguntasRelatorio.Location = new Point(19, 264);
+            GridPerguntasRelatorio.Location = new Point(33, 274);
             GridPerguntasRelatorio.MultiSelect = false;
             GridPerguntasRelatorio.Name = "GridPerguntasRelatorio";
             GridPerguntasRelatorio.RowHeadersWidth = 51;
@@ -924,7 +923,7 @@
             label13.Anchor = AnchorStyles.None;
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(520, 110);
+            label13.Location = new Point(520, 117);
             label13.Name = "label13";
             label13.Size = new Size(83, 30);
             label13.TabIndex = 44;
@@ -935,7 +934,7 @@
             label14.Anchor = AnchorStyles.None;
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.Location = new Point(243, 106);
+            label14.Location = new Point(243, 117);
             label14.Name = "label14";
             label14.Size = new Size(61, 30);
             label14.TabIndex = 48;
@@ -946,7 +945,7 @@
             label15.Anchor = AnchorStyles.None;
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label15.Location = new Point(754, 110);
+            label15.Location = new Point(752, 117);
             label15.Name = "label15";
             label15.Size = new Size(42, 30);
             label15.TabIndex = 46;
@@ -957,7 +956,7 @@
             dataFinalPergunta.Anchor = AnchorStyles.None;
             dataFinalPergunta.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataFinalPergunta.Format = DateTimePickerFormat.Short;
-            dataFinalPergunta.Location = new Point(813, 106);
+            dataFinalPergunta.Location = new Point(813, 117);
             dataFinalPergunta.Margin = new Padding(3, 2, 3, 2);
             dataFinalPergunta.Name = "dataFinalPergunta";
             dataFinalPergunta.Size = new Size(126, 35);
@@ -969,7 +968,7 @@
             dataInicialPerguntas.CustomFormat = "";
             dataInicialPerguntas.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataInicialPerguntas.Format = DateTimePickerFormat.Short;
-            dataInicialPerguntas.Location = new Point(609, 106);
+            dataInicialPerguntas.Location = new Point(609, 117);
             dataInicialPerguntas.Margin = new Padding(3, 2, 3, 2);
             dataInicialPerguntas.Name = "dataInicialPerguntas";
             dataInicialPerguntas.Size = new Size(128, 35);
@@ -981,7 +980,7 @@
             cmbSetoresPerguntas.Anchor = AnchorStyles.None;
             cmbSetoresPerguntas.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbSetoresPerguntas.FormattingEnabled = true;
-            cmbSetoresPerguntas.Location = new Point(310, 105);
+            cmbSetoresPerguntas.Location = new Point(310, 116);
             cmbSetoresPerguntas.Margin = new Padding(3, 2, 3, 2);
             cmbSetoresPerguntas.Name = "cmbSetoresPerguntas";
             cmbSetoresPerguntas.Size = new Size(204, 38);
@@ -997,7 +996,7 @@
             btnFiltraSetorPergunta.FlatAppearance.BorderSize = 0;
             btnFiltraSetorPergunta.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnFiltraSetorPergunta.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
-            btnFiltraSetorPergunta.Location = new Point(956, 103);
+            btnFiltraSetorPergunta.Location = new Point(962, 114);
             btnFiltraSetorPergunta.Margin = new Padding(3, 2, 3, 2);
             btnFiltraSetorPergunta.Name = "btnFiltraSetorPergunta";
             btnFiltraSetorPergunta.Size = new Size(48, 45);
@@ -1085,7 +1084,7 @@
             tabPageSugestoes.Location = new Point(4, 24);
             tabPageSugestoes.Name = "tabPageSugestoes";
             tabPageSugestoes.Padding = new Padding(3);
-            tabPageSugestoes.Size = new Size(1139, 721);
+            tabPageSugestoes.Size = new Size(1139, 742);
             tabPageSugestoes.TabIndex = 2;
             tabPageSugestoes.Text = "Sugestões";
             tabPageSugestoes.UseVisualStyleBackColor = true;
@@ -1095,7 +1094,7 @@
             label10.Anchor = AnchorStyles.None;
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(283, 209);
+            label10.Location = new Point(429, 194);
             label10.Name = "label10";
             label10.Size = new Size(83, 30);
             label10.TabIndex = 37;
@@ -1106,7 +1105,7 @@
             label11.Anchor = AnchorStyles.None;
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(-6, 207);
+            label11.Location = new Point(140, 192);
             label11.Name = "label11";
             label11.Size = new Size(61, 30);
             label11.TabIndex = 41;
@@ -1117,7 +1116,7 @@
             label12.Anchor = AnchorStyles.None;
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.Location = new Point(517, 209);
+            label12.Location = new Point(663, 194);
             label12.Name = "label12";
             label12.Size = new Size(42, 30);
             label12.TabIndex = 39;
@@ -1128,7 +1127,7 @@
             dataFinalSugestoes.Anchor = AnchorStyles.None;
             dataFinalSugestoes.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataFinalSugestoes.Format = DateTimePickerFormat.Short;
-            dataFinalSugestoes.Location = new Point(565, 207);
+            dataFinalSugestoes.Location = new Point(711, 192);
             dataFinalSugestoes.Margin = new Padding(3, 2, 3, 2);
             dataFinalSugestoes.Name = "dataFinalSugestoes";
             dataFinalSugestoes.Size = new Size(126, 35);
@@ -1140,7 +1139,7 @@
             dataInicialSugestoes.CustomFormat = "";
             dataInicialSugestoes.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataInicialSugestoes.Format = DateTimePickerFormat.Short;
-            dataInicialSugestoes.Location = new Point(372, 207);
+            dataInicialSugestoes.Location = new Point(518, 192);
             dataInicialSugestoes.Margin = new Padding(3, 2, 3, 2);
             dataInicialSugestoes.Name = "dataInicialSugestoes";
             dataInicialSugestoes.Size = new Size(128, 35);
@@ -1152,7 +1151,7 @@
             cmbSetoresSugestoes.Anchor = AnchorStyles.None;
             cmbSetoresSugestoes.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbSetoresSugestoes.FormattingEnabled = true;
-            cmbSetoresSugestoes.Location = new Point(61, 204);
+            cmbSetoresSugestoes.Location = new Point(207, 189);
             cmbSetoresSugestoes.Margin = new Padding(3, 2, 3, 2);
             cmbSetoresSugestoes.Name = "cmbSetoresSugestoes";
             cmbSetoresSugestoes.Size = new Size(204, 38);
@@ -1168,7 +1167,7 @@
             btnCarregarSetoresSugestao.FlatAppearance.BorderSize = 0;
             btnCarregarSetoresSugestao.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnCarregarSetoresSugestao.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
-            btnCarregarSetoresSugestao.Location = new Point(718, 199);
+            btnCarregarSetoresSugestao.Location = new Point(864, 184);
             btnCarregarSetoresSugestao.Margin = new Padding(3, 2, 3, 2);
             btnCarregarSetoresSugestao.Name = "btnCarregarSetoresSugestao";
             btnCarregarSetoresSugestao.Size = new Size(54, 54);
@@ -1191,7 +1190,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             gridSugestoesDash.DefaultCellStyle = dataGridViewCellStyle2;
-            gridSugestoesDash.Location = new Point(104, 296);
+            gridSugestoesDash.Location = new Point(250, 281);
             gridSugestoesDash.MultiSelect = false;
             gridSugestoesDash.Name = "gridSugestoesDash";
             gridSugestoesDash.RowHeadersWidth = 51;

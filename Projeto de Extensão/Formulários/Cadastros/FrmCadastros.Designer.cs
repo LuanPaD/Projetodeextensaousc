@@ -676,7 +676,7 @@
             // 
             // txtAlternativa10
             // 
-            txtAlternativa10.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa10.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa10.Location = new Point(71, 551);
             txtAlternativa10.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa10.Multiline = true;
@@ -686,7 +686,7 @@
             // 
             // txtAlternativa9
             // 
-            txtAlternativa9.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa9.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa9.Location = new Point(72, 515);
             txtAlternativa9.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa9.Multiline = true;
@@ -696,7 +696,7 @@
             // 
             // txtAlternativa8
             // 
-            txtAlternativa8.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa8.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa8.Location = new Point(72, 480);
             txtAlternativa8.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa8.Multiline = true;
@@ -706,7 +706,7 @@
             // 
             // txtAlternativa7
             // 
-            txtAlternativa7.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa7.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa7.Location = new Point(72, 445);
             txtAlternativa7.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa7.Multiline = true;
@@ -716,7 +716,7 @@
             // 
             // txtAlternativa6
             // 
-            txtAlternativa6.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa6.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa6.Location = new Point(72, 409);
             txtAlternativa6.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa6.Multiline = true;
@@ -726,7 +726,7 @@
             // 
             // txtAlternativa5
             // 
-            txtAlternativa5.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa5.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa5.Location = new Point(72, 374);
             txtAlternativa5.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa5.Multiline = true;
@@ -736,7 +736,7 @@
             // 
             // txtAlternativa4
             // 
-            txtAlternativa4.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa4.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa4.Location = new Point(72, 339);
             txtAlternativa4.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa4.Multiline = true;
@@ -746,7 +746,7 @@
             // 
             // txtAlternativa3
             // 
-            txtAlternativa3.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa3.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa3.Location = new Point(72, 303);
             txtAlternativa3.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa3.Multiline = true;
@@ -794,7 +794,7 @@
             // 
             // txtAlternativa2
             // 
-            txtAlternativa2.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa2.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa2.Location = new Point(72, 268);
             txtAlternativa2.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa2.Multiline = true;
@@ -804,7 +804,7 @@
             // 
             // txtAlternativa1
             // 
-            txtAlternativa1.Font = new Font("Segoe UI", 8.25F);
+            txtAlternativa1.Font = new Font("Segoe UI", 9.75F);
             txtAlternativa1.Location = new Point(72, 232);
             txtAlternativa1.Margin = new Padding(3, 2, 3, 2);
             txtAlternativa1.Multiline = true;
