@@ -51,7 +51,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                         SELECT a.atendente_id, a.nome, s.nome AS setor, a.email
                         FROM atendente a
                         JOIN setores s ON a.setor_id = s.setor_id
-                        WHERE a.atendente_id <> 1;";
+                        WHERE a.atendente_id <> 9;";
             await CarregarDadosAsync(sqlA, GridAtendentes, "atendente_id");
         }
 
@@ -59,7 +59,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnSetor_Click(object sender, EventArgs e)
         {
-            await CarregarDadosAsync("SELECT * FROM setores;", GridSetores, "setor_id");
+            await CarregarDadosAsync("SELECT * FROM setores WHERE setor_id <> 3;", GridSetores, "setor_id");
             tbcPaginas.SelectedTab = tbSetor;
         }
 
@@ -493,7 +493,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async Task<bool> DeletaSetorAsync(int SetorId)
         {
-            var resultado = MessageBox.Show("Tem certeza que deseja excluir este setor e todos os atendentes,perguntas,respostas e sugestões associados?",
+            var resultado = MessageBox.Show("Tem certeza que deseja excluir este setor e todos os atendentes, perguntas, respostas e sugestões associados?",
                                             "Confirmação de Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
@@ -502,85 +502,80 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 {
                     try
                     {
-                        //Exclui todas as respostas asssociadas ao setor
-                        string sqlrespostas = @"
-                        DELETE FROM respostas
-                        WHERE avaliacao_id IN (SELECT avaliacao_id FROM avaliacao WHERE setor_id = @SetorId);";
-                        using (var cmdDeletaResposta = new MySqlCommand(sqlrespostas, ClsConexao.Conexao, transacao))
+                        // Exclui todas as respostas associadas ao setor
+                        string sqlRespostas = @"
+                            DELETE FROM respostas
+                            WHERE avaliacao_id IN (SELECT avaliacao_id FROM avaliacao WHERE setor_id = @SetorId);";
+                        using (var cmdDeletaResposta = new MySqlCommand(sqlRespostas, ClsConexao.Conexao, transacao))
                         {
                             cmdDeletaResposta.Parameters.AddWithValue("@SetorId", SetorId);
                             await cmdDeletaResposta.ExecuteNonQueryAsync();
                         }
 
-                        // Exclui todas avaliações assosiados ao setor
+                        // Exclui todas as avaliações associadas ao setor
                         string sqlAvaliacao = @"
-                        DELETE FROM avaliacao
-                        WHERE setor_id = @SetorId";
-
+                            DELETE FROM avaliacao
+                            WHERE setor_id = @SetorId";
                         using (var cmdDeletaAvaliacao = new MySqlCommand(sqlAvaliacao, ClsConexao.Conexao, transacao))
                         {
                             cmdDeletaAvaliacao.Parameters.AddWithValue("@SetorId", SetorId);
                             await cmdDeletaAvaliacao.ExecuteNonQueryAsync();
                         }
 
+                        // Exclui sugestões associadas ao setor
                         string sqlSugestoes = @"
-                        DELETE FROM sugestoes
-                        WHERE setor_id = @setorId";
+                            DELETE FROM sugestoes
+                            WHERE setor_id = @SetorId";
                         using (var cmdDeletaSugestao = new MySqlCommand(sqlSugestoes, ClsConexao.Conexao, transacao))
                         {
                             cmdDeletaSugestao.Parameters.AddWithValue("@SetorId", SetorId);
                             await cmdDeletaSugestao.ExecuteNonQueryAsync();
                         }
 
-                        //Exclui Opções associados ao setor 
+                        // Exclui opções associadas ao setor
                         string sqlOpcoes = @"
-                        DELETE FROM opcoes
-                        WHERE setor_id = @SetorId";
-
+                            DELETE FROM opcoes
+                            WHERE setor_id = @SetorId";
                         using (var cmdDeletaOpcao = new MySqlCommand(sqlOpcoes, ClsConexao.Conexao, transacao))
                         {
                             cmdDeletaOpcao.Parameters.AddWithValue("@SetorId", SetorId);
                             await cmdDeletaOpcao.ExecuteNonQueryAsync();
                         }
 
-                        //Exclui Pergunta associados ao setor
+                        // Exclui perguntas associadas ao setor
                         string sqlPerguntas = @"
-                        DELETE FROM perguntas
-                        WHERE setor_id = @SetorId";
-
+                            DELETE FROM perguntas
+                            WHERE setor_id = @SetorId";
                         using (var cmdDeletaPergunta = new MySqlCommand(sqlPerguntas, ClsConexao.Conexao, transacao))
                         {
                             cmdDeletaPergunta.Parameters.AddWithValue("@SetorId", SetorId);
                             await cmdDeletaPergunta.ExecuteNonQueryAsync();
                         }
 
-                        // Excluir fotos dos atendentes antes de excluir os atendentes
+                        // Exclui fotos dos atendentes antes de excluir os atendentes
                         string sqlDeletaFotos = @"
-                        DELETE FROM fotos
-                        WHERE atendente_id IN (SELECT atendente_id FROM atendente WHERE setor_id = @SetorId);";
-
+                            DELETE FROM fotos
+                            WHERE atendente_id IN (SELECT atendente_id FROM atendente WHERE setor_id = @SetorId);";
                         using (var cmdDeletaFotos = new MySqlCommand(sqlDeletaFotos, ClsConexao.Conexao, transacao))
                         {
                             cmdDeletaFotos.Parameters.AddWithValue("@SetorId", SetorId);
                             await cmdDeletaFotos.ExecuteNonQueryAsync();
                         }
 
-                        // Excluir atendentes associados ao setor
+                        // Exclui atendentes associados ao setor
                         string sqlAtendentes = @"
-                        DELETE FROM atendente
-                        WHERE setor_id = @SetorId";
-
+                            DELETE FROM atendente
+                            WHERE setor_id = @SetorId";
                         using (var cmdAtendentes = new MySqlCommand(sqlAtendentes, ClsConexao.Conexao, transacao))
                         {
                             cmdAtendentes.Parameters.AddWithValue("@SetorId", SetorId);
                             await cmdAtendentes.ExecuteNonQueryAsync();
                         }
 
-                        // Excluir o setor
+                        // Exclui o setor
                         string sqlSetor = @"
-                        DELETE FROM setores
-                        WHERE setor_id = @SetorId";
-
+                            DELETE FROM setores
+                            WHERE setor_id = @SetorId";
                         using (var cmdSetor = new MySqlCommand(sqlSetor, ClsConexao.Conexao, transacao))
                         {
                             cmdSetor.Parameters.AddWithValue("@SetorId", SetorId);
@@ -611,6 +606,8 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 return false;
             }
         }
+
+
 
 
         //Atualiza os dados dos setores e verifica se os campos estão preenchidos corretamente.
@@ -799,7 +796,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
 
         private async void btnCarregarSetores_Click(object sender, EventArgs e)
         {
-            await CarregarDadosAsync("SELECT * FROM setores;", GridSetores, "setor_id");
+            await CarregarDadosAsync("SELECT * FROM setores WHERE setor_id <> 3;", GridSetores, "setor_id");
         }
 
         private async void btnCarregaAdmin_Click(object sender, EventArgs e)
@@ -981,45 +978,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 MessageBox.Show("Erro ao deletar administrador: " + ex.Message);
             }
         }
-        private async Task DeletaAtendenteAsync(int atendenteId)
-        {
-            string sql = @"DELETE FROM fotos WHERE atendente_id = @atendenteId;
-                   DELETE FROM atendente WHERE atendente_id = @atendenteId;";
 
-            try
-            {
-                using (var connection = new MySqlConnection(ClsConexao.connectionString))
-                {
-                    await connection.OpenAsync();
-
-                    using (var transaction = await connection.BeginTransactionAsync())
-                    using (var cmd = new MySqlCommand(sql, connection, transaction))
-                    {
-                        cmd.Parameters.AddWithValue("@atendenteId", atendenteId);
-
-                        int rowsAffected = await cmd.ExecuteNonQueryAsync();
-                        await transaction.CommitAsync();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Atendente deletado com sucesso.");
-                            txtEmailAtendente.Text = string.Empty;
-                            txtNomeAtendente.Text = string.Empty;
-                            txtIdAtendente.Text = string.Empty;
-                            cmbListaDeSetores.SelectedIndex = 0;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nenhum Atendente encontrado com esse ID.");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao deletar Atendente: " + ex.Message);
-            }
-        }
 
         private async void btnSalvarPerguntas_Click(object sender, EventArgs e)
         {
@@ -1317,7 +1276,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 {
                     string sqlAlteraAvaliacao = @"
                     UPDATE avaliacao
-                    SET atendente_id = 1
+                    SET atendente_id = 9
                     WHERE atendente_id = @atendente_id";
 
                     using (var cmdAlteraAvaliacao = new MySqlCommand(sqlAlteraAvaliacao, ClsConexao.Conexao, transacao))
@@ -1412,6 +1371,11 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
                 MessageBox.Show("Erro ao deletar a pergunta e suas associações: " + ex.Message);
                 throw;
             }
+        }
+
+        private void txtOpcao1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

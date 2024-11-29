@@ -647,7 +647,7 @@
             lblErroPerguntas.Anchor = AnchorStyles.None;
             lblErroPerguntas.BackColor = Color.Transparent;
             lblErroPerguntas.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
-            lblErroPerguntas.ForeColor = Color.Red;
+            lblErroPerguntas.ForeColor = Color.Black;
             lblErroPerguntas.Location = new Point(71, 605);
             lblErroPerguntas.Name = "lblErroPerguntas";
             lblErroPerguntas.Size = new Size(671, 37);

@@ -99,6 +99,7 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
                     SELECT setores.nome AS setor_nome, COUNT(atendente.atendente_id) AS total
                     FROM setores
                     LEFT JOIN atendente ON atendente.setor_id = setores.setor_id
+                    WHERE setores.setor_id <> 3
                     GROUP BY setores.nome;";
 
                 var commandSetores = new MySqlCommand(querySetores, conexao);
@@ -266,14 +267,14 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
         }
 
 
-
+        //ERRO AQ BEM PROVAVELMENTE
                 private DataTable getAtendentes()
         {
             var conexao = ClsConexao.Conexao;
             DataTable atendentes = new DataTable();
             try
             {
-                string queryAtendentes = @"SELECT a.NOME, S.NOME AS 'SETOR', a.EMAIL FROM ATENDENTE A INNER JOIN SETORES S ON S.setor_id = A.setor_id;";
+                string queryAtendentes = @"SELECT a.NOME, S.NOME AS 'SETOR', a.EMAIL FROM ATENDENTE A INNER JOIN SETORES S ON S.setor_id = A.setor_id WHERE a.Setor_id <> 3;";
                 var commandAtendentes = new MySqlCommand(queryAtendentes, conexao);
                 var readerAtendentes = commandAtendentes.ExecuteReader();
 

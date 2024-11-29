@@ -299,8 +299,8 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
 
         private int calculaEspacamentoPorQtdAlternativas(int quantidade)
         {
-            if (quantidade <= 2) return 40;
-            if (quantidade <= 4) return 30;
+            if (quantidade == 2) return 30;
+            if (quantidade > 3) return 10;
             return 10;
         }
 
@@ -392,7 +392,11 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
             grbAlternativas.Controls.Clear();
 
             // Calcula a posição inicial para os botões
-            if (alternativas.Count <= 5)
+            if (alternativas.Count <= 2)
+            {
+                DuasOpcoes(alternativas, larguraGroupBox, alturaGroupBox, espacamentoVertical);
+            }
+            else if (alternativas.Count > 2 && alternativas.Count <= 5)
             {
                 DistribuirBotoesVerticalmente(alternativas, larguraGroupBox, alturaGroupBox, espacamentoVertical);
             }
@@ -402,9 +406,30 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
             }
         }
 
+
+        private void DuasOpcoes(List<Alternativa> alternativas, int larguraGroupBox, int alturaGroupBox, int espacamentoVertical)
+        {
+            int posicaoY = 250;  // Começar no topo do GroupBox
+
+            foreach (var alternativa in alternativas)
+            {
+                CustomButton btnAlternativa = CriarBotaoAlternativa(alternativa.Texto, alternativa.Id);
+                btnAlternativa.Click += BtnAlternativa_Click;
+
+                // Centraliza o botão horizontalmente
+                int posicaoX = (larguraGroupBox - btnAlternativa.Width) / 2;
+                btnAlternativa.Location = new Point(posicaoX, posicaoY);
+
+                grbAlternativas.Controls.Add(btnAlternativa);
+                posicaoY += btnAlternativa.Height + espacamentoVertical;
+            }
+        }
+
+
+
         private void DistribuirBotoesVerticalmente(List<Alternativa> alternativas, int larguraGroupBox, int alturaGroupBox, int espacamentoVertical)
         {
-            int posicaoY = 50;  // Começar no topo do GroupBox
+            int posicaoY = 150;  // Começar no topo do GroupBox
 
             foreach (var alternativa in alternativas)
             {
@@ -425,7 +450,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
             int numColunas = 2;
             int numLinhas = (int)Math.Ceiling(alternativas.Count / (double)numColunas);
             int larguraColuna = larguraGroupBox / numColunas;
-            int alturaBotao = 90;
+            int alturaBotao = 80;
 
             int posicaoX, posicaoY;
 
@@ -433,7 +458,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
             {
                 if (coluna == 0)
                 {
-                    posicaoX = (coluna * larguraColuna + (larguraColuna - 400) / 4) + 90;
+                    posicaoX = (coluna * larguraColuna + (larguraColuna - 400) / 4) + 80;
                 }
                 else
                 {
@@ -459,7 +484,10 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
                     posicaoY += alturaBotao + espacamentoVertical;
                 }
             }
+        
+
         }
+
 
         private CustomButton CriarBotaoAlternativa(string texto, int id)
         {
@@ -468,7 +496,7 @@ namespace Projeto_de_Extensão.Formulários.Perguntas
                 Text = texto,
                 Tag = id,  // Armazenando o id da alternativa no Tag do botão
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
-                Size = new Size(300, 70), // Tamanho do botão
+                Size = new Size(350, 80), // Tamanho do botão
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(231, 76, 60),
                 ForeColor = Color.White,

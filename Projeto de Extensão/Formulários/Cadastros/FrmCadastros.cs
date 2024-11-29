@@ -434,7 +434,7 @@ namespace Projeto_de_Extensao.Formulários.Admnistrativo
         // LISTA TODOS OS SETORES NO COMBOX
         public static async Task ListaTodosOsSetoresAsync(ComboBox comboBox)
         {
-            string sql = "SELECT * FROM setores";
+            string sql = "SELECT * FROM setores where setor_id <> 3;";
 
             try
             {

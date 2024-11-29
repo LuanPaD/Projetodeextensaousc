@@ -331,7 +331,7 @@
             tbcPaginas.Location = new Point(260, -24);
             tbcPaginas.Name = "tbcPaginas";
             tbcPaginas.SelectedIndex = 0;
-            tbcPaginas.Size = new Size(1143, 850);
+            tbcPaginas.Size = new Size(1113, 770);
             tbcPaginas.SizeMode = TabSizeMode.Fixed;
             tbcPaginas.TabIndex = 10;
             // 
@@ -351,7 +351,7 @@
             tbSetor.Location = new Point(4, 24);
             tbSetor.Name = "tbSetor";
             tbSetor.Padding = new Padding(3);
-            tbSetor.Size = new Size(1135, 822);
+            tbSetor.Size = new Size(1105, 742);
             tbSetor.TabIndex = 0;
             tbSetor.Text = "Setor";
             tbSetor.UseVisualStyleBackColor = true;
@@ -363,7 +363,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.FlatAppearance.BorderSize = 0;
-            button1.Location = new Point(1044, 20);
+            button1.Location = new Point(1014, 20);
             button1.Name = "button1";
             button1.Size = new Size(70, 68);
             button1.TabIndex = 45;
@@ -479,7 +479,7 @@
             btnEditarSetor.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btnEditarSetor.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnEditarSetor.FlatStyle = FlatStyle.Flat;
-            btnEditarSetor.Location = new Point(868, 274);
+            btnEditarSetor.Location = new Point(853, 234);
             btnEditarSetor.Margin = new Padding(3, 2, 3, 2);
             btnEditarSetor.Name = "btnEditarSetor";
             btnEditarSetor.Size = new Size(168, 53);
@@ -522,7 +522,7 @@
             btnVoltarParaMenu.BackgroundImage = (Image)resources.GetObject("btnVoltarParaMenu.BackgroundImage");
             btnVoltarParaMenu.BackgroundImageLayout = ImageLayout.Stretch;
             btnVoltarParaMenu.FlatAppearance.BorderSize = 0;
-            btnVoltarParaMenu.Location = new Point(1846, 23);
+            btnVoltarParaMenu.Location = new Point(1816, 23);
             btnVoltarParaMenu.Name = "btnVoltarParaMenu";
             btnVoltarParaMenu.Size = new Size(70, 68);
             btnVoltarParaMenu.TabIndex = 27;
@@ -533,7 +533,7 @@
             button3.Anchor = AnchorStyles.Left;
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(488, 956);
+            button3.Location = new Point(488, 916);
             button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
             button3.Size = new Size(243, 62);
@@ -545,7 +545,7 @@
             button4.Anchor = AnchorStyles.Left;
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
-            button4.Location = new Point(61, 958);
+            button4.Location = new Point(61, 918);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
             button4.Size = new Size(251, 56);
@@ -575,7 +575,7 @@
             tbAdmin.Location = new Point(4, 24);
             tbAdmin.Name = "tbAdmin";
             tbAdmin.Padding = new Padding(3);
-            tbAdmin.Size = new Size(1135, 822);
+            tbAdmin.Size = new Size(1105, 742);
             tbAdmin.TabIndex = 2;
             tbAdmin.Text = "Administradores";
             tbAdmin.UseVisualStyleBackColor = true;
@@ -799,7 +799,7 @@
             tbAtendentes.Location = new Point(4, 24);
             tbAtendentes.Name = "tbAtendentes";
             tbAtendentes.Padding = new Padding(3);
-            tbAtendentes.Size = new Size(1135, 822);
+            tbAtendentes.Size = new Size(1105, 742);
             tbAtendentes.TabIndex = 3;
             tbAtendentes.Text = "Atendentes";
             tbAtendentes.UseVisualStyleBackColor = true;
@@ -1049,7 +1049,7 @@
             tbPerguntas.Location = new Point(4, 24);
             tbPerguntas.Name = "tbPerguntas";
             tbPerguntas.Padding = new Padding(3);
-            tbPerguntas.Size = new Size(1135, 822);
+            tbPerguntas.Size = new Size(1105, 742);
             tbPerguntas.TabIndex = 4;
             tbPerguntas.Text = "Perguntas";
             tbPerguntas.UseVisualStyleBackColor = true;
@@ -1092,7 +1092,7 @@
             gbPerguntas.Font = new Font("Segoe UI", 14.25F);
             gbPerguntas.Location = new Point(6, 417);
             gbPerguntas.Name = "gbPerguntas";
-            gbPerguntas.Size = new Size(1035, 282);
+            gbPerguntas.Size = new Size(1035, 298);
             gbPerguntas.TabIndex = 47;
             gbPerguntas.TabStop = false;
             gbPerguntas.Visible = false;
@@ -1120,49 +1120,49 @@
             // 
             // cbxOrdemPerguntas
             // 
-            cbxOrdemPerguntas.Font = new Font("Microsoft Sans Serif", 9F);
+            cbxOrdemPerguntas.Font = new Font("Microsoft Sans Serif", 14.25F);
             cbxOrdemPerguntas.FormattingEnabled = true;
-            cbxOrdemPerguntas.Location = new Point(455, 56);
+            cbxOrdemPerguntas.Location = new Point(412, 53);
             cbxOrdemPerguntas.Name = "cbxOrdemPerguntas";
-            cbxOrdemPerguntas.Size = new Size(90, 23);
+            cbxOrdemPerguntas.Size = new Size(90, 32);
             cbxOrdemPerguntas.TabIndex = 73;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 9.75F);
-            label2.Location = new Point(46, 56);
+            label2.Font = new Font("Microsoft Sans Serif", 14.25F);
+            label2.Location = new Point(41, 57);
             label2.Name = "label2";
-            label2.Size = new Size(42, 16);
+            label2.Size = new Size(59, 24);
             label2.TabIndex = 72;
             label2.Text = "Setor:";
             // 
             // cmbListaDeSetoresPerguntas
             // 
-            cmbListaDeSetoresPerguntas.Font = new Font("Microsoft Sans Serif", 9F);
+            cmbListaDeSetoresPerguntas.Font = new Font("Microsoft Sans Serif", 14.25F);
             cmbListaDeSetoresPerguntas.FormattingEnabled = true;
-            cmbListaDeSetoresPerguntas.Location = new Point(106, 56);
+            cmbListaDeSetoresPerguntas.Location = new Point(106, 53);
             cmbListaDeSetoresPerguntas.Name = "cmbListaDeSetoresPerguntas";
-            cmbListaDeSetoresPerguntas.Size = new Size(253, 23);
+            cmbListaDeSetoresPerguntas.Size = new Size(253, 32);
             cmbListaDeSetoresPerguntas.TabIndex = 71;
             // 
             // lblOrdemPergunta
             // 
             lblOrdemPergunta.AutoSize = true;
-            lblOrdemPergunta.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOrdemPergunta.Location = new Point(427, 60);
+            lblOrdemPergunta.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOrdemPergunta.Location = new Point(375, 57);
             lblOrdemPergunta.Name = "lblOrdemPergunta";
-            lblOrdemPergunta.Size = new Size(22, 16);
+            lblOrdemPergunta.Size = new Size(31, 24);
             lblOrdemPergunta.TabIndex = 70;
             lblOrdemPergunta.Text = "Nº";
             // 
             // lblOp10
             // 
             lblOp10.AutoSize = true;
-            lblOp10.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp10.Location = new Point(309, 247);
+            lblOp10.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp10.Location = new Point(298, 241);
             lblOp10.Name = "lblOp10";
-            lblOp10.Size = new Size(68, 16);
+            lblOp10.Size = new Size(97, 24);
             lblOp10.TabIndex = 69;
             lblOp10.Text = "Opção 10:";
             lblOp10.Visible = false;
@@ -1170,10 +1170,10 @@
             // lblOp9
             // 
             lblOp9.AutoSize = true;
-            lblOp9.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp9.Location = new Point(317, 215);
+            lblOp9.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp9.Location = new Point(308, 204);
             lblOp9.Name = "lblOp9";
-            lblOp9.Size = new Size(61, 16);
+            lblOp9.Size = new Size(87, 24);
             lblOp9.TabIndex = 68;
             lblOp9.Text = "Opção 9:";
             lblOp9.Visible = false;
@@ -1181,10 +1181,10 @@
             // lblOp8
             // 
             lblOp8.AutoSize = true;
-            lblOp8.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp8.Location = new Point(317, 175);
+            lblOp8.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp8.Location = new Point(305, 168);
             lblOp8.Name = "lblOp8";
-            lblOp8.Size = new Size(61, 16);
+            lblOp8.Size = new Size(87, 24);
             lblOp8.TabIndex = 67;
             lblOp8.Text = "Opção 8:";
             lblOp8.Visible = false;
@@ -1192,10 +1192,10 @@
             // lblOp7
             // 
             lblOp7.AutoSize = true;
-            lblOp7.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp7.Location = new Point(318, 136);
+            lblOp7.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp7.Location = new Point(308, 136);
             lblOp7.Name = "lblOp7";
-            lblOp7.Size = new Size(61, 16);
+            lblOp7.Size = new Size(87, 24);
             lblOp7.TabIndex = 66;
             lblOp7.Text = "Opção 7:";
             lblOp7.Visible = false;
@@ -1203,10 +1203,10 @@
             // lblOp6
             // 
             lblOp6.AutoSize = true;
-            lblOp6.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp6.Location = new Point(317, 97);
+            lblOp6.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp6.Location = new Point(308, 99);
             lblOp6.Name = "lblOp6";
-            lblOp6.Size = new Size(61, 16);
+            lblOp6.Size = new Size(87, 24);
             lblOp6.TabIndex = 65;
             lblOp6.Text = "Opção 6:";
             lblOp6.Visible = false;
@@ -1214,10 +1214,10 @@
             // lblOp5
             // 
             lblOp5.AutoSize = true;
-            lblOp5.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp5.Location = new Point(17, 244);
+            lblOp5.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp5.Location = new Point(16, 237);
             lblOp5.Name = "lblOp5";
-            lblOp5.Size = new Size(61, 16);
+            lblOp5.Size = new Size(87, 24);
             lblOp5.TabIndex = 64;
             lblOp5.Text = "Opção 5:";
             lblOp5.Visible = false;
@@ -1225,10 +1225,10 @@
             // lblOp4
             // 
             lblOp4.AutoSize = true;
-            lblOp4.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp4.Location = new Point(17, 212);
+            lblOp4.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp4.Location = new Point(17, 204);
             lblOp4.Name = "lblOp4";
-            lblOp4.Size = new Size(61, 16);
+            lblOp4.Size = new Size(87, 24);
             lblOp4.TabIndex = 63;
             lblOp4.Text = "Opção 4:";
             lblOp4.Visible = false;
@@ -1236,10 +1236,10 @@
             // lblOp3
             // 
             lblOp3.AutoSize = true;
-            lblOp3.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp3.Location = new Point(17, 172);
+            lblOp3.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp3.Location = new Point(17, 168);
             lblOp3.Name = "lblOp3";
-            lblOp3.Size = new Size(61, 16);
+            lblOp3.Size = new Size(87, 24);
             lblOp3.TabIndex = 62;
             lblOp3.Text = "Opção 3:";
             lblOp3.Visible = false;
@@ -1247,10 +1247,10 @@
             // lblOp2
             // 
             lblOp2.AutoSize = true;
-            lblOp2.Font = new Font("Microsoft Sans Serif", 9.75F);
+            lblOp2.Font = new Font("Microsoft Sans Serif", 14.25F);
             lblOp2.Location = new Point(17, 133);
             lblOp2.Name = "lblOp2";
-            lblOp2.Size = new Size(61, 16);
+            lblOp2.Size = new Size(87, 24);
             lblOp2.TabIndex = 61;
             lblOp2.Text = "Opção 2:";
             lblOp2.Visible = false;
@@ -1258,10 +1258,10 @@
             // lblOp1
             // 
             lblOp1.AutoSize = true;
-            lblOp1.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblOp1.Location = new Point(21, 94);
+            lblOp1.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblOp1.Location = new Point(21, 98);
             lblOp1.Name = "lblOp1";
-            lblOp1.Size = new Size(61, 16);
+            lblOp1.Size = new Size(87, 24);
             lblOp1.TabIndex = 60;
             lblOp1.Text = "Opção 1:";
             lblOp1.Visible = false;
@@ -1269,10 +1269,10 @@
             // lblPergunta
             // 
             lblPergunta.AutoSize = true;
-            lblPergunta.Font = new Font("Microsoft Sans Serif", 9.75F);
-            lblPergunta.Location = new Point(12, 25);
+            lblPergunta.Font = new Font("Microsoft Sans Serif", 14.25F);
+            lblPergunta.Location = new Point(12, 18);
             lblPergunta.Name = "lblPergunta";
-            lblPergunta.Size = new Size(64, 16);
+            lblPergunta.Size = new Size(91, 24);
             lblPergunta.TabIndex = 59;
             lblPergunta.Text = "Pergunta:";
             // 
@@ -1321,101 +1321,102 @@
             // 
             // txtPergunta
             // 
-            txtPergunta.Font = new Font("Microsoft Sans Serif", 9F);
-            txtPergunta.Location = new Point(106, 25);
+            txtPergunta.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtPergunta.Location = new Point(106, 18);
             txtPergunta.Name = "txtPergunta";
-            txtPergunta.Size = new Size(644, 21);
+            txtPergunta.Size = new Size(644, 29);
             txtPergunta.TabIndex = 54;
             // 
             // txtOpcao10
             // 
-            txtOpcao10.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao10.Location = new Point(397, 243);
+            txtOpcao10.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao10.Location = new Point(401, 238);
             txtOpcao10.Name = "txtOpcao10";
-            txtOpcao10.Size = new Size(193, 21);
+            txtOpcao10.Size = new Size(193, 29);
             txtOpcao10.TabIndex = 53;
             txtOpcao10.Visible = false;
             // 
             // txtOpcao9
             // 
-            txtOpcao9.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao9.Location = new Point(397, 211);
+            txtOpcao9.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao9.Location = new Point(401, 203);
             txtOpcao9.Name = "txtOpcao9";
-            txtOpcao9.Size = new Size(193, 21);
+            txtOpcao9.Size = new Size(193, 29);
             txtOpcao9.TabIndex = 52;
             txtOpcao9.Visible = false;
             // 
             // txtOpcao8
             // 
-            txtOpcao8.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao8.Location = new Point(397, 171);
+            txtOpcao8.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao8.Location = new Point(401, 168);
             txtOpcao8.Name = "txtOpcao8";
-            txtOpcao8.Size = new Size(193, 21);
+            txtOpcao8.Size = new Size(193, 29);
             txtOpcao8.TabIndex = 51;
             txtOpcao8.Visible = false;
             // 
             // txtOpcao7
             // 
-            txtOpcao7.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao7.Location = new Point(397, 132);
+            txtOpcao7.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao7.Location = new Point(401, 133);
             txtOpcao7.Name = "txtOpcao7";
-            txtOpcao7.Size = new Size(193, 21);
+            txtOpcao7.Size = new Size(193, 29);
             txtOpcao7.TabIndex = 50;
             txtOpcao7.Visible = false;
             // 
             // txtOpcao6
             // 
-            txtOpcao6.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao6.Location = new Point(397, 94);
+            txtOpcao6.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao6.Location = new Point(401, 98);
             txtOpcao6.Name = "txtOpcao6";
-            txtOpcao6.Size = new Size(193, 21);
+            txtOpcao6.Size = new Size(193, 29);
             txtOpcao6.TabIndex = 49;
             txtOpcao6.Visible = false;
             // 
             // txtOpcao5
             // 
-            txtOpcao5.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao5.Location = new Point(106, 242);
+            txtOpcao5.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao5.Location = new Point(105, 235);
             txtOpcao5.Name = "txtOpcao5";
-            txtOpcao5.Size = new Size(193, 21);
+            txtOpcao5.Size = new Size(193, 29);
             txtOpcao5.TabIndex = 48;
             txtOpcao5.Visible = false;
             // 
             // txtOpcao4
             // 
-            txtOpcao4.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao4.Location = new Point(106, 210);
+            txtOpcao4.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao4.Location = new Point(106, 202);
             txtOpcao4.Name = "txtOpcao4";
-            txtOpcao4.Size = new Size(193, 21);
+            txtOpcao4.Size = new Size(193, 29);
             txtOpcao4.TabIndex = 47;
             txtOpcao4.Visible = false;
             // 
             // txtOpcao3
             // 
-            txtOpcao3.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao3.Location = new Point(106, 170);
+            txtOpcao3.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao3.Location = new Point(106, 166);
             txtOpcao3.Name = "txtOpcao3";
-            txtOpcao3.Size = new Size(193, 21);
+            txtOpcao3.Size = new Size(193, 29);
             txtOpcao3.TabIndex = 46;
             txtOpcao3.Visible = false;
             // 
             // txtOpcao2
             // 
-            txtOpcao2.Font = new Font("Microsoft Sans Serif", 9F);
+            txtOpcao2.Font = new Font("Microsoft Sans Serif", 14.25F);
             txtOpcao2.Location = new Point(106, 131);
             txtOpcao2.Name = "txtOpcao2";
-            txtOpcao2.Size = new Size(193, 21);
+            txtOpcao2.Size = new Size(193, 29);
             txtOpcao2.TabIndex = 45;
             txtOpcao2.Visible = false;
             // 
             // txtOpcao1
             // 
-            txtOpcao1.Font = new Font("Microsoft Sans Serif", 9F);
-            txtOpcao1.Location = new Point(106, 92);
+            txtOpcao1.Font = new Font("Microsoft Sans Serif", 14.25F);
+            txtOpcao1.Location = new Point(106, 96);
             txtOpcao1.Name = "txtOpcao1";
-            txtOpcao1.Size = new Size(193, 21);
+            txtOpcao1.Size = new Size(193, 29);
             txtOpcao1.TabIndex = 44;
             txtOpcao1.Visible = false;
+            txtOpcao1.TextChanged += txtOpcao1_TextChanged;
             // 
             // btnDeletarPerguntas
             // 
@@ -1428,7 +1429,7 @@
             btnDeletarPerguntas.FlatAppearance.MouseDownBackColor = Color.FromArgb(181, 0, 0);
             btnDeletarPerguntas.FlatAppearance.MouseOverBackColor = Color.FromArgb(208, 212, 214);
             btnDeletarPerguntas.FlatStyle = FlatStyle.Flat;
-            btnDeletarPerguntas.Location = new Point(831, 177);
+            btnDeletarPerguntas.Location = new Point(831, 185);
             btnDeletarPerguntas.Margin = new Padding(3, 2, 3, 2);
             btnDeletarPerguntas.Name = "btnDeletarPerguntas";
             btnDeletarPerguntas.Size = new Size(128, 46);

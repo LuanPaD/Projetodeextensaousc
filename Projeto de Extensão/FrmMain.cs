@@ -22,7 +22,7 @@ namespace Projeto_de_Extensão
 
             if (!ClsConexao.ConexaoAtiva())
             {
-                MessageBox.Show("Não há conexão com o banco de dados.", "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Não há conexão com o banco de dados.");
             }
             else
             {

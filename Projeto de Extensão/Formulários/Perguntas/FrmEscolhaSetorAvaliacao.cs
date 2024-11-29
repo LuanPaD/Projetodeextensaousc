@@ -81,7 +81,7 @@ namespace Projeto_de_Extensao.Formulários.Perguntas
         private async Task<string[]> getSetor()
         {
             var nomeSetor = new List<string>();
-            string sql = @"SELECT nome FROM setores;";
+            string sql = @"SELECT nome FROM setores WHERE setor_id <> 3;";
 
             try
             {
