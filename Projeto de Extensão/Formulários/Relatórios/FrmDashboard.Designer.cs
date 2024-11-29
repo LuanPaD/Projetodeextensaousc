@@ -381,7 +381,7 @@
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(pictureBox7);
-            panel2.Location = new Point(251, 91);
+            panel2.Location = new Point(251, 88);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(296, 136);
@@ -437,7 +437,7 @@
             panel3.Controls.Add(label6);
             panel3.Controls.Add(label7);
             panel3.Controls.Add(pictureBox6);
-            panel3.Location = new Point(566, 91);
+            panel3.Location = new Point(566, 88);
             panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
             panel3.Size = new Size(236, 136);
@@ -618,7 +618,7 @@
             panel5.Controls.Add(lbl7);
             panel5.Controls.Add(label5);
             panel5.Controls.Add(pictureBox4);
-            panel5.Location = new Point(821, 91);
+            panel5.Location = new Point(821, 88);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
             panel5.Size = new Size(236, 136);
@@ -669,6 +669,7 @@
             // 
             // tbcDashboard
             // 
+            tbcDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tbcDashboard.Controls.Add(tabPageDashboard);
             tbcDashboard.Controls.Add(tabPagePerguntas);
             tbcDashboard.Controls.Add(tabPageSugestoes);

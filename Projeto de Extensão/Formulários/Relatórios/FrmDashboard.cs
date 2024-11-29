@@ -135,10 +135,11 @@ namespace Projeto_de_Extensao.Formulários.Relatórios
             int totalAdministradores = GetTotal("SELECT COUNT(ADMIN_ID) FROM ADMIN");
             int totalAtendentesAvaliados = GetTotal("SELECT COUNT(DISTINCT ATENDENTE_ID) FROM AVALIACAO;");
             int totalSetores = GetTotal("SELECT COUNT(SETOR_ID) FROM SETORES;");
+            int totalSetoresReal = totalSetores - 1;
             int totalAvaliacoes = GetTotal("SELECT COUNT(avaliacao_id) FROM AVALIACAO; ");
 
             lblTotalAtendentesAvaliados.Text = totalAtendentesAvaliados.ToString();
-            lblTotalSetoresCadastrados.Text = totalSetores.ToString();
+            lblTotalSetoresCadastrados.Text = totalSetoresReal.ToString();
             lblTotalDeAvaliacoes.Text = totalAvaliacoes.ToString();
             lblTotalAdmin.Text = totalAdministradores.ToString();
 
